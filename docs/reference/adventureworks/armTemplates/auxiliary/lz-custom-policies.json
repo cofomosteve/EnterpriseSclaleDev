@@ -1,0 +1,53 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "topLevelManagementGroupPrefix": {
+            "type": "string",
+            "maxLength": 10,
+            "metadata": {
+                "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
+            }
+        },
+        "allowedvmsize": {
+            "type": "array",
+            "defaultvalue": [],
+            "metadata": {
+                "description": "Provide an array of locations that will be used for allowed locations policy"
+            }
+        }
+    },
+    "variables": {
+        "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'), '-landingzones')]",
+        "policyDefinitions": {
+            "allowedvmsize": "/providers/Microsoft.Authorization/policyDefinitions/cccc23c7-8427-4f53-ad12-b6a63eb452b3"
+        },
+        "policyAssignmentNames": {
+            "allowedvmsize": "Allowed-vm-size-rg"
+        }
+    },
+    "resources": [
+        {
+            "condition": "[not(empty(parameters('allowedvmsize')))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[variables('policyAssignmentNames').allowedvmsize]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "Allowed-vm-size-for-resource-group-description",
+                "displayName": "Allowed-vm-size-for-resource-group-display-name",
+                "policyDefinitionId": "[variables('policyDefinitions').allowedvmsize]",
+                "scope": "[variables('scope')]",
+                "parameters": {
+                    "listOfAllowedSKUs": {
+                        "value": "[parameters('allowedvmsize')]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
