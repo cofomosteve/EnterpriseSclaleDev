@@ -8,7 +8,7 @@
         "steps": [
             {
                 "name": "lzSettings",
-                "label": "Enterprise-Scale company prefix",
+                "label": "Préfix de la compagnie à l'échelle de l'entreprise!",
                 "subLabel": {
                     "preValidation": "Provide a company prefix for the management group structure that will be created.",
                     "postValidation": "Done"
