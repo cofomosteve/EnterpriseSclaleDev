@@ -51,52 +51,7 @@
                     }
                 ]
             },
-            {
-                "name": "vMSettings",
-                "label": "Configure virtual machines",
-                "subLabel": {
-                    "preValidation": "VM Profile",
-                    "postValidation": "Done"
-                },
-                "bladeTitle": "Configure number of VMs based on profile usage",
-                "elements": [
-                    {
-                        "name": "info",
-                        "type": "Microsoft.Common.InfoBox",
-                        "visible": true,
-                        "options": {
-                            "icon": "Info",
-                            "text": "SKU selected will be the only allowed for resource"
-                        }
-                    },
-                    {
-                        "name": "esLocationsApi",
-                        "type": "Microsoft.Solutions.ArmApiControl",
-                        "request": {
-                            "method": "GET",
-                            "path": "locations?api-version=2019-11-01"
-                        }
-                    },
-                    {
-                        "name": "esvirtualMachineSize",
-                        "type": "Microsoft.Common.DropDown",
-                        "label": "SKU List for Windows VM",
-                        "multiselect": true,
-                        "selectAll": true,
-                        "filter": true,
-                        "filterPlaceholder": "Filter SKU",
-                        "multiLine": true,
-                        "toolTip": "Select Allowed SKU for Windows SKU",
-                        "defaultValue": "",
-                        "constraints": {
-                            "allowedValues": "[map(steps('skuSettings').esLocationsApi.value, (item) => parse(concat('{\"label\":\"', item.displayName, '\",\"value\":\"', item.name, '\"}')))]",
-                            "required": true
-                        }
-                    }
-
-                    
-                ]
-            },
+            
             {
                 "name": "esGoalState",
                 "label": "Platform management, security, and governance",
