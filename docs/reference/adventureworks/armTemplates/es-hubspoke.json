@@ -441,11 +441,11 @@
             "type": "array",
             "defaultValue": []
         },
-        "AllowedVMSizesku": {
+        "allowedVMSizesku": {
             "type": "array",
             "metadata": {
                 "displayName": "Which VM Wize?",
-                "description": "AllowedVMSizesku",
+                "description": "allowedVMSizesku",
                  "strongType": "VMSKUs"
             },
             "defaultValue": []
@@ -990,7 +990,7 @@
         },
 
         {
-            "condition": "[not(empty(parameters('AllowedVMSizesku')))]",
+            "condition": "[not(empty(parameters('allowedVMSizesku')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-landingzones')]",
@@ -1011,7 +1011,7 @@
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
                     },
                     "allowedvmsize": {
-                        "value": "[parameters('AllowedVMSizesku')]"
+                        "value": "[parameters('allowedVMSizesku')]"
                     }
                 }
             }
