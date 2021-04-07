@@ -1010,7 +1010,7 @@
                     "topLevelManagementGroupPrefix": {
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
                     },
-                    "AllowedVMSizesku": {
+                    "allowedvmsize": {
                         "value": "[parameters('AllowedVMSizesku')]"
                     }
                 }
