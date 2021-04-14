@@ -440,6 +440,15 @@
         "firewallZones": {
             "type": "array",
             "defaultValue": []
+        },
+
+        "allowedVMSizesku": {
+            "type": "array",
+            "metadata": {
+                "displayName": "Which VM Wize?",
+                "description": "allowedVMSizesku" 
+            },
+            "defaultValue": []
         }
 
     },
@@ -459,7 +468,8 @@
             "diagnosticsAndSecurity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/diagnosticsAndSecurity.json')]",
             "landingZone": "[uri(deployment().properties.templateLink.uri, 'auxiliary/lz.json')]",
             "identity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/identity.json')]",
-            "corpConnectedLzs": "[uri(deployment().properties.templateLink.uri, 'auxiliary/corp-peering-copy.json')]"
+            "corpConnectedLzs": "[uri(deployment().properties.templateLink.uri, 'auxiliary/corp-peering-copy.json')]",
+            "landingZoneCustomPolicies": "[uri(deployment().properties.templateLink.uri, 'auxiliary/lz-custom-policies.json')]"
         },
         "moveSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-management', '/', parameters('managementSubscriptionId'))]",
         "noSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-management', '/', 'na')]",
@@ -479,7 +489,8 @@
             "connectivityDeploymentName": "[take(concat('EntScale-Networking', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "lzDeploymentName": "[take(concat('EntScale-LZ', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "identityDeploymentName": "[take(concat('EntScale-Identity', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
-            "corpConnectedDeploymentName": "[take(concat('EntScale-lz-connectivity', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]"
+            "corpConnectedDeploymentName": "[take(concat('EntScale-lz-connectivity', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+            "lzDeploymentCustomPolicyName": "[take(concat('EntScale-LZCustomPolicies', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]"
         }
     },
     "resources": [
@@ -973,6 +984,34 @@
                     },
                     "location": {
                         "value": "[parameters('location')]"
+                    }
+                }
+            }
+        }
+        ,
+
+        {
+            "condition": "[not(empty(parameters('allowedVMSizesku')))]",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-05-01",
+            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-landingzones')]",
+            "name": "[variables('deploymentNames').lzDeploymentCustomPolicyName]",
+            "dependsOn": [
+                "[variables('deploymentNames').policyDeploymentName]"
+            ],
+            "location": "[deployment().location]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "contentVersion": "1.0.0.0",
+                    "uri": "[variables('deploymentUris').landingZoneCustomPolicies]"
+                },
+                "parameters": {
+                    "topLevelManagementGroupPrefix": {
+                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+                    },
+                    "allowedvmsize": {
+                        "value": "[parameters('allowedVMSizesku')]"
                     }
                 }
             }
