@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/campus-mg/providers/Microsoft.Authorization/roleAssignments/7da3a840-89c0-4298-b723-d8c480cf548f",
+        "Name": "7da3a840-89c0-4298-b723-d8c480cf548f",
+        "properties": {
+          "DisplayName": "Mathieu Cormier",
+          "ObjectType": "User",
+          "PrincipalId": "854fe53d-1e51-4e03-912f-e0624681c42d",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

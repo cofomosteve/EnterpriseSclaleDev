@@ -1,0 +1,41 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "a8663d4d-4cc3-45c3-b009-1d742089f489",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "Allowed-vm-size-rg",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/COFOT-landingzones/providers/Microsoft.Authorization/policyAssignments/Allowed-vm-size-rg",
+        "Properties": {
+          "Description": "Allowed-vm-size-for-resource-group-description",
+          "DisplayName": "Allowed-vm-size-for-resource-group-display-name",
+          "NotScopes": null,
+          "Parameters": {
+            "listOfAllowedSKUs": {
+              "value": [
+                "Standard_A1_v2",
+                "Standard_A2_v2",
+                "Standard_A2m_v2"
+              ]
+            }
+          },
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cccc23c7-8427-4f53-ad12-b6a63eb452b3",
+          "Scope": "/providers/Microsoft.Management/managementGroups/COFOT-landingzones"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/COFOT-landingzones/providers/Microsoft.Authorization/policyAssignments/Allowed-vm-size-rg",
+        "ResourceName": "Allowed-vm-size-rg",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

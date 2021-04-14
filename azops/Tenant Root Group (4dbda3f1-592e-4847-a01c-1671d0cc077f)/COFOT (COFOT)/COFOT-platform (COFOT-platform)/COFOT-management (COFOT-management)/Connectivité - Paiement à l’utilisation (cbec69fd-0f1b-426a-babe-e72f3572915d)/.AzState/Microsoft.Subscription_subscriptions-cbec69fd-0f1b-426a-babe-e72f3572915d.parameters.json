@@ -1,0 +1,15 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Type": "/subscriptions",
+        "Id": "/subscriptions/cbec69fd-0f1b-426a-babe-e72f3572915d",
+        "Name": "cbec69fd-0f1b-426a-babe-e72f3572915d",
+        "DisplayName": "Connectivité - Paiement à l’utilisation",
+        "Children": null
+      }
+    }
+  }
+}

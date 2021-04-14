@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/subscriptions/ddec50e5-955a-4b45-91f4-01f3a634fb3d/providers/Microsoft.Authorization/roleAssignments/9e0cac5f-8cd5-40c9-aeff-0252e2161507",
+        "Name": "9e0cac5f-8cd5-40c9-aeff-0252e2161507",
+        "properties": {
+          "DisplayName": "Nicolas Garneau",
+          "ObjectType": "User",
+          "PrincipalId": "54a38d60-60e3-4e1b-b53e-a52865711780",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

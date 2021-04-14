@@ -1,0 +1,52 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "1033e1bb-cb60-4088-8408-34d4c1817291",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "Deploy-Log-Analytics",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/COFOT-management/providers/Microsoft.Authorization/policyAssignments/Deploy-Log-Analytics",
+        "Properties": {
+          "Description": "Deploy-Log-Analytics",
+          "DisplayName": "Deploy-Log-Analytics",
+          "NotScopes": null,
+          "Parameters": {
+            "automationAccountName": {
+              "value": "COFOT-a-cbec69fd-0f1b-426a-babe-e72f3572915d"
+            },
+            "automationRegion": {
+              "value": "canadacentral"
+            },
+            "retentionInDays": {
+              "value": "30"
+            },
+            "rgName": {
+              "value": "COFOT-mgmt"
+            },
+            "workspaceName": {
+              "value": "COFOT-la-cbec69fd-0f1b-426a-babe-e72f3572915d"
+            },
+            "workspaceRegion": {
+              "value": "canadacentral"
+            }
+          },
+          "PolicyDefinitionId": "/providers/Microsoft.Management/managementGroups/COFOT/providers/Microsoft.Authorization/policyDefinitions/Deploy-Log-Analytics",
+          "Scope": "/providers/Microsoft.Management/managementGroups/COFOT-management"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/COFOT-management/providers/Microsoft.Authorization/policyAssignments/Deploy-Log-Analytics",
+        "ResourceName": "Deploy-Log-Analytics",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}
