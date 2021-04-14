@@ -895,34 +895,6 @@
             ],
             "properties": {}
         },
-
-         {
-            "condition": "[not(empty(parameters('allowedVMSizesku')))]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-landingzones')]",
-            "name": "[variables('deploymentNames').lzDeploymentCustomPolicyName]",
-            "dependsOn": [
-                "[variables('deploymentNames').policyDeploymentName]",
-                "DeploymentDelay"
-            ],
-            "location": "[deployment().location]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').landingZoneCustomPolicies]"
-                },
-                "parameters": {
-                    "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
-                    },
-                    "allowedvmsize": {
-                        "value": "[parameters('allowedVMSizesku')]"
-                    }
-                }
-            }
-        },
         {
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableHub'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
@@ -1015,9 +987,55 @@
                     }
                 }
             }
-        }
+        },
 
-       
+        {
+            "condition": "[not(empty(parameters('allowedVMSizesku')))]",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-05-01",
+            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-landingzones')]",
+            "name": "[variables('deploymentNames').lzDeploymentCustomPolicyName]",
+            "dependsOn": [
+                "[variables('deploymentNames').policyDeploymentName]",
+                "DeploymentDelay"
+            ],
+            "location": "[deployment().location]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "contentVersion": "1.0.0.0",
+                    "uri": "[variables('deploymentUris').landingZoneCustomPolicies]"
+                },
+                "parameters": {
+                    "topLevelManagementGroupPrefix": {
+                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+                    },
+                    "allowedvmsize": {
+                        "value": "[parameters('allowedVMSizesku')]"
+                    }
+                }
+            }
+        }
+        ,
+        {
+            "condition": "[not(empty(parameters('allowedVMSizesku')))]",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-05-01",
+            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-landingzones')]",
+            "name": "DEPLOYMENT-DEMO",
+            "dependsOn": [                
+                "DeploymentDelay"
+            ],
+                "resources": [
+                    { 
+                        "type": "Microsoft.Resources/resourceGroups",
+                        "apiVersion": "2018-05-01",
+                        "location": "[deployment().location]",
+                        "name": "demo-steve",
+                        "properties": {}
+                    }
+                ]            
+        }
     ],
     "outputs": {
         "deployment": {
