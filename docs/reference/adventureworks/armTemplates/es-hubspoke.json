@@ -996,8 +996,7 @@
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-landingzones')]",
             "name": "[variables('deploymentNames').lzDeploymentCustomPolicyName]",
             "dependsOn": [
-                "[variables('deploymentNames').policyDeploymentName]",
-                "DeploymentDelay"
+                "[variables('deploymentNames').policyDeploymentName]"
             ],
             "location": "[deployment().location]",
             "properties": {
@@ -1024,7 +1023,7 @@
             "name": "storageDeployment",
             "resourceGroup": "rg-steve-cloud-demo",
             "dependsOn": [
-                "DeploymentDelay"
+                "[variables('deploymentNames').mgmtGroupDeploymentName]"
             ],
             "properties": {
                 "mode": "Incremental",
