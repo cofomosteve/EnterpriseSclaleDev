@@ -262,8 +262,8 @@
                                                     }
                                                 ],
                                                 "sku": {
-                                                    "name": "[if(not(empty(parameters('vpnOrErZones'))), 'VpnGw2AZ', 'VpnGw1')]",
-                                                    "tier": "[if(not(empty(parameters('vpnOrErZones'))), 'VpnGw2AZ', 'VpnGw1')]"
+                                                    "name": "[if(not(empty(parameters('vpnOrErZones'))), 'VpnGw2AZ', 'VpnGw2')]",
+                                                    "tier": "[if(not(empty(parameters('vpnOrErZones'))), 'VpnGw2AZ', 'VpnGw2')]"
                                                 }
                                             }
                                         },

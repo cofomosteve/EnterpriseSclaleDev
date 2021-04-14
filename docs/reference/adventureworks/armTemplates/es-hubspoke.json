@@ -445,8 +445,7 @@
             "type": "array",
             "metadata": {
                 "displayName": "Which VM Wize?",
-                "description": "allowedVMSizesku",
-                 "strongType": "VMSKUs"
+                "description": "allowedVMSizesku" 
             },
             "defaultValue": []
         }
@@ -519,7 +518,8 @@
             "location": "[deployment().location]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
             "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]"
+                "[variables('deploymentNames').mgmtGroupDeploymentName]",
+                "DeploymentDelay"
             ],
             "properties": {
                 "mode": "Incremental",
