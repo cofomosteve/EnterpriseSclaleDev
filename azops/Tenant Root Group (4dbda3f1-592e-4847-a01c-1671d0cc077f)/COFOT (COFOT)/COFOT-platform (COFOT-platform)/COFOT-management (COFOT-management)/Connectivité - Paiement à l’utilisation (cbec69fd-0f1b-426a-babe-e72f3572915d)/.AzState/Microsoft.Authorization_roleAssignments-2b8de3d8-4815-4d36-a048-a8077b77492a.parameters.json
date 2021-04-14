@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/subscriptions/cbec69fd-0f1b-426a-babe-e72f3572915d/providers/Microsoft.Authorization/roleAssignments/2b8de3d8-4815-4d36-a048-a8077b77492a",
+        "Name": "2b8de3d8-4815-4d36-a048-a8077b77492a",
+        "properties": {
+          "DisplayName": "André Girard",
+          "ObjectType": "User",
+          "PrincipalId": "b6d18eee-9e06-4686-a475-16e83a15d6e2",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

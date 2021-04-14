@@ -1,0 +1,21 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/campus-mg",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "campus-mg",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "campus-mg",
+        "UpdatedTime": "2021-01-27T20:09:31.6515544Z",
+        "UpdatedBy": "854fe53d-1e51-4e03-912f-e0624681c42d",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentName": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentDisplayName": "Tenant Root Group",
+        "Children": null
+      }
+    }
+  }
+}

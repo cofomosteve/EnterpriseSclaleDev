@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc/providers/Microsoft.Authorization/roleAssignments/230979f9-dd7b-45e6-a654-db9fa922b322",
+        "Name": "230979f9-dd7b-45e6-a654-db9fa922b322",
+        "properties": {
+          "DisplayName": "Adam Mc Kennen",
+          "ObjectType": "User",
+          "PrincipalId": "8db837b5-31a8-4c1f-b6d8-889768768edf",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+          "RoleDefinitionName": "Contributor"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

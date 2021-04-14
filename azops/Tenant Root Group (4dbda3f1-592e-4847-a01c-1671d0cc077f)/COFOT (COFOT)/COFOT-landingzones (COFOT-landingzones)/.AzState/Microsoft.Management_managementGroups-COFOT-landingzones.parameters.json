@@ -1,0 +1,36 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/COFOT-landingzones",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "COFOT-landingzones",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "COFOT-landingzones",
+        "UpdatedTime": "2021-04-14T14:06:48.3387657Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/COFOT",
+        "ParentName": "COFOT",
+        "ParentDisplayName": "COFOT",
+        "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/COFOT-corp",
+            "Name": "COFOT-corp",
+            "DisplayName": "COFOT-corp",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/COFOT-online",
+            "Name": "COFOT-online",
+            "DisplayName": "COFOT-online",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}
