@@ -578,7 +578,7 @@
             {
                 "name": "esConnectivityGoalState",
                 "label": "Connectivity (Virtual WAN)",
-                "visible": "[equals(steps('lzSettings').esDeployNetwork, 'Yes')]",
+                "visible": false,
                 "subLabel": {
                     "preValidation": "",
                     "postValidation": ""
