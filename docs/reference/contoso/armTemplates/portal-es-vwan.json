@@ -599,7 +599,7 @@
                         "name": "esVwan",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Deploy Virtual WAN",
-                        
+                        "visible": "[and(equals(steps('lzSettings').esDeployNetwork, 'Yes'),equals(steps('lzSettings').esDeployNetwork, 'Yes'))]",
                         "defaultValue": "Yes (recommended)",
                         "toolTip": "If 'Yes' is selected when also adding a subscription for connectivity, ARM will deploy Virtual WAN",
                         "constraints": {
@@ -613,8 +613,7 @@
                                     "value": "No"
                                 }
                             ]
-                        },
-                        "visible": true
+                        } 
                     },
                     {
                         "name": "nwSubsApi",
