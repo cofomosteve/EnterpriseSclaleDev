@@ -1,0 +1,37 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "259531be-a4f5-4a68-b412-6ba5813b9e4d",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "Enforce-AKS-HTTPS",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/CONTOS-landingzones/providers/Microsoft.Authorization/policyAssignments/Enforce-AKS-HTTPS",
+        "Properties": {
+          "Description": "Enforce-Https-Ingress-AKS",
+          "DisplayName": "Enforce-Https-Ingress-AKS",
+          "NotScopes": null,
+          "Parameters": {
+            "effect": {
+              "value": "deny"
+            }
+          },
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d",
+          "Scope": "/providers/Microsoft.Management/managementGroups/CONTOS-landingzones"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/CONTOS-landingzones/providers/Microsoft.Authorization/policyAssignments/Enforce-AKS-HTTPS",
+        "ResourceName": "Enforce-AKS-HTTPS",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

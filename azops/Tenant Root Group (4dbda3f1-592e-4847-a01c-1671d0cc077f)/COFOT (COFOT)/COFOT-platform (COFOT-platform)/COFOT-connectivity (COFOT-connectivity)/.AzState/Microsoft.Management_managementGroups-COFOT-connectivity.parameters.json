@@ -14,15 +14,7 @@
         "ParentId": "/providers/Microsoft.Management/managementGroups/COFOT-platform",
         "ParentName": "COFOT-platform",
         "ParentDisplayName": "COFOT-platform",
-        "Children": [
-          {
-            "Type": "/subscriptions",
-            "Id": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
-            "Name": "2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
-            "DisplayName": "Microsoft Azure Sponsorship (6k)",
-            "Children": null
-          }
-        ]
+        "Children": null
       }
     }
   }

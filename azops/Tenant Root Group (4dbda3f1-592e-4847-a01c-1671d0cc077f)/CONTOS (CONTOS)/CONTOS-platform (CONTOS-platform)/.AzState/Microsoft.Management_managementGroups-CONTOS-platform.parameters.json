@@ -1,0 +1,43 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/CONTOS-platform",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "CONTOS-platform",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "CONTOS-platform",
+        "UpdatedTime": "2021-04-15T20:21:09.0534692Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/CONTOS",
+        "ParentName": "CONTOS",
+        "ParentDisplayName": "CONTOS",
+        "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/CONTOS-identity",
+            "Name": "CONTOS-identity",
+            "DisplayName": "CONTOS-identity",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/CONTOS-management",
+            "Name": "CONTOS-management",
+            "DisplayName": "CONTOS-management",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/CONTOS-connectivity",
+            "Name": "CONTOS-connectivity",
+            "DisplayName": "CONTOS-connectivity",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}
