@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc/providers/Microsoft.Authorization/roleAssignments/cc915427-8b5d-4ab8-849d-45bc2c537e1f",
+        "Name": "cc915427-8b5d-4ab8-849d-45bc2c537e1f",
+        "properties": {
+          "DisplayName": "Steve Tchokoani",
+          "ObjectType": "User",
+          "PrincipalId": "39662490-964c-4117-847b-30174cfd49ba",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

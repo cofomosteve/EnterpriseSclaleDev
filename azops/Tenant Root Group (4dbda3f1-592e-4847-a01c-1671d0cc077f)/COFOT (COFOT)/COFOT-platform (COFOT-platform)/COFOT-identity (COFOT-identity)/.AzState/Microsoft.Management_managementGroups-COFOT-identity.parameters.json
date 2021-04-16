@@ -1,0 +1,21 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/COFOT-identity",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "COFOT-identity",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "COFOT-identity",
+        "UpdatedTime": "2021-04-14T14:07:23.6091545Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/COFOT-platform",
+        "ParentName": "COFOT-platform",
+        "ParentDisplayName": "COFOT-platform",
+        "Children": null
+      }
+    }
+  }
+}
