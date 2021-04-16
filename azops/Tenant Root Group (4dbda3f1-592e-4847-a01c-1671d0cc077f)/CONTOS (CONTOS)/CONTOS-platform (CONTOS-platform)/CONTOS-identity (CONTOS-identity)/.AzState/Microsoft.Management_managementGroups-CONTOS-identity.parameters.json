@@ -1,0 +1,29 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/CONTOS-identity",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "CONTOS-identity",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "CONTOS-identity",
+        "UpdatedTime": "2021-04-15T20:21:53.7762728Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/CONTOS-platform",
+        "ParentName": "CONTOS-platform",
+        "ParentDisplayName": "CONTOS-platform",
+        "Children": [
+          {
+            "Type": "/subscriptions",
+            "Id": "/subscriptions/ddec50e5-955a-4b45-91f4-01f3a634fb3d",
+            "Name": "ddec50e5-955a-4b45-91f4-01f3a634fb3d",
+            "DisplayName": "Identité - Paiement à l’utilisation",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}
