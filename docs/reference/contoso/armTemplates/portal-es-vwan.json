@@ -599,7 +599,7 @@
                         "name": "esVwan",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Deploy Virtual WAN",
-                        "visible": "[equals(steps('lzSettings').esDeployNetwork, 'Yes')]",
+                        
                         "defaultValue": "Yes (recommended)",
                         "toolTip": "If 'Yes' is selected when also adding a subscription for connectivity, ARM will deploy Virtual WAN",
                         "constraints": {
@@ -613,7 +613,8 @@
                                     "value": "No"
                                 }
                             ]
-                        } 
+                        },
+                        "visible": true
                     },
                     {
                         "name": "nwSubsApi",
@@ -633,7 +634,7 @@
                         "filter": true,
                         "filterPlaceholder": "Filter items ...",
                         "multiLine": true,
-                        "visible": "[and(equals(steps('esConnectivityGoalState').esVwan, 'Yes'),equals(steps('lzSettings').esDeployNetwork, 'Yes'))]",
+                        "visible": "[equals(steps('esConnectivityGoalState').esVwan, 'Yes')]",
                         "constraints": {
                             "allowedValues": "[map(steps('esConnectivityGoalState').nwSubsApi.value, (sub) => parse(concat('{\"label\":\"', sub.displayName, '\",\"description\":\"', sub.subscriptionId, '\",\"value\":\"', toLower(sub.subscriptionId), '\"}')) )]",
                             "required": true
@@ -645,7 +646,7 @@
                         "label": "Address space (required for Virtual Hub)",
                         "toolTip": "Provide address prefix in CIDR notation (e.g 192.168.0.0/16)",
                         "defaultValue": "192.168.0.0/16",
-                        "visible": "[and(equals(steps('esConnectivityGoalState').esVwan, 'Yes'),equals(steps('lzSettings').esDeployNetwork, 'Yes'))]",
+                        "visible": "[equals(steps('esConnectivityGoalState').esVwan, 'Yes')]",
                         "constraints": {
                             "required": true,
                             "validationMessage": "The virtual hubs network's address space, specified as one address prefixes in CIDR notation (e.g. 192.168.0.0/16)"
@@ -668,7 +669,7 @@
                             "allowedValues": "[map(steps('esConnectivityGoalState').esLocationsApi.value, (item) => parse(concat('{\"label\":\"', item.displayName, '\",\"value\":\"', item.name, '\"}')))]",
                             "required": true
                         },
-                        "visible": "[and(equals(steps('esConnectivityGoalState').esVwan, 'Yes'),equals(steps('lzSettings').esDeployNetwork, 'Yes'))]"
+                        "visible": "[equals(steps('esConnectivityGoalState').esVwan, 'Yes')]"
                     },
                     {
                         "name": "esVpnGw",
