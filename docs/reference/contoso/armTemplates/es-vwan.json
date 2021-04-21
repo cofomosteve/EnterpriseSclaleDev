@@ -412,6 +412,7 @@
         }
     },
     "variables": {
+        "prefixmgn": "mg-",
         "azPolicyEnvMapping": {
             "https://management.azure.com/": "auxiliary/policies.json",
             "https://management.chinacloudapi.cn": "auxiliary/mkPolicies.json",
@@ -461,7 +462,12 @@
                 },
                 "parameters": {
                     "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"                        
+                        
+                    },
+                    "prefixmgn": {                        
+                        "value": "[variables('prefixmgn')]"
+                        
                     }
                 }
             }

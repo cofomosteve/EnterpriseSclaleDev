@@ -2,6 +2,13 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+
+    "genericManagementGroupPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide prefix for the management group structure."
+            }
+        },
     "topLevelManagementGroupPrefix": {
       "type": "String",
       "maxLength": 10,
@@ -11,7 +18,9 @@
     }
   },
   "variables": {
-    "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'))]",
+    "prefixmgn": "[concat(parameters('genericManagementGroupPrefix'), '-')]",
+    "topLevelManagementGroupPrefix": "[concat(variables('prefixmgn'),parameters('topLevelManagementGroupPrefix'))]",
+    "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]",
     "policies": {
       "policyDefinitions": [
         {
