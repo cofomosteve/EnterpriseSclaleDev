@@ -26,7 +26,14 @@
     "variables": {
         "prefixmgn": "[concat(parameters('genericManagementGroupPrefix'), '-')]",
         "topLevelManagementGroupPrefix": "[concat(variables('prefixmgn'),parameters('topLevelManagementGroupPrefix'))]",
-        "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-landingzones')]",
+        "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]",
+        "scope-platform": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-platform')]",
+        "scope-management": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-management')]",
+        "scope-connectivity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-connectivity')]",
+        "scope-identity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-identity')]",
+        "scope-lz": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-landingzones')]",
+        "scope-lz-online": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-online')]",
+        "scope-lz-corp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-corp')]",
         "policyDefinitions": {
             "allowedvmsize": "/providers/Microsoft.Authorization/policyDefinitions/cccc23c7-8427-4f53-ad12-b6a63eb452b3"
         },
@@ -212,7 +219,7 @@
                         "displayName": "Allowed-vm-size-for-resource-group-display-name",
                         "policyDefinitionId": "[variables('policyDefinitions').allowedvmsize]",
                         "scope": "[variables('scope')]",
-                        
+
                         "parameters": {
                             "listOfAllowedSKUs": {
                                 "value": "[parameters('allowedvmsize')]"

@@ -4,11 +4,11 @@
   "parameters": {
 
     "genericManagementGroupPrefix": {
-            "type": "string",
-            "metadata": {
-                "description": "Provide prefix for the management group structure."
-            }
-        },
+      "type": "string",
+      "metadata": {
+        "description": "Provide prefix for the management group structure."
+      }
+    },
     "topLevelManagementGroupPrefix": {
       "type": "String",
       "maxLength": 10,
@@ -21,6 +21,13 @@
     "prefixmgn": "[concat(parameters('genericManagementGroupPrefix'), '-')]",
     "topLevelManagementGroupPrefix": "[concat(variables('prefixmgn'),parameters('topLevelManagementGroupPrefix'))]",
     "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]",
+    "scope-platform": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-platform')]",
+    "scope-management": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-management')]",
+    "scope-connectivity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-connectivity')]",
+    "scope-identity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-identity')]",
+    "scope-lz": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-landingzones')]",
+    "scope-lz-online": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-online')]",
+    "scope-lz-corp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-corp')]",
     "policies": {
       "policyDefinitions": [
         {
@@ -21128,5 +21135,7 @@
         "metadata": "[variables('initiatives').policySetDefinitions[copyIndex()].properties.metadata]"
       }
     }
-  ]
+  ],
+
+    "outputs": {}
 }
