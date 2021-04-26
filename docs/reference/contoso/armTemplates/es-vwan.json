@@ -613,7 +613,7 @@
             "scopeidentity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-identity')]",
             "scopelz": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-landingzones')]",
             "scopelzonline": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-online')]",
-            "scopelzcorp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-corp')]",
+            "scopelzcorp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-corp')]"
 
 
         },
