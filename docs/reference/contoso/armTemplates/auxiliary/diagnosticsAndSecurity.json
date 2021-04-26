@@ -2,12 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "genericManagementGroupPrefix": {
-            "type": "string",
-            "metadata": {
-                "description": "Provide prefix for the management group structure."
-            }
-        },
+        
         "topLevelManagementGroupPrefix": {
             "type": "string",
             "maxLength": 10,
@@ -15,6 +10,17 @@
                 "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
             }
         },
+  "resourceTags": {
+        "type": "object",
+        "defaultValue": {
+            "CostCenter": "ITxxx",
+            "Env": "Prod",
+            "RAD": "Mission Critique",
+            "CIDC": "111",
+            "Direction": "SHARED"
+        }
+    },
+  
         "managementSubscriptionId": {
             "type": "string",
             "maxLength": 36,
@@ -479,7 +485,8 @@
             "properties": {
                 "principalType": "ServicePrincipal",
                 "roleDefinitionId": "[concat('/providers/Microsoft.Authorization/roleDefinitions/', variables('rbacOwner'))]",
-                "principalId": "[if(equals(parameters('enableLogAnalytics'), 'Yes'), toLower(reference(concat('/providers/Microsoft.Authorization/policyAssignments/', variables('policyAssignmentNames').resourceDiagnostics), '2018-05-01', 'Full' ).identity.principalId), 'na')]"
+                "principalId": "[if(equals(parameters('enableLogAnalytics'), 'Yes'), 
+                toLower(reference(concat('/providers/Microsoft.Authorization/policyAssignments/', variables('policyAssignmentNames').resourceDiagnostics), '2018-05-01', 'Full' ).identity.principalId), 'na')]"
             }
         },        
         {
@@ -559,7 +566,8 @@
                 "policyDefinitionId": "[variables('policyDefinitions').ascMonitoring]",
                 "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'))]"
             }
-        },         
+        },  
+        /**********************ROUESOURCE DEPLOIEMENT********************************************************/       
         {
             // Conditional ARM deployments to invoke template from ActivityLog diagnostics on management subscription
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'Yes'))]",

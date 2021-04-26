@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "genericManagementGroupPrefix": {
+        "prefixmgn": {
             "type": "string",
             "metadata": {
                 "description": "Provide prefix for the management group structure."
@@ -14,6 +14,17 @@
                 "description": "Provide prefix for the management group structure."
             }
         },
+  "resourceTags": {
+        "type": "object",
+        "defaultValue": {
+            "CostCenter": "ITxxx",
+            "Env": "Prod",
+            "RAD": "Mission Critique",
+            "CIDC": "111",
+            "Direction": "SHARED"
+        }
+    },
+ 
         "platformMgs": {
             "type": "array",
             "defaultValue": [
@@ -29,7 +40,8 @@
             "type": "array",
             "defaultValue": [
                 "online",
-                "corp"
+                "corp",
+                "devops"
             ],
             "metadata": {
                 "description": "These are the landing zone management groups."
@@ -37,8 +49,8 @@
         }
     },
     "variables": {
-        "prefixmgn": "[concat(parameters('genericManagementGroupPrefix'), '-')]",
-        "topLevelManagementGroupPrefix": "[concat(variables('prefixmgn'),parameters('topLevelManagementGroupPrefix'))]",
+        "prefixmgn": "[parameters('prefixmgn')]",
+        "topLevelManagementGroupPrefix": "[ parameters('topLevelManagementGroupPrefix')]",
 
         "enterpriseScaleManagementGroups": {
             "platform": "[concat(variables('topLevelManagementGroupPrefix'),  '-', 'platform')]",

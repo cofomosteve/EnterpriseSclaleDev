@@ -2,12 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "genericManagementGroupPrefix": {
-            "type": "string",
-            "metadata": {
-                "description": "Provide prefix for the management group structure."
-            }
-        },
+         
         "topLevelManagementGroupPrefix": {
             "type": "string",
             "maxLength": 10,
@@ -15,6 +10,16 @@
                 "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
             }
         },
+         "resourceTags": {
+        "type": "object",
+        "defaultValue": {
+            "CostCenter": "ITxxx",
+            "Env": "Prod",
+            "RAD": "Mission Critique",
+            "CIDC": "111",
+            "Direction": "SHARED"
+        }
+       } ,
         "denyRdpForIdentity": {
             "type": "string",
             "defaultValue": "No",
