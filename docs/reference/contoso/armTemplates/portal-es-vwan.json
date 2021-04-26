@@ -1106,13 +1106,13 @@
                     {
                         "name": "cktagcostbyresource",
                         "type": "Microsoft.Common.CheckBox",
-                        "label": "Add 'CostCenter' Tag by Resource"
+                        "label": "Add 'CostCenter' Tag and Value by Resource"
                     },
                     {
                         "name": "esrequiretagcost",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Add policy to check when the 'CostCenter' Tag does not exist",
-                        "visible": "[equals(steps('esGovernance').cktagcostbyresource, true)]",
+                        
                         "defaultValue": "Yes (recommended)",
                         "toolTip": "Will create a plocies assignment",
                         "constraints": {
