@@ -45,8 +45,7 @@
         "DR": "Mission Critique",
         "Direction": "SHARED"
       }
-    }
-    ,
+    },
     "managementSubscriptionId": {
       "type": "string",
       "defaultValue": "",
@@ -459,9 +458,7 @@
         "No"
       ],
       "defaultValue": "No"
-    }
-    //**************************Custom Policies & Initiatives Assignment****************************************/
-    ,
+    },
     "apply-pbmm": {
       "type": "string",
       "allowedValues": [
@@ -486,14 +483,7 @@
       ],
       "defaultValue": "No"
     },
-    // "apply-enable-monitor-vm-iaas": {
-    //     "type": "string",
-    //     "allowedValues": [
-    //         "Yes",
-    //         "No"
-    //     ],
-    //     "defaultValue": "No"
-    // },
+
     "apply-windows-vm-security-base": {
       "type": "string",
       "allowedValues": [
@@ -550,14 +540,7 @@
       ],
       "defaultValue": "No"
     },
-    // "apply-setup-diagsetting-iaas": {
-    //     "type": "string",
-    //     "allowedValues": [
-    //         "Yes",
-    //         "No"
-    //     ],
-    //     "defaultValue": "No"
-    // },
+
     "apply-audit-resource-without-encryption": {
       "type": "string",
       "allowedValues": [
@@ -566,14 +549,7 @@
       ],
       "defaultValue": "No"
     },
-    // "apply-deploy-sql-security": {
-    //     "type": "string",
-    //     "allowedValues": [
-    //         "Yes",
-    //         "No"
-    //     ],
-    //     "defaultValue": "No"
-    // },
+
 
 
     "cktagcostbyresource": {
@@ -640,121 +616,20 @@
 
     "listOfResourceTypesWithDiagnosticLogsEnabled": {
       "type": "Array",
-      "metadata": {
-        "displayName": "List of resource types that should have resource logs enabled"
-      },
+
       "defaultValue": [
-        "Microsoft.AnalysisServices/servers",
-        "Microsoft.ApiManagement/service",
-        "Microsoft.Network/applicationGateways",
-        "Microsoft.Automation/automationAccounts",
-        "Microsoft.ContainerInstance/containerGroups",
-        "Microsoft.ContainerRegistry/registries",
-        "Microsoft.ContainerService/managedClusters",
-        "Microsoft.Batch/batchAccounts",
-        "Microsoft.Cdn/profiles/endpoints",
-        "Microsoft.CognitiveServices/accounts",
-        "Microsoft.DocumentDB/databaseAccounts",
-        "Microsoft.DataFactory/factories",
-        "Microsoft.DataLakeAnalytics/accounts",
-        "Microsoft.DataLakeStore/accounts",
-        "Microsoft.EventGrid/eventSubscriptions",
-        "Microsoft.EventGrid/topics",
-        "Microsoft.EventHub/namespaces",
-        "Microsoft.Network/expressRouteCircuits",
-        "Microsoft.Network/azureFirewalls",
-        "Microsoft.HDInsight/clusters",
-        "Microsoft.Devices/IotHubs",
-        "Microsoft.KeyVault/vaults",
-        "Microsoft.Network/loadBalancers",
-        "Microsoft.Logic/integrationAccounts",
-        "Microsoft.Logic/workflows",
-        "Microsoft.DBforMySQL/servers",
-        "Microsoft.Network/networkInterfaces",
-        "Microsoft.Network/networkSecurityGroups",
-        "Microsoft.DBforPostgreSQL/servers",
-        "Microsoft.PowerBIDedicated/capacities",
-        "Microsoft.Network/publicIPAddresses",
-        "Microsoft.RecoveryServices/vaults",
-        "Microsoft.Cache/redis",
-        "Microsoft.Relay/namespaces",
-        "Microsoft.Search/searchServices",
-        "Microsoft.ServiceBus/namespaces",
-        "Microsoft.SignalRService/SignalR",
-        "Microsoft.Sql/servers/databases",
-        "Microsoft.Sql/servers/elasticPools",
-        "Microsoft.StreamAnalytics/streamingjobs",
-        "Microsoft.TimeSeriesInsights/environments",
-        "Microsoft.Network/trafficManagerProfiles",
-        "Microsoft.Compute/virtualMachines",
-        "Microsoft.Compute/virtualMachineScaleSets",
-        "Microsoft.Network/virtualNetworks",
-        "Microsoft.Network/virtualNetworkGateways"
-      ],
-      "allowedValues": [
-        "Microsoft.AnalysisServices/servers",
-        "Microsoft.ApiManagement/service",
-        "Microsoft.Network/applicationGateways",
-        "Microsoft.Automation/automationAccounts",
-        "Microsoft.ContainerInstance/containerGroups",
-        "Microsoft.ContainerRegistry/registries",
-        "Microsoft.ContainerService/managedClusters",
-        "Microsoft.Batch/batchAccounts",
-        "Microsoft.Cdn/profiles/endpoints",
-        "Microsoft.CognitiveServices/accounts",
-        "Microsoft.DocumentDB/databaseAccounts",
-        "Microsoft.DataFactory/factories",
-        "Microsoft.DataLakeAnalytics/accounts",
-        "Microsoft.DataLakeStore/accounts",
-        "Microsoft.EventGrid/eventSubscriptions",
-        "Microsoft.EventGrid/topics",
-        "Microsoft.EventHub/namespaces",
-        "Microsoft.Network/expressRouteCircuits",
-        "Microsoft.Network/azureFirewalls",
-        "Microsoft.HDInsight/clusters",
-        "Microsoft.Devices/IotHubs",
-        "Microsoft.KeyVault/vaults",
-        "Microsoft.Network/loadBalancers",
-        "Microsoft.Logic/integrationAccounts",
-        "Microsoft.Logic/workflows",
-        "Microsoft.DBforMySQL/servers",
-        "Microsoft.Network/networkInterfaces",
-        "Microsoft.Network/networkSecurityGroups",
-        "Microsoft.DBforPostgreSQL/servers",
-        "Microsoft.PowerBIDedicated/capacities",
-        "Microsoft.Network/publicIPAddresses",
-        "Microsoft.RecoveryServices/vaults",
-        "Microsoft.Cache/redis",
-        "Microsoft.Relay/namespaces",
-        "Microsoft.Search/searchServices",
-        "Microsoft.ServiceBus/namespaces",
-        "Microsoft.SignalRService/SignalR",
-        "Microsoft.Sql/servers/databases",
-        "Microsoft.Sql/servers/elasticPools",
-        "Microsoft.StreamAnalytics/streamingjobs",
-        "Microsoft.TimeSeriesInsights/environments",
-        "Microsoft.Network/trafficManagerProfiles",
-        "Microsoft.Compute/virtualMachines",
-        "Microsoft.Compute/virtualMachineScaleSets",
-        "Microsoft.Network/virtualNetworks",
-        "Microsoft.Network/virtualNetworkGateways"
+
       ]
     },
     "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": {
       "type": "String",
-      "defaultValue": "AdminNo",
-      "metadata": {
-        "displayName": "Members to exclude",
-        "description": "A semicolon-separated list of members that should be excluded in the Administrators local group. Ex: Administrator; myUser1; myUser2"
-      }
+      "defaultValue": "AdminNo"
+
     },
     "listOfMembersToIncludeInWindowsVMAdministratorsGroup": {
       "type": "String",
-      "defaultValue": "AdminYes",
-      "metadata": {
-        "displayName": "Members to include",
-        "description": "A semicolon-separated list of members that should be included in the Administrators local group. Ex: Administrator; myUser1; myUser2"
-      }
+      "defaultValue": "AdminYes"
+
     }
 
     //******************************************************************/

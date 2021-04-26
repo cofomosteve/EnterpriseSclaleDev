@@ -2504,15 +2504,7 @@
             "apply-vm-insecure-pwd-security-iaas": "[steps('esGovernance').esapply-vm-insecure-pwd-security-iaas]",
             "apply-deny-public-endpoint-paas": "[steps('esGovernance').esapply-deny-public-endpoint-paas]",
             "sapply-tls-ssl-enforcement-encrypt-paas": "[steps('esGovernance').esapply-tls-ssl-enforcement-encrypt-paas]",
-            "apply-audit-resource-without-encryption": "[steps('esGovernance').esapply-audit-resource-without-encryption]",
-            "cktagcostbyresource": "[steps('esGovernance').cktagcostbyresource]",
-            "esrequiretagcost": "[steps('esGovernance').esrequiretagcost]",
-            "tagcostbyresource": "[steps('esGovernance').tagcostbyresource]",
-            "esrequiretagcoteDIC": "[steps('esGovernance').esrequiretagcoteDIC]",
-            "esrequiretagDR": "[steps('esGovernance').esrequiretagDR]",
-            "esrequiretagAppName": "[steps('esGovernance').esrequiretagAppName]",
-            "esrequiretagBusUnit": "[steps('esGovernance').esrequiretagBusUnit]",
-            "esrequiretagEnv": "[steps('esGovernance').esrequiretagEnv]"
+            "apply-audit-resource-without-encryption": "[steps('esGovernance').esapply-audit-resource-without-encryption]"
         }
     }
 }
