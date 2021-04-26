@@ -1248,8 +1248,7 @@
             },
             {
                 "name": "esConnectivityGoalState",
-                "label": "Connectivity (Virtual WAN)",
-                "visible": "[equals(steps('basics').textboxName, 'Value')]",
+                "label": "Connectivity (Virtual WAN/Hub & Spoke)",                
                 "subLabel": {
                     "preValidation": "",
                     "postValidation": ""
