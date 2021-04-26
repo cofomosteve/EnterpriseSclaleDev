@@ -684,67 +684,67 @@
                     "description": "Enforces existence of a tag. Does not apply to resource groups.."
                 },*/
 
-                { // verifie un Tag a la creation et rejete. Cost center
-                    "name": "force-exist-tag-resource-CentreCout",
-                    "apply": "[parameters('esrequiretagcost')]",
-                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
-                    "scope": "[variables('scopelzonline')]",
-                    "parameters": {
-                        "tagName": { "value": "CentreCout" }
-                    },
-                    "description": "Enforces existence of a tag 'CentreCout'. Does not apply to resource groups.."
-                },
-                { // verifie un Tag a la creation et rejete. Cost center
-                    "name": "force-exist-tag-resource-coteDIC",
-                    "apply": "[parameters('esrequiretagcoteDIC')]",
-                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
-                    "scope": "[variables('scopelzonline')]",
-                    "parameters": {
-                        "tagName": { "value": "CDIC" }
-                    },
-                    "description": "Enforces existence of a tag 'CDIC'. Does not apply to resource groups.."
-                },
-                { // verifie un Tag a la creation et rejete. Cost center
-                    "name": "force-exist-tag-resource-DR",
-                    "apply": "[parameters('esrequiretagDR')]",
-                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
-                    "scope": "[variables('scopelzonline')]",
-                    "parameters": {
-                        "tagName": { "value": "RAD" }
-                    },
-                    "description": "Enforces existence of a tag 'RAD'. Does not apply to resource groups.."
-                },
-                { // verifie un Tag a la creation et rejete. Cost center
-                    "name": "force-exist-tag-resource-NomApplication",
-                    "apply": "[parameters('esrequiretagAppName')]",
-                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
-                    "scope": "[variables('scopelzonline')]",
-                    "parameters": {
-                        "tagName": { "value": "NomApplication" }
-                    },
-                    "description": "Enforces existence of a tag 'NomApplication'. Does not apply to resource groups.."
-                },
+                // { // verifie un Tag a la creation et rejete. Cost center
+                //     "name": "force-exist-tag-resource-CentreCout",
+                //     "apply": "[parameters('esrequiretagcost')]",
+                //     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                //     "scope": "[variables('scopelzonline')]",
+                //     "parameters": {
+                //         "tagName": { "value": "CentreCout" }
+                //     },
+                //     "description": "Enforces existence of a tag 'CentreCout'. Does not apply to resource groups.."
+                // },
+                // { // verifie un Tag a la creation et rejete. Cost center
+                //     "name": "force-exist-tag-resource-coteDIC",
+                //     "apply": "[parameters('esrequiretagcoteDIC')]",
+                //     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                //     "scope": "[variables('scopelzonline')]",
+                //     "parameters": {
+                //         "tagName": { "value": "CDIC" }
+                //     },
+                //     "description": "Enforces existence of a tag 'CDIC'. Does not apply to resource groups.."
+                // },
+                // { // verifie un Tag a la creation et rejete. Cost center
+                //     "name": "force-exist-tag-resource-DR",
+                //     "apply": "[parameters('esrequiretagDR')]",
+                //     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                //     "scope": "[variables('scopelzonline')]",
+                //     "parameters": {
+                //         "tagName": { "value": "RAD" }
+                //     },
+                //     "description": "Enforces existence of a tag 'RAD'. Does not apply to resource groups.."
+                // },
+                // { // verifie un Tag a la creation et rejete. Cost center
+                //     "name": "force-exist-tag-resource-NomApplication",
+                //     "apply": "[parameters('esrequiretagAppName')]",
+                //     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                //     "scope": "[variables('scopelzonline')]",
+                //     "parameters": {
+                //         "tagName": { "value": "NomApplication" }
+                //     },
+                //     "description": "Enforces existence of a tag 'NomApplication'. Does not apply to resource groups.."
+                // },
 
-                { // verifie un Tag a la creation et rejete. Cost center
-                    "name": "force-exist-tag-resource-Direction",
-                    "apply": "[parameters('esrequiretagBusUnit')]",
-                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
-                    "scope": "[variables('scopelzonline')]",
-                    "parameters": {
-                        "tagName": { "value": "Direction" }
-                    },
-                    "description": "Enforces existence of a tag 'Direction'. Does not apply to resource groups.."
-                },
-                { // verifie un Tag a la creation et rejete. Cost center
-                    "name": "force-exist-tag-resource-Env",
-                    "apply": "[parameters('esrequiretagEnv')]",
-                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
-                    "scope": "[variables('scopelzonline')]",
-                    "parameters": {
-                        "tagName": { "value": "Env" }
-                    },
-                    "description": "Enforces existence of a tag 'Env'. Does not apply to resource groups.."
-                }
+                // { // verifie un Tag a la creation et rejete. Cost center
+                //     "name": "force-exist-tag-resource-Direction",
+                //     "apply": "[parameters('esrequiretagBusUnit')]",
+                //     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                //     "scope": "[variables('scopelzonline')]",
+                //     "parameters": {
+                //         "tagName": { "value": "Direction" }
+                //     },
+                //     "description": "Enforces existence of a tag 'Direction'. Does not apply to resource groups.."
+                // },
+                // { // verifie un Tag a la creation et rejete. Cost center
+                //     "name": "force-exist-tag-resource-Env",
+                //     "apply": "[parameters('esrequiretagEnv')]",
+                //     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                //     "scope": "[variables('scopelzonline')]",
+                //     "parameters": {
+                //         "tagName": { "value": "Env" }
+                //     },
+                //     "description": "Enforces existence of a tag 'Env'. Does not apply to resource groups.."
+                // }
 
                 /*,
                 {
@@ -820,7 +820,7 @@
                 /**************LOGIC APP*/
 
                 /**************GENERAL*/
-                ,
+                
                 {
                     "name": "allowed-location",
                     "apply": "Yes",
