@@ -148,6 +148,26 @@
                         }
                     },
                     {
+                        "name": "esCustomRbacDefinition",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Deploy Custom Role Définition to optimize Operational Model",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "If 'Yes' is selected you will have to ssign user to each Custom RBAC defined",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
                         "name": "esLogAnalytics",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Deploy Log Analytics workspace and enable monitoring for your platform and resources",
@@ -181,7 +201,7 @@
                             "required": false
                         },
                         "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
-                    },           
+                    },
                     {
                         "name": "mgmtSubsApi",
                         "type": "Microsoft.Solutions.ArmApiControl",
@@ -205,7 +225,7 @@
                             "allowedValues": "[map(steps('esGoalState').mgmtSubsApi.value, (sub) => parse(concat('{\"label\":\"', sub.displayName, '\",\"description\":\"', sub.subscriptionId, '\",\"value\":\"', toLower(sub.subscriptionId), '\"}')) )]",
                             "required": true
                         }
-                    },     			
+                    },
                     {
                         "name": "monitoring",
                         "type": "Microsoft.Common.TextBlock",
@@ -236,7 +256,7 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
                     {
                         "name": "esChangeTracking",
@@ -256,7 +276,7 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
                     {
                         "name": "esUpdateMgmt",
@@ -276,7 +296,7 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
                     {
                         "name": "esActivityLog",
@@ -296,7 +316,7 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
                     {
                         "name": "esVmInsights",
@@ -316,7 +336,7 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
                     {
                         "name": "esAntiMalware",
@@ -336,7 +356,7 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
                     {
                         "name": "esServiceMap",
@@ -356,7 +376,7 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
                     {
                         "name": "esSqlAssessment",
@@ -376,7 +396,7 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
                     {
                         "name": "textBlock0",
@@ -389,7 +409,7 @@
                                 "uri": "https://docs.microsoft.com/azure/security/fundamentals/overview"
                             }
                         }
-                    },					
+                    },
                     {
                         "name": "esAsc",
                         "type": "Microsoft.Common.OptionsGroup",
@@ -408,188 +428,188 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
-					{
-						"name": "esAscVms",
-						"type": "Microsoft.Common.OptionsGroup",
-						"label": "Enable Azure Defender for servers",
-						"defaultValue": "Yes (recommended)",
-						"toolTip": "If 'Yes' is selected, Azure Defender will be enabled for all servers.",
-						"visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
-						"constraints": {
-							"allowedValues": [
-								{
-									"label": "Yes (recommended)",
-									"value": "Standard"
-								},
-								{
-									"label": "No, Azure Defender Off",
-									"value": "Free"
-								}
-							]
-						}
-					},
-					{
-						"name": "esAscApps",
-						"type": "Microsoft.Common.OptionsGroup",
-						"label": "Enable Azure Defender for AppServices",
-						"defaultValue": "Yes (recommended)",
-						"toolTip": "If 'Yes' is selected, Azure Defender will be enabled for AppServices.",
-						"visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
-						"constraints": {
-							"allowedValues": [
-								{
-									"label": "Yes (recommended)",
-									"value": "Standard"
-								},
-								{
-									"label": "No, Azure Defender Off",
-									"value": "Free"
-								}
-							]
-						}
-					},
-					{
-						"name": "esAscStorage",
-						"type": "Microsoft.Common.OptionsGroup",
-						"label": "Enable Azure Defender for Storage",
-						"defaultValue": "Yes (recommended)",
-						"toolTip": "If 'Yes' is selected, Azure Defender will be enabled for Storage.",
-						"visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
-						"constraints": {
-							"allowedValues": [
-								{
-									"label": "Yes (recommended)",
-									"value": "Standard"
-								},
-								{
-									"label": "No, Azure Defender Off",
-									"value": "Free"
-								}
-							]
-						}
-					},
-					{
-						"name": "esAscSql",
-						"type": "Microsoft.Common.OptionsGroup",
-						"label": "Enable Azure Defender for SQL",
-						"defaultValue": "Yes (recommended)",
-						"toolTip": "If 'Yes' is selected, Azure Defender will be enabled for SQL.",
-						"visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
-						"constraints": {
-							"allowedValues": [
-								{
-									"label": "Yes (recommended)",
-									"value": "Standard"
-								},
-								{
-									"label": "No, Azure Defender Off",
-									"value": "Free"
-								}
-							]
-						}
-					},
-					{
-						"name": "esAscKeyVault",
-						"type": "Microsoft.Common.OptionsGroup",
-						"label": "Enable Azure Defender for Key Vault",
-						"defaultValue": "Yes (recommended)",
-						"toolTip": "If 'Yes' is selected, Azure Defender will be enabled for Key Vault.",
-						"visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
-						"constraints": {
-							"allowedValues": [
-								{
-									"label": "Yes (recommended)",
-									"value": "Standard"
-								},
-								{
-									"label": "No, Azure Defender Off",
-									"value": "Free"
-								}
-							]
-						}
-					},
-					{
-						"name": "esAscArm",
-						"type": "Microsoft.Common.OptionsGroup",
-						"label": "Enable Azure Defender for Azure Resource Manager",
-						"defaultValue": "Yes (recommended)",
-						"toolTip": "If 'Yes' is selected, Azure Defender will be enabled for Resource Manager.",
-						"visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
-						"constraints": {
-							"allowedValues": [
-								{
-									"label": "Yes (recommended)",
-									"value": "Standard"
-								},
-								{
-									"label": "No, Azure Defender Off",
-									"value": "Free"
-								}
-							]
-						}
-					},
-					{
-						"name": "esAscDns",
-						"type": "Microsoft.Common.OptionsGroup",
-						"label": "Enable Azure Defender for DNS",
-						"defaultValue": "Yes (recommended)",
-						"toolTip": "If 'Yes' is selected, Azure Defender will be enabled for DNS.",
-						"visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
-						"constraints": {
-							"allowedValues": [
-								{
-									"label": "Yes (recommended)",
-									"value": "Standard"
-								},
-								{
-									"label": "No, Azure Defender Off",
-									"value": "Free"
-								}
-							]
-						}
-					},
-					{
-						"name": "esAscKubernetes",
-						"type": "Microsoft.Common.OptionsGroup",
-						"label": "Enable Azure Defender for Kubernetes",
-						"defaultValue": "Yes (recommended)",
-						"toolTip": "If 'Yes' is selected, Azure Defender will be enabled for Kubernetes.",
-						"visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
-						"constraints": {
-							"allowedValues": [
-								{
-									"label": "Yes (recommended)",
-									"value": "Standard"
-								},
-								{
-									"label": "No, Azure Defender Off",
-									"value": "Free"
-								}
-							]
-						}
-					},
-					{
-						"name": "esAscRegistries",
-						"type": "Microsoft.Common.OptionsGroup",
-						"label": "Enable Azure Defender for Container registries",
-						"defaultValue": "Yes (recommended)",
-						"toolTip": "If 'Yes' is selected, Azure Defender will be enabled for Container registries.",
-						"visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
-						"constraints": {
-							"allowedValues": [
-								{
-									"label": "Yes (recommended)",
-									"value": "Standard"
-								},
-								{
-									"label": "No, Azure Defender Off",
-									"value": "Free"
-								}
-							]
-						}
-					},                                     
+                    {
+                        "name": "esAscVms",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Enable Azure Defender for servers",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "If 'Yes' is selected, Azure Defender will be enabled for all servers.",
+                        "visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Standard"
+                                },
+                                {
+                                    "label": "No, Azure Defender Off",
+                                    "value": "Free"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esAscApps",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Enable Azure Defender for AppServices",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "If 'Yes' is selected, Azure Defender will be enabled for AppServices.",
+                        "visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Standard"
+                                },
+                                {
+                                    "label": "No, Azure Defender Off",
+                                    "value": "Free"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esAscStorage",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Enable Azure Defender for Storage",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "If 'Yes' is selected, Azure Defender will be enabled for Storage.",
+                        "visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Standard"
+                                },
+                                {
+                                    "label": "No, Azure Defender Off",
+                                    "value": "Free"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esAscSql",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Enable Azure Defender for SQL",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "If 'Yes' is selected, Azure Defender will be enabled for SQL.",
+                        "visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Standard"
+                                },
+                                {
+                                    "label": "No, Azure Defender Off",
+                                    "value": "Free"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esAscKeyVault",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Enable Azure Defender for Key Vault",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "If 'Yes' is selected, Azure Defender will be enabled for Key Vault.",
+                        "visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Standard"
+                                },
+                                {
+                                    "label": "No, Azure Defender Off",
+                                    "value": "Free"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esAscArm",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Enable Azure Defender for Azure Resource Manager",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "If 'Yes' is selected, Azure Defender will be enabled for Resource Manager.",
+                        "visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Standard"
+                                },
+                                {
+                                    "label": "No, Azure Defender Off",
+                                    "value": "Free"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esAscDns",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Enable Azure Defender for DNS",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "If 'Yes' is selected, Azure Defender will be enabled for DNS.",
+                        "visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Standard"
+                                },
+                                {
+                                    "label": "No, Azure Defender Off",
+                                    "value": "Free"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esAscKubernetes",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Enable Azure Defender for Kubernetes",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "If 'Yes' is selected, Azure Defender will be enabled for Kubernetes.",
+                        "visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Standard"
+                                },
+                                {
+                                    "label": "No, Azure Defender Off",
+                                    "value": "Free"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esAscRegistries",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Enable Azure Defender for Container registries",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "If 'Yes' is selected, Azure Defender will be enabled for Container registries.",
+                        "visible": "[equals(steps('esGoalState').esAsc, 'Yes')]",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Standard"
+                                },
+                                {
+                                    "label": "No, Azure Defender Off",
+                                    "value": "Free"
+                                }
+                            ]
+                        }
+                    },
                     {
                         "name": "esSecuritySolution",
                         "type": "Microsoft.Common.OptionsGroup",
@@ -608,8 +628,622 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
-                    }					
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                    }
+                ]
+            },
+            {
+                "name": "esGovernance",
+                "label": "Global Policies and Initiative",
+                "subLabel": {
+                    "preValidation": "",
+                    "postValidation": ""
+                },
+                "bladeTitle": "lzPolInit",
+                "elements": [
+                    {
+                        "name": "infoBox1",
+                        "type": "Microsoft.Common.InfoBox",
+                        "visible": true,
+                        "options": {
+                            "icon": "Info",
+                            "text": "POLICIES AND INITIATIVES : This has a global scope application",
+                            "uri": ""
+                        }
+                    },
+                    {
+                        "name": "esapply-pbmm",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "This initiative includes audit and virtual machine extension deployment policies that address a subset of Canada Federal PBMM controls",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "All policies includes in that Initiative will be applied",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "eslistOfResourceTypesWithDiagnosticLogsEnabled",
+                        "type": "Microsoft.Common.DropDown",
+                        "multiselect": true,
+                        "selectAll": true,
+                        "filter": true,
+                        "visible": "[equals(steps('esGovernance').esapply-pbmm, 'Yes')]",
+                        "filterPlaceholder": "Filter Resource Type...",
+                        "multiLine": true,
+                        "label": "TypeResource Type",
+                        "toolTip": "List of resource types that should have resource logs enabled",
+                        "defaultValue": "",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Microsoft.AnalysisServices/servers",
+                                    "value": "Microsoft.AnalysisServices/servers"
+                                },
+                                {
+                                    "label": "Microsoft.ApiManagement/service",
+                                    "value": "Microsoft.ApiManagement/service"
+                                },
+                                {
+                                    "label": "Microsoft.Network/applicationGateways",
+                                    "value": "Microsoft.Network/applicationGateways"
+                                },
+                                {
+                                    "label": "Microsoft.Automation/automationAccounts",
+                                    "value": "Microsoft.Automation/automationAccounts"
+                                },
+                                {
+                                    "label": "Microsoft.ContainerInstance/containerGroups",
+                                    "value": "Microsoft.ContainerInstance/containerGroups"
+                                },
+                                {
+                                    "label": "Microsoft.ContainerRegistry/registries",
+                                    "value": "Microsoft.ContainerRegistry/registries"
+                                },
+                                {
+                                    "label": "Microsoft.ContainerService/managedClusters",
+                                    "value": "Microsoft.ContainerService/managedClusters"
+                                },
+                                {
+                                    "label": "Microsoft.Batch/batchAccounts",
+                                    "value": "Microsoft.Batch/batchAccounts"
+                                },
+                                {
+                                    "label": "Microsoft.Cdn/profiles/endpoints",
+                                    "value": "Microsoft.Cdn/profiles/endpoints"
+                                },
+                                {
+                                    "label": "Microsoft.CognitiveServices/accounts",
+                                    "value": "Microsoft.CognitiveServices/accounts"
+                                },
+                                {
+                                    "label": "Microsoft.DocumentDB/databaseAccounts",
+                                    "value": "Microsoft.DocumentDB/databaseAccounts"
+                                },
+                                {
+                                    "label": "Microsoft.DataFactory/factories",
+                                    "value": "Microsoft.DataFactory/factories"
+                                },
+                                {
+                                    "label": "Microsoft.DataLakeAnalytics/accounts",
+                                    "value": "Microsoft.DataLakeAnalytics/accounts"
+                                },
+                                {
+                                    "label": "Microsoft.DataLakeStore/accounts",
+                                    "value": "Microsoft.DataLakeStore/accounts"
+                                },
+                                {
+                                    "label": "Microsoft.EventGrid/eventSubscriptions",
+                                    "value": "Microsoft.EventGrid/eventSubscriptions"
+                                },
+                                {
+                                    "label": "Microsoft.EventGrid/topics",
+                                    "value": "Microsoft.EventGrid/topics"
+                                },
+                                {
+                                    "label": "Microsoft.EventHub/namespaces",
+                                    "value": "Microsoft.EventHub/namespaces"
+                                },
+                                {
+                                    "label": "Microsoft.Network/expressRouteCircuits",
+                                    "value": "Microsoft.Network/expressRouteCircuits"
+                                },
+                                {
+                                    "label": "Microsoft.Network/azureFirewalls",
+                                    "value": "Microsoft.Network/azureFirewalls"
+                                },
+                                {
+                                    "label": "Microsoft.HDInsight/clusters",
+                                    "value": "Microsoft.HDInsight/clusters"
+                                },
+                                {
+                                    "label": "Microsoft.Devices/IotHubs",
+                                    "value": "Microsoft.Devices/IotHubs"
+                                },
+                                {
+                                    "label": "Microsoft.KeyVault/vaults",
+                                    "value": "Microsoft.KeyVault/vaults"
+                                },
+                                {
+                                    "label": "Microsoft.Network/loadBalancers",
+                                    "value": "Microsoft.Network/loadBalancers"
+                                },
+                                {
+                                    "label": "Microsoft.Logic/integrationAccounts",
+                                    "value": "Microsoft.Logic/integrationAccounts"
+                                },
+                                {
+                                    "label": "Microsoft.Logic/workflows",
+                                    "value": "Microsoft.Logic/workflows"
+                                },
+                                {
+                                    "label": "Microsoft.DBforMySQL/servers",
+                                    "value": "Microsoft.DBforMySQL/servers"
+                                },
+                                {
+                                    "label": "Microsoft.Network/networkInterfaces",
+                                    "value": "Microsoft.Network/networkInterfaces"
+                                },
+                                {
+                                    "label": "Microsoft.Network/networkSecurityGroups",
+                                    "value": "Microsoft.Network/networkSecurityGroups"
+                                },
+                                {
+                                    "label": "Microsoft.DBforPostgreSQL/servers",
+                                    "value": "Microsoft.DBforPostgreSQL/servers"
+                                },
+                                {
+                                    "label": "Microsoft.PowerBIDedicated/capacities",
+                                    "value": "Microsoft.PowerBIDedicated/capacities"
+                                },
+                                {
+                                    "label": "Microsoft.Network/publicIPAddresses",
+                                    "value": "Microsoft.Network/publicIPAddresses"
+                                },
+                                {
+                                    "label": "Microsoft.RecoveryServices/vaults",
+                                    "value": "Microsoft.RecoveryServices/vaults"
+                                },
+                                {
+                                    "label": "Microsoft.Cache/redis",
+                                    "value": "Microsoft.Cache/redis"
+                                },
+                                {
+                                    "label": "Microsoft.Relay/namespaces",
+                                    "value": "Microsoft.Relay/namespaces"
+                                },
+                                {
+                                    "label": "Microsoft.Search/searchServices",
+                                    "value": "Microsoft.Search/searchServices"
+                                },
+                                {
+                                    "label": "Microsoft.ServiceBus/namespaces",
+                                    "value": "Microsoft.ServiceBus/namespaces"
+                                },
+                                {
+                                    "label": "Microsoft.SignalRService/SignalR",
+                                    "value": "Microsoft.SignalRService/SignalR"
+                                },
+                                {
+                                    "label": "Microsoft.Sql/servers/databases",
+                                    "value": "Microsoft.Sql/servers/databases"
+                                },
+                                {
+                                    "label": "Microsoft.Sql/servers/elasticPools",
+                                    "value": "Microsoft.Sql/servers/elasticPools"
+                                },
+                                {
+                                    "label": "Microsoft.StreamAnalytics/streamingjobs",
+                                    "value": "Microsoft.StreamAnalytics/streamingjobs"
+                                },
+                                {
+                                    "label": "Microsoft.TimeSeriesInsights/environments",
+                                    "value": "Microsoft.TimeSeriesInsights/environments"
+                                },
+                                {
+                                    "label": "Microsoft.Network/trafficManagerProfiles",
+                                    "value": "Microsoft.Network/trafficManagerProfiles"
+                                },
+                                {
+                                    "label": "Microsoft.Compute/virtualMachines",
+                                    "value": "Microsoft.Compute/virtualMachines"
+                                },
+                                {
+                                    "label": "Microsoft.Compute/virtualMachineScaleSets",
+                                    "value": "Microsoft.Compute/virtualMachineScaleSets"
+                                },
+                                {
+                                    "label": "Microsoft.Network/virtualNetworks",
+                                    "value": "Microsoft.Network/virtualNetworks"
+                                },
+                                {
+                                    "label": "Microsoft.Network/virtualNetworkGateways",
+                                    "value": "Microsoft.Network/virtualNetworkGateways"
+                                }
+                            ],
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "eslistOfMembersToExcludeFromWindowsVMAdministratorsGroup",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "Members to exclude",
+                        "defaultValue": "AdminExluded",
+                        "toolTip": "A semicolon-separated list of members that should be excluded in the Administrators local group. Ex: Administrator; myUser1; myUser2",
+                        "placeholder": "",
+                        "multiLine": false,
+                        "visible": "[equals(steps('esGovernance').esapply-pbmm, 'Yes')]"
+                    },
+                    {
+                        "name": "eslistOfMembersToIncludeInWindowsVMAdministratorsGroup",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "Members to include",
+                        "defaultValue": "AdminIncluded",
+                        "toolTip": "A semicolon-separated list of members that should be included in the Administrators local group. Ex: Administrator; myUser1; myUser2",
+                        "placeholder": "",
+                        "multiLine": false,
+                        "visible": "[equals(steps('esGovernance').esapply-pbmm, 'Yes')]"
+                    },
+                    {
+                        "name": "esapply-kubclust-sec-base-linux-wk",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "This initiative includes the policies for the Kubernetes cluster pod security baseline standards",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "All policies includes in that Initiative will be applied",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "esapply-kubclust-sec-strict-linux-wk",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "This initiative includes the policies for the Kubernetes cluster pod security restricted standards.",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "All policies includes in that Initiative will be applied",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "esapply-windows-vm-security-base",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "This initiative audits Windows machines with settings that do not meet the Azure security baseline",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "All policies includes in that Initiative will be applied",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "esapply-data-protection-suite",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Enable data protection for SQL servers. This initiative is assigned automatically by Azure Security Center Standard Tier",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "All policies includes in that Initiative will be applied",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "esapply-flowlog-nsg-iaas",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Audit for network security groups to verify if flow logs are configured and if flow log status is enabled.",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "All policies includes in that Initiative will be applied",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "esapply-config-azuremonitor-security-agent-vm-iaas",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Configure machines to automatically install the Azure Monitor and Azure Security agents.",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "All policies includes in that Initiative will be applied",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "esapply-vm-insecure-pwd-security-iaas",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "This initiative deploys the policy requirements and audits machines with insecure password security settings.",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "All policies includes in that Initiative will be applied",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "esapply-deny-public-endpoint-paas",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "This policy denies creation of Azure PAAS services with exposed public endpoints.",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "All policies includes in that Initiative will be applied",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "esapply-tls-ssl-enforcement-encrypt-paas",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Enforce TLS ncrypt for PaaS",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "All policies includes in that Initiative will be applied",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "esapply-audit-resource-without-encryption",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Deny or Audit resources without Encryption with a customer-managed key (CMK).",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "All policies includes in that Initiative will be applied",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "infoBoxtag",
+                        "type": "Microsoft.Common.InfoBox",
+                        "visible": true,
+                        "options": {
+                            "icon": "Info",
+                            "text": "TAG ",
+                            "uri": ""
+                        }
+                    },
+                    {
+                        "name": "cktagcostbyresource",
+                        "type": "Microsoft.Common.CheckBox",
+                        "label": "Add 'CostCenter' Tag and Value by Resource"
+                    },
+                    {
+                        "name": "esrequiretagcost",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Add policy to check when the 'CostCenter' Tag does not exist",
+                        "visible": "[equals(steps('esGovernance').cktagcostbyresource, 'true')]",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "Will create a plocies assignment",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "tagcostbyresource",
+                        "type": "Microsoft.Common.TagsByResource",                        
+                        "resources": [
+                            "Microsoft.Storage/storageAccounts",
+                            "Microsoft.Network/virtualNetworks",
+                            "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+                            "Microsoft.Network/vpnGateways",
+                            "Microsoft.Network/vpnGateways/vpnConnections",
+                            "Microsoft.Network/vpnSites",
+                            "Microsoft.Network/virtualWans",
+                            "Microsoft.KeyVault/vaults",
+                            "Microsoft.ContainerService/managedClusters",
+                            "Microsoft.Sql/instancePools",
+                            "Microsoft.Sql/managedInstances",
+                            "Microsoft.Sql/servers",
+                            "Microsoft.SqlVirtualMachine/sqlVirtualMachines",
+                            "Microsoft.Compute/virtualMachines",
+                            "Microsoft.Web/sites"
+                        ]
+                    },
+                    {
+                        "name": "esrequiretagcoteDIC",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Add policy to check when the 'coteDIC(Dispo, Integrite, Confidentialité)' Tag does not exist",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "Will create a plocies assignment",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esrequiretagDR",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Add policy to check when the 'Récupération après désastre' Tag does not exist",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "Will create a plocies assignment",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esrequiretagAppName",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Add policy to check when the 'AppName(Nom Application ou service)' Tag does not exist",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "Will create a plocies assignment",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esrequiretagBusUnit",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Add policy to check when the 'BuSinessUnit(Unité d'affaire ou direction)' Tag does not exist",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "Will create a plocies assignment",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esrequiretagEnv",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Add policy to check when the 'Env(Environnement)' Tag does not exist",
+                        "defaultValue": "Yes (recommended)",
+                        "toolTip": "Will create a plocies assignment",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes (recommended)",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        }
+                    }
                 ]
             },
             {
