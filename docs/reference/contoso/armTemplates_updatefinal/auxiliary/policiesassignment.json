@@ -1,0 +1,1041 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+
+        "topLevelManagementGroupPrefix": {
+            "type": "String",
+            "maxLength": 10,
+            "metadata": {
+                "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
+            }
+        },
+        "managementSubscriptionId": {
+            "type": "string",
+            "defaultValue": "",
+            "maxLength": 36,
+            "metadata": {
+                "description": "Provide the subscription id of an existing, empty subscription you want to dedicate for management. If you don't want to bring a subscription, leave this parameter empty as is."
+            }
+        },
+        "connectivitySubscriptionId": {
+            "type": "string",
+            "defaultValue": "",
+            "maxLength": 36,
+            "metadata": {
+                "description": "Provide the subscription id of an existing, empty subscription you want to dedicate for networking."
+            }
+        },
+        "identitySubscriptionId": {
+            "type": "string",
+            "defaultValue": "",
+            "maxLength": 36,
+            "metadata": {
+                "description": "Provide the subscription id of an existing, empty subscription you want to dedicate for identity."
+            }
+        },
+        "listOfAllowedLocations": {
+            "type": "Array",
+            "defaultValue": [
+                "canadacentral",
+                "canadaeast"
+            ],
+            "metadata": {
+                "description": "The list of contact RBAC roles, in an array, to send the budget notification to when the threshold is exceeded."
+            }
+        },
+        "resourceTags": {
+            "type": "object",
+            "defaultValue": {
+                "CentreCout": "ITxxx",
+                "Env": "Prod",
+                "RAD": "Mission Critique",
+                "CIDC": "111",
+                "NomApplication": "ES",
+                "Direction": "SHARED"
+            }
+        }
+        //********************************Param for Generic Naming Convention*************************************/
+        ,
+        "prefixmgn": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "businessunit": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "appname": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "scope": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "scopeplatform": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "scopemanagement": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "scopeconnectivity": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "scopeidentity": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "scopelz": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "scopelzonline": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "scopelzcorp": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "mgngroup": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "mgngroupmgn": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "resourcgroup": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "resourcgroupmgn": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "policydefp": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "policydefpmgn": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "policyassign": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "policyassignmgn": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "rbacdef": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "rbacdefmgn": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "rbacassign": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "rbacassignmgn": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "apply-pbmm": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-kubclust-sec-base-linux-wk": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-kubclust-sec-strict-linux-wk": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        // "apply-enable-monitor-vm-iaas": {
+        //     "type": "string",
+        //     "allowedValues": [
+        //         "Yes",
+        //         "No"
+        //     ],
+        //     "defaultValue": "No"
+        // },
+        "apply-windows-vm-security-base": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-data-protection-suite": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-flowlog-nsg-iaas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-config-azuremonitor-security-agent-vm-iaas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-vm-insecure-pwd-security-iaas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-deny-public-endpoint-paas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-tls-ssl-enforcement-encrypt-paas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        // "apply-setup-diagsetting-iaas": {
+        //     "type": "string",
+        //     "allowedValues": [
+        //         "Yes",
+        //         "No"
+        //     ],
+        //     "defaultValue": "No"
+        // },
+        "apply-audit-resource-without-encryption": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        // "apply-deploy-sql-security": {
+        //     "type": "string",
+        //     "allowedValues": [
+        //         "Yes",
+        //         "No"
+        //     ],
+        //     "defaultValue": "No"
+        // },
+
+
+        "cktagcostbyresource": {
+            "type": "bool",
+            "allowedValues": [
+                true,
+                false
+            ],
+            "defaultValue": false
+        },
+        "esrequiretagcost": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "tagcostbyresource": {
+            "type": "array",
+            "defaultValue": []
+        },
+        "esrequiretagcoteDIC": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "esrequiretagDR": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "esrequiretagAppName": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "esrequiretagBusUnit": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "esrequiretagEnv": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+
+        /*******************************************PBMM Canada****************************************************/
+
+        "listOfResourceTypesWithDiagnosticLogsEnabled": {
+            "type": "array",
+            "defaultValue": []
+        },
+        "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": {
+            "type": "String",
+            "defaultValue": "AdminNo",
+            "metadata": {
+                "displayName": "Members to exclude",
+                "description": "A semicolon-separated list of members that should be excluded in the Administrators local group. Ex: Administrator; myUser1; myUser2"
+            }
+        },
+        "listOfMembersToIncludeInWindowsVMAdministratorsGroup": {
+            "type": "String",
+            "defaultValue": "AdminYes",
+            "metadata": {
+                "displayName": "Members to include",
+                "description": "A semicolon-separated list of members that should be included in the Administrators local group. Ex: Administrator; myUser1; myUser2"
+            }
+        }
+
+        //**********************************Enforce-Encryption-CMK &&& Enforce-EncryptTransit**********************************************/
+
+
+        /*******************************************Deny-PublicEndpoints****************************************************/
+
+
+    },
+    "variables": {
+        //********************************Variable for Generic Naming Convention*************************************/
+        "prefixmgn": "[parameters('prefixmgn')]",
+        "appname": "[parameters('appname')]",
+        "businessunit": "[parameters('businessunit')]",
+        "topLevelManagementGroupPrefix": "[parameters('topLevelManagementGroupPrefix')]",
+        "scope": "[parameters('scope')]",
+        "scopeplatform": "[parameters('scopeplatform')]",
+        "scopemanagement": "[parameters('scopemanagement')]",
+        "scopeconnectivity": "[parameters('scopeconnectivity')]",
+        "scopeidentity": "[parameters('scopeidentity')]",
+        "scopelz": "[parameters('scopelz')]",
+        "scopelzonline": "[parameters('scopelzonline')]",
+        "scopelzcorp": "[parameters('scopelzcorp')]",
+
+        "genericresourceprefix": {
+            "mgngroup": "[parameters('mgngroup')]",
+            "mgngroupmgn": "[parameters('mgngroupmgn')]",
+            "resourcgroup": "[parameters('resourcgroup')]",
+            "resourcgroupmgn": "[parameters('resourcgroupmgn')]",
+            "policydefp": "[parameters('policydefp')]",
+            "policydefpmgn": "[parameters('policydefpmgn')]",
+            "policyassign": "[parameters('policyassign')]",
+            "policyassignmgn": "[parameters('policyassignmgn')]",
+            "rbacassign": "[parameters('rbacassign')]",
+            "rbacassignmgn": "[parameters('rbacassignmgn')]"
+        },
+
+        "policyAssignmentNames": {
+            "policyDefinitions": [
+                /***************************VM*/
+                {
+                    "name": "vm-account-sku-allowed",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cccc23c7-8427-4f53-ad12-b6a63eb452b3",
+                    "scope": "[variables('scopelz')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Allowed virtual machine SKUs"
+
+                },
+                //*****************STORAGE ACCOUNT*/
+                {
+                    "name": "storage-account-publicip-disable",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4fa4b6c0-31ca-4c0d-b10d-24b96f62a751",
+                    "scope": "[variables('scopeplatform')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Anonymous public read access to containers and blobs in Azure Storage is a convenient way to share data but might present security risks. To prevent data breaches caused by undesired anonymous access, Microsoft recommends preventing public access to a storage account unless your scenario requires it."
+
+                },
+                {
+                    "name": "storage-account-sku-allowed",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1",
+                    "scope": "[variables('scopeplatform')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Restrict the set of storage account SKUs that your organization can deploy."
+
+                },
+                {
+                    "name": "storage-account-vnet-service-endpoint",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/60d21c4f-21a3-4d94-85f4-b924e6aeeda4",
+                    "scope": "[variables('scopeplatform')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "This policy audits any Storage Account not configured to use a virtual network service endpoint."
+
+                }
+                /**********************NETORK*/
+
+                /***********************SECURITY*/
+
+                /*************************SQL ET DATABASE*/
+
+                /***************************APP SERVICE*/
+                ,
+                {
+                    "name": "apiapp-cors-notallorigin",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/358c20a6-3f9e-4f0e-97ff-c6ce485e2aac",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Cross-Origin Resource Sharing (CORS) should not allow all domains to access your API app. Allow only required domains to interact with your API app."
+
+                },
+                {
+                    "name": "webapp-cors-notallorigin",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5744710e-cc2f-4ee8-8809-3b11e89f4bc9",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Cross-Origin Resource Sharing (CORS) should not allow all domains to access your web application. Allow only required domains to interact with your web app."
+
+                },
+                {
+                    "name": "functionapp-cors-notallorigin",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0820b7b9-23aa-4725-a1ce-ae4558f718e5",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Cross-Origin Resource Sharing (CORS) should not allow all domains to access your Function app. Allow only required domains to interact with your Function app."
+
+                },
+                {
+                    "name": "apiapp-https-only",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b7ddfbdc-1260-477d-91fd-98bd9be789a6",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Cross-Origin Resource Sharing (CORS) should not allow all domains to access your API app. Allow only required domains to interact with your API app."
+
+                },
+                {
+                    "name": "webapp-https-only",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a4af4a39-4135-47fb-b175-47fbdf85311d",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Use of HTTPS ensures server/service authentication and protects data in transit from network layer eavesdropping attacks."
+
+                },
+                {
+                    "name": "functionapp-https-only",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6d555dd1-86f2-4f1c-8ed7-5abae7c6cbab",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Use of HTTPS ensures server/service authentication and protects data in transit from network layer eavesdropping attacks."
+
+                },
+                {
+                    "name": "apiapp-tls-latest",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8cb6aa8b-9e41-4f4e-aa25-089a7ac2581e",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Upgrade to the latest TLS version"
+                },
+                {
+                    "name": "webapp-tls-latest",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f0e6e85b-9b9f-4a4b-b67b-f730d42f1b0b",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Upgrade to the latest TLS version"
+                },
+                {
+                    "name": "functionapp-tls-latest",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f9d614c5-c173-4d56-95a7-b4437057d193",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Upgrade to the latest TLS version"
+                },
+                {
+                    "name": "webapp-managed-identity",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2b9ad585-36bc-4615-b300-fd4435808332",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
+                    // },
+                    "description": "Use a managed identity for enhanced authentication security"
+                },
+                {
+                    "name": "apiapp-managed-identity",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c4d441f8-f9d9-4a9e-9cef-e82117cb3eef",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
+                    // },
+                    "description": "Use a managed identity for enhanced authentication security"
+                },
+                {
+                    "name": "functionapp-managed-identity",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0da106f2-4ca3-48e8-bc85-c638fe6aea8f",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
+                    // },
+                    "description": "Use a managed identity for enhanced authentication security"
+                },
+                {
+                    "name": "apiapp-authent-enable",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c4ebc54a-46e1-481a-bee2-d4411e95d828",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
+                    // },
+                    "description": "Azure App Service Authentication is a feature that can prevent anonymous HTTP requests from reaching the API app, or authenticate those that have tokens before they reach the API app."
+                },
+                {
+                    "name": "webapp-authent-enable",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/95bccee9-a7f8-4bec-9ee9-62c3473701fc",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
+                    // },
+                    "description": "Azure App Service Authentication is a feature that can prevent anonymous HTTP requests from reaching the Function app, or authenticate those that have tokens before they reach the Function app"
+                },
+                {
+                    "name": "functionapp-authent-enable",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c75248c1-ea1d-4a9c-8fc9-29a6aabd5da8",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
+                    // },
+                    "description": "Azure App Service Authentication is a feature that can prevent anonymous HTTP requests from reaching the Function app, or authenticate those that have tokens before they reach the Function app"
+                },
+                {
+                    "name": "apiapp-vnet-enable",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ef619a2c-cc4d-4d03-b2ba-8c94a834d85b",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "evaluatedSkuNames": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Azure Virtual Network deployment provides enhanced security, isolation and allows you to place your API Management service in a non-internet routable network that you control access to. These networks can then be connected to your on-premises networks using various VPN technologies, which enables access to your backend services within the network and/or on-premises. The developer portal and API gateway, can be configured to be accessible either from the Internet or only within the virtual network."
+                },
+                {
+                    "name": "apiapp-sku-vnet-enable",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/73ef9241-5d81-4cd4-b483-8443d1730fe5",
+                    "scope": "[variables('scopelzonline')]",
+                    // "parameters": {
+                    //     "evaluatedSkuNames": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "With supported SKUs of API Management, deploying service into a virtual network unlocks advanced API Management networking and security features which provides you greater control over your network security configuration. Learn more at: https://aka.ms/apimvnet."
+                },
+                {
+                    "name": "apiapp-debug-off",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e9c8d085-d9cc-4b17-9cdc-059f1f01f19e",
+                    "scope": "[variables('scopelzonline')]",
+                    // "effect": {
+                    //     "evaluatedSkuNames": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Remote debugging requires inbound ports to be opened on a web application. Remote debugging should be turned off."
+
+                },
+                {
+                    "name": "webapp-debug-off",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cb510bfd-1cba-4d9f-a230-cb0976f4bb71",
+                    "scope": "[variables('scopelzonline')]",
+                    // "effect": {
+                    //     "evaluatedSkuNames": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Remote debugging requires inbound ports to be opened on a web application. Remote debugging should be turned off."
+                },
+                {
+                    "name": "functionapp-debug-off",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0e60b895-3786-45da-8377-9c6b4b6ac5f9",
+                    "scope": "[variables('scopelzonline')]",
+                    // "effect": {
+                    //     "evaluatedSkuNames": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Remote debugging requires inbound ports to be opened on a web application. Remote debugging should be turned off."
+
+                }
+                /**************TAG*************************************************************************************/
+                ,
+                /*{// verifie un tag specific et sa valeur spécific a la creation et rejete
+                    "name": "require-tag-resource",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+                    "scope": "[variables('scope')]",
+                    "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Enforces a required tag and its value. Does not apply to resource groups."
+                },
+                {// verifie un Tag a la creation et rejete. Cost center
+                    "name": "force-exist-tag-resource",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                    "scope": "[variables('scopelzonline')]",
+                   "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" }                        
+                    },
+                    "description": "Enforces existence of a tag. Does not apply to resource groups.."
+                },*/
+
+                { // verifie un Tag a la creation et rejete. Cost center
+                    "name": "force-exist-tag-resource-CentreCout",
+                    "apply": "[parameters('esrequiretagcost')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "tagName": { "value": "CentreCout" }
+                    },
+                    "description": "Enforces existence of a tag 'CentreCout'. Does not apply to resource groups.."
+                },
+                { // verifie un Tag a la creation et rejete. Cost center
+                    "name": "force-exist-tag-resource-coteDIC",
+                    "apply": "[parameters('esrequiretagcoteDIC')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "tagName": { "value": "CDIC" }
+                    },
+                    "description": "Enforces existence of a tag 'CDIC'. Does not apply to resource groups.."
+                },
+                { // verifie un Tag a la creation et rejete. Cost center
+                    "name": "force-exist-tag-resource-DR",
+                    "apply": "[parameters('esrequiretagDR')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "tagName": { "value": "RAD" }
+                    },
+                    "description": "Enforces existence of a tag 'RAD'. Does not apply to resource groups.."
+                },
+                { // verifie un Tag a la creation et rejete. Cost center
+                    "name": "force-exist-tag-resource-NomApplication",
+                    "apply": "[parameters('esrequiretagAppName')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "tagName": { "value": "NomApplication" }
+                    },
+                    "description": "Enforces existence of a tag 'NomApplication'. Does not apply to resource groups.."
+                },
+
+                { // verifie un Tag a la creation et rejete. Cost center
+                    "name": "force-exist-tag-resource-Direction",
+                    "apply": "[parameters('esrequiretagBusUnit')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "tagName": { "value": "Direction" }
+                    },
+                    "description": "Enforces existence of a tag 'Direction'. Does not apply to resource groups.."
+                },
+                { // verifie un Tag a la creation et rejete. Cost center
+                    "name": "force-exist-tag-resource-Env",
+                    "apply": "[parameters('esrequiretagEnv')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "tagName": { "value": "Env" }
+                    },
+                    "description": "Enforces existence of a tag 'Env'. Does not apply to resource groups.."
+                }
+
+                /*,
+                {
+                    "name": "require-tag-resource-lz",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Enforces a required tag and its value. Does not apply to resource groups."
+                },
+                {
+                    "name": "force-exist-tag-resource-lz",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                    "scope": "[variables('scopelzonline')]",
+                     "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" }                        
+                    },
+                    "description": "Enforces existence of a tag. Does not apply to resource groups.."
+                },
+               
+                {
+                    "name": "add-tag-resource",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4f9dc7db-30c1-420c-b61a-e1d640128d26",
+                    "scope": "[variables('scope')]",
+                   "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Adds the specified tag and value when any resource missing this tag is created or updated. Existing resources can be remediated by triggering a remediation task. If the tag exists with a different value it will not be changed. Does not modify tags on resource groups."
+                },
+                {
+                    "name": "add-tag-resource-lz",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4f9dc7db-30c1-420c-b61a-e1d640128d26",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Adds the specified tag and value when any resource missing this tag is created or updated. Existing resources can be remediated by triggering a remediation task. If the tag exists with a different value it will not be changed. Does not modify tags on resource groups."
+                },
+                {// Ajoute et Modifie un Tag. Cost center
+                    "name": "add-replace-tag-resource",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5ffd78d9-436d-4b41-a421-5baa819e3008",
+                    "scope": "[variables('scope')]",
+                    "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Adds or replaces the specified tag and value when any resource is created or updated. Existing resources can be remediated by triggering a remediation task. Does not modify tags on resource groups."
+                },
+                {
+                    "name": "add-replace-tag-resource-lz",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5ffd78d9-436d-4b41-a421-5baa819e3008",
+                    "scope": "[variables('scopelzonline')]",
+                   "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Adds or replaces the specified tag and value when any resource is created or updated. Existing resources can be remediated by triggering a remediation task. Does not modify tags on resource groups."
+                }*/
+                /**************KEY VAULT*/
+
+                /**************EVENT HUB*/
+
+                /**************LOGIC APP*/
+
+                /**************GENERAL*/
+                ,
+                {
+                    "name": "allowed-location",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "listOfAllowedLocations": { "value": "[parameters('listOfAllowedLocations')]" }
+                        //"listOfAllowedLocations": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region."
+                }
+                //Not allowed resource types
+                //Allowed resource types
+                //Preview]: Azure Data Factory linked service resource type should be in allow list
+                //Allowed locations   /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
+                //Allowed locations for resource groups   /providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988
+            ],
+            "policySetDefinitions": [
+                {
+                    "name": "pbmm",
+                    "apply": "[parameters('apply-pbmm')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/4c4a5f27-de81-430b-b4e5-9cbd50595a87",
+                    "scope": "[variables('scope')]",
+                    "parameters": {
+
+                        //   "logAnalytics": {
+                        //     "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
+                        // }
+                        "logAnalyticsWorkspaceIdforVMReporting": {
+                            "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
+                        },
+                        "listOfResourceTypesWithDiagnosticLogsEnabled": { "value": "[parameters('listOfResourceTypesWithDiagnosticLogsEnabled')]" },
+                        "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": { "value": "[parameters('listOfMembersToExcludeFromWindowsVMAdministratorsGroup')]" },
+                        "listOfMembersToIncludeInWindowsVMAdministratorsGroup": { "value": "[parameters('listOfMembersToIncludeInWindowsVMAdministratorsGroup')]" }
+                    },
+                    "description": "This initiative includes audit and virtual machine extension deployment policies that address a subset of Canada Federal PBMM controls. "
+
+                },
+                {
+                    "name": "kubclust-sec-base-linux-wk",
+                    "apply": "[parameters('apply-kubclust-sec-base-linux-wk')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/a8640138-9b0a-4a28-b8cb-1666c838647d",
+                    "scope": "[variables('scope')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "This initiative includes the policies for the Kubernetes cluster pod security baseline standards. This policy is generally available for Kubernetes Service (AKS), and preview for AKS Engine and Azure Arc enabled Kubernetes. For instructions on using this policy, visit https://aka.ms/kubepolicydoc."
+
+                },
+                {
+                    "name": "kubclust-sec-strict-linux-wk",
+                    "apply": "[parameters('apply-kubclust-sec-strict-linux-wk')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42b8ef37-b724-4e24-bbc8-7a7708edfe00",
+                    "scope": "[variables('scope')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "This initiative includes the policies for the Kubernetes cluster pod security restricted standards. This policy is generally available for Kubernetes Service (AKS), and preview for AKS Engine and Azure Arc enabled Kubernetes. For instructions on using this policy, visit https://aka.ms/kubepolicydoc."
+
+                },
+                // {
+                //     "name": "enable-monitor-vm-iaas",
+                //     "apply": "[parameters('apply-enable-monitor-vm-iaas')]",
+                //     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/55f3eceb-5573-4f18-9695-226972c6d74a",
+                //     "scope": "[variables('scope')]",
+                //     "parameters": {
+                //         "xxxxxx": { "value": "[parameters('genericparam')]" }
+                //     },
+                //     "description": "Enable Azure Monitor for the virtual machines (VMs) in the specified scope (management group, subscription or resource group). Takes Log Analytics workspace as parameter."
+
+                // },
+                {
+                    "name": "windows-vm-security-base",
+                    "apply": "[parameters('apply-windows-vm-security-base')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/be7a78aa-3e10-4153-a5fd-8c6506dbc821",
+                    "scope": "[variables('scope')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "This initiative audits Windows machines with settings that do not meet the Azure security baseline. For details, please visit https://aka.ms/gcpol"
+
+                },
+                {
+                    "name": "data-protection-suite",
+                    "apply": "[parameters('apply-data-protection-suite')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/9cb3cc7a-b39b-4b82-bc89-e5a5d9ff7b97",
+                    "scope": "[variables('scope')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Enable data protection for SQL servers. This initiative is assigned automatically by Azure Security Center Standard Tier."
+
+                },
+                {
+                    "name": "flowlog-nsg-iaas",
+                    "apply": "[parameters('apply-flowlog-nsg-iaas')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/62329546-775b-4a3d-a4cb-eb4bb990d2c0",
+                    "scope": "[variables('scope')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Audit for network security groups to verify if flow logs are configured and if flow log status is enabled. Enabling flow logs allows to log information about IP traffic flowing through network security group. It can be used for optimizing network flows, monitoring throughput, verifying compliance, detecting intrusions and more."
+                },
+                {
+                    "name": "config-azuremonitor-security-agent-vm-iaas",
+                    "apply": "[parameters('apply-config-azuremonitor-security-agent-vm-iaas')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/a15f3269-2e10-458c-87a4-d5989e678a73",
+                    "scope": "[variables('scope')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Configure machines to automatically install the Azure Monitor and Azure Security agents. Security Center collects events from the agents and uses them to provide security alerts and tailored hardening tasks (recommendations). Create a resource group and Log Analytics workspace in the same region as the machine to store audit records. This policy only applies to VMs in a few regions."
+                },
+                {
+                    "name": "vm-insecure-pwd-security-iaas",
+                    "apply": "[parameters('apply-vm-insecure-pwd-security-iaas')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/095e4ed9-c835-4ab6-9439-b5644362a06c",
+                    "scope": "[variables('scope')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "This initiative deploys the policy requirements and audits machines with insecure password security settings. For more information on Guest Configuration policies, please visit https://aka.ms/gcpol"
+                }
+
+                //*Custom Initiative */
+                ,
+                {
+                    "name": "deny-public-endpoint-paas",
+                    "apply": "[parameters('apply-deny-public-endpoint-paas')]",
+                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deny-PublicEndpoints')]",
+                    "scope": "[variables('scope')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "This policy denies creation of Azure PAAS services with exposed public endpoints. This policy set includes the policy for the following services KeyVault, Storage accounts, AKS, Cosmos, SQL Servers, MariaDB, MySQL and Postgress."
+                },
+                {
+                    "name": "tls-ssl-enforcement-encrypt-paas",
+                    "apply": "[parameters('apply-tls-ssl-enforcement-encrypt-paas')]",
+                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-EncryptTransit')]",
+                    "scope": "[variables('scope')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Choose either Deploy if not exist and append in combination with audit or Select Deny in the Policy effect. Deny polices shift left. Deploy if not exist and append enforce but can be changed, and because missing exsistense condition require then the combination of Audit."
+                },
+                // {
+                //     "name": "setup-diagsetting-iaas",
+                //     "apply": "[parameters('apply-setup-diagsetting-iaas')]",
+                //     "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Diag-LogAnalytics')]",
+                //     "scope": "[variables('scope')]",
+                //     "parameters": {
+                //         "xxxxxx": { "value": "[parameters('genericparam')]" }
+                //     },
+                //     "description": "This policy set deploys the configurations of application Azure resources to forward diagnostic logs and metrics to an Azure Log Analytics workspace. See the list of policies of the services that are included."
+                // },
+                {
+                    "name": "audit-resource-without-encryption",
+                    "apply": "[parameters('apply-audit-resource-without-encryption')]",
+                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-Encryption-CMK')]",
+                    "scope": "[variables('scope')]",
+                    // "parameters": {
+                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
+                    // },
+                    "description": "Deny or Audit resources without Encryption with a customer-managed key (CMK)."
+
+                }
+                // {
+                //     "name": "deploy-sql-security",
+                //     "apply": "[parameters('apply-deploy-sql-security')]",
+                //     "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Sql-Security')]",
+                //     "scope": "[variables('scope')]",
+                //     "parameters": {
+                //         "effect": { "value": "[parameters('SqlDbVulnerabilityAssessmentsDeploySqlSecurityEffect')]" },
+                //         "vulnerabilityAssessmentsEmail": { "value": "[parameters('vulnerabilityAssessmentsEmail')]" },
+                //         "vulnerabilityAssessmentsStorageID": { "value": "[parameters('vulnerabilityAssessmentsStorageID')]" }
+                //     },
+                //     "description": "Deploy auditing, Alert, TDE and SQL vulnerability to SQL Databases when it not exist in the deployment."
+
+                // }
+
+            ]
+        }
+    },
+    "resources": [
+        {
+            //"condition": "[not(empty(parameters('allowedvmsize')))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "copy": {
+                "name": "PolicySetAssignmentCopy",
+                "count": "[length(variables('policyAssignmentNames').policySetDefinitions)]"
+            },
+            //"condition": "[equals(variables('policyAssignmentNames').policySetDefinitions[copyIndex()].apply), 'Yes']",
+            "name": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].name]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].description]",
+                "displayName": "[concat(variables('genericresourceprefix').policyassignmgn,variables('policyAssignmentNames').policySetDefinitions[copyIndex()].name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].policyDefinitionId]",
+                "scope": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].scope]",
+                "parameters": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].parameters]"
+            }
+        },
+        {
+            //"condition": "[not(empty(parameters('allowedvmsize')))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "copy": {
+                "name": "PolicyAssignmentCopy",
+                "count": "[length(variables('policyAssignmentNames').policyDefinitions)]"
+            },
+            //"condition": "[equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply), 'Yes']",
+            "name": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].name]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].description]",
+                "displayName": "[concat(variables('genericresourceprefix').policyassignmgn,variables('policyAssignmentNames').policyDefinitions[copyIndex()].name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].policyDefinitionId]",
+                "scope": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].scope]",
+                "parameters": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].parameters]"
+            }
+        }
+    ],
+    "outputs": {}
+}
