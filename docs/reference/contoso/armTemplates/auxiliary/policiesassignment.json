@@ -44,19 +44,33 @@
                 "description": "The list of contact RBAC roles, in an array, to send the budget notification to when the threshold is exceeded."
             }
         },
+        // "resourceTags": {
+        //     "type": "object",
+        //     "defaultValue": {
+        //         "CentreCout": "ITxxx",
+        //         "Env": "Prod",
+        //         "RAD": "Mission Critique",
+        //         "CIDC": "111",
+        //         "NomApplication": "ES",
+        //         "Direction": "SHARED"
+        //     }
+        // },
         "resourceTags": {
             "type": "object",
-            "defaultValue": {
-                "CentreCout": "ITxxx",
-                "Env": "Prod",
-                "RAD": "Mission Critique",
-                "CIDC": "111",
-                "NomApplication": "ES",
-                "Direction": "SHARED"
-            }
-        }
+            "defaultValue": {}
+        },
+
+     
+        "tagauditpolicy": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
         //********************************Param for Generic Naming Convention*************************************/
-        ,
+      
         "prefixmgn": {
             "type": "String",
             "defaultValue": ""
@@ -263,66 +277,66 @@
         // },
 
 
-        "cktagcostbyresource": {
-            "type": "bool",
-            "allowedValues": [
-                true,
-                false
-            ],
-            "defaultValue": false
-        },
-        "esrequiretagcost": {
-            "type": "string",
-            "allowedValues": [
-                "Yes",
-                "No"
-            ],
-            "defaultValue": "No"
-        },
-        "tagcostbyresource": {
-            "type": "array",
-            "defaultValue": []
-        },
-        "esrequiretagcoteDIC": {
-            "type": "string",
-            "allowedValues": [
-                "Yes",
-                "No"
-            ],
-            "defaultValue": "No"
-        },
-        "esrequiretagDR": {
-            "type": "string",
-            "allowedValues": [
-                "Yes",
-                "No"
-            ],
-            "defaultValue": "No"
-        },
-        "esrequiretagAppName": {
-            "type": "string",
-            "allowedValues": [
-                "Yes",
-                "No"
-            ],
-            "defaultValue": "No"
-        },
-        "esrequiretagBusUnit": {
-            "type": "string",
-            "allowedValues": [
-                "Yes",
-                "No"
-            ],
-            "defaultValue": "No"
-        },
-        "esrequiretagEnv": {
-            "type": "string",
-            "allowedValues": [
-                "Yes",
-                "No"
-            ],
-            "defaultValue": "No"
-        },
+        // "cktagcostbyresource": {
+        //     "type": "bool",
+        //     "allowedValues": [
+        //         true,
+        //         false
+        //     ],
+        //     "defaultValue": false
+        // },
+        // "esrequiretagcost": {
+        //     "type": "string",
+        //     "allowedValues": [
+        //         "Yes",
+        //         "No"
+        //     ],
+        //     "defaultValue": "No"
+        // },
+        // "tagcostbyresource": {
+        //     "type": "array",
+        //     "defaultValue": []
+        // },
+        // "esrequiretagcoteDIC": {
+        //     "type": "string",
+        //     "allowedValues": [
+        //         "Yes",
+        //         "No"
+        //     ],
+        //     "defaultValue": "No"
+        // },
+        // "esrequiretagDR": {
+        //     "type": "string",
+        //     "allowedValues": [
+        //         "Yes",
+        //         "No"
+        //     ],
+        //     "defaultValue": "No"
+        // },
+        // "esrequiretagAppName": {
+        //     "type": "string",
+        //     "allowedValues": [
+        //         "Yes",
+        //         "No"
+        //     ],
+        //     "defaultValue": "No"
+        // },
+        // "esrequiretagBusUnit": {
+        //     "type": "string",
+        //     "allowedValues": [
+        //         "Yes",
+        //         "No"
+        //     ],
+        //     "defaultValue": "No"
+        // },
+        // "esrequiretagEnv": {
+        //     "type": "string",
+        //     "allowedValues": [
+        //         "Yes",
+        //         "No"
+        //     ],
+        //     "defaultValue": "No"
+        // },
 
         /*******************************************PBMM Canada****************************************************/
 
