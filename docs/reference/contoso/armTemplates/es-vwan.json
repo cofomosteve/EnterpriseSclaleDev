@@ -605,8 +605,16 @@
             "businessunit": "IT-",
             "env": "prod-",
             "appname": "ES-",
-            "topLevelManagementGroupPrefix": "[concat(variables('globalvariable').prefixmgn,parameters('enterpriseScaleCompanyPrefix'))]"
-           
+            "topLevelManagementGroupPrefix": "[concat(variables('globalvariable').prefixmgn,parameters('enterpriseScaleCompanyPrefix'))]",
+            "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix)]",
+            "scopeplatform": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-platform')]",
+            "scopemanagement": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-management')]",
+            "scopeconnectivity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-connectivity')]",
+            "scopeidentity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-identity')]",
+            "scopelz": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-landingzones')]",
+            "scopelzonline": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-online')]",
+            "scopelzcorp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-corp')]"
+
 
         },
 
