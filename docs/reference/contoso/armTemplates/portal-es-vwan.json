@@ -1108,6 +1108,15 @@
                         "type": "Microsoft.Common.CheckBox",
                         "label": "Add 'CostCenter' Tag and Value by Resource"
                     },
+                    
+                    {
+                        "name": "tagcostbyresource",
+                        "type": "Microsoft.Common.TagsByResource",   
+                                             
+                        "resources": [
+                            "Microsoft.*"
+                        ]
+                    },
                     {
                         "name": "esrequiretagcost",
                         "type": "Microsoft.Common.OptionsGroup",
@@ -1127,27 +1136,6 @@
                                 }
                             ]
                         }
-                    },
-                    {
-                        "name": "tagcostbyresource",
-                        "type": "Microsoft.Common.TagsByResource",                        
-                        "resources": [
-                            "Microsoft.Storage/storageAccounts",
-                            "Microsoft.Network/virtualNetworks",
-                            "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-                            "Microsoft.Network/vpnGateways",
-                            "Microsoft.Network/vpnGateways/vpnConnections",
-                            "Microsoft.Network/vpnSites",
-                            "Microsoft.Network/virtualWans",
-                            "Microsoft.KeyVault/vaults",
-                            "Microsoft.ContainerService/managedClusters",
-                            "Microsoft.Sql/instancePools",
-                            "Microsoft.Sql/managedInstances",
-                            "Microsoft.Sql/servers",
-                            "Microsoft.SqlVirtualMachine/sqlVirtualMachines",
-                            "Microsoft.Compute/virtualMachines",
-                            "Microsoft.Web/sites"
-                        ]
                     },
                     {
                         "name": "esrequiretagcoteDIC",
