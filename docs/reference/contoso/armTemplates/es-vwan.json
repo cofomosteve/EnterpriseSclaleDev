@@ -604,7 +604,9 @@
             "prefixmgn": "mg-",
             "businessunit": "IT-",
             "env": "prod-",
-            "appname": "ES-" 
+            "appname": "ES-",
+            "topLevelManagementGroupPrefix": "[concat(variables('globalvariable').prefixmgn,parameters('enterpriseScaleCompanyPrefix'))]"
+           
 
         },
 
