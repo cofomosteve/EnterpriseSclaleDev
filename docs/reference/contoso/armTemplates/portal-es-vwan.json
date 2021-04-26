@@ -1104,15 +1104,16 @@
                         }
                     },
                     {
-                        "name": "cktagcostbyresource",
+                        "name": "cktagbyresource",
                         "type": "Microsoft.Common.CheckBox",
-                        "label": "Add 'CostCenter' Tag and Value by Resource"
+                        "label": "Add 'CostCenter' Tag and Value by Resource",
+                        "defaultValue": true
                     },
                     
                     {
                         "name": "tagcostbyresource",
                         "type": "Microsoft.Common.TagsByResource",   
-                                             
+                        "visible": "[equals(steps('esGovernance').cktagbyresource, true)]",            
                         "resources": [
                             "Microsoft.*"
                         ]
@@ -1121,7 +1122,7 @@
                         "name": "estagauditpolicy",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Add policy to check when those Tag does not exist",
-                        "visible": "[equals(steps('esGovernance').cktagcostbyresource, true)]",
+                        "visible": "[equals(steps('esGovernance').cktagbyresource, true)]",
                         "defaultValue": "Yes (recommended)",
                         "toolTip": "Will create a plocies assignment to audit Tag",
                         "constraints": {
@@ -2403,7 +2404,22 @@
             "retentionInDays": "[string(steps('esGoalState').esLogRetention)]",
             "enableVmMonitoring": "[steps('lzGoalState').esVmMonitoring]",
             "enableVmssMonitoring": "[steps('lzGoalState').esVmssMonitoring]",
-            "enableArcMonitoring": "[steps('lzGoalState').esArcVmMonitoring]"
+            "enableArcMonitoring": "[steps('lzGoalState').esArcVmMonitoring]",
+            "allowedVMSizesku": "[steps('lzGoalState').esvirtualMachineSize]",
+            "apply-pbmm": "[steps('esGovernance').esapply-pbmm]",
+            "apply-kubclust-sec-base-linux-wk": "[steps('esGovernance').esapply-kubclust-sec-base-linux-wk]",
+            "apply-kubclust-sec-strict-linux-wk": "[steps('esGovernance').esapply-kubclust-sec-strict-linux-wk]",
+            "apply-windows-vm-security-base": "[steps('esGovernance').esapply-windows-vm-security-base]",
+            "apply-data-protection-suite": "[steps('esGovernance').esapply-data-protection-suite]",
+            "apply-flowlog-nsg-iaas": "[steps('esGovernance').esapply-flowlog-nsg-iaas]",
+            "apply-config-azuremonitor-security-agent-vm-iaas": "[steps('esGovernance').esapply-config-azuremonitor-security-agent-vm-iaas]",
+            "apply-vm-insecure-pwd-security-iaas": "[steps('esGovernance').esapply-vm-insecure-pwd-security-iaas]",
+            "apply-deny-public-endpoint-paas": "[steps('esGovernance').esapply-deny-public-endpoint-paas]",
+            "sapply-tls-ssl-enforcement-encrypt-paas": "[steps('esGovernance').esapply-tls-ssl-enforcement-encrypt-paas]",
+            "apply-audit-resource-without-encryption": "[steps('esGovernance').esapply-audit-resource-without-encryption]",
+            "cktagbyresource": "[steps('esGovernance').cktagbyresource]",
+            "tagauditpolicy": "[steps('esGovernance').estagauditpolicy]",
+            "tagsByResource": "[steps('esGovernance').tagcostbyresource]"
         }
     }
 }
