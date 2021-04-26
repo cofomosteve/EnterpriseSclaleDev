@@ -570,7 +570,7 @@
                 "No"
             ],
             "defaultValue": "No"
-        } ,
+        },
 
 
         "listOfResourceTypesWithDiagnosticLogsEnabled": {
@@ -594,12 +594,37 @@
         //******************************************************************/
     },
     "variables": {
-        
+
+        "resourceTagsOQLF": "[parameters('resourceTagsOQLF')]",
+        "tagsByResource": "[parameters('tagsByResource')]",
+        "resourceTagCAF": "[parameters('resourceTagCAF')]",
+        "resourceTags": "[if(equals(parameters('esNamingConvention'), 'OQLF'),variables('tagsByResource'),variables('resourceTagCAF'))]",
+
+        "globalvariable": {
+            "prefixmgn": "mg-",
+            "businessunit": "IT-",
+            "env": "prod-",
+            "appname": "ES-",
+            "topLevelManagementGroupPrefix": "[concat(variables('globalvariable').prefixmgn,parameters('enterpriseScaleCompanyPrefix'))]",
+            "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix)]",
+            "scopeplatform": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-platform')]",
+            "scopemanagement": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-management')]",
+            "scopeconnectivity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-connectivity')]",
+            "scopeidentity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-identity')]",
+            "scopelz": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-landingzones')]",
+            "scopelzonline": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-online')]",
+            "scopelzcorp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-corp')]"
+
+
+        },
+
+
         "azPolicyEnvMapping": {
             "https://management.azure.com/": "auxiliary/policies.json",
             "https://management.chinacloudapi.cn": "auxiliary/mkPolicies.json",
             "https://management.azgov.com": "auxiliary/"
         },
+
         "azEnvPolicy": "[variables('azPolicyEnvMapping')[environment().resourceManager]]",
         "deploymentUris": {
             "managementGroups": "[uri(deployment().properties.templateLink.uri, 'auxiliary/mgmtGroups.json')]",
