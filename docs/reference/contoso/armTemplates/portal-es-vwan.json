@@ -1121,7 +1121,7 @@
                         "name": "esrequiretagcost",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Add policy to check when the 'CostCenter' Tag does not exist",
-                        
+                        "visible": "[equals(steps('esGovernance').cktagcostbyresource, 'true')]",
                         "defaultValue": "Yes (recommended)",
                         "toolTip": "Will create a plocies assignment",
                         "constraints": {
@@ -1140,6 +1140,7 @@
                     {
                         "name": "esrequiretagcoteDIC",
                         "type": "Microsoft.Common.OptionsGroup",
+                        "visible": "[equals(steps('esGovernance').cktagcostbyresource, true)]",
                         "label": "Add policy to check when the 'coteDIC(Dispo, Integrite, Confidentialité)' Tag does not exist",
                         "defaultValue": "Yes (recommended)",
                         "toolTip": "Will create a plocies assignment",
