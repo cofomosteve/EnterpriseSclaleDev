@@ -1112,7 +1112,7 @@
                         "name": "esrequiretagcost",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Add policy to check when the 'CostCenter' Tag does not exist",
-                        "visible": "[equals(steps('esGovernance').cktagcostbyresource, 'true')]",
+                        
                         "defaultValue": "Yes (recommended)",
                         "toolTip": "Will create a plocies assignment",
                         "constraints": {
