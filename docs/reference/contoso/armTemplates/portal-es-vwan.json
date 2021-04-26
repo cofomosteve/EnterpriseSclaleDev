@@ -1130,7 +1130,7 @@
                     },
                     {
                         "name": "tagcostbyresource",
-                        "type": "Microsoft.Common.TagsByResource",                                               
+                        "type": "Microsoft.Common.TagsByResource",                        
                         "resources": [
                             "Microsoft.Storage/storageAccounts",
                             "Microsoft.Network/virtualNetworks",
@@ -1248,8 +1248,8 @@
             },
             {
                 "name": "esConnectivityGoalState",
-                "label": "Connectivity (Virtual WAN/Hub & Spoke)",
-                "visible": false,
+                "label": "Connectivity (Virtual WAN)",
+                "visible": "[equals(steps('basics').textboxName, 'Value')]",
                 "subLabel": {
                     "preValidation": "",
                     "postValidation": ""
@@ -1262,33 +1262,12 @@
                         "visible": true,
                         "options": {
                             "icon": "Info",
-                            "text": "To enable connectivity, you must allocate a connectivity Subscription. Please note, this Subscription will be moved to the connectivity Management Group, and ARM will deploy either a Virtual WAN with the first Virtual Hub and requisite settings or a Hub Sopke VNet. We recommend using a new Subscription with no existing resources.",
+                            "text": "To enable Virtual WAN connectivity, you must allocate a connectivity Subscription. Please note, this Subscription will be moved to the connectivity Management Group, and ARM will deploy a Virtual WAN with the first Virtual Hub and requisite settings. We recommend using a new Subscription with no existing resources.",
                             "uri": "https://github.com/Azure/Enterprise-Scale/blob/main/docs/reference/Readme.md"
-                        }
-                    },
-
-                    {
-                        "name": "esVwanHubSpoke",
-                        "type": "Microsoft.Common.OptionsGroup",
-                        "label": "Deploy Connectivité",
-                        "defaultValue": "No",
-                        "toolTip": "If 'Yes' is selected, then choose between Virtual WAN and Hub & Spoke topology",
-                        "constraints": {
-                            "allowedValues": [
-                                {
-                                    "label": "Yes (recommended)",
-                                    "value": "Yes"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "No"
-                                }
-                            ]
                         }
                     },
                     {
                         "name": "esVwan",
-                        "visible": "[equals(steps('esConnectivityGoalState').esVwanHubSpoke, 'Yes')]",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Deploy Virtual WAN HUB",
                         "defaultValue": "Yes (recommended)",
@@ -1324,7 +1303,7 @@
                         "filter": true,
                         "filterPlaceholder": "Filter items ...",
                         "multiLine": true,
-                        "visible": "[and(equals(steps('esConnectivityGoalState').esVwanHubSpoke, 'Yes'),)]",
+                        "visible": "[equals(steps('esConnectivityGoalState').esVwan, 'Yes')]",
                         "constraints": {
                             "allowedValues": "[map(steps('esConnectivityGoalState').nwSubsApi.value, (sub) => parse(concat('{\"label\":\"', sub.displayName, '\",\"description\":\"', sub.subscriptionId, '\",\"value\":\"', toLower(sub.subscriptionId), '\"}')) )]",
                             "required": true
@@ -1336,7 +1315,7 @@
                         "label": "Address space (required for Virtual Hub)",
                         "toolTip": "Provide address prefix in CIDR notation (e.g 192.168.0.0/16)",
                         "defaultValue": "192.168.0.0/16",
-                        "visible": "[equals(steps('esConnectivityGoalState').esVwanHubSpoke, 'Yes')]",
+                        "visible": "[equals(steps('esConnectivityGoalState').esVwan, 'Yes')]",
                         "constraints": {
                             "required": true,
                             "validationMessage": "The virtual hubs network's address space, specified as one address prefixes in CIDR notation (e.g. 192.168.0.0/16)"
@@ -1359,14 +1338,14 @@
                             "allowedValues": "[map(steps('esConnectivityGoalState').esLocationsApi.value, (item) => parse(concat('{\"label\":\"', item.displayName, '\",\"value\":\"', item.name, '\"}')))]",
                             "required": true
                         },
-                        "visible": "[equals(steps('esConnectivityGoalState').esVwanHubSpoke, 'Yes')]"
+                        "visible": "[equals(steps('esConnectivityGoalState').esVwan, 'Yes')]"
                     },
                     {
                         "name": "esVpnGw",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Deploy VPN Gateway",
                         "defaultValue": "No",
-                        "visible": "[equals(steps('esConnectivityGoalState').esVwanHubSpoke, 'Yes')]",
+                        "visible": "[equals(steps('esConnectivityGoalState').esVwan, 'Yes')]",
                         "toolTip": "If 'Yes' is selected when also adding a subscription for connectivity, ARM will deploy VPN gateway",
                         "constraints": {
                             "allowedValues": [
@@ -1386,7 +1365,7 @@
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Deploy ExpressRoute Gateway",
                         "defaultValue": "No",
-                        "visible": "[equals(steps('esConnectivityGoalState').esVwanHubSpoke, 'Yes')]",
+                        "visible": "[equals(steps('esConnectivityGoalState').esVwan, 'Yes')]",
                         "toolTip": "If 'Yes' is selected when also adding a subscription for connectivity, ARM will deploy Express Route gateway",
                         "constraints": {
                             "allowedValues": [
@@ -1406,7 +1385,7 @@
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Deploy Azure Firewall",
                         "defaultValue": "No",
-                        "visible": "[equals(steps('esConnectivityGoalState').esVwanHubSpoke, 'Yes')]",
+                        "visible": "[equals(steps('esConnectivityGoalState').esVwan, 'Yes')]",
                         "toolTip": "If 'Yes' is selected when also adding a subscription for connectivity, ARM will deploy Azure Firewall",
                         "constraints": {
                             "allowedValues": [

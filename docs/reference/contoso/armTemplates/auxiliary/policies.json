@@ -2,16 +2,1108 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+
+
     "topLevelManagementGroupPrefix": {
       "type": "String",
       "maxLength": 10,
       "metadata": {
         "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
       }
+    },
+    "resourceTags": {
+      "type": "object",
+      "defaultValue": {
+        "CostCenter": "ITxxx",
+        "Env": "Prod",
+        "RAD": "Mission Critique",
+        "CIDC": "111",
+        "Direction": "SHARED"
+      }
     }
+    //********************************Param for Generic Naming Convention*************************************/
+    ,
+    "prefixmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "businessunit": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "appname": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "scope": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "scopeplatform": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "scopemanagement": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "scopeconnectivity": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "scopeidentity": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "scopelz": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "scopelzonline": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "scopelzcorp": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "mgngroup": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "mgngroupmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "resourcgroup": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "resourcgroupmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "policydefp": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "policydefpmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "policyassign": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "policyassignmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "rbacassign": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "rbacassignmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "rbacdef": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "rbacdefmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "loganalyticwk": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "loganalyticwkmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "keyvault": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "keyvaultmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "storage": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "storagemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "storagediagnostic": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "storagediagnosticmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "conatainerinstance": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "conatainerinstancemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "containerregistry": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "containerregistrymgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "budgetconsumption": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "budgetconsumptionmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "diasgsetting": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "diasgsettingmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "deployment": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "deploymentmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualnetwork": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualnetworkmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "subnet": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "subnetmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualnetworkpeering": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualnetworkpeeringmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualnetworkgateway": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualnetworkgatewaymgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "localnetworkgateway": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "localnetworkgatewaymgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "networksitetosite": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "networksitetositemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "vpnconnection": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "vpnconnectionmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "nsg": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "nsgmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "asg": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "asgmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "pubip": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "pubipmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualmachine": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualmachinemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualmachinestorageaccount": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualmachinestorageaccountmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "nic": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "nicmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "dnsprivate": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "dnsprivatemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "dnspubblic": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "dnspubblicmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "loadbalancer": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "loadbalancermgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "applicationgateway": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "applicationgatewaymgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "privatelink": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "privatelinkmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "privateendpoint": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "privateendpointmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azurefirewall": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azurefirewallmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azurefirewallpolicies": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azurefirewallpoliciesmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azurefirewallrulegroup": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azurefirewallrulegroupmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "securityprincing": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "securityprincingmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "workspacedatasource": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "workspacedatasourcemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "automationaccount": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "automationaccountmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "workspace": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "workspacemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "linkedservice": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "linkedservicemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "ddosplan": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "ddosplanmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "networkwatcher": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "networkwatchermgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "networkwatcherflowlog": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "networkwatcherflowlogmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "databaseauditsetting": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "databaseauditsettingmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "databasetransparencrypt": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "databasetransparencryptmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "dataasesecalertpol": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "dataasesecalertpolmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "databasevulassess": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "databasevulassessmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virrtualhub": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virrtualhubmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virrtualhubconnection": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virrtualhubconnectionmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualwan": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualwanmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "vpngateway": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "vpngatewaymgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "expressroutegateway": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "expressroutegatewaymgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualmachineextension": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualmachineextensionmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "dbformysql": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "dbformysqlmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "dbforpostgres": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "dbforpostgresmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "sqlmanagedinst": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "sqlmanagedinstmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "sqlserver": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "sqlservermgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "opmanagesolution": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "opmanagesolutionmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "sqldb": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "sqldbmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "appservice": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "appservicemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "apimanage": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "apimanagemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "appconfig": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "appconfigmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "appserviceplan": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "appserviceplanmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azurefonction": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azurefonctionmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "cloudservice": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "cloudservicemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "cosmosdb": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "cosmosdbmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "redisdb": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "redisdbmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "sqldatawarehouse": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "sqldatawarehousemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azuresearch": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azuresearchmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "cognitiveservice": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "cognitiveservicemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "machinelearnignwokspace": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "machinelearnignwokspacemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "datalakestorage": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "datalakestoragemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "datalakeanalytic": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "datalakeanalyticmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "datafactory": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "datafactorymgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "eventhub": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "eventhubmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "notificationhub": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "notificationhubmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "notificationhubnamespace": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "notificationhubnamespacemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "blueprint": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "blueprintmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorappinsig": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorappinsigmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorvminsig": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorvminsigmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitornetworkinsig": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitornetworkinsigmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorsqlinsig": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorsqlinsigmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorcontainerinsig": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorcontainerinsigmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorcosmosdbinsig": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorcosmosdbinsigmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorressourcegpinsig": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorressourcegpinsigmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorstorageinsig": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorstorageinsigmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorkeyvaultinsig": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorkeyvaultinsigmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorredisinsig": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azmonitorredisinsigmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualmachinescaleset": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "virtualmachinescalesetmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "trafficmanage": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "trafficmanagemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "cdn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "cdnmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "migrate": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "migratemgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "managedapp": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "managedappmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "kubernettescluster": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "kubernettesclustermgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azureacr": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "azureacrmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "fontdoor": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "fontdoormgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "backup": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "backupmgn": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "bastionhost": {
+      "type": "String",
+      "defaultValue": ""
+    },
+    "bastionhostmgn": {
+      "type": "String",
+      "defaultValue": ""
+    }
+
+
+    // ,"prefixmgn": {"type": "String","defaultValue": ""}
+    // ,"prefixmgn": {"type": "String","defaultValue": ""}
+    //*********************************************************************/
   },
   "variables": {
-    "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'))]",
+
+    //********************************Variable for Generic Naming Convention*************************************/
+    "prefixmgn": "[parameters('prefixmgn')]",
+    "appname": "[parameters('appname')]",
+    "businessunit": "[parameters('businessunit')]",
+    "topLevelManagementGroupPrefix": "[parameters('topLevelManagementGroupPrefix')]",
+    "scope": "[parameters('scope')]",
+    "scopeplatform": "[parameters('scopeplatform')]",
+    "scopemanagement": "[parameters('scopemanagement')]",
+    "scopeconnectivity": "[parameters('scopeconnectivity')]",
+    "scopeidentity": "[parameters('scopeidentity')]",
+    "scopelz": "[parameters('scopelz')]",
+    "scopelzonline": "[parameters('scopelzonline')]",
+    "scopelzcorp": "[parameters('scopelzcorp')]",
+
+    "genericresourceprefix": {
+      "mgngroup": "[parameters('mgngroup')]",
+      "mgngroupmgn": "[parameters('mgngroupmgn')]",
+      "resourcgroup": "[parameters('resourcgroup')]",
+      "resourcgroupmgn": "[parameters('resourcgroupmgn')]",
+      "policydefp": "[parameters('policydefp')]",
+      "policydefpmgn": "[parameters('policydefpmgn')]",
+      "policyassign": "[parameters('policyassign')]",
+      "policyassignmgn": "[parameters('policyassignmgn')]",
+      "rbacassign": "[parameters('rbacassign')]",
+      "rbacassignmgn": "[parameters('rbacassignmgn')]",
+      "rbacdef": "[parameters('rbacdef')]",
+      "rbacdefmgn": "[parameters('rbacdefmgn')]",
+
+      "loganalyticwk": "[parameters('loganalyticwk')]",
+      "loganalyticwkmgn": "[parameters('loganalyticwkmgn')]",
+      "keyvault": "[parameters('keyvault')]",
+      "keyvaultmgn": "[parameters('keyvaultmgn')]",
+      "storage": "[parameters('storage')]",
+      "storagemgn": "[parameters('storagemgn')]",
+      "storagediagnostic": "[parameters('storagediagnostic')]",
+      "storagediagnosticmgn": "[parameters('storagediagnosticmgn')]",
+      "conatainerinstance": "[parameters('conatainerinstance')]",
+      "conatainerinstancemgn": "[parameters('conatainerinstancemgn')]",
+      "containerregistry": "[parameters('containerregistry')]",
+      "containerregistrymgn": "[parameters('containerregistrymgn')]",
+      "budgetconsumption": "[parameters('budgetconsumption')]",
+      "budgetconsumptionmgn": "[parameters('budgetconsumptionmgn')]",
+      "diasgsetting": "[parameters('diasgsetting')]",
+      "diasgsettingmgn": "[parameters('diasgsettingmgn')]",
+      "deployment": "[parameters('deployment')]",
+      "deploymentmgn": "[parameters('deploymentmgn')]",
+
+      //********************NETORK*/
+      "virtualnetwork": "[parameters('virtualnetwork')]",
+      "virtualnetworkmgn": "[parameters('virtualnetworkmgn')]",
+      "subnet": "[parameters('subnet')]",
+      "subnetmgn": "[parameters('subnetmgn')]",
+      "virtualnetworkpeering": "[parameters('virtualnetworkpeering')]",
+      "virtualnetworkpeeringmgn": "[parameters('virtualnetworkpeeringmgn')]",
+      "virtualnetworkgateway": "[parameters('virtualnetworkgateway')]",
+      "virtualnetworkgatewaymgn": "[parameters('virtualnetworkgatewaymgn')]",
+      "localnetworkgateway": "[parameters('localnetworkgateway')]",
+      "localnetworkgatewaymgn": "[parameters('localnetworkgatewaymgn')]",
+      "networksitetosite": "[parameters('networksitetosite')]",
+      "networksitetositemgn": "[parameters('networksitetositemgn')]",
+      "vpnconnection": "[parameters('vpnconnection')]",
+      "vpnconnectionmgn": "[parameters('vpnconnectionmgn')]",
+      "nsg": "[parameters('nsg')]",
+      "nsgmgn": "[parameters('nsgmgn')]",
+      "asg": "[parameters('asg')]",
+      "asgmgn": "[parameters('asgmgn')]",
+      "pubip": "[parameters('pubip')]",
+      "pubipmgn": "[parameters('pubipmgn')]",
+      /**********************************COMPUTE*/
+      "virtualmachine": "[parameters('virtualmachine')]",
+      "virtualmachinemgn": "[parameters('virtualmachinemgn')]",
+      "virtualmachinestorageaccount": "[parameters('virtualmachinestorageaccount')]",
+      "virtualmachinestorageaccountmgn": "[parameters('virtualmachinestorageaccountmgn')]",
+      "nic": "[parameters('nic')]",
+      "nicmgn": "[parameters('nicmgn')]",
+
+      "dnsprivate": "[parameters('dnsprivate')]",
+      "dnsprivatemgn": "[parameters('dnsprivatemgn')]",
+      "dnspubblic": "[parameters('dnspubblic')]",
+      "dnspubblicmgn": "[parameters('dnspubblicmgn')]",
+      "loadbalancer": "[parameters('loadbalancer')]",
+      "loadbalancermgn": "[parameters('loadbalancermgn')]",
+      "applicationgateway": "[parameters('applicationgateway')]",
+      "applicationgatewaymgn": "[parameters('applicationgatewaymgn')]",
+
+
+      "privatelink": "[parameters('privatelink')]",
+      "privatelinkmgn": "[parameters('privatelinkmgn')]",
+      "privateendpoint": "[parameters('privateendpoint')]",
+      "privateendpointmgn": "[parameters('privateendpointmgn')]",
+      "azurefirewall": "[parameters('azurefirewall')]",
+      "azurefirewallmgn": "[parameters('azurefirewallmgn')]",
+      "azurefirewallpolicies": "[parameters('azurefirewallpolicies')]",
+      "azurefirewallpoliciesmgn": "[parameters('azurefirewallpoliciesmgn')]",
+      "azurefirewallrulegroup": "[parameters('azurefirewallrulegroup')]",
+      "azurefirewallrulegroupmgn": "[parameters('azurefirewallrulegroupmgn')]",
+      "securityprincing": "[parameters('securityprincing')]",
+      "securityprincingmgn": "[parameters('securityprincingmgn')]",
+      "workspacedatasource": "[parameters('workspacedatasource')]",
+      "workspacedatasourcemgn": "[parameters('workspacedatasourcemgn')]",
+      "automationaccount": "[parameters('automationaccount')]",
+      "automationaccountmgn": "[parameters('automationaccountmgn')]",
+      "workspace": "[parameters('workspace')]",
+      "workspacemgn": "[parameters('workspacemgn')]",
+      "linkedservice": "[parameters('linkedservice')]",
+      "linkedservicemgn": "[parameters('linkedservicemgn')]",
+      "ddosplan": "[parameters('ddosplan')]",
+      "ddosplanmgn": "[parameters('ddosplanmgn')]",
+      "networkwatcher": "[parameters('networkwatcher')]",
+      "networkwatchermgn": "[parameters('networkwatchermgn')]",
+      "networkwatcherflowlog": "[parameters('networkwatcherflowlog')]",
+      "networkwatcherflowlogmgn": "[parameters('networkwatcherflowlogmgn')]",
+      "databaseauditsetting": "[parameters('databaseauditsetting')]",
+      "databaseauditsettingmgn": "[parameters('databaseauditsettingmgn')]",
+      "databasetransparencrypt": "[parameters('databasetransparencrypt')]",
+      "databasetransparencryptmgn": "[parameters('databasetransparencryptmgn')]",
+      "dataasesecalertpol": "[parameters('dataasesecalertpol')]",
+      "dataasesecalertpolmgn": "[parameters('dataasesecalertpolmgn')]",
+      "databasevulassess": "[parameters('databasevulassess')]",
+      "databasevulassessmgn": "[parameters('databasevulassessmgn')]",
+      "virrtualhub": "[parameters('virrtualhub')]",
+      "virrtualhubmgn": "[parameters('virrtualhubmgn')]",
+      "virrtualhubconnection": "[parameters('virrtualhubconnection')]",
+      "virrtualhubconnectionmgn": "[parameters('virrtualhubconnectionmgn')]",
+      "virtualwan": "[parameters('virtualwan')]",
+      "virtualwanmgn": "[parameters('virtualwanmgn')]",
+      "vpngateway": "[parameters('vpngateway')]",
+      "vpngatewaymgn": "[parameters('vpngatewaymgn')]",
+      "expressroutegateway": "[parameters('expressroutegateway')]",
+      "expressroutegatewaymgn": "[parameters('expressroutegatewaymgn')]",
+
+
+      "virtualmachineextension": "[parameters('virtualmachineextension')]",
+      "virtualmachineextensionmgn": "[parameters('virtualmachineextensionmgn')]",
+      "dbformysql": "[parameters('dbformysql')]",
+      "dbformysqlmgn": "[parameters('dbformysqlmgn')]",
+      "dbforpostgres": "[parameters('dbforpostgres')]",
+      "dbforpostgresmgn": "[parameters('dbforpostgresmgn')]",
+      "sqlmanagedinst": "[parameters('sqlmanagedinst')]",
+      "sqlmanagedinstmgn": "[parameters('sqlmanagedinstmgn')]",
+      "sqlserver": "[parameters('sqlserver')]",
+      "sqlservermgn": "[parameters('sqlservermgn')]",
+      "opmanagesolution": "[parameters('opmanagesolution')]",
+      "opmanagesolutionmgn": "[parameters('opmanagesolutionmgn')]",
+      "sqldb": "[parameters('sqldb')]",
+      "sqldbmgn": "[parameters('sqldbmgn')]",
+      "appservice": "[parameters('appservice')]",
+      "appservicemgn": "[parameters('appservicemgn')]",
+      "apimanage": "[parameters('apimanage')]",
+      "apimanagemgn": "[parameters('apimanagemgn')]",
+      "appconfig": "[parameters('appconfig')]",
+      "appconfigmgn": "[parameters('appconfigmgn')]",
+      "appserviceplan": "[parameters('appserviceplan')]",
+      "appserviceplanmgn": "[parameters('appserviceplanmgn')]",
+      "azurefonction": "[parameters('azurefonction')]",
+      "azurefonctionmgn": "[parameters('azurefonctionmgn')]",
+      "cloudservice": "[parameters('cloudservice')]",
+      "cloudservicemgn": "[parameters('cloudservicemgn')]",
+      "cosmosdb": "[parameters('cosmosdb')]",
+      "cosmosdbmgn": "[parameters('cosmosdbmgn')]",
+      "redisdb": "[parameters('redisdb')]",
+      "redisdbmgn": "[parameters('redisdbmgn')]",
+      "sqldatawarehouse": "[parameters('sqldatawarehouse')]",
+      "sqldatawarehousemgn": "[parameters('sqldatawarehousemgn')]",
+      "azuresearch": "[parameters('azuresearch')]",
+      "azuresearchmgn": "[parameters('azuresearchmgn')]",
+      "cognitiveservice": "[parameters('cognitiveservice')]",
+      "cognitiveservicemgn": "[parameters('cognitiveservicemgn')]",
+      "machinelearnignwokspace": "[parameters('machinelearnignwokspace')]",
+      "machinelearnignwokspacemgn": "[parameters('machinelearnignwokspacemgn')]",
+      "datalakestorage": "[parameters('datalakestorage')]",
+      "datalakestoragemgn": "[parameters('datalakestoragemgn')]",
+      "datalakeanalytic": "[parameters('datalakeanalytic')]",
+      "datalakeanalyticmgn": "[parameters('datalakeanalyticmgn')]",
+      "datafactory": "[parameters('datafactory')]",
+      "datafactorymgn": "[parameters('datafactorymgn')]",
+
+
+      "eventhub": "[parameters('eventhub')]",
+      "eventhubmgn": "[parameters('eventhubmgn')]",
+      "notificationhub": "[parameters('notificationhub')]",
+      "notificationhubmgn": "[parameters('notificationhubmgn')]",
+      "notificationhubnamespace": "[parameters('notificationhubnamespace')]",
+      "notificationhubnamespacemgn": "[parameters('notificationhubnamespacemgn')]",
+      "blueprint": "[parameters('blueprint')]",
+      "blueprintmgn": "[parameters('blueprintmgn')]",
+
+      "azmonitorappinsig": "[parameters('azmonitorappinsig')]",
+      "azmonitorappinsigmgn": "[parameters('azmonitorappinsigmgn')]",
+      "azmonitorvminsig": "[parameters('azmonitorvminsig')]",
+      "azmonitorvminsigmgn": "[parameters('azmonitorvminsigmgn')]",
+      "azmonitornetworkinsig": "[parameters('azmonitornetworkinsig')]",
+      "azmonitornetworkinsigmgn": "[parameters('azmonitornetworkinsigmgn')]",
+      "azmonitorsqlinsig": "[parameters('azmonitorsqlinsig')]",
+      "azmonitorsqlinsigmgn": "[parameters('azmonitorsqlinsigmgn')]",
+      "azmonitorcontainerinsig": "[parameters('azmonitorcontainerinsig')]",
+      "azmonitorcontainerinsigmgn": "[parameters('azmonitorcontainerinsigmgn')]",
+      "azmonitorcosmosdbinsig": "[parameters('azmonitorcosmosdbinsig')]",
+      "azmonitorcosmosdbinsigmgn": "[parameters('azmonitorcosmosdbinsigmgn')]",
+      "azmonitorressourcegpinsig": "[parameters('azmonitorressourcegpinsig')]",
+      "azmonitorressourcegpinsigmgn": "[parameters('azmonitorressourcegpinsigmgn')]",
+      "azmonitorstorageinsig": "[parameters('azmonitorstorageinsig')]",
+      "azmonitorstorageinsigmgn": "[parameters('azmonitorstorageinsigmgn')]",
+      "azmonitorkeyvaultinsig": "[parameters('azmonitorkeyvaultinsig')]",
+      "azmonitorkeyvaultinsigmgn": "[parameters('azmonitorkeyvaultinsigmgn')]",
+      "azmonitorredisinsig": "[parameters('azmonitorredisinsig')]",
+      "azmonitorredisinsigmgn": "[parameters('azmonitorredisinsigmgn')]",
+      "virtualmachinescaleset": "[parameters('virtualmachinescaleset')]",
+      "virtualmachinescalesetmgn": "[parameters('virtualmachinescalesetmgn')]",
+      "trafficmanage": "[parameters('trafficmanage')]",
+      "trafficmanagemgn": "[parameters('trafficmanagemgn')]",
+      "cdn": "[parameters('cdn')]",
+      "cdnmgn": "[parameters('cdnmgn')]",
+      "migrate": "[parameters('migrate')]",
+      "migratemgn": "[parameters('migratemgn')]",
+      "managedapp": "[parameters('managedapp')]",
+      "managedappmgn": "[parameters('managedappmgn')]",
+      "kubernettescluster": "[parameters('kubernettescluster')]",
+      "kubernettesclustermgn": "[parameters('kubernettesclustermgn')]",
+      "azureacr": "[parameters('azureacr')]",
+      "azureacrmgn": "[parameters('azureacrmgn')]",
+      "fontdoor": "[parameters('fontdoor')]",
+      "fontdoormgn": "[parameters('fontdoormgn')]",
+      "backup": "[parameters('backup')]",
+      "backupmgn": "[parameters('backupmgn')]",
+      "bastionhost": "[parameters('bastionhost')]",
+      "bastionhostmgn": "[parameters('bastionhostmgn')]"
+
+    },
     "policies": {
       "policyDefinitions": [
         {
@@ -121,6 +1213,7 @@
                             "apiVersion": "2017-05-01-preview",
                             "name": "[[concat(parameters('resourceName'), '/', 'Microsoft.Insights/', parameters('profileName'))]",
                             "location": "[[parameters('location')]",
+                            "tags": "[parameters('resourceTags')]",
                             "dependsOn": [],
                             "properties": {
                               "workspaceId": "[[parameters('logAnalytics')]",
@@ -21119,5 +22212,7 @@
         "metadata": "[variables('initiatives').policySetDefinitions[copyIndex()].properties.metadata]"
       }
     }
-  ]
+  ],
+
+  "outputs": {}
 }
