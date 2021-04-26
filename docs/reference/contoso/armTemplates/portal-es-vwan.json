@@ -48,6 +48,83 @@
                             "regex": "^[a-z0-9A-Z-]{1,10}$",
                             "validationMessage": "The prefix must be 1-10 characters."
                         }
+                    },
+                    {
+                        "name": "esLocationsApi",
+                        "type": "Microsoft.Solutions.ArmApiControl",
+                        "request": {
+                            "method": "GET",
+                            "path": "locations?api-version=2019-11-01"
+                        }
+                    },
+                    {
+                        "name": "esNwLocation",
+                        "type": "Microsoft.Common.DropDown",
+                        "label": "Region for the first virtual hub",
+                        "toolTip": "Select the target region for you connectivity deployment (requires you to provide a subscriptionId for connectivity)",
+                        "constraints": {
+                            "allowedValues": "[map(steps('lzSettings').esLocationsApi.value, (item) => parse(concat('{\"label\":\"', item.displayName, '\",\"value\":\"', item.name, '\"}')))]",
+                            "required": true
+                        },
+                        "visible": "[equals(steps('lzSettings').esVwan, 'Yes')]"
+                    },
+                    {
+                        "name": "esNamingConvention",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Convention de Nom",
+                        "defaultValue": "OQLF",
+                        "toolTip": "Naming convention to apply to ressource name",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "OQLF",
+                                    "value": "OQLF"
+                                },
+                                {
+                                    "label": "CAF",
+                                    "value": "CAF"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esDeployNetwork",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Deploy Network",
+                        "defaultValue": "No",
+                        "toolTip": "If 'Yes' is selected You will have to select topology between HUB-WAN and Hub-Spoke",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esNetworkTopology",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Select NetWork Topology according to your Infrastructure workload need",
+                        "defaultValue": "No",
+                        "visible": "[equals(steps('lzSettings').esDeployNetwork, 'Yes')]",
+                        "toolTip": "If 'Yes' is selected when also adding a subscription for connectivity, ARM will deploy VPN gateway",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        }
                     }
                 ]
             },
