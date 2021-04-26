@@ -1109,11 +1109,10 @@
                         "label": "Add 'CostCenter' Tag and Value by Resource",
                         "defaultValue": true
                     },
-                    
                     {
                         "name": "tagcostbyresource",
-                        "type": "Microsoft.Common.TagsByResource",   
-                        "visible": "[equals(steps('esGovernance').cktagbyresource, true)]",            
+                        "type": "Microsoft.Common.TagsByResource",
+                        "visible": "[equals(steps('esGovernance').cktagbyresource, true)]",
                         "resources": [
                             "Microsoft.*"
                         ]
@@ -1142,8 +1141,7 @@
             },
             {
                 "name": "esConnectivityGoalState",
-                "label": "Connectivity (Virtual WAN/Hub & Spoke)",                
-                
+                "label": "Connectivity (Virtual WAN/Hub & Spoke)",
                 "subLabel": {
                     "preValidation": "",
                     "postValidation": ""
@@ -1195,8 +1193,7 @@
                                 {
                                     "label": "HUB & SPOKE (recommended for medium and small company)",
                                     "value": "HUBSPOKE"
-                                }
-                                ,
+                                },
                                 {
                                     "label": "Simple VNET (not recommanded or for PaaS Only)",
                                     "value": "VNETBASIC"
@@ -1367,7 +1364,7 @@
                             "method": "GET",
                             "path": "subscriptions?api-version=2020-01-01"
                         }
-                    },                  
+                    },
                     {
                         "name": "esIdentitySub",
                         "type": "Microsoft.Common.DropDown",
@@ -1477,7 +1474,7 @@
                         "visible": "[equals(steps('esIdentityGoalState').esIdentity, 'Yes')]"
                     }
                 ]
-            },                     
+            },
             {
                 "name": "lzGoalState",
                 "label": "Landing zone configuration",
@@ -1516,7 +1513,7 @@
                             "method": "GET",
                             "path": "subscriptions?api-version=2020-01-01"
                         }
-                    },                  
+                    },
                     {
                         "name": "esOnlineLzSub",
                         "type": "Microsoft.Common.DropDown",
@@ -1599,7 +1596,7 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
                     {
                         "name": "esVmssMonitoring",
@@ -1619,7 +1616,7 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
                     {
                         "name": "esArcVmMonitoring",
@@ -1639,7 +1636,7 @@
                                 }
                             ]
                         },
-						"visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
+                        "visible": "[equals(steps('esGoalState').esLogAnalytics, 'Yes')]"
                     },
                     {
                         "name": "esAksPolicy",
@@ -1659,7 +1656,7 @@
                                 }
                             ]
                         },
-						"visible": true
+                        "visible": true
                     },
                     {
                         "name": "esAksPriv",
@@ -1679,7 +1676,7 @@
                                 }
                             ]
                         },
-						"visible": true
+                        "visible": true
                     },
                     {
                         "name": "esAksNoPriv",
@@ -1699,8 +1696,8 @@
                                 }
                             ]
                         },
-						"visible": true
-                    },                    
+                        "visible": true
+                    },
                     {
                         "name": "esAksIngress",
                         "type": "Microsoft.Common.OptionsGroup",
@@ -1719,8 +1716,8 @@
                                 }
                             ]
                         },
-						"visible": true
-                    },                                                       
+                        "visible": true
+                    },
                     {
                         "name": "esAzBackup",
                         "type": "Microsoft.Common.OptionsGroup",

@@ -60,7 +60,7 @@
             "defaultValue": {}
         },
 
-     
+
         "tagauditpolicy": {
             "type": "string",
             "allowedValues": [
@@ -70,7 +70,7 @@
             "defaultValue": "No"
         },
         //********************************Param for Generic Naming Convention*************************************/
-      
+
         "prefixmgn": {
             "type": "String",
             "defaultValue": ""
@@ -820,7 +820,7 @@
                 /**************LOGIC APP*/
 
                 /**************GENERAL*/
-                
+
                 {
                     "name": "allowed-location",
                     "apply": "Yes",
