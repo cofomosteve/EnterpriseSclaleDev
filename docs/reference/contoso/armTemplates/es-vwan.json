@@ -849,465 +849,710 @@
 
         "azEnvPolicy": "[variables('azPolicyEnvMapping')[environment().resourceManager]]",
         "deploymentUris": {
-            "managementGroups": "[uri(deployment().properties.templateLink.uri, 'auxiliary/mgmtGroups.json')]",
-            "policyDefinitions": "[concat(uri(deployment().properties.templateLink.uri, variables('azEnvPolicy')))]",
-            "monitoring": "[uri(deployment().properties.templateLink.uri, 'auxiliary/logAnalytics.json')]",
-            "monitoringSolutions": "[uri(deployment().properties.templateLink.uri, 'auxiliary/logAnalyticsSolutions.json')]",
-            "connectivity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/vwan-connectivity.json')]",
-            "diagnosticsAndSecurity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/diagnosticsAndSecurity.json')]",
-            "landingZone": "[uri(deployment().properties.templateLink.uri, 'auxiliary/lz.json')]",
-            "identity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/identity.json')]"
-        },
-        "moveSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-management', '/', parameters('managementSubscriptionId'))]",
-        "noSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-management', '/', 'na')]",
-        "noOnlineLzSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-online', '/', 'nalz')]",
-        "noCorpLzSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-corp', '/', 'nalz')]",
-        "connectivityMoveSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-connectivity', '/', parameters('connectivitySubscriptionId'))]",
-        "noConnectivitySubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-connectivity', '/', 'naconn')]",
-        "identityMoveSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-identity', '/', parameters('identitySubscriptionId'))]",
-        "noIdentitySubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-identity', '/', 'naid')]",
-        "deploymentNames": {
-            "mgmtGroupDeploymentName": "[take(concat('EntScale-Mgs', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
-            "policyDeploymentName": "[take(concat('EntScale-Policy', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
-            "monitoringDeploymentName": "[take(concat('EntScale-Monitoring', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
-            "monitoringSolutionsDeploymentName": "[take(concat('EntScale-Solutions', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
-            "diagAndSecDeploymentName": "[take(concat('EntScale-DiagSec', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
-            "connectivityDeploymentName": "[take(concat('EntScale-conn', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
-            "lzDeploymentName": "[take(concat('EntScale-LZ', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
-            "identityDeploymentName": "[take(concat('EntScale-ID', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]"
-        }
+      "managementGroups": "[uri(deployment().properties.templateLink.uri, 'auxiliary/mgmtGroups.json')]",
+      "policyDefinitions": "[concat(uri(deployment().properties.templateLink.uri, variables('azEnvPolicy')))]",
+      "monitoring": "[uri(deployment().properties.templateLink.uri, 'auxiliary/logAnalytics.json')]",
+      "monitoringSolutions": "[uri(deployment().properties.templateLink.uri, 'auxiliary/logAnalyticsSolutions.json')]",
+      "connectivity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/vwan-connectivity.json')]",
+      "diagnosticsAndSecurity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/diagnosticsAndSecurity.json')]",
+      "landingZone": "[uri(deployment().properties.templateLink.uri, 'auxiliary/lz.json')]",
+      "identity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/identity.json')]",
+      "customrbac": "[uri(deployment().properties.templateLink.uri, 'auxiliary/custom-rbac.json')]",
+      "custompoliciesassign": "[uri(deployment().properties.templateLink.uri, 'auxiliary/policiesassignment.json')]"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
-            "name": "[variables('deploymentNames').mgmtGroupDeploymentName]",
-            "location": "[deployment().location]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').managementGroups]"
-                },
-                "parameters": {
-                    "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
-                    }
-                }
-            }
+    "moveSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-management', '/', parameters('managementSubscriptionId'))]",
+    "noSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-management', '/', 'na')]",
+    "noOnlineLzSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-online', '/', 'nalz')]",
+    "noCorpLzSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-corp', '/', 'nalz')]",
+    "connectivityMoveSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-connectivity', '/', parameters('connectivitySubscriptionId'))]",
+    "noConnectivitySubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-connectivity', '/', 'naconn')]",
+    "identityMoveSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-identity', '/', parameters('identitySubscriptionId'))]",
+    "noIdentitySubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-identity', '/', 'naid')]",
+    "deploymentNames": {
+      "mgmtGroupDeploymentName": "[take(concat('EntScale-Mgs', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+      "policyDeploymentName": "[take(concat('EntScale-Policy', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+      "monitoringDeploymentName": "[take(concat('EntScale-Monitoring', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+      "monitoringSolutionsDeploymentName": "[take(concat('EntScale-Solutions', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+      "diagAndSecDeploymentName": "[take(concat('EntScale-DiagSec', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+      "connectivityDeploymentName": "[take(concat('EntScale-conn', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+      "lzDeploymentName": "[take(concat('EntScale-LZ', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+      "identityDeploymentName": "[take(concat('EntScale-ID', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+      "customrbacDeploymentName": "[take(concat('EntScale-RBAC', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+      "customPoliciesAssigDeploymentName": "[take(concat('EntScale-PoliciesAssig', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]"
+    }
+    },
+   "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "[variables('deploymentNames').mgmtGroupDeploymentName]",
+      "location": "[deployment().location]",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "contentVersion": "1.0.0.0",
+          "uri": "[variables('deploymentUris').managementGroups]"
         },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
-            "name": "[variables('deploymentNames').policyDeploymentName]",
-            "location": "[deployment().location]",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
-            "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').policyDefinitions]"
-                },
-                "parameters": {
-                    "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
-                    }
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
-            "name": "[concat('delayFor', copyIndex())]",
-            "location": "[deployment().location]",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
-            "dependsOn": [
-                "[variables('deploymentNames').policyDeploymentName]"
-            ],
-            "copy": {
-                "batchSize": 1,
-                "count": 20,
-                "mode": "Serial",
-                "name": "DeploymentDelay"
-            },
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "resources": [],
-                    "outputs": {}
-                }
-            }
-        },
-        {
-            "condition": "[not(empty(parameters('managementSubscriptionId')))]",
-            "type": "Microsoft.Management/managementGroups/subscriptions",
-            "apiVersion": "2020-05-01",
-            "name": "[if(not(empty(parameters('managementSubscriptionId'))), variables('moveSubscription'), variables('noSubscription'))]",
-            "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]"
-            ],
-            "properties": {}
-        },
-        {
-            "condition": "[not(empty(parameters('identitySubscriptionId')))]",
-            "type": "Microsoft.Management/managementGroups/subscriptions",
-            "apiVersion": "2020-05-01",
-            "name": "[if(not(empty(parameters('identitySubscriptionId'))), variables('identityMoveSubscription'), variables('noIdentitySubscription'))]",
-            "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]"
-            ],
-            "properties": {}
-        },
-        {
-            "condition": "[not(empty(parameters('onlineLzSubscriptionId')))]",
-            "type": "Microsoft.Management/managementGroups/subscriptions",
-            "apiVersion": "2020-05-01",
-            "name": "[if(not(empty(parameters('onlineLzSubscriptionId'))), concat(parameters('enterpriseScaleCompanyPrefix'), '-online', '/', parameters('onlineLzSubscriptionId')[copyIndex()]), variables('noOnlineLzSubscription'))]",
-            "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]"
-            ],
-            "copy": {
-                "name": "onlineLzMove",
-                "count": "[length(parameters('onlineLzSubscriptionId'))]"
-            },
-            "properties": {}
-        },
-        {
-            "condition": "[not(empty(parameters('corpLzSubscriptionId')))]",
-            "type": "Microsoft.Management/managementGroups/subscriptions",
-            "apiVersion": "2020-05-01",
-            "name": "[if(not(empty(parameters('corpLzSubscriptionId'))), concat(parameters('enterpriseScaleCompanyPrefix'), '-corp', '/', parameters('corpLzSubscriptionId')[copyIndex()]), variables('noCorpLzSubscription'))]",
-            "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]"
-            ],
-            "copy": {
-                "name": "onlineLzMove",
-                "count": "[length(parameters('corpLzSubscriptionId'))]"
-            },
-            "properties": {}
-        },
-        {
-            "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'Yes'))]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-management')]",
-            "name": "[variables('deploymentNames').monitoringDeploymentName]",
-            "dependsOn": [
-                "[variables('deploymentNames').policyDeploymentName]",
-                "DeploymentDelay"
-            ],
-            "location": "[deployment().location]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').monitoring]"
-                },
-                "parameters": {
-                    "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
-                    },
-                    "enableLogAnalytics": {
-                        "value": "[parameters('enableLogAnalytics')]"
-                    },
-                    "managementSubscriptionId": {
-                        "value": "[parameters('managementSubscriptionId')]"
-                    },
-                    "retentionInDays": {
-                        "value": "[parameters('retentionInDays')]"
-                    }
-                }
-            }
-        },
-        {
-            "condition": "[and(not(empty(parameters('managementSubscriptionId'))), or(or(or(or(or(equals(parameters('enableSecuritySolution'), 'Yes'), equals(parameters('enableAgentHealth'), 'Yes')), equals(parameters('enableChangeTracking'), 'Yes')), equals(parameters('enableUpdateMgmt'), 'Yes'), equals(parameters('enableActivityLog'), 'Yes')), equals(parameters('enableAntiMalware'), 'Yes'), equals(parameters('enableVmInsights'), 'Yes')), equals(parameters('enableServiceMap'), 'Yes'), equals(parameters('enableSqlAssessment'), 'Yes')))]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
-            "subscriptionId": "[parameters('managementSubscriptionId')]",
-            "name": "[variables('deploymentNames').monitoringSolutionsDeploymentName]",
-            "dependsOn": [
-                "[variables('deploymentNames').monitoringDeploymentName]"
-            ],
-            "location": "[deployment().location]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').monitoringSolutions]"
-                },
-                "parameters": {
-                    "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
-                    },
-                    "managementSubscriptionId": {
-                        "value": "[parameters('managementSubscriptionId')]"
-                    },
-                    "enableSecuritySolution": {
-                        "value": "[parameters('enableSecuritySolution')]"
-                    },
-                    "enableAgentHealth": {
-                        "value": "[parameters('enableAgentHealth')]"
-                    },
-                    "enableChangeTracking": {
-                        "value": "[parameters('enableChangeTracking')]"
-                    },
-                    "enableUpdateMgmt": {
-                        "value": "[parameters('enableUpdateMgmt')]"
-                    },
-                    "enableActivityLog": {
-                        "value": "[parameters('enableActivityLog')]"
-                    },
-                    "enableAntiMalware": {
-                        "value": "[parameters('enableAntiMalware')]"
-                    },
-                    "enableVmInsights": {
-                        "value": "[parameters('enableVmInsights')]"
-                    },
-                    "enableServiceMap": {
-                        "value": "[parameters('enableServiceMap')]"
-                    },
-                    "enableSqlAssessment": {
-                        "value": "[parameters('enableSqlAssessment')]"
-                    }
-                }
-            }
-        },
-        {
-            "condition": "[not(empty(parameters('identitySubscriptionId')))]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-identity')]",
-            "name": "[variables('deploymentNames').identityDeploymentName]",
-            "dependsOn": [
-                "[variables('deploymentNames').policyDeploymentName]",
-                "DeploymentDelay"
-            ],
-            "location": "[deployment().location]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').identity]"
-                },
-                "parameters": {
-                    "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
-                    },
-                    "denyRdpForIdentity": {
-                        "value": "[parameters('denyRdpForIdentity')]"
-                    },
-                    "denySubnetWithoutNsgForIdentity": {
-                        "value": "[parameters('denySubnetWithoutNsgForIdentity')]"
-                    },
-                    "denyPipForIdentity": {
-                        "value": "[parameters('denyPipForIdentity')]"
-                    },
-                    "enableVmBackupForIdentity": {
-                        "value": "[parameters('enableVmBackupForIdentity')]"
-                    }
-                }
-            }
-        },
-        {
-            "condition": "[or(or(or(or(or(or(equals(parameters('enableVmBackup'), 'Yes'), equals(parameters('enableSqlAudit'), 'Yes')), equals(parameters('denyAksPrivilegedEscalation'), 'Yes'), equals(parameters('denyHttpIngressForAks'), 'Yes')), equals(parameters('denyAksPrivileged'), 'Yes'), equals(parameters('denyAksPrivileged'), 'Yes')), equals(parameters('denySubnetWithoutNsg'), 'Yes'), equals(parameters('enableSqlAssessment'), 'Yes')), equals(parameters('enableVmMonitoring'), 'Yes'), equals(parameters('enableVmMonitoring'), 'Yes')), equals(parameters('enableSqlEncryption'), 'Yes'), equals(parameters('enableStorageHttps'), 'Yes'))]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-landingzones')]",
-            "name": "[variables('deploymentNames').lzDeploymentName]",
-            "dependsOn": [
-                "[variables('deploymentNames').policyDeploymentName]",
-                "DeploymentDelay"
-            ],
-            "location": "[deployment().location]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').landingZone]"
-                },
-                "parameters": {
-                    "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
-                    },
-                    "denyHttpIngressForAks": {
-                        "value": "[parameters('denyHttpIngressForAks')]"
-                    },
-                    "denyAksPrivilegedEscalation": {
-                        "value": "[parameters('denyAksPrivilegedEscalation')]"
-                    },
-                    "denyAksPrivileged": {
-                        "value": "[parameters('denyAksPrivileged')]"
-                    },
-                    "enableSqlAudit": {
-                        "value": "[parameters('enableSqlAudit')]"
-                    },
-                    "enableSqlEncryption": {
-                        "value": "[parameters('enableSqlEncryption')]"
-                    },
-                    "enableVmBackup": {
-                        "value": "[parameters('enableVmBackup')]"
-                    },
-                    "denyRdp": {
-                        "value": "[parameters('denyRdp')]"
-                    },
-                    "enableAksPolicy": {
-                        "value": "[parameters('enableAksPolicy')]"
-                    },
-                    "enableStorageHttps": {
-                        "value": "[parameters('enableStorageHttps')]"
-                    },
-                    "denyIpForwarding": {
-                        "value": "[parameters('denyIpForwarding')]"
-                    },
-                    "denySubnetWithoutNsg": {
-                        "value": "[parameters('denySubnetWithoutNsg')]"
-                    }
-                }
-            }
-        },
-        {
-            "condition": "[and(not(empty(parameters('managementSubscriptionId'))), or(equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAsc'), 'Yes')))]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
-            "name": "[variables('deploymentNames').diagAndSecDeploymentName]",
-            "dependsOn": [
-                "[variables('deploymentNames').monitoringDeploymentName]",
-                "DeploymentDelay"
-            ],
-            "location": "[deployment().location]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').diagnosticsAndSecurity]"
-                },
-                "parameters": {
-                    "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
-                    },
-                    "enableLogAnalytics": {
-                        "value": "[parameters('enableLogAnalytics')]"
-                    },
-                    "enableAsc": {
-                        "value": "[parameters('enableAsc')]"
-                    },
-                    "enableAscForServers": {
-                        "value": "[parameters('enableAscForServers')]"
-                    },
-                    "enableAscForAppServices": {
-                        "value": "[parameters('enableAscForAppServices')]"
-                    },
-                    "enableAscForStorage": {
-                        "value": "[parameters('enableAscForStorage')]"
-                    },
-                    "enableAscForSql": {
-                        "value": "[parameters('enableAscForSql')]"
-                    },
-                    "enableAscForKeyVault": {
-                        "value": "[parameters('enableAscForKeyVault')]"
-                    },
-                    "enableAscForArm": {
-                        "value": "[parameters('enableAscForArm')]"
-                    },
-                    "enableAscForDns": {
-                        "value": "[parameters('enableAscForDns')]"
-                    },
-                    "enableAscForKubernetes": {
-                        "value": "[parameters('enableAscForKubernetes')]"
-                    },
-                    "enableAscForRegistries": {
-                        "value": "[parameters('enableAscForRegistries')]"
-                    },
-                    "managementSubscriptionId": {
-                        "value": "[parameters('managementSubscriptionId')]"
-                    },
-                    "onlineLzSubscriptionId": {
-                        "value": "[parameters('onlineLzSubscriptionId')]"
-                    },
-                    "corpLzSubscriptionId": {
-                        "value": "[parameters('corpLzSubscriptionId')]"
-                    },
-                    "identitySubscriptionId": {
-                        "value": "[parameters('identitySubscriptionId')]"
-                    },
-                    "connectivitySubscriptionId": {
-                        "value": "[parameters('connectivitySubscriptionId')]"
-                    },
-                    "enableVmMonitoring": {
-                        "value": "[parameters('enableVmMonitoring')]"
-                    },
-                    "enableVmssMonitoring": {
-                        "value": "[parameters('enableVmssMonitoring')]"
-                    },
-                    "enableArcMonitoring": {
-                        "value": "[parameters('enableArcMonitoring')]"
-                    }
-                }
-            }
-        },
-        {
-            "condition": "[not(empty(parameters('connectivitySubscriptionId')))]",
-            "type": "Microsoft.Management/managementGroups/subscriptions",
-            "apiVersion": "2020-05-01",
-            "name": "[if(not(empty(parameters('connectivitySubscriptionId'))), variables('connectivityMoveSubscription'), variables('noConnectivitySubscription'))]",
-            "dependsOn": [
-                "DeploymentDelay"
-            ],
-            "properties": {}
-        },
-        {
-            "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableVwan'), 'Yes'))]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-connectivity')]",
-            "name": "[variables('deploymentNames').connectivityDeploymentName]",
-            "dependsOn": [
-                "[variables('deploymentNames').diagAndSecDeploymentName]",
-                "DeploymentDelay"
-            ],
-            "location": "[deployment().location]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').connectivity]"
-                },
-                "parameters": {
-                    "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
-                    },
-                    "enableVwan": {
-                        "value": "[parameters('enableVwan')]"
-                    },
-                    "enableAzFw": {
-                        "value": "[parameters('enableAzFw')]"
-                    },
-                    "addressPrefix": {
-                        "value": "[parameters('addressPrefix')]"
-                    },
-                    "enableVpnGw": {
-                        "value": "[parameters('enableVpnGw')]"
-                    },
-                    "enableErGw": {
-                        "value": "[parameters('enableErGw')]"
-                    },
-                    "location": {
-                        "value": "[parameters('location')]"
-                    },
-                    "connectivitySubscriptionId": {
-                        "value": "[parameters('connectivitySubscriptionId')]"
-                    }
-                }
-            }
+        "parameters": {
+          "topLevelManagementGroupPrefix": {
+            "value": "[variables('globalvariable').topLevelManagementGroupPrefix]" //"[parameters('enterpriseScaleCompanyPrefix')]"
+
+          },
+          "prefixmgn": {
+            "value": "[variables('globalvariable').prefixmgn]"
+          },
+          "resourceTags": {
+            "value": "[variables('resourceTags')]"
+          }
         }
-    ],
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "[variables('deploymentNames').policyDeploymentName]",
+      "location": "[deployment().location]",
+      "scope": "[variables('globalvariable').scope]",
+      "dependsOn": [
+        "[variables('deploymentNames').mgmtGroupDeploymentName]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "contentVersion": "1.0.0.0",
+          "uri": "[variables('deploymentUris').policyDefinitions]"
+        },
+        "parameters": {
+          "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
+
+          "resourceTags": { "value": "[variables('resourceTags')]" },
+
+          "prefixmgn": { "value": "[variables('globalvariable').prefixmgn]" },
+          "appname": { "value": "[variables('globalvariable').appname]" },
+          "businessunit": { "value": "[variables('globalvariable').businessunit]" },
+          "scope": { "value": "[variables('globalvariable').scope]" },
+          "scopeplatform": { "value": "[variables('globalvariable').scopeplatform]" },
+          "scopemanagement": { "value": "[variables('globalvariable').scopemanagement]" },
+          "scopeconnectivity": { "value": "[variables('globalvariable').scopeconnectivity]" },
+          "scopeidentity": { "value": "[variables('globalvariable').scopeidentity]" },
+          "scopelz": { "value": "[variables('globalvariable').scopelz]" },
+          "scopelzonline": { "value": "[variables('globalvariable').scopelzonline]" },
+          "scopelzcorp": { "value": "[variables('globalvariable').scopelzcorp]" },
+          "mgngroup": { "value": "[variables('globalvariable').genericresourceprefix.mgngroup]" },
+          "mgngroupmgn": { "value": "[variables('globalvariable').genericresourceprefix.mgngroupmgn]" },
+          "resourcgroup": { "value": "[variables('globalvariable').genericresourceprefix.resourcgroup]" },
+          "resourcgroupmgn": { "value": "[variables('globalvariable').genericresourceprefix.resourcgroupmgn]" },
+          "policydefp": { "value": "[variables('globalvariable').genericresourceprefix.policydefp]" },
+          "policydefpmgn": { "value": "[variables('globalvariable').genericresourceprefix.policydefpmgn]" },
+          "policyassign": { "value": "[variables('globalvariable').genericresourceprefix.policyassign]" },
+          "policyassignmgn": { "value": "[variables('globalvariable').genericresourceprefix.policyassignmgn]" },
+          "rbacassign": { "value": "[variables('globalvariable').genericresourceprefix.rbacassign]" },
+          "rbacassignmgn": { "value": "[variables('globalvariable').genericresourceprefix.rbacassignmgn]" },
+          "rbacdef": { "value": "[variables('globalvariable').genericresourceprefix.rbacdef]" },
+          "rbacdefmgn": { "value": "[variables('globalvariable').genericresourceprefix.rbacdefmgn]" },
+          "loganalyticwk": { "value": "[variables('globalvariable').genericresourceprefix.loganalyticwk]" },
+          "loganalyticwkmgn": { "value": "[variables('globalvariable').genericresourceprefix.loganalyticwkmgn]" },
+          "keyvault": { "value": "[variables('globalvariable').genericresourceprefix.keyvault]" },
+          "keyvaultmgn": { "value": "[variables('globalvariable').genericresourceprefix.keyvaultmgn]" },
+          "storage": { "value": "[variables('globalvariable').genericresourceprefix.storage]" },
+          "storagemgn": { "value": "[variables('globalvariable').genericresourceprefix.storagemgn]" },
+          "storagediagnostic": { "value": "[variables('globalvariable').genericresourceprefix.storagediagnostic]" },
+          "storagediagnosticmgn": { "value": "[variables('globalvariable').genericresourceprefix.storagediagnosticmgn]" },
+          "conatainerinstance": { "value": "[variables('globalvariable').genericresourceprefix.conatainerinstance]" },
+          "conatainerinstancemgn": { "value": "[variables('globalvariable').genericresourceprefix.conatainerinstancemgn]" },
+          "containerregistry": { "value": "[variables('globalvariable').genericresourceprefix.containerregistry]" },
+          "containerregistrymgn": { "value": "[variables('globalvariable').genericresourceprefix.containerregistrymgn]" },
+          "budgetconsumption": { "value": "[variables('globalvariable').genericresourceprefix.budgetconsumption]" },
+          "budgetconsumptionmgn": { "value": "[variables('globalvariable').genericresourceprefix.budgetconsumptionmgn]" },
+          "diasgsetting": { "value": "[variables('globalvariable').genericresourceprefix.diasgsetting]" },
+          "diasgsettingmgn": { "value": "[variables('globalvariable').genericresourceprefix.diasgsettingmgn]" },
+          "deployment": { "value": "[variables('globalvariable').genericresourceprefix.deployment]" },
+          "deploymentmgn": { "value": "[variables('globalvariable').genericresourceprefix.deploymentmgn]" },
+          "virtualnetwork": { "value": "[variables('globalvariable').genericresourceprefix.virtualnetwork]" },
+          "virtualnetworkmgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualnetworkmgn]" },
+          "subnet": { "value": "[variables('globalvariable').genericresourceprefix.subnet]" },
+          "subnetmgn": { "value": "[variables('globalvariable').genericresourceprefix.subnetmgn]" },
+          "virtualnetworkpeering": { "value": "[variables('globalvariable').genericresourceprefix.virtualnetworkpeering]" },
+          "virtualnetworkpeeringmgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualnetworkpeeringmgn]" },
+          "virtualnetworkgateway": { "value": "[variables('globalvariable').genericresourceprefix.virtualnetworkgateway]" },
+          "virtualnetworkgatewaymgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualnetworkgatewaymgn]" },
+          "localnetworkgateway": { "value": "[variables('globalvariable').genericresourceprefix.localnetworkgateway]" },
+          "localnetworkgatewaylocalmgn": { "value": "[variables('globalvariable').genericresourceprefix.localnetworkgatewaylocalmgn]" },
+          "networksitetosite": { "value": "[variables('globalvariable').genericresourceprefix.networksitetosite]" },
+          "networksitetositemgn": { "value": "[variables('globalvariable').genericresourceprefix.networksitetositemgn]" },
+          "vpnconnection": { "value": "[variables('globalvariable').genericresourceprefix.vpnconnection]" },
+          "vpnconnectionmgn": { "value": "[variables('globalvariable').genericresourceprefix.vpnconnectionmgn]" },
+          "nsg": { "value": "[variables('globalvariable').genericresourceprefix.nsg]" },
+          "nsgmgn": { "value": "[variables('globalvariable').genericresourceprefix.nsgmgn]" },
+          "asg": { "value": "[variables('globalvariable').genericresourceprefix.asg]" },
+          "asgmgn": { "value": "[variables('globalvariable').genericresourceprefix.asgmgn]" },
+          "pubip": { "value": "[variables('globalvariable').genericresourceprefix.pubip]" },
+          "pubipmgn": { "value": "[variables('globalvariable').genericresourceprefix.pubipmgn]" },
+          "virtualmachine": { "value": "[variables('globalvariable').genericresourceprefix.virtualmachine]" },
+          "virtualmachinemgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualmachinemgn]" },
+          "virtualmachinestorageaccount": { "value": "[variables('globalvariable').genericresourceprefix.virtualmachinestorageaccount]" },
+          "virtualmachinestorageaccountmgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualmachinestorageaccountmgn]" },
+          "nic": { "value": "[variables('globalvariable').genericresourceprefix.nic]" },
+          "nicmgn": { "value": "[variables('globalvariable').genericresourceprefix.nicmgn]" },
+          "dnsprivate": { "value": "[variables('globalvariable').genericresourceprefix.dnsprivate]" },
+          "dnsprivatemgn": { "value": "[variables('globalvariable').genericresourceprefix.dnsprivatemgn]" },
+          "dnspubblic": { "value": "[variables('globalvariable').genericresourceprefix.dnspubblic]" },
+          "dnspubblicmgn": { "value": "[variables('globalvariable').genericresourceprefix.dnspubblicmgn]" },
+          "loadbalancer": { "value": "[variables('globalvariable').genericresourceprefix.loadbalancer]" },
+          "loadbalancermgn": { "value": "[variables('globalvariable').genericresourceprefix.loadbalancermgn]" },
+          "applicationgateway": { "value": "[variables('globalvariable').genericresourceprefix.applicationgateway]" },
+          "applicationgatewaymgn": { "value": "[variables('globalvariable').genericresourceprefix.applicationgatewaymgn]" },
+          "privatelink": { "value": "[variables('globalvariable').genericresourceprefix.privatelink]" },
+          "privatelinkmgn": { "value": "[variables('globalvariable').genericresourceprefix.privatelinkmgn]" },
+          "privateendpoint": { "value": "[variables('globalvariable').genericresourceprefix.privateendpoint]" },
+          "privateendpointmgn": { "value": "[variables('globalvariable').genericresourceprefix.privateendpointmgn]" },
+          "azurefirewall": { "value": "[variables('globalvariable').genericresourceprefix.azurefirewall]" },
+          "azurefirewallmgn": { "value": "[variables('globalvariable').genericresourceprefix.azurefirewallmgn]" },
+          "azurefirewallpolicies": { "value": "[variables('globalvariable').genericresourceprefix.azurefirewallpolicies]" },
+          "azurefirewallpoliciesmgn": { "value": "[variables('globalvariable').genericresourceprefix.azurefirewallpoliciesmgn]" },
+          "azurefirewallrulegroup": { "value": "[variables('globalvariable').genericresourceprefix.azurefirewallrulegroup]" },
+          "azurefirewallrulegroupmgn": { "value": "[variables('globalvariable').genericresourceprefix.azurefirewallrulegroupmgn]" },
+          "securityprincing": { "value": "[variables('globalvariable').genericresourceprefix.securityprincing]" },
+          "securityprincingmgn": { "value": "[variables('globalvariable').genericresourceprefix.securityprincingmgn]" },
+          "workspacedatasource": { "value": "[variables('globalvariable').genericresourceprefix.workspacedatasource]" },
+          "workspacedatasourcemgn": { "value": "[variables('globalvariable').genericresourceprefix.workspacedatasourcemgn]" },
+          "automationaccount": { "value": "[variables('globalvariable').genericresourceprefix.automationaccount]" },
+          "automationaccountmgn": { "value": "[variables('globalvariable').genericresourceprefix.automationaccountmgn]" },
+          "workspace": { "value": "[variables('globalvariable').genericresourceprefix.workspace]" },
+          "workspacemgn": { "value": "[variables('globalvariable').genericresourceprefix.workspacemgn]" },
+          "linkedservice": { "value": "[variables('globalvariable').genericresourceprefix.linkedservice]" },
+          "linkedservicemgn": { "value": "[variables('globalvariable').genericresourceprefix.linkedservicemgn]" },
+          "ddosplan": { "value": "[variables('globalvariable').genericresourceprefix.ddosplan]" },
+          "ddosplanmgn": { "value": "[variables('globalvariable').genericresourceprefix.ddosplanmgn]" },
+          "networkwatcher": { "value": "[variables('globalvariable').genericresourceprefix.networkwatcher]" },
+          "networkwatchermgn": { "value": "[variables('globalvariable').genericresourceprefix.networkwatchermgn]" },
+          "networkwatcherflowlog": { "value": "[variables('globalvariable').genericresourceprefix.networkwatcherflowlog]" },
+          "networkwatcherflowlogmgn": { "value": "[variables('globalvariable').genericresourceprefix.networkwatcherflowlogmgn]" },
+          "databaseauditsetting": { "value": "[variables('globalvariable').genericresourceprefix.databaseauditsetting]" },
+          "databaseauditsettingmgn": { "value": "[variables('globalvariable').genericresourceprefix.databaseauditsettingmgn]" },
+          "databasetransparencrypt": { "value": "[variables('globalvariable').genericresourceprefix.databasetransparencrypt]" },
+          "databasetransparencryptmgn": { "value": "[variables('globalvariable').genericresourceprefix.databasetransparencryptmgn]" },
+          "dataasesecalertpol": { "value": "[variables('globalvariable').genericresourceprefix.dataasesecalertpol]" },
+          "dataasesecalertpolmgn": { "value": "[variables('globalvariable').genericresourceprefix.dataasesecalertpolmgn]" },
+          "databasevulassess": { "value": "[variables('globalvariable').genericresourceprefix.databasevulassess]" },
+          "databasevulassessmgn": { "value": "[variables('globalvariable').genericresourceprefix.databasevulassessmgn]" },
+          "virrtualhub": { "value": "[variables('globalvariable').genericresourceprefix.virrtualhub]" },
+          "virrtualhubmgn": { "value": "[variables('globalvariable').genericresourceprefix.virrtualhubmgn]" },
+          "virrtualhubconnection": { "value": "[variables('globalvariable').genericresourceprefix.virrtualhubconnection]" },
+          "virrtualhubconnectionmgn": { "value": "[variables('globalvariable').genericresourceprefix.virrtualhubconnectionmgn]" },
+          "virtualwan": { "value": "[variables('globalvariable').genericresourceprefix.virtualwan]" },
+          "virtualwanmgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualwanmgn]" },
+          "vpngateway": { "value": "[variables('globalvariable').genericresourceprefix.vpngateway]" },
+          "vpngatewaymgn": { "value": "[variables('globalvariable').genericresourceprefix.vpngatewaymgn]" },
+          "expressroutegateway": { "value": "[variables('globalvariable').genericresourceprefix.expressroutegateway]" },
+          "expressroutegatewaymgn": { "value": "[variables('globalvariable').genericresourceprefix.expressroutegatewaymgn]" },
+          "virtualmachineextension": { "value": "[variables('globalvariable').genericresourceprefix.virtualmachineextension]" },
+          "virtualmachineextensionmgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualmachineextensionmgn]" },
+          "dbformysql": { "value": "[variables('globalvariable').genericresourceprefix.dbformysql]" },
+          "dbformysqlmgn": { "value": "[variables('globalvariable').genericresourceprefix.dbformysqlmgn]" },
+          "dbforpostgres": { "value": "[variables('globalvariable').genericresourceprefix.dbforpostgres]" },
+          "dbforpostgresmgn": { "value": "[variables('globalvariable').genericresourceprefix.dbforpostgresmgn]" },
+          "sqlmanagedinst": { "value": "[variables('globalvariable').genericresourceprefix.sqlmanagedinst]" },
+          "sqlmanagedinstmgn": { "value": "[variables('globalvariable').genericresourceprefix.sqlmanagedinstmgn]" },
+          "sqlserver": { "value": "[variables('globalvariable').genericresourceprefix.sqlserver]" },
+          "sqlservermgn": { "value": "[variables('globalvariable').genericresourceprefix.sqlservermgn]" },
+          "opmanagesolution": { "value": "[variables('globalvariable').genericresourceprefix.opmanagesolution]" },
+          "opmanagesolutionmgn": { "value": "[variables('globalvariable').genericresourceprefix.opmanagesolutionmgn]" },
+          "sqldb": { "value": "[variables('globalvariable').genericresourceprefix.sqldb]" },
+          "sqldbmgn": { "value": "[variables('globalvariable').genericresourceprefix.sqldbmgn]" },
+          "appservice": { "value": "[variables('globalvariable').genericresourceprefix.appservice]" },
+          "appservicemgn": { "value": "[variables('globalvariable').genericresourceprefix.appservicemgn]" },
+          "apimanage": { "value": "[variables('globalvariable').genericresourceprefix.apimanage]" },
+          "apimanagemgn": { "value": "[variables('globalvariable').genericresourceprefix.apimanagemgn]" },
+          "appconfig": { "value": "[variables('globalvariable').genericresourceprefix.appconfig]" },
+          "appconfigmgn": { "value": "[variables('globalvariable').genericresourceprefix.appconfigmgn]" },
+          "appserviceplan": { "value": "[variables('globalvariable').genericresourceprefix.appserviceplan]" },
+          "appserviceplanmgn": { "value": "[variables('globalvariable').genericresourceprefix.appserviceplanmgn]" },
+          "azurefonction": { "value": "[variables('globalvariable').genericresourceprefix.azurefonction]" },
+          "azurefonctionmgn": { "value": "[variables('globalvariable').genericresourceprefix.azurefonctionmgn]" },
+          "cloudservice": { "value": "[variables('globalvariable').genericresourceprefix.cloudservice]" },
+          "cloudservicemgn": { "value": "[variables('globalvariable').genericresourceprefix.cloudservicemgn]" },
+          "cosmosdb": { "value": "[variables('globalvariable').genericresourceprefix.cosmosdb]" },
+          "cosmosdbmgn": { "value": "[variables('globalvariable').genericresourceprefix.cosmosdbmgn]" },
+          "redisdb": { "value": "[variables('globalvariable').genericresourceprefix.redisdb]" },
+          "redisdbmgn": { "value": "[variables('globalvariable').genericresourceprefix.redisdbmgn]" },
+          "sqldatawarehouse": { "value": "[variables('globalvariable').genericresourceprefix.sqldatawarehouse]" },
+          "sqldatawarehousemgn": { "value": "[variables('globalvariable').genericresourceprefix.sqldatawarehousemgn]" },
+          "azuresearch": { "value": "[variables('globalvariable').genericresourceprefix.azuresearch]" },
+          "azuresearchmgn": { "value": "[variables('globalvariable').genericresourceprefix.azuresearchmgn]" },
+          "cognitiveservice": { "value": "[variables('globalvariable').genericresourceprefix.cognitiveservice]" },
+          "cognitiveservicemgn": { "value": "[variables('globalvariable').genericresourceprefix.cognitiveservicemgn]" },
+          "machinelearnignwokspace": { "value": "[variables('globalvariable').genericresourceprefix.machinelearnignwokspace]" },
+          "machinelearnignwokspacemgn": { "value": "[variables('globalvariable').genericresourceprefix.machinelearnignwokspacemgn]" },
+          "datalakestorage": { "value": "[variables('globalvariable').genericresourceprefix.datalakestorage]" },
+          "datalakestoragemgn": { "value": "[variables('globalvariable').genericresourceprefix.datalakestoragemgn]" },
+          "datalakeanalytic": { "value": "[variables('globalvariable').genericresourceprefix.datalakeanalytic]" },
+          "datalakeanalyticmgn": { "value": "[variables('globalvariable').genericresourceprefix.datalakeanalyticmgn]" },
+          "datafactory": { "value": "[variables('globalvariable').genericresourceprefix.datafactory]" },
+          "datafactorymgn": { "value": "[variables('globalvariable').genericresourceprefix.datafactorymgn]" },
+          "eventhub": { "value": "[variables('globalvariable').genericresourceprefix.eventhub]" },
+          "eventhubmgn": { "value": "[variables('globalvariable').genericresourceprefix.eventhubmgn]" },
+          "notificationhub": { "value": "[variables('globalvariable').genericresourceprefix.notificationhub]" },
+          "notificationhubmgn": { "value": "[variables('globalvariable').genericresourceprefix.notificationhubmgn]" },
+          "notificationhubnamespace": { "value": "[variables('globalvariable').genericresourceprefix.notificationhubnamespace]" },
+          "notificationhubnamespacemgn": { "value": "[variables('globalvariable').genericresourceprefix.notificationhubnamespacemgn]" },
+          "blueprint": { "value": "[variables('globalvariable').genericresourceprefix.blueprint]" },
+          "blueprintmgn": { "value": "[variables('globalvariable').genericresourceprefix.blueprintmgn]" },
+
+          "azmonitorappinsig": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorappinsig]" },
+          "azmonitorappinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorappinsigmgn]" },
+          "azmonitorvminsig": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorvminsig]" },
+          "azmonitorvminsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorvminsigmgn]" },
+          "azmonitornetworkinsig": { "value": "[variables('globalvariable').genericresourceprefix.azmonitornetworkinsig]" },
+          "azmonitornetworkinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitornetworkinsigmgn]" },
+          "azmonitorsqlinsig": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorsqlinsig]" },
+          "azmonitorsqlinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorsqlinsigmgn]" },
+          "azmonitorcontainerinsig": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorcontainerinsig]" },
+          "azmonitorcontainerinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorcontainerinsigmgn]" },
+          "azmonitorcosmosdbinsig": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorcosmosdbinsig]" },
+          "azmonitorcosmosdbinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorcosmosdbinsigmgn]" },
+          "azmonitorressourcegpinsig": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorressourcegpinsig]" },
+          "azmonitorressourcegpinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorressourcegpinsigmgn]" },
+          "azmonitorstorageinsig": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorstorageinsig]" },
+          "azmonitorstorageinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorstorageinsigmgn]" },
+          "azmonitorkeyvaultinsig": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorkeyvaultinsig]" },
+          "azmonitorkeyvaultinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorkeyvaultinsigmgn]" },
+          "azmonitorredisinsig": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorredisinsig]" },
+          "azmonitorredisinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorredisinsigmgn]" },
+          "virtualmachinescaleset": { "value": "[variables('globalvariable').genericresourceprefix.virtualmachinescaleset]" },
+          "virtualmachinescalesetmgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualmachinescalesetmgn]" },
+          "trafficmanage": { "value": "[variables('globalvariable').genericresourceprefix.trafficmanage]" },
+          "trafficmanagemgn": { "value": "[variables('globalvariable').genericresourceprefix.trafficmanagemgn]" },
+          "cdn": { "value": "[variables('globalvariable').genericresourceprefix.cdn]" },
+          "cdnmgn": { "value": "[variables('globalvariable').genericresourceprefix.cdnmgn]" },
+          "migrate": { "value": "[variables('globalvariable').genericresourceprefix.migrate]" },
+          "migratemgn": { "value": "[variables('globalvariable').genericresourceprefix.migratemgn]" },
+          "managedapp": { "value": "[variables('globalvariable').genericresourceprefix.managedapp]" },
+          "managedappmgn": { "value": "[variables('globalvariable').genericresourceprefix.managedappmgn]" },
+          "kubernettescluster": { "value": "[variables('globalvariable').genericresourceprefix.kubernettescluster]" },
+          "kubernettesclustermgn": { "value": "[variables('globalvariable').genericresourceprefix.kubernettesclustermgn]" },
+          "azureacr": { "value": "[variables('globalvariable').genericresourceprefix.azureacr]" },
+          "azureacrmgn": { "value": "[variables('globalvariable').genericresourceprefix.azureacrmgn]" },
+          "fontdoor": { "value": "[variables('globalvariable').genericresourceprefix.fontdoor]" },
+          "fontdoormgn": { "value": "[variables('globalvariable').genericresourceprefix.fontdoormgn]" },
+          "backup": { "value": "[variables('globalvariable').genericresourceprefix.backup]" },
+          "backupmgn": { "value": "[variables('globalvariable').genericresourceprefix.backupmgn]" },
+          "bastionhost": { "value": "[variables('globalvariable').genericresourceprefix.bastionhost]" },
+          "bastionhostmgn": { "value": "[variables('globalvariable').genericresourceprefix.bastionhostmgn]" }
+
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "[concat('delayFor', copyIndex())]",
+      "location": "[deployment().location]",
+      "scope": "[variables('globalvariable').scope]",
+      "dependsOn": [
+        "[variables('deploymentNames').policyDeploymentName]"
+      ],
+      "copy": {
+        "batchSize": 1,
+        "count": 20,
+        "mode": "Serial",
+        "name": "DeploymentDelay"
+      },
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "resources": [],
+          "outputs": {}
+        }
+      }
+    },
+    {
+      "condition": "[not(empty(parameters('managementSubscriptionId')))]",
+      "type": "Microsoft.Management/managementGroups/subscriptions",
+      "apiVersion": "2020-05-01",
+      "name": "[if(not(empty(parameters('managementSubscriptionId'))), variables('moveSubscription'), variables('noSubscription'))]",
+      "dependsOn": [
+        "[variables('deploymentNames').mgmtGroupDeploymentName]"
+      ],
+      "properties": {}
+    },
+    {
+      "condition": "[not(empty(parameters('identitySubscriptionId')))]",
+      "type": "Microsoft.Management/managementGroups/subscriptions",
+      "apiVersion": "2020-05-01",
+      "name": "[if(not(empty(parameters('identitySubscriptionId'))), variables('identityMoveSubscription'), variables('noIdentitySubscription'))]",
+      "dependsOn": [
+        "[variables('deploymentNames').mgmtGroupDeploymentName]"
+      ],
+      "properties": {}
+    },
+    {
+      "condition": "[not(empty(parameters('onlineLzSubscriptionId')))]",
+      "type": "Microsoft.Management/managementGroups/subscriptions",
+      "apiVersion": "2020-05-01",
+      "name": "[if(not(empty(parameters('onlineLzSubscriptionId'))), concat(parameters('enterpriseScaleCompanyPrefix'), '-online', '/', parameters('onlineLzSubscriptionId')[copyIndex()]), variables('noOnlineLzSubscription'))]",
+      "dependsOn": [
+        "[variables('deploymentNames').mgmtGroupDeploymentName]"
+      ],
+      "copy": {
+        "name": "onlineLzMove",
+        "count": "[length(parameters('onlineLzSubscriptionId'))]"
+      },
+      "properties": {}
+    },
+    {
+      "condition": "[not(empty(parameters('corpLzSubscriptionId')))]",
+      "type": "Microsoft.Management/managementGroups/subscriptions",
+      "apiVersion": "2020-05-01",
+      "name": "[if(not(empty(parameters('corpLzSubscriptionId'))), concat(parameters('enterpriseScaleCompanyPrefix'), '-corp', '/', parameters('corpLzSubscriptionId')[copyIndex()]), variables('noCorpLzSubscription'))]",
+      "dependsOn": [
+        "[variables('deploymentNames').mgmtGroupDeploymentName]"
+      ],
+      "copy": {
+        "name": "onlineLzMove",
+        "count": "[length(parameters('corpLzSubscriptionId'))]"
+      },
+      "properties": {}
+    },
+    {
+      "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'Yes'))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-05-01",
+      "scope": "[variables('globalvariable').scopemanagement]",
+      "name": "[variables('deploymentNames').monitoringDeploymentName]",
+      "dependsOn": [
+        "[variables('deploymentNames').policyDeploymentName]",
+        "DeploymentDelay"
+      ],
+      "location": "[deployment().location]",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "contentVersion": "1.0.0.0",
+          "uri": "[variables('deploymentUris').monitoring]"
+        },
+        "parameters": {
+          "topLevelManagementGroupPrefix": {
+            "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+          },
+          "resourceTags": {
+            "value": "[variables('resourceTags')]"
+          },
+          "enableLogAnalytics": {
+            "value": "[parameters('enableLogAnalytics')]"
+          },
+          "managementSubscriptionId": {
+            "value": "[parameters('managementSubscriptionId')]"
+          },
+          "retentionInDays": {
+            "value": "[parameters('retentionInDays')]"
+          }
+        }
+      }
+    },
+    {
+      "condition": "[and(not(empty(parameters('managementSubscriptionId'))), or(or(or(or(or(equals(parameters('enableSecuritySolution'), 'Yes'), equals(parameters('enableAgentHealth'), 'Yes')), equals(parameters('enableChangeTracking'), 'Yes')), equals(parameters('enableUpdateMgmt'), 'Yes'), equals(parameters('enableActivityLog'), 'Yes')), equals(parameters('enableAntiMalware'), 'Yes'), equals(parameters('enableVmInsights'), 'Yes')), equals(parameters('enableServiceMap'), 'Yes'), equals(parameters('enableSqlAssessment'), 'Yes')))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-05-01",
+      "subscriptionId": "[parameters('managementSubscriptionId')]",
+      "name": "[variables('deploymentNames').monitoringSolutionsDeploymentName]",
+      "dependsOn": [
+        "[variables('deploymentNames').monitoringDeploymentName]"
+      ],
+      "location": "[deployment().location]",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "contentVersion": "1.0.0.0",
+          "uri": "[variables('deploymentUris').monitoringSolutions]"
+        },
+        "parameters": {
+          "topLevelManagementGroupPrefix": {
+            "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+          },
+          "resourceTags": {
+            "value": "[variables('resourceTags')]"
+          },
+          "managementSubscriptionId": {
+            "value": "[parameters('managementSubscriptionId')]"
+          },
+          "enableSecuritySolution": {
+            "value": "[parameters('enableSecuritySolution')]"
+          },
+          "enableAgentHealth": {
+            "value": "[parameters('enableAgentHealth')]"
+          },
+          "enableChangeTracking": {
+            "value": "[parameters('enableChangeTracking')]"
+          },
+          "enableUpdateMgmt": {
+            "value": "[parameters('enableUpdateMgmt')]"
+          },
+          "enableActivityLog": {
+            "value": "[parameters('enableActivityLog')]"
+          },
+          "enableAntiMalware": {
+            "value": "[parameters('enableAntiMalware')]"
+          },
+          "enableVmInsights": {
+            "value": "[parameters('enableVmInsights')]"
+          },
+          "enableServiceMap": {
+            "value": "[parameters('enableServiceMap')]"
+          },
+          "enableSqlAssessment": {
+            "value": "[parameters('enableSqlAssessment')]"
+          }
+        }
+      }
+    },
+    {
+      "condition": "[not(empty(parameters('identitySubscriptionId')))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-05-01",
+      "scope": "[variables('globalvariable').scopeidentity]",
+      "name": "[variables('deploymentNames').identityDeploymentName]",
+      "dependsOn": [
+        "[variables('deploymentNames').policyDeploymentName]",
+        "DeploymentDelay"
+      ],
+      "location": "[deployment().location]",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "contentVersion": "1.0.0.0",
+          "uri": "[variables('deploymentUris').identity]"
+        },
+        "parameters": {
+          "topLevelManagementGroupPrefix": {
+            "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+          },
+          "resourceTags": {
+            "value": "[variables('resourceTags')]"
+          },
+          "denyRdpForIdentity": {
+            "value": "[parameters('denyRdpForIdentity')]"
+          },
+          "denySubnetWithoutNsgForIdentity": {
+            "value": "[parameters('denySubnetWithoutNsgForIdentity')]"
+          },
+          "denyPipForIdentity": {
+            "value": "[parameters('denyPipForIdentity')]"
+          },
+          "enableVmBackupForIdentity": {
+            "value": "[parameters('enableVmBackupForIdentity')]"
+          }
+        }
+      }
+    },
+    {
+      "condition": "[or(or(or(or(or(or(equals(parameters('enableVmBackup'), 'Yes'), equals(parameters('enableSqlAudit'), 'Yes')), equals(parameters('denyAksPrivilegedEscalation'), 'Yes'), equals(parameters('denyHttpIngressForAks'), 'Yes')), equals(parameters('denyAksPrivileged'), 'Yes'), equals(parameters('denyAksPrivileged'), 'Yes')), equals(parameters('denySubnetWithoutNsg'), 'Yes'), equals(parameters('enableSqlAssessment'), 'Yes')), equals(parameters('enableVmMonitoring'), 'Yes'), equals(parameters('enableVmMonitoring'), 'Yes')), equals(parameters('enableSqlEncryption'), 'Yes'), equals(parameters('enableStorageHttps'), 'Yes'))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-05-01",
+      "scope": "[variables('globalvariable').scopelz]",
+      "name": "[variables('deploymentNames').lzDeploymentName]",
+      "dependsOn": [
+        "[variables('deploymentNames').policyDeploymentName]",
+        "DeploymentDelay"
+      ],
+      "location": "[deployment().location]",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "contentVersion": "1.0.0.0",
+          "uri": "[variables('deploymentUris').landingZone]"
+        },
+        "parameters": {
+          "topLevelManagementGroupPrefix": {
+            "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+          },
+          "resourceTags": {
+            "value": "[variables('resourceTags')]"
+          },
+          "denyHttpIngressForAks": {
+            "value": "[parameters('denyHttpIngressForAks')]"
+          },
+          "denyAksPrivilegedEscalation": {
+            "value": "[parameters('denyAksPrivilegedEscalation')]"
+          },
+          "denyAksPrivileged": {
+            "value": "[parameters('denyAksPrivileged')]"
+          },
+          "enableSqlAudit": {
+            "value": "[parameters('enableSqlAudit')]"
+          },
+          "enableSqlEncryption": {
+            "value": "[parameters('enableSqlEncryption')]"
+          },
+          "enableVmBackup": {
+            "value": "[parameters('enableVmBackup')]"
+          },
+          "denyRdp": {
+            "value": "[parameters('denyRdp')]"
+          },
+          "enableAksPolicy": {
+            "value": "[parameters('enableAksPolicy')]"
+          },
+          "enableStorageHttps": {
+            "value": "[parameters('enableStorageHttps')]"
+          },
+          "denyIpForwarding": {
+            "value": "[parameters('denyIpForwarding')]"
+          },
+          "denySubnetWithoutNsg": {
+            "value": "[parameters('denySubnetWithoutNsg')]"
+          }
+        }
+      }
+    },
+    {
+      "condition": "[and(not(empty(parameters('managementSubscriptionId'))), or(equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAsc'), 'Yes')))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-05-01",
+      "scope": "[variables('globalvariable').scope]",
+      "name": "[variables('deploymentNames').diagAndSecDeploymentName]",
+      "dependsOn": [
+        "[variables('deploymentNames').monitoringDeploymentName]",
+        "DeploymentDelay"
+      ],
+      "location": "[deployment().location]",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "contentVersion": "1.0.0.0",
+          "uri": "[variables('deploymentUris').diagnosticsAndSecurity]"
+        },
+        "parameters": {
+          "topLevelManagementGroupPrefix": {
+            "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+          },
+          "resourceTags": {
+            "value": "[variables('resourceTags')]"
+          },
+          "enableLogAnalytics": {
+            "value": "[parameters('enableLogAnalytics')]"
+          },
+          "enableAsc": {
+            "value": "[parameters('enableAsc')]"
+          },
+          "enableAscForServers": {
+            "value": "[parameters('enableAscForServers')]"
+          },
+          "enableAscForAppServices": {
+            "value": "[parameters('enableAscForAppServices')]"
+          },
+          "enableAscForStorage": {
+            "value": "[parameters('enableAscForStorage')]"
+          },
+          "enableAscForSql": {
+            "value": "[parameters('enableAscForSql')]"
+          },
+          "enableAscForKeyVault": {
+            "value": "[parameters('enableAscForKeyVault')]"
+          },
+          "enableAscForArm": {
+            "value": "[parameters('enableAscForArm')]"
+          },
+          "enableAscForDns": {
+            "value": "[parameters('enableAscForDns')]"
+          },
+          "enableAscForKubernetes": {
+            "value": "[parameters('enableAscForKubernetes')]"
+          },
+          "enableAscForRegistries": {
+            "value": "[parameters('enableAscForRegistries')]"
+          },
+          "managementSubscriptionId": {
+            "value": "[parameters('managementSubscriptionId')]"
+          },
+          "onlineLzSubscriptionId": {
+            "value": "[parameters('onlineLzSubscriptionId')]"
+          },
+          "corpLzSubscriptionId": {
+            "value": "[parameters('corpLzSubscriptionId')]"
+          },
+          "identitySubscriptionId": {
+            "value": "[parameters('identitySubscriptionId')]"
+          },
+          "connectivitySubscriptionId": {
+            "value": "[parameters('connectivitySubscriptionId')]"
+          },
+          "enableVmMonitoring": {
+            "value": "[parameters('enableVmMonitoring')]"
+          },
+          "enableVmssMonitoring": {
+            "value": "[parameters('enableVmssMonitoring')]"
+          },
+          "enableArcMonitoring": {
+            "value": "[parameters('enableArcMonitoring')]"
+          }
+        }
+      }
+    },
+    {
+      "condition": "[not(empty(parameters('connectivitySubscriptionId')))]",
+      "type": "Microsoft.Management/managementGroups/subscriptions",
+      "apiVersion": "2020-05-01",
+      "name": "[if(not(empty(parameters('connectivitySubscriptionId'))), variables('connectivityMoveSubscription'), variables('noConnectivitySubscription'))]",
+      "dependsOn": [
+        "DeploymentDelay"
+      ],
+      "properties": {}
+    },
+    {
+      "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableVwan'), 'Yes'))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-05-01",
+      "scope": "[variables('globalvariable').scopeconnectivity]",
+      "name": "[variables('deploymentNames').connectivityDeploymentName]",
+      "dependsOn": [
+        "[variables('deploymentNames').diagAndSecDeploymentName]",
+        "DeploymentDelay"
+      ],
+      "location": "[deployment().location]",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "contentVersion": "1.0.0.0",
+          "uri": "[variables('deploymentUris').connectivity]"
+        },
+        "parameters": {
+          "topLevelManagementGroupPrefix": {
+            "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+          },
+          "resourceTags": {
+            "value": "[variables('resourceTags')]"
+          },
+          "enableVwan": {
+            "value": "[parameters('enableVwan')]"
+          },
+          "enableAzFw": {
+            "value": "[parameters('enableAzFw')]"
+          },
+          "addressPrefix": {
+            "value": "[parameters('addressPrefix')]"
+          },
+          "enableVpnGw": {
+            "value": "[parameters('enableVpnGw')]"
+          },
+          "enableErGw": {
+            "value": "[parameters('enableErGw')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "connectivitySubscriptionId": {
+            "value": "[parameters('connectivitySubscriptionId')]"
+          }
+        }
+      }
+    }
+    
+     
+  ],
     "outputs": {
         "deployment": {
             "type": "string",
