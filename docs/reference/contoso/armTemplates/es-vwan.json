@@ -1363,7 +1363,107 @@
                     }
                 }
             }
+        },
+    
+    {
+      "condition": "[equals(parameters('enableCustomRBAC'), 'Yes')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-05-01",
+      "scope": "[  variables('globalvariable').scope]",
+      "name": "[variables('deploymentNames').customrbacDeploymentName]",
+      "dependsOn": [
+        "[variables('deploymentNames').mgmtGroupDeploymentName]",
+        "DeploymentDelay"
+      ],
+      "location": "[deployment().location]",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "contentVersion": "1.0.0.0",
+          "uri": "[variables('deploymentUris').customrbac]"
+        },
+        "parameters": {
+          "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
+          "prefixmgn": { "value": "[variables('globalvariable').prefixmgn]" },
+          "appname": { "value": "[variables('globalvariable').appname]" },
+          "businessunit": { "value": "[variables('globalvariable').businessunit]" },
+          "scope": { "value": "[variables('globalvariable').scope]" },
+          "scopeplatform": { "value": "[variables('globalvariable').scopeplatform]" },
+          "scopemanagement": { "value": "[variables('globalvariable').scopemanagement]" },
+          "scopeconnectivity": { "value": "[variables('globalvariable').scopeconnectivity]" },
+          "scopeidentity": { "value": "[variables('globalvariable').scopeidentity]" },
+          "scopelz": { "value": "[variables('globalvariable').scopelz]" },
+          "scopelzonline": { "value": "[variables('globalvariable').scopelzonline]" },
+          "scopelzcorp": { "value": "[variables('globalvariable').scopelzcorp]" },
+          "mgngroupmgn": { "value": "[variables('globalvariable').genericresourceprefix.mgngroupmgn]" },
+          "resourcgroupmgn": { "value": "[variables('globalvariable').genericresourceprefix.resourcgroupmgn]" },
+          "policydefpmgn": { "value": "[variables('globalvariable').genericresourceprefix.policydefpmgn]" },
+          "policyassignmgn": { "value": "[variables('globalvariable').genericresourceprefix.policyassignmgn]" },
+          "rbacassignmgn": { "value": "[variables('globalvariable').genericresourceprefix.rbacassignmgn]" },
+          "rbacdefmgn": { "value": "[variables('globalvariable').genericresourceprefix.rbacdefmgn]" }
         }
+      }
+    },
+    
+    {
+      
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-05-01",
+      "scope": "[  variables('globalvariable').scope]",
+      "name": "[variables('deploymentNames').customPoliciesAssigDeploymentName]",
+      "dependsOn": [
+        "[variables('deploymentNames').mgmtGroupDeploymentName]",
+        "DeploymentDelay"
+      ],
+      "location": "[deployment().location]",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "contentVersion": "1.0.0.0",
+          "uri": "[variables('deploymentUris').custompoliciesassign]"
+        },
+        "parameters": {
+          "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
+          "listOfAllowedLocations": { "value": "[parameters('listOfAllowedLocations')]" },
+          "prefixmgn": { "value": "[variables('globalvariable').prefixmgn]" },
+          "appname": { "value": "[variables('globalvariable').appname]" },
+          "businessunit": { "value": "[variables('globalvariable').businessunit]" },
+          "scope": { "value": "[variables('globalvariable').scope]" },
+          "scopeplatform": { "value": "[variables('globalvariable').scopeplatform]" },
+          "scopemanagement": { "value": "[variables('globalvariable').scopemanagement]" },
+          "scopeconnectivity": { "value": "[variables('globalvariable').scopeconnectivity]" },
+          "scopeidentity": { "value": "[variables('globalvariable').scopeidentity]" },
+          "scopelz": { "value": "[variables('globalvariable').scopelz]" },
+          "scopelzonline": { "value": "[variables('globalvariable').scopelzonline]" },
+          "scopelzcorp": { "value": "[variables('globalvariable').scopelzcorp]" },
+          
+          "mgngroupmgn": { "value": "[variables('globalvariable').genericresourceprefix.mgngroupmgn]" },
+          "resourcgroupmgn": { "value": "[variables('globalvariable').genericresourceprefix.resourcgroupmgn]" },
+          "policydefpmgn": { "value": "[variables('globalvariable').genericresourceprefix.policydefpmgn]" },
+          "policyassignmgn": { "value": "[variables('globalvariable').genericresourceprefix.policyassignmgn]" },
+          "rbacassignmgn": { "value": "[variables('globalvariable').genericresourceprefix.rbacassignmgn]" },
+          "rbacdefmgn": { "value": "[variables('globalvariable').genericresourceprefix.rbacdefmgn]" },
+          "apply-pbmm": { "value": "[parameters('apply-pbmm')]" },
+          "apply-kubclust-sec-base-linux-wk": { "value": "[parameters('apply-kubclust-sec-base-linux-wk')]" },
+          "apply-kubclust-sec-strict-linux-wk": { "value": "[parameters('apply-kubclust-sec-strict-linux-wk')]" },
+          "apply-windows-vm-security-base": { "value": "[parameters('apply-windows-vm-security-base')]" },
+          "apply-data-protection-suite": { "value": "[parameters('apply-data-protection-suite')]" },
+          "apply-flowlog-nsg-iaas": { "value": "[parameters('apply-flowlog-nsg-iaas')]" },
+          "apply-config-azuremonitor-security-agent-vm-iaas": { "value": "[parameters('apply-config-azuremonitor-security-agent-vm-iaas')]" },
+          "apply-vm-insecure-pwd-security-iaas": { "value": "[parameters('apply-vm-insecure-pwd-security-iaas')]" },
+          "apply-deny-public-endpoint-paas": { "value": "[parameters('apply-deny-public-endpoint-paas')]" },
+          "apply-tls-ssl-enforcement-encrypt-paas": { "value": "[parameters('apply-tls-ssl-enforcement-encrypt-paas')]" },
+          "apply-audit-resource-without-encryption": { "value": "[parameters('apply-audit-resource-without-encryption')]" },
+          
+          "esrequiretagcost": { "value": "[variables('tagsByResource')]" },
+          "tagauditpolicy": { "value": "[parameters('tagauditpolicy')]" }
+           
+
+
+
+        }
+      }
+    }
 
     ],
     "outputs": {
