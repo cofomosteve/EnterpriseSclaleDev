@@ -245,7 +245,14 @@
         // },
 
         /*******************************************PBMM Canada****************************************************/
-
+        "allowedVMSizesku": {
+            "type": "array",
+            "metadata": {
+                "displayName": "Which VM Wize?",
+                "description": "allowedVMSizesku"
+            },
+            "defaultValue": []
+        },
         "listOfResourceTypesWithDiagnosticLogsEnabled": {
             "type": "array",
             "defaultValue": []
@@ -275,6 +282,7 @@
 
     },
     "variables": {
+        "delimiters": [ ",", ";" ],
         //********************************Variable for Generic Naming Convention*************************************/
         "prefixmgn": "[parameters('globalvariable').prefixmgn]",
         "appname": "[parameters('globalvariable').appname]",
@@ -288,21 +296,144 @@
         "scopelz": "[parameters('globalvariable').scopelz]",
         "scopelzonline": "[parameters('globalvariable').scopelzonline]",
         "scopelzcorp": "[parameters('globalvariable').scopelzcorp]",
-        
+        // "tagsByResource": "[ if(contains(parameters('resourceTags'), 'Microsoft.*'), parameters('resourceTags')['Microsoft.*'], json('{}')) ]",
+        // "tagsByResourceArray": "[createArray(variables('tagsByResource'))]",
+
 
 
 
         "policyAssignmentNames": {
+
+
+
+
+            "policyTagDefinitions": [
+
+
+                {
+                    "copy": {
+                        "name": "resourceTagscopy",
+                        "count": "[length(parameters('resourceTags'))]"
+                    },
+
+                    "name": "[concat('require-tag-resource-lz', copyIndex())]",
+                    "apply": "[parameters('tagauditpolicy')]",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "tagName": { "value": "[parameters('resourceTags')[copyIndex()]]" },
+                        "tagValue": { "value": "[parameters('resourceTags')[copyIndex()]]" }
+                    },
+                    "description": "Enforces a required tag and its value. Does not apply to resource groups."
+                }
+
+                /*{// verifie un tag specific et sa valeur spécific a la creation et rejete
+                    "name": "require-tag-resource",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+                    "scope": "[variables('scope')]",
+                    "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Enforces a required tag and its value. Does not apply to resource groups."
+                },
+                {// verifie un Tag a la creation et rejete. Cost center
+                    "name": "force-exist-tag-resource",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                    "scope": "[variables('scopelzonline')]",
+                   "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" }                        
+                    },
+                    "description": "Enforces existence of a tag. Does not apply to resource groups.."
+                },*/
+
+
+                //tagauditpolicy
+                /*,
+                {
+                    "name": "require-tag-resource-lz",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Enforces a required tag and its value. Does not apply to resource groups."
+                },
+                {
+                    "name": "force-exist-tag-resource-lz",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+                    "scope": "[variables('scopelzonline')]",
+                     "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" }                        
+                    },
+                    "description": "Enforces existence of a tag. Does not apply to resource groups.."
+                },
+               
+                {
+                    "name": "add-tag-resource",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4f9dc7db-30c1-420c-b61a-e1d640128d26",
+                    "scope": "[variables('scope')]",
+                   "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Adds the specified tag and value when any resource missing this tag is created or updated. Existing resources can be remediated by triggering a remediation task. If the tag exists with a different value it will not be changed. Does not modify tags on resource groups."
+                },
+                {
+                    "name": "add-tag-resource-lz",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4f9dc7db-30c1-420c-b61a-e1d640128d26",
+                    "scope": "[variables('scopelzonline')]",
+                    "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Adds the specified tag and value when any resource missing this tag is created or updated. Existing resources can be remediated by triggering a remediation task. If the tag exists with a different value it will not be changed. Does not modify tags on resource groups."
+                },
+                {// Ajoute et Modifie un Tag. Cost center
+                    "name": "add-replace-tag-resource",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5ffd78d9-436d-4b41-a421-5baa819e3008",
+                    "scope": "[variables('scope')]",
+                    "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Adds or replaces the specified tag and value when any resource is created or updated. Existing resources can be remediated by triggering a remediation task. Does not modify tags on resource groups."
+                },
+                {
+                    "name": "add-replace-tag-resource-lz",
+                    "apply": "Yes",
+                    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5ffd78d9-436d-4b41-a421-5baa819e3008",
+                    "scope": "[variables('scopelzonline')]",
+                   "parameters": {
+                        "tagName": { "value": "[parameters('genericparam')]" },
+                        "tagValue": { "value": "[parameters('genericparam')]" }
+                    },
+                    "description": "Adds or replaces the specified tag and value when any resource is created or updated. Existing resources can be remediated by triggering a remediation task. Does not modify tags on resource groups."
+                }*/
+
+            ],
             "policyDefinitions": [
+
+
                 /***************************VM*/
                 {
                     "name": "vm-account-sku-allowed",
-                    "apply": "Yes",
+                    "apply": "[not(empty(parameters('allowedVMSizesku')))]",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cccc23c7-8427-4f53-ad12-b6a63eb452b3",
                     "scope": "[variables('scopelz')]",
-                    // "parameters": {
-                    //     "xxxxxx": { "value": "[parameters('genericparam')]" }
-                    // },
+                    "parameters": {
+                        "listOfAllowedSKUs": {
+                            "value": "[parameters('allowedVMSizesku')]"
+                        }
+                    },
                     "description": "Allowed virtual machine SKUs"
 
                 },
@@ -910,7 +1041,7 @@
                 "name": "PolicySetAssignmentCopy",
                 "count": "[length(variables('policyAssignmentNames').policySetDefinitions)]"
             },
-            //"condition": "[equals(variables('policyAssignmentNames').policySetDefinitions[copyIndex()].apply), 'Yes']",
+            "condition": "[equals(variables('policyAssignmentNames').policySetDefinitions[copyIndex()].apply, 'Yes')]",
             "name": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].name]",
             "location": "[deployment().location]",
             "identity": {
@@ -932,7 +1063,7 @@
                 "name": "PolicyAssignmentCopy",
                 "count": "[length(variables('policyAssignmentNames').policyDefinitions)]"
             },
-            //"condition": "[equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply), 'Yes']",
+            //            "condition": "[or(equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, 'Yes'),equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, Yes))]",
             "name": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].name]",
             "location": "[deployment().location]",
             "identity": {

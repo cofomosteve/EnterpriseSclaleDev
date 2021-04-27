@@ -572,6 +572,14 @@
             "defaultValue": "No"
         },
 
+        "allowedVMSizesku": {
+            "type": "array",
+            "metadata": {
+                "displayName": "Which VM Wize?",
+                "description": "allowedVMSizesku"
+            },
+            "defaultValue": []
+        },
 
         "listOfResourceTypesWithDiagnosticLogsEnabled": {
             "type": "Array",
@@ -860,10 +868,7 @@
                     "uri": "[variables('deploymentUris').policyDefinitions]"
                 },
                 "parameters": {
-                    "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
-
-                    "resourceTags": { "value": "[variables('resourceTags')]" },
-                    "globalvariable": { "value": "[variables('globalvariable')]" }
+                    "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" } 
                 }
             }
         },
@@ -1273,74 +1278,8 @@
                     }
                 }
             }
-        },
-
-        {
-            "condition": "[equals(parameters('enableCustomRBAC'), 'Yes')]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
-            "scope": "[  variables('globalvariable').scope]",
-            "name": "[variables('deploymentNames').customrbacDeploymentName]",
-            "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]",
-                "DeploymentDelay"
-            ],
-            "location": "[deployment().location]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').customrbac]"
-                },
-                "parameters": {
-                    "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
-
-                    
-                    "globalvariable": { "value": "[variables('globalvariable')]" }
-                }
-            }
-        },
-
-        {
-
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
-            "scope": "[  variables('globalvariable').scope]",
-            "name": "[variables('deploymentNames').customPoliciesAssigDeploymentName]",
-            "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]",
-                "DeploymentDelay"
-            ],
-            "location": "[deployment().location]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').custompoliciesassign]"
-                },
-                "parameters": {
-
-                    "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
-
-                    "resourceTags": { "value": "[variables('resourceTags')]" },
-                    "globalvariable": { "value": "[variables('globalvariable')]" },
-                    "apply-pbmm": { "value": "[parameters('apply-pbmm')]" },
-                    "apply-kubclust-sec-base-linux-wk": { "value": "[parameters('apply-kubclust-sec-base-linux-wk')]" },
-                    "apply-kubclust-sec-strict-linux-wk": { "value": "[parameters('apply-kubclust-sec-strict-linux-wk')]" },
-                    "apply-windows-vm-security-base": { "value": "[parameters('apply-windows-vm-security-base')]" },
-                    "apply-data-protection-suite": { "value": "[parameters('apply-data-protection-suite')]" },
-                    "apply-flowlog-nsg-iaas": { "value": "[parameters('apply-flowlog-nsg-iaas')]" },
-                    "apply-config-azuremonitor-security-agent-vm-iaas": { "value": "[parameters('apply-config-azuremonitor-security-agent-vm-iaas')]" },
-                    "apply-vm-insecure-pwd-security-iaas": { "value": "[parameters('apply-vm-insecure-pwd-security-iaas')]" },
-                    "apply-deny-public-endpoint-paas": { "value": "[parameters('apply-deny-public-endpoint-paas')]" },
-                    "apply-tls-ssl-enforcement-encrypt-paas": { "value": "[parameters('apply-tls-ssl-enforcement-encrypt-paas')]" },
-                    "apply-audit-resource-without-encryption": { "value": "[parameters('apply-audit-resource-without-encryption')]" },
-                    "tagauditpolicy": { "value": "[parameters('tagauditpolicy')]" }                    
-
-
-                }
-            }
         }
+        
 
     ],
     "outputs": {
