@@ -115,50 +115,32 @@
             "type": "String",
             "defaultValue": ""
         },
-        "mgngroup": {
-            "type": "String",
-            "defaultValue": ""
-        },
+         
         "mgngroupmgn": {
             "type": "String",
             "defaultValue": ""
         },
-        "resourcgroup": {
-            "type": "String",
-            "defaultValue": ""
-        },
+        
         "resourcgroupmgn": {
             "type": "String",
             "defaultValue": ""
         },
-        "policydefp": {
-            "type": "String",
-            "defaultValue": ""
-        },
+       
         "policydefpmgn": {
             "type": "String",
             "defaultValue": ""
         },
-        "policyassign": {
-            "type": "String",
-            "defaultValue": ""
-        },
+         
         "policyassignmgn": {
             "type": "String",
             "defaultValue": ""
         },
-        "rbacdef": {
-            "type": "String",
-            "defaultValue": ""
-        },
+        
         "rbacdefmgn": {
             "type": "String",
             "defaultValue": ""
         },
-        "rbacassign": {
-            "type": "String",
-            "defaultValue": ""
-        },
+         
         "rbacassignmgn": {
             "type": "String",
             "defaultValue": ""
@@ -384,15 +366,11 @@
         "scopelzcorp": "[parameters('scopelzcorp')]",
 
         "genericresourceprefix": {
-            "mgngroup": "[parameters('mgngroup')]",
+            
             "mgngroupmgn": "[parameters('mgngroupmgn')]",
-            "resourcgroup": "[parameters('resourcgroup')]",
             "resourcgroupmgn": "[parameters('resourcgroupmgn')]",
-            "policydefp": "[parameters('policydefp')]",
             "policydefpmgn": "[parameters('policydefpmgn')]",
-            "policyassign": "[parameters('policyassign')]",
             "policyassignmgn": "[parameters('policyassignmgn')]",
-            "rbacassign": "[parameters('rbacassign')]",
             "rbacassignmgn": "[parameters('rbacassignmgn')]"
         },
 

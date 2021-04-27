@@ -1,30 +1,15 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "prefixmgn": {
-            "type": "string",
-            "metadata": {
-                "description": "Provide prefix for the management group structure."
-            }
-        },
+    "parameters": {        
         "topLevelManagementGroupPrefix": {
             "type": "string",
             "metadata": {
                 "description": "Provide prefix for the management group structure."
             }
         },
-  "resourceTags": {
-        "type": "object",
-        "defaultValue": {
-            "CostCenter": "ITxxx",
-            "Env": "Prod",
-            "RAD": "Mission Critique",
-            "CIDC": "111",
-            "Direction": "SHARED"
-        }
-    },
  
+
         "platformMgs": {
             "type": "array",
             "defaultValue": [
@@ -49,7 +34,7 @@
         }
     },
     "variables": {
-        "prefixmgn": "[parameters('prefixmgn')]",
+
         "topLevelManagementGroupPrefix": "[ parameters('topLevelManagementGroupPrefix')]",
 
         "enterpriseScaleManagementGroups": {
@@ -80,7 +65,7 @@
                 "displayName": "[variables('enterpriseScaleManagementGroups').platform]",
                 "details": {
                     "parent": {
-                    "id": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]"
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]"
                     }
                 }
             }
@@ -97,7 +82,7 @@
                 "displayName": "[variables('enterpriseScaleManagementGroups').landingZone]",
                 "details": {
                     "parent": {
-                    "id": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]"
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]"
                     }
                 }
             }
@@ -114,7 +99,7 @@
                 "displayName": "[variables('enterpriseScaleManagementGroups').sandboxes]",
                 "details": {
                     "parent": {
-                    "id": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]"
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]"
                     }
                 }
             }
@@ -131,11 +116,11 @@
                 "displayName": "[variables('enterpriseScaleManagementGroups').jumpboxes]",
                 "details": {
                     "parent": {
-                    "id": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]"
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]"
                     }
                 }
             }
-        },         
+        },
         {
             // Create management group for decommissioned subscriptions
             "type": "Microsoft.Management/managementGroups",
@@ -148,11 +133,11 @@
                 "displayName": "[variables('enterpriseScaleManagementGroups').decommissioned]",
                 "details": {
                     "parent": {
-                    "id": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]"
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]"
                     }
                 }
             }
-        },        
+        },
         {
             // Create child management groups for platform resources
             "condition": "[not(empty(parameters('platformMgs')))]",

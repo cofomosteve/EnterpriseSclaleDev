@@ -614,219 +614,165 @@
             "scopelzcorp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-corp')]",
 
             "genericresourceprefix": {
-                "mgngroup": "[variables('globalvariable').prefixmgn]",
-                "mgngroupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.mgngroup,   parameters('enterpriseScaleCompanyPrefix')),'CAF')]",
-                "resourcgroup": "rg-",
 
-                "resourcgroupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.resourcgroup,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "policydefp": "pdef-",
-                "policydefpmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.policydefp,   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "policyassign": "passign-",
-                "policyassignmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.policyassign,   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+                "mgngroupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').prefixmgn,   parameters('enterpriseScaleCompanyPrefix')),'CAF')]",
+                "resourcgroupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('rg-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
 
-                "rbacassign": "RBAC-CUSTOM-",
-                "rbacassignmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.rbacassign,   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "rbacdef": "rbac-ass-",
-                "rbacdefmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.rbacdef,   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "loganalyticwk": "la-",
-                "loganalyticwkmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.loganalyticwk,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "keyvault": "kv-",
-                "keyvaultmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.keyvault,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "storage": "st-",
-                "storagemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.storage,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
-                "storagediagnostic": "st-",
-                "storagediagnosticmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.storagediagnostic,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "conatainerinstance": "aci-",
-                "conatainerinstancemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.conatainerinstance,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "containerregistry": "acr-",
-                "containerregistrymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.containerregistry,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "budgetconsumption": "bdcon-",
-                "budgetconsumptionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.budgetconsumption,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "diasgsetting": "kv-",
-                "diasgsettingmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.diasgsetting,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "deployment": "dp-",
-                "deploymentmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.deployment,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+                "policydefpmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('pdef-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "policyassignmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('passign-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
 
 
-                "virtualnetwork": "vnet-",
-                "virtualnetworkmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virtualnetwork,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
-                "subnet": "snet-",
-                "subnetmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.subnet,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
-                "virtualnetworkpeering": "vnet-peer",
-                "virtualnetworkpeeringmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virtualnetworkpeering,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "virtualnetworkgateway": "vnet-gw-v-",
-                "virtualnetworkgatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virtualnetworkgateway,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
-                "localnetworkgateway": "vnet-gw-l-",
-                "localnetworkgatewaylocalmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.localnetworkgateway,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
-                "networksitetosite": "cm-",
-                "networksitetositemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.networksitetosite,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
-                "vpnconnection": "cn-",
-                "vpnconnectionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.vpnconnection,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
-                "nsg": "nsg-",
-                "nsgmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.nsg,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
-                "asg": "asg-",
-                "asgmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.asg,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
-                "pubip": "pip-",
-                "pubipmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.pubip,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+                "rbacassignmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('RBAC-CUSTOM-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
 
-                "virtualmachine": "vm-",
-                "virtualmachinemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virtualmachine,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "virtualmachinestorageaccount": "stvm-",
-                "virtualmachinestorageaccountmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virtualmachinestorageaccount,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "nic": "nic-",
-                "nicmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virtualmachinestorageaccount,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+                "rbacdefmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('rbac-ass-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
 
-                "dnsprivate": "dns-",
-                "dnsprivatemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.dnsprivate,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "dnspubblic": "dns-",
-                "dnspubblicmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.dnspubblic,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "loadbalancer": "stvm-",
-                "loadbalancermgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.loadbalancer,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "applicationgateway": "app-gt-",
-                "applicationgatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virtualmachinestorageaccount,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+                "loganalyticwkmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('la-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
 
-                "privatelink": "priv-lk-",
-                "privatelinkmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.privatelink,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "privateendpoint": "priv-end-p-",
-                "privateendpointmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.privateendpoint,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azurefirewall": "fw-",
-                "azurefirewallmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azurefirewall,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azurefirewallpolicies": "fw-pol-",
-                "azurefirewallpoliciesmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azurefirewallpolicies,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azurefirewallrulegroup": "fw-rul-",
-                "azurefirewallrulegroupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azurefirewallrulegroup,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "securityprincing": "sec-pric-",
-                "securityprincingmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.securityprincing,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "workspacedatasource": "wk-dt-",
-                "workspacedatasourcemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.workspacedatasource,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "automationaccount": "aut-acc-",
-                "automationaccountmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.automationaccount,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "workspace": "wk-",
-                "workspacemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.workspace,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "linkedservice": "lk-svc-",
-                "linkedservicemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.linkedservice,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "ddosplan": "ddos-pl-",
-                "ddosplanmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.ddosplan,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "networkwatcher": "nt-watch-",
-                "networkwatchermgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.networkwatcher,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+                "keyvaultmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('kv-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
 
-                "networkwatcherflowlog": "nt-watch-fl-",
-                "networkwatcherflowlogmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.networkwatcherflowlog,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "databaseauditsetting": "db-aud-set-",
-                "databaseauditsettingmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.databaseauditsetting,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "databasetransparencrypt": "db-trans-enc-",
-                "databasetransparencryptmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.databasetransparencrypt,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "dataasesecalertpol": "db-sec-al-pol-",
-                "dataasesecalertpolmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.dataasesecalertpol,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "databasevulassess": "db-vulass-",
-                "databasevulassessmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.databasevulassess,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "virrtualhub": "vhub-",
-                "virrtualhubmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virrtualhub,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "virrtualhubconnection": "vhub-con-",
-                "virrtualhubconnectionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virrtualhubconnection,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "virtualwan": "vwan-",
-                "virtualwanmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virtualwan,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "vpngateway": "vpn-gt-",
-                "vpngatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.vpngateway,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "expressroutegateway": "ex-gt-",
-                "expressroutegatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.expressroutegateway,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+                "storagemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('st-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
 
-                "virtualmachineextension": "vm-ext-",
-                "virtualmachineextensionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virtualmachineextension,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "dbformysql": "mysqldb-",
-                "dbformysqlmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.dbformysql,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "dbforpostgres": "pgdb-",
-                "dbforpostgresmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.dbforpostgres,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "sqlmanagedinst": "sql-mgn-i-",
-                "sqlmanagedinstmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.sqlmanagedinst,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "sqlserver": "sqlsvr-",
-                "sqlservermgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.sqlserver,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+                "storagediagnosticmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('st-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "conatainerinstancemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('aci-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "containerregistrymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('acr-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "budgetconsumptionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('bdcon-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "diasgsettingmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('kv-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "deploymentmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('dp-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
 
 
-                "opmanagesolution": "op-mgn-sol-",
-                "opmanagesolutionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.opmanagesolution,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
 
-                "sqldb": "sqldb-",
-                "sqldbmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.sqldb,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "appservice": "azapp-",
-                "appservicemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.appservice,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "apimanage": "azpia-",
-                "apimanagemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.apimanage,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "appconfig": "appcf-",
-                "appconfigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.appconfig,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "appserviceplan": "azapp-pl-",
-                "appserviceplanmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.appserviceplan,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azurefonction": "azfun-",
-                "azurefonctionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azurefonction,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "cloudservice": "azcs-",
-                "cloudservicemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.cloudservice,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "cosmosdb": "cosdb-",
-                "cosmosdbmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.cosmosdb,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "redisdb": "redis-",
-                "redisdbmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.redisdb,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "sqldatawarehouse": "sqldw-",
-                "sqldatawarehousemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.sqldatawarehouse,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azuresearch": "srch-",
-                "azuresearchmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azuresearch,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "cognitiveservice": "cs-",
-                "cognitiveservicemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.cognitiveservice,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "machinelearnignwokspace": "aml-",
-                "machinelearnignwokspacemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.machinelearnignwokspace,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "datalakestorage": "dls-",
-                "datalakestoragemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.datalakestorage,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "datalakeanalytic": "dla-",
-                "datalakeanalyticmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.datalakeanalytic,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "datafactory": "df-",
-                "datafactorymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.datafactory,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "eventhub": "evh-",
-                "eventhubmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.eventhub,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "notificationhub": "anh-",
-                "notificationhubmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.notificationhub,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "notificationhubnamespace": "anhns-",
-                "notificationhubnamespacemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.notificationhubnamespace,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "blueprint": "bp-",
-                "blueprintmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.blueprint,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+                "virtualnetworkmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vnet-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
 
-                "azmonitorappinsig": "app-ins-",
-                "azmonitorappinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azmonitorappinsig,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azmonitorvminsig": "vm-ins-",
-                "azmonitorvminsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azmonitorvminsig,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azmonitornetworkinsig": "nwt-ins-",
-                "azmonitornetworkinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azmonitornetworkinsig,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azmonitorsqlinsig": "sql-ins-",
-                "azmonitorsqlinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azmonitorsqlinsig,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azmonitorcontainerinsig": "ctn-ins-",
-                "azmonitorcontainerinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azmonitorcontainerinsig,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azmonitorcosmosdbinsig": "cosdb-ins-",
-                "azmonitorcosmosdbinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azmonitorcosmosdbinsig,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azmonitorressourcegpinsig": "rg-ins-",
-                "azmonitorressourcegpinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azmonitorressourcegpinsig,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azmonitorstorageinsig": "stor-ins-",
-                "azmonitorstorageinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azmonitorstorageinsig,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azmonitorkeyvaultinsig": "kv-ins-",
-                "azmonitorkeyvaultinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azmonitorkeyvaultinsig,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azmonitorredisinsig": "redis-ins-",
-                "azmonitorredisinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azmonitorredisinsig,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "virtualmachinescaleset": "vm-set-",
-                "virtualmachinescalesetmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.virtualmachinescaleset,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "trafficmanage": "tf-",
-                "trafficmanagemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.trafficmanage,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "cdn": "cdn-",
-                "cdnmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.cdn,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "migrate": "azmigr-",
-                "migratemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.migrate,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "managedapp": "mgnapp-",
-                "managedappmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.managedapp,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "kubernettescluster": "aks-",
-                "kubernettesclustermgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.kubernettescluster,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "azureacr": "azacr-",
-                "azureacrmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.azureacr,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "fontdoor": "fd-",
-                "fontdoormgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.fontdoor,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "backup": "bk-",
-                "backupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.backup,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
-                "bastionhost": "bh-",
-                "bastionhostmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').genericresourceprefix.bastionhost,  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]"
+                "subnetmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('snet-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "virtualnetworkpeeringmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vnet-peer-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virtualnetworkgatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vnet-gw-v-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "localnetworkgatewaylocalmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vnet-gw-l-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "networksitetositemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('cm-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "vpnconnectionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('cn-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "nsgmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('nsg-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "asgmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('asg-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "pubipmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('pip-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+
+                "virtualmachinemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vm-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virtualmachinestorageaccountmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('stvm-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "nicmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('nic-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+                "dnsprivatemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('dnspriv-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "dnspubblicmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('dns-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "loadbalancermgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('lb-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "applicationgatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('app-gt-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+                "privatelinkmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('priv-lk-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "privateendpointmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('priv-end-p-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azurefirewallmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('fw-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azurefirewallpoliciesmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('fw-pol-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azurefirewallrulegroupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('fw-rul-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "securityprincingmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('sec-pric-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "workspacedatasourcemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('wk-dt-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "automationaccountmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('aut-acc-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "workspacemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('wk-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "linkedservicemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('lk-svc-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "ddosplanmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('ddos-pl-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "networkwatchermgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('nt-watch-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+                "networkwatcherflowlogmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('nt-watch-fl-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "databaseauditsettingmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('db-aud-set-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "databasetransparencryptmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('db-trans-enc-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "dataasesecalertpolmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('db-sec-al-pol-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "databasevulassessmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('db-vulass-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virrtualhubmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vhub-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virrtualhubconnectionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vhub-con-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virtualwanmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vwan-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "vpngatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vpn-gt-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "expressroutegatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('ex-gt-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virtualmachineextensionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vm-ext-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+
+                "opmanagesolutionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('op-mgn-sol-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+
+
+                "azmonitorappinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('app-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorvminsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vm-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitornetworkinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('nwt-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorsqlinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('sql-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorcontainerinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('ctn-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorcosmosdbinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('cosdb-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorressourcegpinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('rg-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorstorageinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('stor-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorkeyvaultinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('kv-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorredisinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('redis-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "trafficmanagemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('tf-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "cdnmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('cdn-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "migratemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('azmigr-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+
+                "azureacrmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('azacr-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "fontdoormgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('fd-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "backupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('bk-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "bastionhostmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('bh-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]"
 
 
 
@@ -894,13 +840,6 @@
                 "parameters": {
                     "topLevelManagementGroupPrefix": {
                         "value": "[variables('globalvariable').topLevelManagementGroupPrefix]" //"[parameters('enterpriseScaleCompanyPrefix')]"
-
-                    },
-                    "prefixmgn": {
-                        "value": "[variables('globalvariable').prefixmgn]"
-                    },
-                    "resourceTags": {
-                        "value": "[variables('resourceTags')]"
                     }
                 }
             }
@@ -935,9 +874,85 @@
                     "scopeidentity": { "value": "[variables('globalvariable').scopeidentity]" },
                     "scopelz": { "value": "[variables('globalvariable').scopelz]" },
                     "scopelzonline": { "value": "[variables('globalvariable').scopelzonline]" },
-                    "scopelzcorp": { "value": "[variables('globalvariable').scopelzcorp]" }
+                    "scopelzcorp": { "value": "[variables('globalvariable').scopelzcorp]" },
+
+                 
+                    "mgngroupmgn": { "value": "[variables('globalvariable').genericresourceprefix.mgngroupmgn]" },
+                    "resourcgroupmgn": { "value": "[variables('globalvariable').genericresourceprefix.resourcgroupmgn]" },
+                    "policydefpmgn": { "value": "[variables('globalvariable').genericresourceprefix.policydefpmgn]" },
+                    "policyassignmgn": { "value": "[variables('globalvariable').genericresourceprefix.policyassignmgn]" },
+                    "rbacassignmgn": { "value": "[variables('globalvariable').genericresourceprefix.rbacassignmgn]" },
+                    "rbacdefmgn": { "value": "[variables('globalvariable').genericresourceprefix.rbacdefmgn]" },
+                    "loganalyticwkmgn": { "value": "[variables('globalvariable').genericresourceprefix.loganalyticwkmgn]" },
+                    "keyvaultmgn": { "value": "[variables('globalvariable').genericresourceprefix.keyvaultmgn]" },
+                    "storagemgn": { "value": "[variables('globalvariable').genericresourceprefix.storagemgn]" },
+                    "storagediagnosticmgn": { "value": "[variables('globalvariable').genericresourceprefix.storagediagnosticmgn]" },
+                    "conatainerinstancemgn": { "value": "[variables('globalvariable').genericresourceprefix.conatainerinstancemgn]" },
+                    "containerregistrymgn": { "value": "[variables('globalvariable').genericresourceprefix.containerregistrymgn]" },
+                    "budgetconsumptionmgn": { "value": "[variables('globalvariable').genericresourceprefix.budgetconsumptionmgn]" },
+                    "diasgsettingmgn": { "value": "[variables('globalvariable').genericresourceprefix.diasgsettingmgn]" },
+                    "deploymentmgn": { "value": "[variables('globalvariable').genericresourceprefix.deploymentmgn]" },
+                    "virtualnetworkmgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualnetworkmgn]" },
+                    "subnetmgn": { "value": "[variables('globalvariable').genericresourceprefix.subnetmgn]" },
+                    "virtualnetworkpeeringmgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualnetworkpeeringmgn]" },
+                    "virtualnetworkgatewaymgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualnetworkgatewaymgn]" },
+                    "localnetworkgatewaylocalmgn": { "value": "[variables('globalvariable').genericresourceprefix.localnetworkgatewaylocalmgn]" },
+                    "networksitetositemgn": { "value": "[variables('globalvariable').genericresourceprefix.networksitetositemgn]" },
+                    "vpnconnectionmgn": { "value": "[variables('globalvariable').genericresourceprefix.vpnconnectionmgn]" },
+                    "nsgmgn": { "value": "[variables('globalvariable').genericresourceprefix.nsgmgn]" },
+                    "asgmgn": { "value": "[variables('globalvariable').genericresourceprefix.asgmgn]" },
+                    "pubipmgn": { "value": "[variables('globalvariable').genericresourceprefix.pubipmgn]" },
+                    "virtualmachinemgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualmachinemgn]" },
+                    "virtualmachinestorageaccountmgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualmachinestorageaccountmgn]" },
+                    "nicmgn": { "value": "[variables('globalvariable').genericresourceprefix.nicmgn]" },
+                    "dnsprivatemgn": { "value": "[variables('globalvariable').genericresourceprefix.dnsprivatemgn]" },
+                    "dnspubblicmgn": { "value": "[variables('globalvariable').genericresourceprefix.dnspubblicmgn]" },
+                    "loadbalancermgn": { "value": "[variables('globalvariable').genericresourceprefix.loadbalancermgn]" },
+                    "applicationgatewaymgn": { "value": "[variables('globalvariable').genericresourceprefix.applicationgatewaymgn]" },
+                    "privatelinkmgn": { "value": "[variables('globalvariable').genericresourceprefix.privatelinkmgn]" },
+                    "privateendpointmgn": { "value": "[variables('globalvariable').genericresourceprefix.privateendpointmgn]" },
+                    "azurefirewallmgn": { "value": "[variables('globalvariable').genericresourceprefix.azurefirewallmgn]" },
+                    "azurefirewallpoliciesmgn": { "value": "[variables('globalvariable').genericresourceprefix.azurefirewallpoliciesmgn]" },
+                    "azurefirewallrulegroupmgn": { "value": "[variables('globalvariable').genericresourceprefix.azurefirewallrulegroupmgn]" },
+                    "securityprincingmgn": { "value": "[variables('globalvariable').genericresourceprefix.securityprincingmgn]" },
+                    "workspacedatasourcemgn": { "value": "[variables('globalvariable').genericresourceprefix.workspacedatasourcemgn]" },
+                    "automationaccountmgn": { "value": "[variables('globalvariable').genericresourceprefix.automationaccountmgn]" },
+                    "workspacemgn": { "value": "[variables('globalvariable').genericresourceprefix.workspacemgn]" },
+                    "linkedservicemgn": { "value": "[variables('globalvariable').genericresourceprefix.linkedservicemgn]" },
+                    "ddosplanmgn": { "value": "[variables('globalvariable').genericresourceprefix.ddosplanmgn]" },
+                    "networkwatchermgn": { "value": "[variables('globalvariable').genericresourceprefix.networkwatchermgn]" },
+                    "networkwatcherflowlogmgn": { "value": "[variables('globalvariable').genericresourceprefix.networkwatcherflowlogmgn]" },
+                    "databaseauditsettingmgn": { "value": "[variables('globalvariable').genericresourceprefix.databaseauditsettingmgn]" },
+                    "databasetransparencryptmgn": { "value": "[variables('globalvariable').genericresourceprefix.databasetransparencryptmgn]" },
+                    "dataasesecalertpolmgn": { "value": "[variables('globalvariable').genericresourceprefix.dataasesecalertpolmgn]" },
+                    "databasevulassessmgn": { "value": "[variables('globalvariable').genericresourceprefix.databasevulassessmgn]" },
+                    "virrtualhubmgn": { "value": "[variables('globalvariable').genericresourceprefix.virrtualhubmgn]" },
+                    "virrtualhubconnectionmgn": { "value": "[variables('globalvariable').genericresourceprefix.virrtualhubconnectionmgn]" },
+                    "virtualwanmgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualwanmgn]" },
+                    "vpngatewaymgn": { "value": "[variables('globalvariable').genericresourceprefix.vpngatewaymgn]" },
+                    "expressroutegatewaymgn": { "value": "[variables('globalvariable').genericresourceprefix.expressroutegatewaymgn]" },
+                    "virtualmachineextensionmgn": { "value": "[variables('globalvariable').genericresourceprefix.virtualmachineextensionmgn]" },
+                    "opmanagesolutionmgn": { "value": "[variables('globalvariable').genericresourceprefix.opmanagesolutionmgn]" },
                     
-                    
+                    "azmonitorappinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorappinsigmgn]" },
+                    "azmonitorvminsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorvminsigmgn]" },
+                    "azmonitornetworkinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitornetworkinsigmgn]" },
+                    "azmonitorsqlinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorsqlinsigmgn]" },
+                    "azmonitorcontainerinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorcontainerinsigmgn]" },
+                    "azmonitorcosmosdbinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorcosmosdbinsigmgn]" },
+                    "azmonitorressourcegpinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorressourcegpinsigmgn]" },
+                    "azmonitorstorageinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorstorageinsigmgn]" },
+                    "azmonitorkeyvaultinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorkeyvaultinsigmgn]" },
+                    "azmonitorredisinsigmgn": { "value": "[variables('globalvariable').genericresourceprefix.azmonitorredisinsigmgn]" },
+                    "trafficmanagemgn": { "value": "[variables('globalvariable').genericresourceprefix.trafficmanagemgn]" },
+                    "cdnmgn": { "value": "[variables('globalvariable').genericresourceprefix.cdnmgn]" },
+                    "migratemgn": { "value": "[variables('globalvariable').genericresourceprefix.migratemgn]" },
+                    "azureacrmgn": { "value": "[variables('globalvariable').genericresourceprefix.azureacrmgn]" },
+                    "fontdoormgn": { "value": "[variables('globalvariable').genericresourceprefix.fontdoormgn]" },
+                    "backupmgn": { "value": "[variables('globalvariable').genericresourceprefix.backupmgn]" },
+                    "bastionhostmgn": { "value": "[variables('globalvariable').genericresourceprefix.bastionhostmgn]" }
+
+
 
                 }
             }
@@ -1349,7 +1364,7 @@
                 }
             }
         }
-        
+
     ],
     "outputs": {
         "deployment": {
