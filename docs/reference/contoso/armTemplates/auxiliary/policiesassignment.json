@@ -977,7 +977,7 @@
                 {
                     "name": "deny-public-endpoint-paas",
                     "apply": "[parameters('apply-deny-public-endpoint-paas')]",
-                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deny-PublicEndpoints')]",
+                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deny-PublicEndpoints')]",
                     "scope": "[variables('scope')]",
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
@@ -987,7 +987,7 @@
                 {
                     "name": "tls-ssl-enforcement-encrypt-paas",
                     "apply": "[parameters('apply-tls-ssl-enforcement-encrypt-paas')]",
-                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-EncryptTransit')]",
+                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-EncryptTransit')]",
                     "scope": "[variables('scope')]",
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
@@ -997,7 +997,7 @@
                 // {
                 //     "name": "setup-diagsetting-iaas",
                 //     "apply": "[parameters('apply-setup-diagsetting-iaas')]",
-                //     "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Diag-LogAnalytics')]",
+                //     "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Diag-LogAnalytics')]",
                 //     "scope": "[variables('scope')]",
                 //     "parameters": {
                 //         "xxxxxx": { "value": "[parameters('genericparam')]" }
@@ -1007,7 +1007,7 @@
                 {
                     "name": "audit-resource-without-encryption",
                     "apply": "[parameters('apply-audit-resource-without-encryption')]",
-                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-Encryption-CMK')]",
+                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-Encryption-CMK')]",
                     "scope": "[variables('scope')]",
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
@@ -1018,7 +1018,7 @@
                 // {
                 //     "name": "deploy-sql-security",
                 //     "apply": "[parameters('apply-deploy-sql-security')]",
-                //     "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Sql-Security')]",
+                //     "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Sql-Security')]",
                 //     "scope": "[variables('scope')]",
                 //     "parameters": {
                 //         "effect": { "value": "[parameters('SqlDbVulnerabilityAssessmentsDeploySqlSecurityEffect')]" },
