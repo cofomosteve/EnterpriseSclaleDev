@@ -9,6 +9,43 @@
                 "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
             }
         },
+        "esNamingConvention": {
+            "type": "string",
+
+            "metadata": {
+                "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
+            }
+        },
+        "listOfAllowedLocations": {
+            "type": "Array",
+            "defaultValue": [
+                "canadacentral",
+                "canadaeast"
+            ],
+            "metadata": {
+                "description": "The list of contact RBAC roles, in an array, to send the budget notification to when the threshold is exceeded."
+            }
+        },
+        "resourceTagsOQLF": {
+            "type": "object",
+            "defaultValue": {
+                "CentreCout": "DTI",
+                "Env": "Prod",
+                "RAD": "Mission Critique",
+                "CIDC": "111",
+                "NomApplication": "ES",
+                "Direction": "DTI"
+            }
+        },
+        "resourceTagCAF": {
+            "type": "object",
+            "defaultValue": {
+                "CostCenter": "ITxxx",
+                "Env": "Prod",
+                "DR": "Mission Critique",
+                "Direction": "SHARED"
+            }
+        },
         "managementSubscriptionId": {
             "type": "string",
             "defaultValue": "",
@@ -90,10 +127,22 @@
                 "description": "If 'Yes' is selected when also adding a subscription for management, ARM will assign two policies to enable auditing in your environment, into the Log Analytics workspace for platform monitoring. If 'No', it will be ignored."
             }
         },
+        "enableCustomRBAC": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "metadata": {
+                "description": "If 'Yes' is selected when also adding a subscription for management, ARM will assign two policies to enable auditing in your environment, into the Log Analytics workspace for platform monitoring. If 'No', it will be ignored."
+            }
+        },
+
         "retentionInDays": {
             "type": "string",
             "defaultValue": ""
-        },        
+        },
         "enableAsc": {
             "type": "string",
             "defaultValue": "No",
@@ -241,7 +290,7 @@
             "metadata": {
                 "description": "If 'Yes' is selected, policy will be assigned to enforce VMSS monitoring."
             }
-        }, 
+        },
         "enableSecuritySolution": {
             "type": "string",
             "defaultValue": "No",
@@ -313,7 +362,7 @@
                 "No"
             ],
             "defaultValue": "Yes"
-        },               
+        },
         "enableSqlAudit": {
             "type": "string",
             "defaultValue": "No",
@@ -409,14 +458,347 @@
                 "No"
             ],
             "defaultValue": "No"
+        },
+        "apply-pbmm": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-kubclust-sec-base-linux-wk": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-kubclust-sec-strict-linux-wk": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+
+        "apply-windows-vm-security-base": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-data-protection-suite": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-flowlog-nsg-iaas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-config-azuremonitor-security-agent-vm-iaas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-vm-insecure-pwd-security-iaas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-deny-public-endpoint-paas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-tls-ssl-enforcement-encrypt-paas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+
+        "apply-audit-resource-without-encryption": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+
+        "tagsByResource": {
+            "type": "object",
+            "defaultValue": {}
+        },
+
+        "cktagbyresource": {
+            "type": "bool",
+            "allowedValues": [
+                true,
+                false
+            ],
+            "defaultValue": false
+        },
+        "tagauditpolicy": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+
+        "allowedVMSizesku": {
+            "type": "array",
+            "metadata": {
+                "displayName": "Which VM Wize?",
+                "description": "allowedVMSizesku"
+            },
+            "defaultValue": []
+        },
+
+        "listOfResourceTypesWithDiagnosticLogsEnabled": {
+            "type": "Array",
+
+            "defaultValue": [
+
+            ]
+        },
+        "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": {
+            "type": "String",
+            "defaultValue": "AdminNo"
+
+        },
+        "listOfMembersToIncludeInWindowsVMAdministratorsGroup": {
+            "type": "String",
+            "defaultValue": "AdminYes"
+
         }
     },
     "variables": {
+
+        "resourceTagsOQLF": "[parameters('resourceTagsOQLF')]",
+        "tagsByResource": "[parameters('tagsByResource')]",
+        "resourceTagCAF": "[parameters('resourceTagCAF')]",
+        "resourceTags": "[if(equals(parameters('esNamingConvention'), 'OQLF'),variables('tagsByResource'),variables('resourceTagCAF'))]",
+
+        "globalvariable": {
+            "prefixmgn": "mg-",
+            "businessunit": "IT-",
+            "env": "prod-",
+            "appname": "ES-",
+            "topLevelManagementGroupPrefix": "[concat(variables('globalvariable').prefixmgn,parameters('enterpriseScaleCompanyPrefix'))]",
+            "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix)]",
+            "scopeplatform": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-platform')]",
+            "scopemanagement": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-management')]",
+            "scopeconnectivity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-connectivity')]",
+            "scopeidentity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-identity')]",
+            "scopelz": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-landingzones')]",
+            "scopelzonline": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-online')]",
+            "scopelzcorp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('globalvariable').topLevelManagementGroupPrefix, '-corp')]",
+
+            "genericresourceprefix": {
+
+                "mgngroupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat(variables('globalvariable').prefixmgn,   parameters('enterpriseScaleCompanyPrefix')),'CAF')]",
+                "resourcgroupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('rg-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "policydefpmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('pdef-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "policyassignmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('passign-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+                "rbacassignmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('RBAC-CUSTOM-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "rbacdefmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('rbac-ass-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "loganalyticwkmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('la-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "keyvaultmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('kv-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "storagemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('st-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "storagediagnosticmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('st-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "conatainerinstancemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('aci-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "containerregistrymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('acr-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "budgetconsumptionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('bdcon-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "diasgsettingmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('kv-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "deploymentmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('dp-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+
+                "virtualnetworkmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vnet-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "subnetmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('snet-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "virtualnetworkpeeringmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vnet-peer-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virtualnetworkgatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vnet-gw-v-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "localnetworkgatewaylocalmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vnet-gw-l-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "networksitetositemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('cm-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "vpnconnectionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('cn-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "nsgmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('nsg-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "asgmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('asg-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+                "pubipmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('pip-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env,'-',deployment().location),'CAF')]",
+
+
+                "virtualmachinemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vm-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virtualmachinestorageaccountmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('stvm-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "nicmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('nic-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+                "dnsprivatemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('dnspriv-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "dnspubblicmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('dns-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "loadbalancermgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('lb-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "applicationgatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('app-gt-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+                "privatelinkmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('priv-lk-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "privateendpointmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('priv-end-p-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azurefirewallmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('fw-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azurefirewallpoliciesmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('fw-pol-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azurefirewallrulegroupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('fw-rul-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "securityprincingmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('sec-pric-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "workspacedatasourcemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('wk-dt-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "automationaccountmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('aut-acc-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "workspacemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('wk-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "linkedservicemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('lk-svc-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "ddosplanmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('ddos-pl-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "networkwatchermgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('nt-watch-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+                "networkwatcherflowlogmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('nt-watch-fl-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "databaseauditsettingmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('db-aud-set-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "databasetransparencryptmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('db-trans-enc-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "dataasesecalertpolmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('db-sec-al-pol-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "databasevulassessmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('db-vulass-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virrtualhubmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vhub-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virrtualhubconnectionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vhub-con-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virtualwanmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vwan-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "vpngatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vpn-gt-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "expressroutegatewaymgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('ex-gt-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "virtualmachineextensionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vm-ext-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+
+                "opmanagesolutionmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('op-mgn-sol-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+
+
+                "azmonitorappinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('app-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorvminsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('vm-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitornetworkinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('nwt-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorsqlinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('sql-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorcontainerinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('ctn-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorcosmosdbinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('cosdb-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorressourcegpinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('rg-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorstorageinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('stor-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorkeyvaultinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('kv-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "azmonitorredisinsigmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('redis-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "trafficmanagemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('tf-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "cdnmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('cdn-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "migratemgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('azmigr-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+
+
+                "azureacrmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('azacr-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "fontdoormgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('fd-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "backupmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('bk-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]",
+
+                "bastionhostmgn": "[if(equals(parameters('esNamingConvention'), 'OQLF'),concat('bh-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('globalvariable').businessunit,variables('globalvariable').env),'CAF')]"
+
+
+
+
+
+
+            }
+
+
+        },
+
+
         "azPolicyEnvMapping": {
             "https://management.azure.com/": "auxiliary/policies.json",
             "https://management.chinacloudapi.cn": "auxiliary/mkPolicies.json",
             "https://management.azgov.com": "auxiliary/"
         },
+
         "azEnvPolicy": "[variables('azPolicyEnvMapping')[environment().resourceManager]]",
         "deploymentUris": {
             "managementGroups": "[uri(deployment().properties.templateLink.uri, 'auxiliary/mgmtGroups.json')]",
@@ -426,7 +808,9 @@
             "connectivity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/vwan-connectivity.json')]",
             "diagnosticsAndSecurity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/diagnosticsAndSecurity.json')]",
             "landingZone": "[uri(deployment().properties.templateLink.uri, 'auxiliary/lz.json')]",
-            "identity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/identity.json')]"
+            "identity": "[uri(deployment().properties.templateLink.uri, 'auxiliary/identity.json')]",
+            "customrbac": "[uri(deployment().properties.templateLink.uri, 'auxiliary/custom-rbac.json')]",
+            "custompoliciesassign": "[uri(deployment().properties.templateLink.uri, 'auxiliary/policiesassignment.json')]"
         },
         "moveSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-management', '/', parameters('managementSubscriptionId'))]",
         "noSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-management', '/', 'na')]",
@@ -444,7 +828,9 @@
             "diagAndSecDeploymentName": "[take(concat('EntScale-DiagSec', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "connectivityDeploymentName": "[take(concat('EntScale-conn', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "lzDeploymentName": "[take(concat('EntScale-LZ', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
-            "identityDeploymentName": "[take(concat('EntScale-ID', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]"
+            "identityDeploymentName": "[take(concat('EntScale-ID', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+            "customrbacDeploymentName": "[take(concat('EntScale-RBAC', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
+            "customPoliciesAssigDeploymentName": "[take(concat('EntScale-PoliciesAssig', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]"
         }
     },
     "resources": [
@@ -461,7 +847,7 @@
                 },
                 "parameters": {
                     "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+                        "value": "[variables('globalvariable').topLevelManagementGroupPrefix]" //"[parameters('enterpriseScaleCompanyPrefix')]"
                     }
                 }
             }
@@ -471,7 +857,7 @@
             "apiVersion": "2019-10-01",
             "name": "[variables('deploymentNames').policyDeploymentName]",
             "location": "[deployment().location]",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
+            "scope": "[variables('globalvariable').scope]",
             "dependsOn": [
                 "[variables('deploymentNames').mgmtGroupDeploymentName]"
             ],
@@ -482,9 +868,10 @@
                     "uri": "[variables('deploymentUris').policyDefinitions]"
                 },
                 "parameters": {
-                    "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
-                    }
+                    "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
+
+                    "resourceTags": { "value": "[variables('resourceTags')]" },
+                    "globalvariable": { "value": "[variables('globalvariable')]" }
                 }
             }
         },
@@ -493,7 +880,7 @@
             "apiVersion": "2019-10-01",
             "name": "[concat('delayFor', copyIndex())]",
             "location": "[deployment().location]",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
+            "scope": "[variables('globalvariable').scope]",
             "dependsOn": [
                 "[variables('deploymentNames').policyDeploymentName]"
             ],
@@ -561,12 +948,12 @@
                 "count": "[length(parameters('corpLzSubscriptionId'))]"
             },
             "properties": {}
-        },        
+        },
         {
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-management')]",
+            "scope": "[variables('globalvariable').scopemanagement]",
             "name": "[variables('deploymentNames').monitoringDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').policyDeploymentName]",
@@ -582,6 +969,9 @@
                 "parameters": {
                     "topLevelManagementGroupPrefix": {
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+                    },
+                    "resourceTags": {
+                        "value": "[variables('resourceTags')]"
                     },
                     "enableLogAnalytics": {
                         "value": "[parameters('enableLogAnalytics')]"
@@ -614,6 +1004,9 @@
                 "parameters": {
                     "topLevelManagementGroupPrefix": {
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+                    },
+                    "resourceTags": {
+                        "value": "[variables('resourceTags')]"
                     },
                     "managementSubscriptionId": {
                         "value": "[parameters('managementSubscriptionId')]"
@@ -652,7 +1045,7 @@
             "condition": "[not(empty(parameters('identitySubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-identity')]",
+            "scope": "[variables('globalvariable').scopeidentity]",
             "name": "[variables('deploymentNames').identityDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').policyDeploymentName]",
@@ -668,6 +1061,9 @@
                 "parameters": {
                     "topLevelManagementGroupPrefix": {
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+                    },
+                    "resourceTags": {
+                        "value": "[variables('resourceTags')]"
                     },
                     "denyRdpForIdentity": {
                         "value": "[parameters('denyRdpForIdentity')]"
@@ -688,7 +1084,7 @@
             "condition": "[or(or(or(or(or(or(equals(parameters('enableVmBackup'), 'Yes'), equals(parameters('enableSqlAudit'), 'Yes')), equals(parameters('denyAksPrivilegedEscalation'), 'Yes'), equals(parameters('denyHttpIngressForAks'), 'Yes')), equals(parameters('denyAksPrivileged'), 'Yes'), equals(parameters('denyAksPrivileged'), 'Yes')), equals(parameters('denySubnetWithoutNsg'), 'Yes'), equals(parameters('enableSqlAssessment'), 'Yes')), equals(parameters('enableVmMonitoring'), 'Yes'), equals(parameters('enableVmMonitoring'), 'Yes')), equals(parameters('enableSqlEncryption'), 'Yes'), equals(parameters('enableStorageHttps'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-landingzones')]",
+            "scope": "[variables('globalvariable').scopelz]",
             "name": "[variables('deploymentNames').lzDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').policyDeploymentName]",
@@ -704,6 +1100,9 @@
                 "parameters": {
                     "topLevelManagementGroupPrefix": {
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+                    },
+                    "resourceTags": {
+                        "value": "[variables('resourceTags')]"
                     },
                     "denyHttpIngressForAks": {
                         "value": "[parameters('denyHttpIngressForAks')]"
@@ -745,7 +1144,7 @@
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))), or(equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAsc'), 'Yes')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
+            "scope": "[variables('globalvariable').scope]",
             "name": "[variables('deploymentNames').diagAndSecDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').monitoringDeploymentName]",
@@ -761,6 +1160,9 @@
                 "parameters": {
                     "topLevelManagementGroupPrefix": {
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+                    },
+                    "resourceTags": {
+                        "value": "[variables('resourceTags')]"
                     },
                     "enableLogAnalytics": {
                         "value": "[parameters('enableLogAnalytics')]"
@@ -836,7 +1238,7 @@
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableVwan'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'), '-connectivity')]",
+            "scope": "[variables('globalvariable').scopeconnectivity]",
             "name": "[variables('deploymentNames').connectivityDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').diagAndSecDeploymentName]",
@@ -852,6 +1254,9 @@
                 "parameters": {
                     "topLevelManagementGroupPrefix": {
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+                    },
+                    "resourceTags": {
+                        "value": "[variables('resourceTags')]"
                     },
                     "enableVwan": {
                         "value": "[parameters('enableVwan')]"
@@ -876,7 +1281,75 @@
                     }
                 }
             }
+        },
+
+        {
+            "condition": "[equals(parameters('enableCustomRBAC'), 'Yes')]",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-05-01",
+            "scope": "[  variables('globalvariable').scope]",
+            "name": "[variables('deploymentNames').customrbacDeploymentName]",
+            "dependsOn": [
+                "[variables('deploymentNames').mgmtGroupDeploymentName]",
+                "DeploymentDelay"
+            ],
+            "location": "[deployment().location]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "contentVersion": "1.0.0.0",
+                    "uri": "[variables('deploymentUris').customrbac]"
+                },
+                "parameters": {
+                    "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
+
+
+                    "globalvariable": { "value": "[variables('globalvariable')]" }
+                }
+            }
+        },
+
+        {
+
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-05-01",
+            "scope": "[  variables('globalvariable').scope]",
+            "name": "[variables('deploymentNames').customPoliciesAssigDeploymentName]",
+            "dependsOn": [
+                "[variables('deploymentNames').mgmtGroupDeploymentName]",
+                "DeploymentDelay"
+            ],
+            "location": "[deployment().location]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "contentVersion": "1.0.0.0",
+                    "uri": "[variables('deploymentUris').custompoliciesassign]"
+                },
+                "parameters": {
+
+                    "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
+
+                    "resourceTags": { "value": "[variables('resourceTags')]" },
+                    "globalvariable": { "value": "[variables('globalvariable')]" },
+                    "apply-pbmm": { "value": "[parameters('apply-pbmm')]" },
+                    "apply-kubclust-sec-base-linux-wk": { "value": "[parameters('apply-kubclust-sec-base-linux-wk')]" },
+                    "apply-kubclust-sec-strict-linux-wk": { "value": "[parameters('apply-kubclust-sec-strict-linux-wk')]" },
+                    "apply-windows-vm-security-base": { "value": "[parameters('apply-windows-vm-security-base')]" },
+                    "apply-data-protection-suite": { "value": "[parameters('apply-data-protection-suite')]" },
+                    "apply-flowlog-nsg-iaas": { "value": "[parameters('apply-flowlog-nsg-iaas')]" },
+                    "apply-config-azuremonitor-security-agent-vm-iaas": { "value": "[parameters('apply-config-azuremonitor-security-agent-vm-iaas')]" },
+                    "apply-vm-insecure-pwd-security-iaas": { "value": "[parameters('apply-vm-insecure-pwd-security-iaas')]" },
+                    "apply-deny-public-endpoint-paas": { "value": "[parameters('apply-deny-public-endpoint-paas')]" },
+                    "apply-tls-ssl-enforcement-encrypt-paas": { "value": "[parameters('apply-tls-ssl-enforcement-encrypt-paas')]" },
+                    "apply-audit-resource-without-encryption": { "value": "[parameters('apply-audit-resource-without-encryption')]" },
+                    "tagauditpolicy": { "value": "[parameters('tagauditpolicy')]" },
+                    "allowedVMSizesku": {"value": "[parameters('allowedVMSizesku')]" }
+
+                }
+            }
         }
+
     ],
     "outputs": {
         "deployment": {
