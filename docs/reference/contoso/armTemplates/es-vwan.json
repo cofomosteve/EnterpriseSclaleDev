@@ -263,6 +263,7 @@
 
         "tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], json('{}')) ]",
         "tagsByResourceArray": "[createArray(variables('tagsByResourceout'))]",
+        "tagsByResourceArray2": "[split(variables('tagsByResourceArray'),',')]",
 
         "azPolicyEnvMapping": {
             "https://management.azure.com/": "auxiliary/policies.json",
@@ -829,6 +830,19 @@
         "tagsByResourceArray": {
             "type": "array",
             "value": "[variables('tagsByResourceArray')]"
+        },
+        "tagsByResourceArray1": {
+            "type": "string",
+            "value": "[variables('tagsByResourceArray')]"
+        } ,
+        "tagsByResourceArray2": {
+            "type": "array",
+            "value": "[variables('tagsByResourceArray2')]"
+        }
+        ,
+        "resourceTags": {
+            "type": "string",
+            "value": "[variables('resourceTags')]"
         }
     }
 }
