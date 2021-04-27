@@ -69,82 +69,13 @@
             ],
             "defaultValue": "No"
         },
+        "globalvariable": {
+            "type": "object",
+            "defaultValue": {}
+        },
         //********************************Param for Generic Naming Convention*************************************/
 
-        "prefixmgn": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        "businessunit": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        "appname": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        "scope": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        "scopeplatform": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        "scopemanagement": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        "scopeconnectivity": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        "scopeidentity": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        "scopelz": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        "scopelzonline": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        "scopelzcorp": {
-            "type": "String",
-            "defaultValue": ""
-        },
-         
-        "mgngroupmgn": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        
-        "resourcgroupmgn": {
-            "type": "String",
-            "defaultValue": ""
-        },
-       
-        "policydefpmgn": {
-            "type": "String",
-            "defaultValue": ""
-        },
-         
-        "policyassignmgn": {
-            "type": "String",
-            "defaultValue": ""
-        },
-        
-        "rbacdefmgn": {
-            "type": "String",
-            "defaultValue": ""
-        },
-         
-        "rbacassignmgn": {
-            "type": "String",
-            "defaultValue": ""
-        },
+
         "apply-pbmm": {
             "type": "string",
             "allowedValues": [
@@ -169,14 +100,7 @@
             ],
             "defaultValue": "No"
         },
-        // "apply-enable-monitor-vm-iaas": {
-        //     "type": "string",
-        //     "allowedValues": [
-        //         "Yes",
-        //         "No"
-        //     ],
-        //     "defaultValue": "No"
-        // },
+
         "apply-windows-vm-security-base": {
             "type": "string",
             "allowedValues": [
@@ -352,27 +276,21 @@
     },
     "variables": {
         //********************************Variable for Generic Naming Convention*************************************/
-        "prefixmgn": "[parameters('prefixmgn')]",
-        "appname": "[parameters('appname')]",
-        "businessunit": "[parameters('businessunit')]",
-        "topLevelManagementGroupPrefix": "[parameters('topLevelManagementGroupPrefix')]",
-        "scope": "[parameters('scope')]",
-        "scopeplatform": "[parameters('scopeplatform')]",
-        "scopemanagement": "[parameters('scopemanagement')]",
-        "scopeconnectivity": "[parameters('scopeconnectivity')]",
-        "scopeidentity": "[parameters('scopeidentity')]",
-        "scopelz": "[parameters('scopelz')]",
-        "scopelzonline": "[parameters('scopelzonline')]",
-        "scopelzcorp": "[parameters('scopelzcorp')]",
+        "prefixmgn": "[parameters('globalvariable').prefixmgn]",
+        "appname": "[parameters('globalvariable').appname]",
+        "businessunit": "[parameters('globalvariable').businessunit]",
+        "topLevelManagementGroupPrefix": "[parameters('globalvariable').topLevelManagementGroupPrefix]",
+        "scope": "[parameters('globalvariable').scope]",
+        "scopeplatform": "[parameters('globalvariable').scopeplatform]",
+        "scopemanagement": "[parameters('globalvariable').scopemanagement]",
+        "scopeconnectivity": "[parameters('globalvariable').scopeconnectivity]",
+        "scopeidentity": "[parameters('globalvariable').scopeidentity]",
+        "scopelz": "[parameters('globalvariable').scopelz]",
+        "scopelzonline": "[parameters('globalvariable').scopelzonline]",
+        "scopelzcorp": "[parameters('globalvariable').scopelzcorp]",
+        
 
-        "genericresourceprefix": {
-            
-            "mgngroupmgn": "[parameters('mgngroupmgn')]",
-            "resourcgroupmgn": "[parameters('resourcgroupmgn')]",
-            "policydefpmgn": "[parameters('policydefpmgn')]",
-            "policyassignmgn": "[parameters('policyassignmgn')]",
-            "rbacassignmgn": "[parameters('rbacassignmgn')]"
-        },
+
 
         "policyAssignmentNames": {
             "policyDefinitions": [
@@ -828,7 +746,7 @@
                         //     "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
                         // }
                         "logAnalyticsWorkspaceIdforVMReporting": {
-                            "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
+                            "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', variables('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', variables('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
                         },
                         "listOfResourceTypesWithDiagnosticLogsEnabled": { "value": "[parameters('listOfResourceTypesWithDiagnosticLogsEnabled')]" },
                         "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": { "value": "[parameters('listOfMembersToExcludeFromWindowsVMAdministratorsGroup')]" },
@@ -928,7 +846,7 @@
                 {
                     "name": "deny-public-endpoint-paas",
                     "apply": "[parameters('apply-deny-public-endpoint-paas')]",
-                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deny-PublicEndpoints')]",
+                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deny-PublicEndpoints')]",
                     "scope": "[variables('scope')]",
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
@@ -938,7 +856,7 @@
                 {
                     "name": "tls-ssl-enforcement-encrypt-paas",
                     "apply": "[parameters('apply-tls-ssl-enforcement-encrypt-paas')]",
-                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-EncryptTransit')]",
+                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-EncryptTransit')]",
                     "scope": "[variables('scope')]",
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
@@ -948,7 +866,7 @@
                 // {
                 //     "name": "setup-diagsetting-iaas",
                 //     "apply": "[parameters('apply-setup-diagsetting-iaas')]",
-                //     "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Diag-LogAnalytics')]",
+                //     "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Diag-LogAnalytics')]",
                 //     "scope": "[variables('scope')]",
                 //     "parameters": {
                 //         "xxxxxx": { "value": "[parameters('genericparam')]" }
@@ -958,7 +876,7 @@
                 {
                     "name": "audit-resource-without-encryption",
                     "apply": "[parameters('apply-audit-resource-without-encryption')]",
-                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-Encryption-CMK')]",
+                    "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-Encryption-CMK')]",
                     "scope": "[variables('scope')]",
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
@@ -969,7 +887,7 @@
                 // {
                 //     "name": "deploy-sql-security",
                 //     "apply": "[parameters('apply-deploy-sql-security')]",
-                //     "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Sql-Security')]",
+                //     "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'),'/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Sql-Security')]",
                 //     "scope": "[variables('scope')]",
                 //     "parameters": {
                 //         "effect": { "value": "[parameters('SqlDbVulnerabilityAssessmentsDeploySqlSecurityEffect')]" },
@@ -1000,7 +918,7 @@
             },
             "properties": {
                 "description": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].description]",
-                "displayName": "[concat(variables('genericresourceprefix').policyassignmgn,variables('policyAssignmentNames').policySetDefinitions[copyIndex()].name)]",
+                "displayName": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,variables('policyAssignmentNames').policySetDefinitions[copyIndex()].name)]",
                 "policyDefinitionId": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].policyDefinitionId]",
                 "scope": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].scope]",
                 "parameters": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].parameters]"
@@ -1022,7 +940,7 @@
             },
             "properties": {
                 "description": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].description]",
-                "displayName": "[concat(variables('genericresourceprefix').policyassignmgn,variables('policyAssignmentNames').policyDefinitions[copyIndex()].name)]",
+                "displayName": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,variables('policyAssignmentNames').policyDefinitions[copyIndex()].name)]",
                 "policyDefinitionId": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].policyDefinitionId]",
                 "scope": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].scope]",
                 "parameters": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].parameters]"

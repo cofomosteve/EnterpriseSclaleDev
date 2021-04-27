@@ -23,6 +23,10 @@
     }
     //********************************Param for Generic Naming Convention*************************************/
     ,
+    "globalvariable": {
+      "type": "object",
+      "defaultValue": {}
+    },
     "prefixmgn": {
       "type": "String",
       "defaultValue": ""
@@ -432,118 +436,26 @@
     "bastionhostmgn": {
       "type": "String",
       "defaultValue": ""
-    }
-
-
-    // ,"prefixmgn": {"type": "String","defaultValue": ""}
-    // ,"prefixmgn": {"type": "String","defaultValue": ""}
+    }  
     //*********************************************************************/
   },
   "variables": {
 
     //********************************Variable for Generic Naming Convention*************************************/
-    "prefixmgn": "[parameters('prefixmgn')]",
-    "appname": "[parameters('appname')]",
-    "businessunit": "[parameters('businessunit')]",
-    "topLevelManagementGroupPrefix": "[parameters('topLevelManagementGroupPrefix')]",
-    "scope": "[parameters('scope')]",
-    "scopeplatform": "[parameters('scopeplatform')]",
-    "scopemanagement": "[parameters('scopemanagement')]",
-    "scopeconnectivity": "[parameters('scopeconnectivity')]",
-    "scopeidentity": "[parameters('scopeidentity')]",
-    "scopelz": "[parameters('scopelz')]",
-    "scopelzonline": "[parameters('scopelzonline')]",
-    "scopelzcorp": "[parameters('scopelzcorp')]",
+    "prefixmgn": "[parameters('globalvariable').prefixmgn]",
+    "appname": "[parameters('globalvariable').appname]",
+    "businessunit": "[parameters('globalvariable').businessunit]",
+    "topLevelManagementGroupPrefix": "[parameters('globalvariable').topLevelManagementGroupPrefix]",
+    "scope": "[parameters('globalvariable').scope]",
+    "scopeplatform": "[parameters('globalvariable').scopeplatform]",
+    "scopemanagement": "[parameters('globalvariable').scopemanagement]",
+    "scopeconnectivity": "[parameters('globalvariable').scopeconnectivity]",
+    "scopeidentity": "[parameters('globalvariable').scopeidentity]",
+    "scopelz": "[parameters('globalvariable').scopelz]",
+    "scopelzonline": "[parameters('globalvariable').scopelzonline]",
+    "scopelzcorp": "[parameters('globalvariable').scopelzcorp]",
 
-    "genericresourceprefix": {
-      
-      "mgngroupmgn": "[parameters('mgngroupmgn')]",
-      
-      "resourcgroupmgn": "[parameters('resourcgroupmgn')]",
-      "policydefpmgn": "[parameters('policydefpmgn')]",
-      "policyassignmgn": "[parameters('policyassignmgn')]",
-      "rbacassignmgn": "[parameters('rbacassignmgn')]",
-      "rbacdefmgn": "[parameters('rbacdefmgn')]",
-
-      "loganalyticwkmgn": "[parameters('loganalyticwkmgn')]",
-      "keyvaultmgn": "[parameters('keyvaultmgn')]",
-      "storagemgn": "[parameters('storagemgn')]",
-      "storagediagnosticmgn": "[parameters('storagediagnosticmgn')]",
-      "conatainerinstancemgn": "[parameters('conatainerinstancemgn')]",
-      "containerregistrymgn": "[parameters('containerregistrymgn')]",
-      "budgetconsumptionmgn": "[parameters('budgetconsumptionmgn')]",
-      "diasgsettingmgn": "[parameters('diasgsettingmgn')]",
-      "deploymentmgn": "[parameters('deploymentmgn')]",
-
-      //********************NETORK*/
-      "virtualnetworkmgn": "[parameters('virtualnetworkmgn')]",
-      "subnetmgn": "[parameters('subnetmgn')]",
-      "virtualnetworkpeeringmgn": "[parameters('virtualnetworkpeeringmgn')]",
-      "virtualnetworkgatewaymgn": "[parameters('virtualnetworkgatewaymgn')]",
-      "localnetworkgatewaymgn": "[parameters('localnetworkgatewaymgn')]",
-      "networksitetositemgn": "[parameters('networksitetositemgn')]",
-      "vpnconnectionmgn": "[parameters('vpnconnectionmgn')]",
-      "nsgmgn": "[parameters('nsgmgn')]",
-      "asgmgn": "[parameters('asgmgn')]",
-      "pubipmgn": "[parameters('pubipmgn')]",
-      /**********************************COMPUTE*/
-      "virtualmachinemgn": "[parameters('virtualmachinemgn')]",
-      "virtualmachinestorageaccountmgn": "[parameters('virtualmachinestorageaccountmgn')]",
-      "nicmgn": "[parameters('nicmgn')]",
-
-      "dnsprivatemgn": "[parameters('dnsprivatemgn')]",
-      "dnspubblicmgn": "[parameters('dnspubblicmgn')]",
-      "loadbalancermgn": "[parameters('loadbalancermgn')]",
-      "applicationgatewaymgn": "[parameters('applicationgatewaymgn')]",
-
-
-      "privatelinkmgn": "[parameters('privatelinkmgn')]",
-      "privateendpointmgn": "[parameters('privateendpointmgn')]",
-      "azurefirewallmgn": "[parameters('azurefirewallmgn')]",
-      "azurefirewallpoliciesmgn": "[parameters('azurefirewallpoliciesmgn')]",
-      "azurefirewallrulegroupmgn": "[parameters('azurefirewallrulegroupmgn')]",
-      "securityprincingmgn": "[parameters('securityprincingmgn')]",
-      "workspacedatasourcemgn": "[parameters('workspacedatasourcemgn')]",
-      "automationaccountmgn": "[parameters('automationaccountmgn')]",
-      "workspacemgn": "[parameters('workspacemgn')]",
-      "linkedservicemgn": "[parameters('linkedservicemgn')]",
-      "ddosplanmgn": "[parameters('ddosplanmgn')]",
-      "networkwatchermgn": "[parameters('networkwatchermgn')]",
-      "networkwatcherflowlogmgn": "[parameters('networkwatcherflowlogmgn')]",
-      "databaseauditsettingmgn": "[parameters('databaseauditsettingmgn')]",
-      "databasetransparencryptmgn": "[parameters('databasetransparencryptmgn')]",
-      "dataasesecalertpolmgn": "[parameters('dataasesecalertpolmgn')]",
-      "databasevulassessmgn": "[parameters('databasevulassessmgn')]",
-      "virrtualhubmgn": "[parameters('virrtualhubmgn')]",
-      "virrtualhubconnectionmgn": "[parameters('virrtualhubconnectionmgn')]",
-      "virtualwanmgn": "[parameters('virtualwanmgn')]",
-      "vpngatewaymgn": "[parameters('vpngatewaymgn')]",
-      "expressroutegatewaymgn": "[parameters('expressroutegatewaymgn')]",
-
-
-      "virtualmachineextensionmgn": "[parameters('virtualmachineextensionmgn')]",
-      "opmanagesolutionmgn": "[parameters('opmanagesolutionmgn')]",
-      
-
-      "azmonitorappinsigmgn": "[parameters('azmonitorappinsigmgn')]",
-      "azmonitorvminsigmgn": "[parameters('azmonitorvminsigmgn')]",
-      "azmonitornetworkinsigmgn": "[parameters('azmonitornetworkinsigmgn')]",
-      "azmonitorsqlinsigmgn": "[parameters('azmonitorsqlinsigmgn')]",
-      "azmonitorcontainerinsigmgn": "[parameters('azmonitorcontainerinsigmgn')]",
-      "azmonitorcosmosdbinsigmgn": "[parameters('azmonitorcosmosdbinsigmgn')]",
-      "azmonitorressourcegpinsigmgn": "[parameters('azmonitorressourcegpinsigmgn')]",
-      "azmonitorstorageinsigmgn": "[parameters('azmonitorstorageinsigmgn')]",
-      "azmonitorkeyvaultinsigmgn": "[parameters('azmonitorkeyvaultinsigmgn')]",
-      "azmonitorredisinsigmgn": "[parameters('azmonitorredisinsigmgn')]",
-      "trafficmanagemgn": "[parameters('trafficmanagemgn')]",
-      "cdnmgn": "[parameters('cdnmgn')]",
-      "migratemgn": "[parameters('migratemgn')]",
-      "azureacrmgn": "[parameters('azureacrmgn')]",
-      "fontdoormgn": "[parameters('fontdoormgn')]",
-      "backupmgn": "[parameters('backupmgn')]",
-      "bastionhostmgn": "[parameters('bastionhostmgn')]"
-
-    },
+     
     "policies": {
       "policyDefinitions": [
         {

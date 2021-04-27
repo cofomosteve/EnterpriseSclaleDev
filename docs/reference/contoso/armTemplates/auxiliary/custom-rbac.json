@@ -2,112 +2,60 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-          "resourceTags": {
-        "type": "object",
-        "defaultValue": {
-            "CostCenter": "ITxxx",
-            "Env": "Prod",
-            "RAD": "Mission Critique",
-            "CIDC": "111",
-            "Direction": "SHARED"
-        }
-       } ,
+
         "topLevelManagementGroupPrefix": {
-            "type": "string",
-            "maxLength": 20,
+            "type": "String",
+            "maxLength": 10,
             "metadata": {
                 "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
             }
-        }
-        // ,
-        // "enableCustomRBAC": {
-        //     "type": "string",
-        //     "allowedValues": [
-        //         "Yes",
-        //         "No"
-        //     ],
-        //     "defaultValue": "No"
-        // }
-        
-        
-        //********************************Param for Generic Naming Convention*************************************/
-    ,"prefixmgn": {"type": "String","defaultValue": ""}
-    ,"businessunit": {"type": "String","defaultValue": ""}
-    ,"appname": {"type": "String","defaultValue": ""}
-    ,"scope": {"type": "String","defaultValue": ""}
-    ,"scopeplatform": {"type": "String","defaultValue": ""}
-    ,"scopemanagement": {"type": "String","defaultValue": ""}
-    ,"scopeconnectivity": {"type": "String","defaultValue": ""}
-    ,"scopeidentity": {"type": "String","defaultValue": ""}
-    ,"scopelz": {"type": "String","defaultValue": ""}
-    ,"scopelzonline": {"type": "String","defaultValue": ""}
-    ,"scopelzcorp": {"type": "String","defaultValue": ""}
-    
-    ,"mgngroup": {"type": "String","defaultValue": ""}
-    ,"mgngroupmgn": {"type": "String","defaultValue": ""}
-    ,"resourcgroup": {"type": "String","defaultValue": ""}
-    ,"resourcgroupmgn": {"type": "String","defaultValue": ""}
-    ,"policydefp": {"type": "String","defaultValue": ""}
-    ,"policydefpmgn": {"type": "String","defaultValue": ""}
-    ,"policyassign": {"type": "String","defaultValue": ""}
-    ,"policyassignmgn": {"type": "String","defaultValue": ""}
-    ,"rbacassign": {"type": "String","defaultValue": ""}
-    ,"rbacassignmgn": {"type": "String","defaultValue": ""}
+        },
 
-    ,"rbacdef": {"type": "String","defaultValue": ""}
-    ,"rbacdefmgn": {"type": "String","defaultValue": ""}
+       "globalvariable": {
+            "type": "object",
+            "defaultValue": {}
+        }
+
+
     },
     "variables": {
-        
-        
+
+
         //********************************Variable for Generic Naming Convention*************************************/
-    "prefixmgn":  "[parameters('prefixmgn')]",
-    "appname":  "[parameters('appname')]",
-    "businessunit": "[parameters('businessunit')]",
-    "topLevelManagementGroupPrefix": "[parameters('topLevelManagementGroupPrefix')]",
-    "scope": "[parameters('scope')]",
-    "scopeplatform": "[parameters('scopeplatform')]",
-    "scopemanagement": "[parameters('scopemanagement')]",
-    "scopeconnectivity": "[parameters('scopeconnectivity')]",
-    "scopeidentity": "[parameters('scopeidentity')]",
-    "scopelz": "[parameters('scopelz')]",
-    "scopelzonline": "[parameters('scopelzonline')]",
-    "scopelzcorp": "[parameters('scopelzcorp')]",
+        "prefixmgn": "[parameters('globalvariable').prefixmgn]",
+        "appname": "[parameters('globalvariable').appname]",
+        "businessunit": "[parameters('globalvariable').businessunit]",
+        "topLevelManagementGroupPrefix": "[parameters('globalvariable').topLevelManagementGroupPrefix]",
+        "scope": "[parameters('globalvariable').scope]",
+        "scopeplatform": "[parameters('globalvariable').scopeplatform]",
+        "scopemanagement": "[parameters('globalvariable').scopemanagement]",
+        "scopeconnectivity": "[parameters('globalvariable').scopeconnectivity]",
+        "scopeidentity": "[parameters('globalvariable').scopeidentity]",
+        "scopelz": "[parameters('globalvariable').scopelz]",
+        "scopelzonline": "[parameters('globalvariable').scopelzonline]",
+        "scopelzcorp": "[parameters('globalvariable').scopelzcorp]",
 
-    "genericresourceprefix": {
-      "mgngroup":"[parameters('mgngroup')]",
-      "mgngroupmgn": "[parameters('mgngroupmgn')]",
-      "resourcgroup": "[parameters('resourcgroup')]",
-      "resourcgroupmgn": "[parameters('resourcgroupmgn')]",
-      "policydefp": "[parameters('policydefp')]",
-      "policydefpmgn": "[parameters('policydefpmgn')]",
-      "policyassign": "[parameters('policyassign')]",
-      "policyassignmgn": "[parameters('policyassignmgn')]",
-      "rbacassign": "[parameters('rbacassign')]",
-      "rbacassignmgn": "[parameters('rbacassignmgn')]",
-      "rbacdef": "[parameters('rbacdef')]",
-      "rbacdefmgn": "[parameters('rbacdefmgn')]",
-      }
 
-        "systemopsrole": "[concat(variables('rbacdefmgn'),'Custom Systems Ops')]",
-        "landingzonewonerrole": "[concat(variables('rbacdefmgn'),'Custom Landing Zone Owner')]",
-        "landingzonecontributorrole": "[concat(variables('rbacdefmgn'),'Custom Landing Zone Contributor')]",
-        "kubernettesrole": "[concat(variables('rbacdefmgn'),'Custom Kubernettes Administrator')]",
-        "vmwarerole": "[concat(variables('rbacdefmgn'),'Custom Vmware Solution Administrator')]",
-        "billingrole": "[concat(variables('rbacdefmgn'),'Custom  Billing Administrator')]",
-        "secyrityopsrole": "[concat(variables('rbacdefmgn'),'Custom Security Ops')]",
-        "automationrole": "[concat(variables('rbacdefmgn'),'Custom Automation')]",
-        "computesrole": "[concat(variables('rbacdefmgn'),'Custom Compute  Ops')]",
-        "storagerole": "[concat(variables('rbacdefmgn'),'Custom Storage  Ops')]",
-        "databaseerole": "[concat(variables('rbacdefmgn'),'Custom Database  Ops')]",
-        "networksrole": "[concat(variables('rbacdefmgn'),'Custom Network  Ops')]",
-        "identityaccessmgnrole": "[concat(variables('rbacdefmgn'),'Custom Identity and Access Management')]",
-        "managementrole": "[concat(variables('rbacdefmgn'),'Custom Management Administrator')]",
-        "backuprole": "[concat(variables('rbacdefmgn'),'Custom Backup et Recovery')]",
-        "migrationRolerole": "[concat(variables('rbacdefmgn'),'Custom Migration IaaS and PaaS')]",
-        "devopsrole": "[concat(variables('rbacdefmgn'),'Custom Devops')]",
-        "apsopsrole": "[concat(variables('rbacdefmgn'),'Custom AppsOps')]",
-        "enablementrole": "[concat(variables('rbacdefmgn'),'Custom Enablement')]",
+
+        "systemopsrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Systems Ops')]",
+        "landingzonewonerrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Landing Zone Owner')]",
+        "landingzonecontributorrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Landing Zone Contributor')]",
+        "kubernettesrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Kubernettes Administrator')]",
+        "vmwarerole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Vmware Solution Administrator')]",
+        "billingrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom  Billing Administrator')]",
+        "secyrityopsrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Security Ops')]",
+        "automationrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Automation')]",
+        "computesrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Compute  Ops')]",
+        "storagerole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Storage  Ops')]",
+        "databaseerole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Database  Ops')]",
+        "networksrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Network  Ops')]",
+        "identityaccessmgnrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Identity and Access Management')]",
+        "managementrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Management Administrator')]",
+        "backuprole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Backup et Recovery')]",
+        "migrationRolerole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Migration IaaS and PaaS')]",
+        "devopsrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom Devops')]",
+        "apsopsrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmgn,'Custom AppsOps')]",
+        "enablementrole": "[concat(parameters('globalvariable').genericresourceprefix.rbacdefmg,'Custom Enablement')]",
 
         "systemopsroledesc": "Systems Ops",
         "kubernettesroledesc": "Kubernettes Administrator",
@@ -1249,7 +1197,7 @@
     },
 
     "resources": [
-        {            
+        {
             //"condition": "[equals(parameters('enableCustomRBAC'), 'Yes')]",
             "type": "Microsoft.Authorization/roleDefinitions",
             "apiVersion": "2017-09-01",
