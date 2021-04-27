@@ -80,7 +80,7 @@
         "env": "prod-",
         "appname": "ES-",
         "topLevelManagementGroupPrefix": "[concat(variables('prefixmgn'),parameters('enterpriseScaleCompanyPrefix'))]",
-        "globalvariable": {            
+        "globalvariable": {
             "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]",
             "scopeplatform": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-platform')]",
             "scopemanagement": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-management')]",
@@ -825,7 +825,10 @@
         "deployment": {
             "type": "string",
             "value": "[concat(deployment().name, ' has successfully deployed. Welcome to Enterprise-Scale!')]"
+        },
+        "tagsByResourceArray": {
+            "type": "array",
+            "value": "[variables('tagsByResourceArray')]"
         }
-
     }
 }
