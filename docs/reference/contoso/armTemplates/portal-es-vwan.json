@@ -77,27 +77,7 @@
                             "text": "To enable platform management, security and governance, you must allocate a management Subscription. Please note, this Subscription will be moved to the platform Management Group, and ARM will deploy a Log Analytics workspace and requisite settings. We recommend using a new Subscription with no existing resources. Note that Azure Policy will be used to govern the configuration for the platform at scale.",
                             "uri": "https://github.com/Azure/Enterprise-Scale/blob/main/docs/reference/Readme.md"
                         }
-                    },
-                    {
-                        "name": "esCustomRbacDefinition",
-                        "type": "Microsoft.Common.OptionsGroup",
-                        "label": "Deploy Custom Role Définition to optimize Operational Model",
-                        "defaultValue": "Yes (recommended)",
-                        "toolTip": "If 'Yes' is selected you will have to ssign user to each Custom RBAC defined",
-                        "constraints": {
-                            "allowedValues": [
-                                {
-                                    "label": "Yes (recommended)",
-                                    "value": "Yes"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "No"
-                                }
-                            ]
-                        },
-                        "visible": true
-                    },
+                    } ,
                     {
                         "name": "esLogAnalytics",
                         "type": "Microsoft.Common.OptionsGroup",
@@ -1299,7 +1279,7 @@
             "onlineLzSubscriptionId": "[if(or(not(contains(steps('lzGoalState').esOnlineLzSub, steps('esGoalState').esMgmtSub)), not(contains(steps('lzGoalState').esOnlineLzSub, steps('esConnectivityGoalState').esConnectivitySub))), steps('lzGoalState').esOnlineLzSub, '')]",
             "corpLzSubscriptionId": "[if(or(not(contains(steps('lzGoalState').esCorpLzSub, steps('esGoalState').esMgmtSub)), not(contains(steps('lzGoalState').esCorpLzSub, steps('esConnectivityGoalState').esConnectivitySub))), steps('lzGoalState').esCorpLzSub, '')]",
             "enableLogAnalytics": "[steps('esGoalState').esLogAnalytics]",
-            "enableCustomRBAC": "[steps('esGoalState').esCustomRbacDefinition]",
+            
             "denyRdpForIdentity": "[steps('esIdentityGoalState').esIdDenyRdp]",
             "denySubnetWithoutNsgForIdentity": "[steps('esIdentityGoalState').esIdDenySubnetNsg]",
             "denyPipForIdentity": "[steps('esIdentityGoalState').esIdDenyPublicIp]",
