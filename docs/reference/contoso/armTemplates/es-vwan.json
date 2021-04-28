@@ -260,10 +260,21 @@
 
 
         },
+        "delimiters": [ "," ],
 
         "tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], json('{}')) ]",
-        "tagsByResourceArray": "[createArray(variables('tagsByResourceout'))]",
-        "tagsByResourceArray2": "[split(variables('tagsByResourceArray'),',')]",
+        "settingArray": "[split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters'))]",
+        "propNameArray": {
+            "copy": [
+                {
+                    "name": "copyPropertyNames",
+                    "count": "[length(variables('settingArray'))]",
+                    "input": "[substring(variables('settingArray')[copyIndex('copyPropertyNames')], 0, indexOf(variables('settingArray')[copyIndex('copyPropertyNames')], ':'))]"
+                }
+            ]
+        },
+
+
 
         "azPolicyEnvMapping": {
             "https://management.azure.com/": "auxiliary/policies.json",
@@ -829,17 +840,8 @@
         },
         "tagsByResourceArray": {
             "type": "array",
-            "value": "[variables('tagsByResourceArray')]"
+            "value": "[variables('propNameArray').copyPropertyNames]"
         },
-        "tagsByResourceArray1": {
-            "type": "string",
-            "value": "[variables('tagsByResourceArray')]"
-        } ,
-        "tagsByResourceArray2": {
-            "type": "array",
-            "value": "[variables('tagsByResourceArray2')]"
-        }
-        ,
         "resourceTags": {
             "type": "string",
             "value": "[variables('resourceTags')]"
