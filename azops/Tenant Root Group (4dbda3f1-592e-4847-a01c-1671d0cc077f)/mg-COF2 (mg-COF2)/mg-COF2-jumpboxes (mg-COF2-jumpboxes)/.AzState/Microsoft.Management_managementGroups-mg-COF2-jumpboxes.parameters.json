@@ -4,16 +4,16 @@
   "parameters": {
     "input": {
       "value": {
-        "Id": "/providers/Microsoft.Management/managementGroups/CONTOS-connectivity",
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COF2-jumpboxes",
         "Type": "/providers/Microsoft.Management/managementGroups",
-        "Name": "CONTOS-connectivity",
+        "Name": "mg-COF2-jumpboxes",
         "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
-        "DisplayName": "CONTOS-connectivity",
-        "UpdatedTime": "2021-04-15T20:21:56.8645233Z",
+        "DisplayName": "mg-COF2-jumpboxes",
+        "UpdatedTime": "2021-04-28T18:08:40.434142Z",
         "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
-        "ParentId": "/providers/Microsoft.Management/managementGroups/CONTOS-platform",
-        "ParentName": "CONTOS-platform",
-        "ParentDisplayName": "CONTOS-platform",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COF2",
+        "ParentName": "mg-COF2",
+        "ParentDisplayName": "mg-COF2",
         "Children": null
       }
     }

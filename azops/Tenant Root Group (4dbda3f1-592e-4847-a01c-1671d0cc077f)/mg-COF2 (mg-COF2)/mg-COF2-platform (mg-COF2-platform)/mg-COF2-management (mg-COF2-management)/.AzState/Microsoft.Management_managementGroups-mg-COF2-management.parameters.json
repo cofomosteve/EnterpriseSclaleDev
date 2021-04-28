@@ -1,0 +1,29 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COF2-management",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-COF2-management",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-COF2-management",
+        "UpdatedTime": "2021-04-28T18:09:17.9065971Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COF2-platform",
+        "ParentName": "mg-COF2-platform",
+        "ParentDisplayName": "mg-COF2-platform",
+        "Children": [
+          {
+            "Type": "/subscriptions",
+            "Id": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
+            "Name": "2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
+            "DisplayName": "Microsoft Azure Sponsorship (6k)",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}
