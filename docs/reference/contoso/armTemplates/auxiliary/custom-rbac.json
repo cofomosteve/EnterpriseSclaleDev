@@ -195,7 +195,7 @@
                                     "Microsoft.Authorization/*",
                                     "Microsoft.Capacity/*",
                                     "Microsoft.RecoveryServices/*",
-                                    //Monitoring
+                                    
                                     "Microsoft.Insights/*",
                                     "Microsoft.AlertsManagement/*",
                                     "Microsoft.OperationalInsights/*",
@@ -206,9 +206,9 @@
                                     "Microsoft.Resources/subscriptions/resourceGroups/read",
                                     "Microsoft.Management/managementGroups/read",
 
-                                    //
+                                     
                                     "Microsoft.Support/*"
-                                ], //,
+                                ],  
                                 "notActions": [],
                                 "dataActions": [],
                                 "notDataActions": []
