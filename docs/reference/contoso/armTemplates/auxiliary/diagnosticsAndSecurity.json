@@ -306,25 +306,35 @@
         }
     },
     "variables": {
+
+
+        "scope": "[parameters('globalvariable').scope]",
+        "scopeplatform": "[parameters('globalvariable').scopeplatform]",
+        "scopemanagement": "[parameters('globalvariable').scopemanagement]",
+        "scopeconnectivity": "[parameters('globalvariable').scopeconnectivity]",
+        "scopeidentity": "[parameters('globalvariable').scopeidentity]",
+        "scopelz": "[parameters('globalvariable').scopelz]",
+        "scopelzonline": "[parameters('globalvariable').scopelzonline]",
+        "scopelzcorp": "[parameters('globalvariable').scopelzcorp]",
         "policyDefinitions": {
-            "deployAzureActivityLog": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'), '/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-ActivityLog')]",
-            "deployResourceDiagnostics": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'), '/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Diag-LogAnalytics')]",
+            "deployAzureActivityLog": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'), '/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-ActivityLog')]",
+            "deployResourceDiagnostics": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'), '/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Diag-LogAnalytics')]",
             "windowsArcMonitoring": "/providers/Microsoft.Authorization/policyDefinitions/69af7d4a-7b18-4044-93a9-2651498ef203",
             "linuxArcMonitoring": "/providers/Microsoft.Authorization/policyDefinitions/9d2b61b4-1d14-4a63-be30-d4498e7ad2cf",
             "vmMonitoring": "/providers/Microsoft.Authorization/policySetDefinitions/55f3eceb-5573-4f18-9695-226972c6d74a",
             "vmssMonitoring": "/providers/Microsoft.Authorization/policySetDefinitions/75714362-cae7-409e-9b99-a8e5075b7fad",
-            "deployAzureSecurity": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'), '/providers/Microsoft.Authorization/policyDefinitions/Deploy-ASC-Standard')]",
+            "deployAzureSecurity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'), '/providers/Microsoft.Authorization/policyDefinitions/Deploy-ASC-Standard')]",
             "ascMonitoring": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
         },
         "policyAssignmentNames": {
-            "azureActivityLog": "Deploy-AzActivity-Log",
-            "vmMonitoring": "Deploy-VM-Monitoring",
-            "windowsArcMonitoring": "Deploy-WS-Arc-Monitoring",
-            "linuxArcMonitoring": "Deploy-LX-Arc-Monitoring",
-            "vmssMonitoring": "Deploy-VMSS-Monitoring",
-            "resourceDiagnostics": "Deploy-Resource-Diag",
-            "azureSecurity": "Deploy-ASC-Security",
-            "ascMonitoring": "Deploy-ASC-Monitoring"
+            "azureActivityLog": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-AzActivity-Log')]",
+            "vmMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-VM-Monitoring')]", 
+            "windowsArcMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-WS-Arc-Monitoring')]",
+            "linuxArcMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-LX-Arc-Monitoring')]", 
+            "vmssMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-VMSS-Monitoring')]",  
+            "resourceDiagnostics": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-Resource-Diag')]", 
+            "azureSecurity": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-ASC-Security')]", 
+            "ascMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-ASC-Monitoring')]"
         },
         "rbacOwner": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
         "roleAssignmentNames": {
@@ -370,10 +380,10 @@
                 "description": "Deploy-AzActivity-Log",
                 "displayName": "Deploy-AzActivity-Log",
                 "policyDefinitionId": "[variables('policyDefinitions').deployAzureActivityLog]",
-                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'))]",
+                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'))]",
                 "parameters": {
                     "logAnalytics": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
+                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
                     },
                     "logsEnabled": {
                         "value": "True"
@@ -410,10 +420,10 @@
                 "description": "Deploy-VM-Monitoring",
                 "displayName": "Deploy-VM-Monitoring",
                 "policyDefinitionId": "[variables('policyDefinitions').vmMonitoring]",
-                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'))]",
+                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'))]",
                 "parameters": {
                     "logAnalytics_1": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
+                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
                     }
                 }
             }
@@ -447,10 +457,10 @@
                 "description": "Deploy-VMSS-Monitoring",
                 "displayName": "Deploy-VMSS-Monitoring",
                 "policyDefinitionId": "[variables('policyDefinitions').vmssMonitoring]",
-                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'))]",
+                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'))]",
                 "parameters": {
                     "logAnalytics_1": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
+                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
                     }
                 }
             }
@@ -484,10 +494,10 @@
                 "description": "Deploy-Windows-Arc-Monitoring",
                 "displayName": "Deploy-Windows-Arc-Monitoring",
                 "policyDefinitionId": "[variables('policyDefinitions').windowsArcMonitoring]",
-                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'))]",
+                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'))]",
                 "parameters": {
                     "logAnalytics": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
+                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
                     }
                 }
             }
@@ -521,10 +531,10 @@
                 "description": "Deploy-Linux-Arc-Monitoring",
                 "displayName": "Deploy-Linux-Arc-Monitoring",
                 "policyDefinitionId": "[variables('policyDefinitions').linuxArcMonitoring]",
-                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'))]",
+                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'))]",
                 "parameters": {
                     "logAnalytics": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
+                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
                     }
                 }
             }
@@ -558,10 +568,10 @@
                 "description": "Deploy-Resource-Diag",
                 "displayName": "Deploy-Resource-Diag",
                 "policyDefinitionId": "[variables('policyDefinitions').deployResourceDiagnostics]",
-                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'))]",
+                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'))]",
                 "parameters": {
                     "logAnalytics": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
+                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
                     }
                 }
             }
@@ -596,7 +606,7 @@
                 "description": "Deploy-ASC-Defender",
                 "displayName": "Deploy-ASC-Defender",
                 "policyDefinitionId": "[variables('policyDefinitions').deployAzureSecurity]",
-                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'))]",
+                "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'))]",
                 "parameters": {
                     "pricingTierVms": {
                         "value": "[parameters('enableAscForServers')]"
