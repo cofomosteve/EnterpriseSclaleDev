@@ -615,6 +615,15 @@
             "scopelzonline": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-online')]",
             "scopelzcorp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-corp')]",
 
+            "scopebase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]",
+            "scopeplatformbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-platform')]",
+            "scopemanagementbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-management')]",
+            "scopeconnectivitybase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-connectivity')]",
+            "scopeidentitybase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-identity')]",
+            "scopelzbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-landingzones')]",
+            "scopelzonlinebase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-online')]",
+            "scopelzcorpbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-corp')]",
+
             "genericresourceprefix": {
 
                 "mgngroupmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat(variables('prefixmgn'),   parameters('enterpriseScaleCompanyPrefix')),'CAF')]",
@@ -864,7 +873,7 @@
             "apiVersion": "2019-10-01",
             "name": "[variables('deploymentNames').policyDeploymentName]",
             "location": "[deployment().location]",
-            "scope": "[variables('globalvariable').scope]",
+            "scope": "[variables('globalvariable').scopebase]",
             "dependsOn": [
                 "[variables('deploymentNames').mgmtGroupDeploymentName]"
             ],
@@ -887,7 +896,7 @@
             "apiVersion": "2019-10-01",
             "name": "[concat('delayFor', copyIndex())]",
             "location": "[deployment().location]",
-            "scope": "[variables('globalvariable').scope]",
+            "scope": "[variables('globalvariable').scopebase]",
             "dependsOn": [
                 "[variables('deploymentNames').policyDeploymentName]"
             ],
@@ -960,7 +969,7 @@
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[variables('globalvariable').scopemanagement]",
+            "scope": "[variables('globalvariable').scopemanagementbase]",
             "name": "[variables('deploymentNames').monitoringDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').policyDeploymentName]",
@@ -1054,7 +1063,7 @@
             "condition": "[not(empty(parameters('identitySubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[variables('globalvariable').scopeidentity]",
+            "scope": "[variables('globalvariable').scopeidentitybase]",
             "name": "[variables('deploymentNames').identityDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').policyDeploymentName]",
@@ -1094,7 +1103,7 @@
             "condition": "[or(or(or(or(or(or(equals(parameters('enableVmBackup'), 'Yes'), equals(parameters('enableSqlAudit'), 'Yes')), equals(parameters('denyAksPrivilegedEscalation'), 'Yes'), equals(parameters('denyHttpIngressForAks'), 'Yes')), equals(parameters('denyAksPrivileged'), 'Yes'), equals(parameters('denyAksPrivileged'), 'Yes')), equals(parameters('denySubnetWithoutNsg'), 'Yes'), equals(parameters('enableSqlAssessment'), 'Yes')), equals(parameters('enableVmMonitoring'), 'Yes'), equals(parameters('enableVmMonitoring'), 'Yes')), equals(parameters('enableSqlEncryption'), 'Yes'), equals(parameters('enableStorageHttps'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[variables('globalvariable').scopelz]",
+            "scope": "[variables('globalvariable').scopelzbase]",
             "name": "[variables('deploymentNames').lzDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').policyDeploymentName]",
@@ -1155,7 +1164,7 @@
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))), or(equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAsc'), 'Yes')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[variables('globalvariable').scope]",
+            "scope": "[variables('globalvariable').scopebase]",
             "name": "[variables('deploymentNames').diagAndSecDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').monitoringDeploymentName]",
@@ -1250,7 +1259,7 @@
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableVwan'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[variables('globalvariable').scopeconnectivity]",
+            "scope": "[variables('globalvariable').scopeconnectivitybase]",
             "name": "[variables('deploymentNames').connectivityDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').diagAndSecDeploymentName]",
@@ -1300,7 +1309,7 @@
             "condition": "[equals(parameters('enableCustomRBAC'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[  variables('globalvariable').scope]",
+            "scope": "[  variables('globalvariable').scopebase]",
             "name": "[variables('deploymentNames').customrbacDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').mgmtGroupDeploymentName]",
@@ -1324,7 +1333,7 @@
 
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[  variables('globalvariable').scope]",
+            "scope": "[  variables('globalvariable').scopebase]",
             "name": "[variables('deploymentNames').customPoliciesAssigDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').mgmtGroupDeploymentName]",
