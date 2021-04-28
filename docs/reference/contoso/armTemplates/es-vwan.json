@@ -455,8 +455,8 @@
             "type": "object",
             "defaultValue": {}
         }
-        /*
-        "apply-pbmm": {
+         
+        /*,"apply-pbmm": {
             "type": "string",
             "allowedValues": [
                 "Yes",
@@ -545,18 +545,11 @@
                 "No"
             ],
             "defaultValue": "No"
-        },*/
+        },
 
         
 
-       /* "cktagbyresource": {
-            "type": "bool",
-            "allowedValues": [
-                true,
-                false
-            ],
-            "defaultValue": false
-        },
+        
         "tagauditpolicy": {
             "type": "string",
             "allowedValues": [
@@ -573,7 +566,8 @@
                 "description": "allowedVMSizesku"
             },
             "defaultValue": []
-        },
+        }*/
+         /*,
 
         "listOfResourceTypesWithDiagnosticLogsEnabled": {
             "type": "Array",
@@ -785,7 +779,9 @@
         },
         "delimiters": [ "," ],
         "tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], json('{}')) ]",
-        "settingArray": "[split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters'))]",
+        "settingArray": "[if(empty(variables('tagsByResourceout')),createArray(),
+        split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters')))]",
+        //"[split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters'))]",
         "propNameArray": {
             "copy": [
                 {
@@ -817,14 +813,14 @@
             "customrbac": "[uri(deployment().properties.templateLink.uri, 'auxiliary/custom-rbac.json')]",
             "custompoliciesassign": "[uri(deployment().properties.templateLink.uri, 'auxiliary/policiesassignment.json')]"
         },
-        "moveSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-management', '/', parameters('managementSubscriptionId'))]",
-        "noSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-management', '/', 'na')]",
-        "noOnlineLzSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-online', '/', 'nalz')]",
-        "noCorpLzSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-corp', '/', 'nalz')]",
-        "connectivityMoveSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-connectivity', '/', parameters('connectivitySubscriptionId'))]",
-        "noConnectivitySubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-connectivity', '/', 'naconn')]",
-        "identityMoveSubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-identity', '/', parameters('identitySubscriptionId'))]",
-        "noIdentitySubscription": "[concat(parameters('enterpriseScaleCompanyPrefix'), '-identity', '/', 'naid')]",
+        "moveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-management', '/', parameters('managementSubscriptionId'))]",
+        "noSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-management', '/', 'na')]",
+        "noOnlineLzSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-online', '/', 'nalz')]",
+        "noCorpLzSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-corp', '/', 'nalz')]",
+        "connectivityMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-connectivity', '/', parameters('connectivitySubscriptionId'))]",
+        "noConnectivitySubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-connectivity', '/', 'naconn')]",
+        "identityMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-identity', '/', parameters('identitySubscriptionId'))]",
+        "noIdentitySubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-identity', '/', 'naid')]",
         "deploymentNames": {
             "mgmtGroupDeploymentName": "[take(concat('EntScale-Mgs', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "policyDeploymentName": "[take(concat('EntScale-Policy', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
@@ -931,7 +927,7 @@
             "condition": "[not(empty(parameters('onlineLzSubscriptionId')))]",
             "type": "Microsoft.Management/managementGroups/subscriptions",
             "apiVersion": "2020-05-01",
-            "name": "[if(not(empty(parameters('onlineLzSubscriptionId'))), concat(parameters('enterpriseScaleCompanyPrefix'), '-online', '/', parameters('onlineLzSubscriptionId')[copyIndex()]), variables('noOnlineLzSubscription'))]",
+            "name": "[if(not(empty(parameters('onlineLzSubscriptionId'))), concat(variables('topLevelManagementGroupPrefix'), '-online', '/', parameters('onlineLzSubscriptionId')[copyIndex()]), variables('noOnlineLzSubscription'))]",
             "dependsOn": [
                 "[variables('deploymentNames').mgmtGroupDeploymentName]"
             ],
@@ -945,7 +941,7 @@
             "condition": "[not(empty(parameters('corpLzSubscriptionId')))]",
             "type": "Microsoft.Management/managementGroups/subscriptions",
             "apiVersion": "2020-05-01",
-            "name": "[if(not(empty(parameters('corpLzSubscriptionId'))), concat(parameters('enterpriseScaleCompanyPrefix'), '-corp', '/', parameters('corpLzSubscriptionId')[copyIndex()]), variables('noCorpLzSubscription'))]",
+            "name": "[if(not(empty(parameters('corpLzSubscriptionId'))), concat(variables('topLevelManagementGroupPrefix'), '-corp', '/', parameters('corpLzSubscriptionId')[copyIndex()]), variables('noCorpLzSubscription'))]",
             "dependsOn": [
                 "[variables('deploymentNames').mgmtGroupDeploymentName]"
             ],
