@@ -455,8 +455,8 @@
             "type": "object",
             "defaultValue": {}
         }
-         
-        /*,"apply-pbmm": {
+        /*
+        "apply-pbmm": {
             "type": "string",
             "allowedValues": [
                 "Yes",
@@ -545,11 +545,18 @@
                 "No"
             ],
             "defaultValue": "No"
+        },*/
+
+        
+
+       /* "cktagbyresource": {
+            "type": "bool",
+            "allowedValues": [
+                true,
+                false
+            ],
+            "defaultValue": false
         },
-
-        
-
-        
         "tagauditpolicy": {
             "type": "string",
             "allowedValues": [
@@ -566,8 +573,7 @@
                 "description": "allowedVMSizesku"
             },
             "defaultValue": []
-        }*/
-         /*,
+        },
 
         "listOfResourceTypesWithDiagnosticLogsEnabled": {
             "type": "Array",
