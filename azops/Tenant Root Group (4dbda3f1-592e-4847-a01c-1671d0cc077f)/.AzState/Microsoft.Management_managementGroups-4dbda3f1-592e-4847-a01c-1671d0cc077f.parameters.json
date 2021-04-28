@@ -35,6 +35,13 @@
             "Name": "CONTOS",
             "DisplayName": "CONTOS",
             "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT",
+            "Name": "mg-COFT",
+            "DisplayName": "mg-COFT",
+            "Children": null
           }
         ]
       }
