@@ -874,7 +874,7 @@
                     "uri": "[variables('deploymentUris').policyDefinitions]"
                 },
                 "parameters": {
-                    "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
+                   // "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
 
                     "resourceTags": { "value": "[variables('resourceTags')]" },
                     "globalvariable": { "value": "[variables('globalvariable')]" }
@@ -1307,7 +1307,7 @@
                     "uri": "[variables('deploymentUris').customrbac]"
                 },
                 "parameters": {
-                    "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
+                    //"topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
                     "globalvariable": { "value": "[variables('globalvariable')]" }
                 }
             }

@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-         
+
         "topLevelManagementGroupPrefix": {
             "type": "string",
             "maxLength": 10,
@@ -10,17 +10,17 @@
                 "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
             }
         },
-  "resourceTags": {
-        "type": "object",
-        "defaultValue": {
-            "CostCenter": "ITxxx",
-            "Env": "Prod",
-            "RAD": "Mission Critique",
-            "CIDC": "111",
-            "Direction": "SHARED"
-        }
-    },
-     
+        "resourceTags": {
+            "type": "object",
+            "defaultValue": {
+                "CostCenter": "ITxxx",
+                "Env": "Prod",
+                "RAD": "Mission Critique",
+                "CIDC": "111",
+                "Direction": "SHARED"
+            }
+        },
+
         "enableSqlAudit": {
             "type": "string",
             "defaultValue": "No",
@@ -141,7 +141,7 @@
             "metadata": {
                 "description": "Select whether subnet with NSG policy should be assigned or not."
             }
-        }        
+        }
     },
     "variables": {
         "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'), '-landingzones')]",
@@ -425,7 +425,7 @@
                     }
                 }
             }
-        },                                    
+        },
         {
             // conditionally assign policy for storage requiring https
             "condition": "[equals(parameters('enableStorageHttps'), 'Yes')]",
@@ -442,7 +442,7 @@
                     "effect": {
                         "value": "Deny"
                     }
-                }           
+                }
             }
         },
         {
@@ -470,7 +470,7 @@
                 "policyDefinitionId": "[variables('policyDefinitions').denySubnetWithoutNsg]",
                 "scope": "[variables('scope')]"
             }
-        }        
+        }
     ],
     "outputs": {}
 }
