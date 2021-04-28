@@ -785,9 +785,8 @@
         },
         "delimiters": [ "," ],
         "tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], json('{}')) ]",
-        "settingArray": "[if(empty(variables('tagsByResourceout')),createArray(),
-        split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters')))]",
-        //"[split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters'))]",
+        "settingArray": "[if(empty(variables('tagsByResourceout')),createArray(),split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters')))]",
+        
         "propNameArray": {
             "copy": [
                 {
