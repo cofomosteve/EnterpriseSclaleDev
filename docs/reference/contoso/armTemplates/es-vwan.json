@@ -61,12 +61,537 @@
                 "description": "Provide the subscription id of an existing, empty subscription you want to dedicate for identity."
             }
         },
+        "denySubnetWithoutNsgForIdentity": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "denyRdpForIdentity": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "denyPipForIdentity": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "enableVmBackupForIdentity": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "onlineLzSubscriptionId": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "Provide the subscription ids for existing, empty subscriptions you want to move in as your first online landing zones."
+            }
+        },
+        "corpLzSubscriptionId": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "Provide the subscription ids for existing, empty subscriptions you want to move in as your first corp landing zones."
+            }
+        },
+        "enableLogAnalytics": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "metadata": {
+                "description": "If 'Yes' is selected when also adding a subscription for management, ARM will assign two policies to enable auditing in your environment, into the Log Analytics workspace for platform monitoring. If 'No', it will be ignored."
+            }
+        },
+        "enableCustomRBAC": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "metadata": {
+                "description": "If 'Yes' is selected when also adding a subscription for management, ARM will assign two policies to enable auditing in your environment, into the Log Analytics workspace for platform monitoring. If 'No', it will be ignored."
+            }
+        },
 
+        "retentionInDays": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "enableAsc": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "metadata": {
+                "description": "If 'Yes' is selected when also adding a subscription for management, ARM will assign two policies to enable auditing in your environment, into the Log Analytics workspace for platform monitoring. If 'No', it will be ignored."
+            }
+        },
+        "enableAksPolicy": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "enableAscForServers": {
+            "type": "string",
+            "defaultValue": "Free",
+            "allowedValues": [
+                "Standard",
+                "Free"
+            ]
+        },
+        "enableAscForAppServices": {
+            "type": "string",
+            "defaultValue": "Free",
+            "allowedValues": [
+                "Standard",
+                "Free"
+            ]
+        },
+        "enableAscForStorage": {
+            "type": "string",
+            "defaultValue": "Free",
+            "allowedValues": [
+                "Standard",
+                "Free"
+            ]
+        },
+        "enableAscForSql": {
+            "type": "string",
+            "defaultValue": "Free",
+            "allowedValues": [
+                "Standard",
+                "Free"
+            ]
+        },
+        "enableAscForKeyVault": {
+            "type": "string",
+            "defaultValue": "Free",
+            "allowedValues": [
+                "Standard",
+                "Free"
+            ]
+        },
+        "enableAscForArm": {
+            "type": "string",
+            "defaultValue": "Free",
+            "allowedValues": [
+                "Standard",
+                "Free"
+            ]
+        },
+        "enableAscForDns": {
+            "type": "string",
+            "defaultValue": "Free",
+            "allowedValues": [
+                "Standard",
+                "Free"
+            ]
+        },
+        "enableAscForKubernetes": {
+            "type": "string",
+            "defaultValue": "Free",
+            "allowedValues": [
+                "Standard",
+                "Free"
+            ]
+        },
+        "enableAscForRegistries": {
+            "type": "string",
+            "defaultValue": "Free",
+            "allowedValues": [
+                "Standard",
+                "Free"
+            ]
+        },
+        "denyAksPrivileged": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "denyAksPrivilegedEscalation": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "denyHttpIngressForAks": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "enableArcMonitoring": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "metadata": {
+                "description": "If 'Yes' is selected, policy will be assigned to enforce Arc monitoring."
+            }
+        },
+        "enableVmMonitoring": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "metadata": {
+                "description": "If 'Yes' is selected, policy will be assigned to enforce VM monitoring."
+            }
+        },
+        "enableVmssMonitoring": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "metadata": {
+                "description": "If 'Yes' is selected, policy will be assigned to enforce VMSS monitoring."
+            }
+        },
+        "enableSecuritySolution": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "enableAgentHealth": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "enableChangeTracking": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "enableUpdateMgmt": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "Yes"
+        },
+        "enableActivityLog": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "Yes"
+        },
+        "enableAntiMalware": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "Yes"
+        },
+        "enableVmInsights": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "Yes"
+        },
+        "enableServiceMap": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "Yes"
+        },
+        "enableSqlAssessment": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "Yes"
+        },
+        "enableSqlAudit": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "enableSqlEncryption": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "enableVmBackup": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "denyRdp": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "enableStorageHttps": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "denyIpForwarding": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "denySubnetWithoutNsg": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "addressPrefix": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "enableVpnGw": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "enableErGw": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ]
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[deployment().location]"
+        },
+        "enableVwan": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "enableAzFw": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
 
         "tagsByResource": {
             "type": "object",
             "defaultValue": {}
         }
+        /*
+        "apply-pbmm": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-kubclust-sec-base-linux-wk": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-kubclust-sec-strict-linux-wk": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+
+        "apply-windows-vm-security-base": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-data-protection-suite": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-flowlog-nsg-iaas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-config-azuremonitor-security-agent-vm-iaas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-vm-insecure-pwd-security-iaas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-deny-public-endpoint-paas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+        "apply-tls-ssl-enforcement-encrypt-paas": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+
+        "apply-audit-resource-without-encryption": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },*/
+
+        
+
+       /* "cktagbyresource": {
+            "type": "bool",
+            "allowedValues": [
+                true,
+                false
+            ],
+            "defaultValue": false
+        },
+        "tagauditpolicy": {
+            "type": "string",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "defaultValue": "No"
+        },
+
+        "allowedVMSizesku": {
+            "type": "array",
+            "metadata": {
+                "displayName": "Which VM Wize?",
+                "description": "allowedVMSizesku"
+            },
+            "defaultValue": []
+        },
+
+        "listOfResourceTypesWithDiagnosticLogsEnabled": {
+            "type": "Array",
+
+            "defaultValue": [
+
+            ]
+        },
+        "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": {
+            "type": "String",
+            "defaultValue": "AdminNo"
+
+        },
+        "listOfMembersToIncludeInWindowsVMAdministratorsGroup": {
+            "type": "String",
+            "defaultValue": "AdminYes"
+
+        }*/
     },
     "variables": {
 
@@ -121,8 +646,6 @@
                 "diasgsettingmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('kv-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
 
                 "deploymentmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('dp-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
-
-
 
                 "virtualnetworkmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('vnet-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env'),'-',deployment().location),'CAF')]",
 
@@ -261,7 +784,6 @@
 
         },
         "delimiters": [ "," ],
-
         "tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], json('{}')) ]",
         "settingArray": "[split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters'))]",
         "propNameArray": {
@@ -335,7 +857,7 @@
                 }
             }
         }
-        /*,
+        ,
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
@@ -789,7 +1311,7 @@
                     "globalvariable": { "value": "[variables('globalvariable')]" }
                 }
             }
-        },
+        }/*,
 
         {
 
