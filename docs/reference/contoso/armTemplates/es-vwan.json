@@ -979,6 +979,7 @@
                     "resourceTags": {
                         "value": "[variables('resourceTags')]"
                     },
+                    "globalvariable": { "value": "[variables('globalvariable')]" },
                     "enableLogAnalytics": {
                         "value": "[parameters('enableLogAnalytics')]"
                     },
@@ -1014,6 +1015,7 @@
                     "resourceTags": {
                         "value": "[variables('resourceTags')]"
                     },
+                    "globalvariable": { "value": "[variables('globalvariable')]" },
                     "managementSubscriptionId": {
                         "value": "[parameters('managementSubscriptionId')]"
                     },
@@ -1071,6 +1073,7 @@
                     "resourceTags": {
                         "value": "[variables('resourceTags')]"
                     },
+                    "globalvariable": { "value": "[variables('globalvariable')]" },
                     "denyRdpForIdentity": {
                         "value": "[parameters('denyRdpForIdentity')]"
                     },
@@ -1110,6 +1113,7 @@
                     "resourceTags": {
                         "value": "[variables('resourceTags')]"
                     },
+                    "globalvariable": { "value": "[variables('globalvariable')]" },
                     "denyHttpIngressForAks": {
                         "value": "[parameters('denyHttpIngressForAks')]"
                     },
@@ -1170,6 +1174,7 @@
                     "resourceTags": {
                         "value": "[variables('resourceTags')]"
                     },
+                    "globalvariable": { "value": "[variables('globalvariable')]" },
                     "enableLogAnalytics": {
                         "value": "[parameters('enableLogAnalytics')]"
                     },
@@ -1264,6 +1269,7 @@
                     "resourceTags": {
                         "value": "[variables('resourceTags')]"
                     },
+                    "globalvariable": { "value": "[variables('globalvariable')]" },
                     "enableVwan": {
                         "value": "[parameters('enableVwan')]"
                     },

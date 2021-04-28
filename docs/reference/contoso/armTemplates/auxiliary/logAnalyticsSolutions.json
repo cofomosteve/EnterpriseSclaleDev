@@ -9,16 +9,16 @@
                 "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
             }
         },
-    //     "resourceTags": {
-    //     "type": "object",
-    //     "defaultValue": {
-    //         "CostCenter": "ITxxx",
-    //         "Env": "Prod",
-    //         "RAD": "Mission Critique",
-    //         "CIDC": "111",
-    //         "Direction": "SHARED"
-    //     }
-    //    } ,
+        "resourceTags": {
+        "type": "object",
+        "defaultValue": {
+            "CostCenter": "ITxxx",
+            "Env": "Prod",
+            "RAD": "Mission Critique",
+            "CIDC": "111",
+            "Direction": "SHARED"
+        }
+       } ,
         "managementSubscriptionId": {
             "type": "string",
             "defaultValue": "",
@@ -139,6 +139,99 @@
                 "description": "Select whether sql assessment solution should be enabled or not."
             }
         }
+
+        //********************************Param for Generic Naming Convention*************************************/
+    ,
+    "globalvariable": {
+      "type": "object",
+      "defaultValue": {
+        "scope": "",
+        "scopeplatform": "",
+        "scopemanagement": "",
+        "scopeconnectivity": "",
+        "scopeidentity": "",
+        "scopelz": "",
+        "scopelzonline": "",
+        "scopelzcorp": "",
+
+        "genericresourceprefix": {
+          "mgngroupmgn": "",
+          "resourcgroupmgn": "",
+          "policydefpmgn": "",
+          "policyassignmgn": "",
+          "rbacassignmgn": "",
+          "rbacdefmgn": "",
+          "loganalyticwkmgn": "",
+          "keyvaultmgn": "",
+          "storagemgn": "",
+          "storagediagnosticmgn": "",
+          "conatainerinstancemgn": "",
+          "containerregistrymgn": "",
+          "budgetconsumptionmgn": "",
+          "diasgsettingmgn": "",
+          "deploymentmgn": "",
+          "virtualnetworkmgn": "",
+          "subnetmgn": "",
+          "virtualnetworkpeeringmgn": "",
+          "virtualnetworkgatewaymgn": "",
+          "localnetworkgatewaylocalmgn": "",
+          "networksitetositemgn": "",
+          "vpnconnectionmgn": "",
+          "nsgmgn": "",
+          "asgmgn": "",
+          "pubipmgn": "",
+          "virtualmachinemgn": "",
+          "virtualmachinestorageaccountmgn": "",
+          "nicmgn": "",
+          "dnsprivatemgn": "",
+          "dnspubblicmgn": "",
+          "loadbalancermgn": "",
+          "applicationgatewaymgn": "",
+          "privatelinkmgn": "",
+          "privateendpointmgn": "",
+          "azurefirewallmgn": "",
+          "azurefirewallpoliciesmgn": "",
+          "azurefirewallrulegroupmgn": "",
+          "securityprincingmgn": "",
+          "workspacedatasourcemgn": "",
+          "automationaccountmgn": "",
+          "workspacemgn": "",
+          "linkedservicemgn": "",
+          "ddosplanmgn": "",
+          "networkwatchermgn": "",
+          "networkwatcherflowlogmgn": "",
+          "databaseauditsettingmgn": "",
+          "databasetransparencryptmgn": "",
+          "dataasesecalertpolmgn": "",
+          "databasevulassessmgn": "",
+          "virrtualhubmgn": "",
+          "virrtualhubconnectionmgn": "",
+          "virtualwanmgn": "",
+          "vpngatewaymgn": "",
+          "expressroutegatewaymgn": "",
+          "virtualmachineextensionmgn": "",
+          "opmanagesolutionmgn": "",
+          "azmonitorappinsigmgn": "",
+          "azmonitorvminsigmgn": "",
+          "azmonitornetworkinsigmgn": "",
+          "azmonitorsqlinsigmgn": "",
+          "azmonitorcontainerinsigmgn": "",
+          "azmonitorcosmosdbinsigmgn": "",
+          "azmonitorressourcegpinsigmgn": "",
+          "azmonitorstorageinsigmgn": "",
+          "azmonitorkeyvaultinsigmgn": "",
+          "azmonitorredisinsigmgn": "",
+          "trafficmanagemgn": "",
+          "cdnmgn": "",
+          "migratemgn": "",
+          "azureacrmgn": "",
+          "fontdoormgn": "",
+          "backupmgn": "",
+          "bastionhostmgn": ""
+        }
+
+      }
+    }
     },
     "variables": {
         "laResourceId": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('topLevelManagementGroupPrefix'), '-mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]",
