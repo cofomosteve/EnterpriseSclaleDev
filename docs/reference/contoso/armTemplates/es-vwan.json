@@ -843,7 +843,7 @@
             "value": "[variables('propNameArray').copyPropertyNames]"
         },
         "resourceTags": {
-            "type": "string",
+            "type": "object",
             "value": "[variables('resourceTags')]"
         }
     }
