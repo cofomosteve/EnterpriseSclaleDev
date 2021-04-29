@@ -529,6 +529,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4fa4b6c0-31ca-4c0d-b10d-24b96f62a751",
                     "scope": "[variables('scopeplatform')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -540,6 +541,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1",
                     "scope": "[variables('scopeplatform')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -551,6 +553,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/60d21c4f-21a3-4d94-85f4-b924e6aeeda4",
                     "scope": "[variables('scopeplatform')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -570,6 +573,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/358c20a6-3f9e-4f0e-97ff-c6ce485e2aac",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('genericparam')]" }
                     // },
@@ -581,6 +585,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5744710e-cc2f-4ee8-8809-3b11e89f4bc9",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('genericparam')]" }
                     // },
@@ -592,6 +597,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0820b7b9-23aa-4725-a1ce-ae4558f718e5",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('genericparam')]" }
                     // },
@@ -603,6 +609,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b7ddfbdc-1260-477d-91fd-98bd9be789a6",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('genericparam')]" }
                     // },
@@ -614,6 +621,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a4af4a39-4135-47fb-b175-47fbdf85311d",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('genericparam')]" }
                     // },
@@ -625,6 +633,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6d555dd1-86f2-4f1c-8ed7-5abae7c6cbab",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('genericparam')]" }
                     // },
@@ -636,6 +645,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8cb6aa8b-9e41-4f4e-aa25-089a7ac2581e",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('genericparam')]" }
                     // },
@@ -646,6 +656,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f0e6e85b-9b9f-4a4b-b67b-f730d42f1b0b",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('genericparam')]" }
                     // },
@@ -656,6 +667,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f9d614c5-c173-4d56-95a7-b4437057d193",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('genericparam')]" }
                     // },
@@ -666,6 +678,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2b9ad585-36bc-4615-b300-fd4435808332",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
                     // },
@@ -676,6 +689,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c4d441f8-f9d9-4a9e-9cef-e82117cb3eef",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
                     // },
@@ -686,6 +700,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0da106f2-4ca3-48e8-bc85-c638fe6aea8f",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
                     // },
@@ -696,6 +711,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c4ebc54a-46e1-481a-bee2-d4411e95d828",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
                     // },
@@ -706,6 +722,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/95bccee9-a7f8-4bec-9ee9-62c3473701fc",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
                     // },
@@ -716,6 +733,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c75248c1-ea1d-4a9c-8fc9-29a6aabd5da8",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "effect": { "value": "[parameters('AuditIfNotExists')]" }
                     // },
@@ -726,6 +744,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ef619a2c-cc4d-4d03-b2ba-8c94a834d85b",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "evaluatedSkuNames": { "value": "[parameters('genericparam')]" }
                     // },
@@ -736,6 +755,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/73ef9241-5d81-4cd4-b483-8443d1730fe5",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "evaluatedSkuNames": { "value": "[parameters('genericparam')]" }
                     // },
@@ -746,6 +766,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e9c8d085-d9cc-4b17-9cdc-059f1f01f19e",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "effect": {
                     //     "evaluatedSkuNames": { "value": "[parameters('genericparam')]" }
                     // },
@@ -757,6 +778,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cb510bfd-1cba-4d9f-a230-cb0976f4bb71",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "effect": {
                     //     "evaluatedSkuNames": { "value": "[parameters('genericparam')]" }
                     // },
@@ -767,6 +789,7 @@
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0e60b895-3786-45da-8377-9c6b4b6ac5f9",
                     "scope": "[variables('scopelzonline')]",
+                    "parameters": {},
                     // "effect": {
                     //     "evaluatedSkuNames": { "value": "[parameters('genericparam')]" }
                     // },
@@ -977,6 +1000,7 @@
                     "apply": "[parameters('apply-kubclust-sec-base-linux-wk')]",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/a8640138-9b0a-4a28-b8cb-1666c838647d",
                     "scope": "[variables('scope')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -988,6 +1012,7 @@
                     "apply": "[parameters('apply-kubclust-sec-strict-linux-wk')]",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42b8ef37-b724-4e24-bbc8-7a7708edfe00",
                     "scope": "[variables('scope')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -999,6 +1024,7 @@
                 //     "apply": "[parameters('apply-enable-monitor-vm-iaas')]",
                 //     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/55f3eceb-5573-4f18-9695-226972c6d74a",
                 //     "scope": "[variables('scope')]",
+                //"parameters": {},
                 //     "parameters": {
                 //         "xxxxxx": { "value": "[parameters('genericparam')]" }
                 //     },
@@ -1010,6 +1036,7 @@
                     "apply": "[parameters('apply-windows-vm-security-base')]",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/be7a78aa-3e10-4153-a5fd-8c6506dbc821",
                     "scope": "[variables('scope')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -1021,6 +1048,7 @@
                     "apply": "[parameters('apply-data-protection-suite')]",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/9cb3cc7a-b39b-4b82-bc89-e5a5d9ff7b97",
                     "scope": "[variables('scope')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -1032,6 +1060,7 @@
                     "apply": "[parameters('apply-flowlog-nsg-iaas')]",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/62329546-775b-4a3d-a4cb-eb4bb990d2c0",
                     "scope": "[variables('scope')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -1042,6 +1071,7 @@
                     "apply": "[parameters('apply-config-azuremonitor-security-agent-vm-iaas')]",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/a15f3269-2e10-458c-87a4-d5989e678a73",
                     "scope": "[variables('scope')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -1052,6 +1082,7 @@
                     "apply": "[parameters('apply-vm-insecure-pwd-security-iaas')]",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/095e4ed9-c835-4ab6-9439-b5644362a06c",
                     "scope": "[variables('scope')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -1065,6 +1096,7 @@
                     "apply": "[parameters('apply-deny-public-endpoint-paas')]",
                     "policyDefinitionId": "[concat( parameters('globalvariable').scope ,'/providers/Microsoft.Authorization/policySetDefinitions/Deny-PublicEndpoints')]",
                     "scope": "[variables('scope')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -1075,6 +1107,7 @@
                     "apply": "[parameters('apply-tls-ssl-enforcement-encrypt-paas')]",
                     "policyDefinitionId": "[concat(parameters('globalvariable').scope ,'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-EncryptTransit')]",
                     "scope": "[variables('scope')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
@@ -1095,6 +1128,7 @@
                     "apply": "[parameters('apply-audit-resource-without-encryption')]",
                     "policyDefinitionId": "[concat(parameters('globalvariable').scope ,'/providers/Microsoft.Authorization/policySetDefinitions/Enforce-Encryption-CMK')]",
                     "scope": "[variables('scope')]",
+                    "parameters": {},
                     // "parameters": {
                     //     "xxxxxx": { "value": "[parameters('genericparam')]" }
                     // },
