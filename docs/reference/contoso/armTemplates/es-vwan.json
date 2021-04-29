@@ -711,7 +711,7 @@
 
                 "workspacedatasourcemgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('wk-dt-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
 
-                "automationaccountmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('aut-acc-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+                "automationaccountmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('ac-',  parameters('enterpriseScaleCompanyPrefix'),'-'),'CAF')]",
 
                 "workspacemgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('wk-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
 

@@ -293,7 +293,7 @@
 
                 {
                     "properties": {
-                        //"roleName": "[variables('kubernettesrole')]",
+                        "roleName": "[variables('kubernettesrole')]",
                         "Description": "[variables('kubernettesroledesc')]",
                         "Type": "customRole",
                         "Id": "[variables('kubernettesroleid')]",
@@ -328,7 +328,7 @@
                 },
                 {
                     "properties": {
-                       // "roleName": "[variables('vmwarerole')]",
+                        "roleName": "[variables('vmwarerole')]",
                         "Description": "[variables('vmwareroledesc')]",
                         "Type": "customRole",
                         "Id": "[variables('vmwareroleid')]",
@@ -1042,21 +1042,21 @@
                 "Name": "RBACCustomDefinitionCopy",
                 "count": "[length(variables('Role').RoleDefinitions)]"
             },
-            "Name": "[variables('Role').RoleDefinitions[copyIndex()].Name]",
+            "name": "[variables('Role').RoleDefinitions[copyIndex()].Name]",
             "properties": {
                 "roleName": "[variables('Role').RoleDefinitions[copyIndex()].properties.roleName]",
-                "Description": "[variables('Role').RoleDefinitions[copyIndex()].properties.Description]",
-                "Type": "customRole",
-                "Id": "[variables('Role').RoleDefinitions[copyIndex()].properties.Id]",
+                "description": "[variables('Role').RoleDefinitions[copyIndex()].properties.Description]",
+                "type": "customRole",
+                //"Id": "[variables('Role').RoleDefinitions[copyIndex()].properties.Id]",
                 "IsCustom": true,
                 //"permissions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions]",
                 "permissions": {
-                    "Actions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.Actions]",
-                    "NotActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.NotActions]",
-                    "DataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.DataActions]",
-                    "NotDataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.NotDataActions]"
+                    "actions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.Actions]",
+                    "notActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.NotActions]",
+                    "aataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.DataActions]",
+                    "notDataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.NotDataActions]"
                 },
-                "AssignableScopes": "[variables('Role').RoleDefinitions[copyIndex()].properties.AssignableScopes]"
+                "assignableScopes": "[variables('Role').RoleDefinitions[copyIndex()].properties.AssignableScopes]"
             }
         }
     ],
