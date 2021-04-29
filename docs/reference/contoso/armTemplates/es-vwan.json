@@ -1313,7 +1313,6 @@
                 }
             }
         },
-
         {
             "condition": "[equals(parameters('enableCustomRBAC'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
