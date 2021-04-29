@@ -317,13 +317,13 @@
         // "scopelzonline": "[parameters('globalvariable').scopelzonline]",
         // "scopelzcorp": "[parameters('globalvariable').scopelzcorp]",
         "policyDefinitions": {
-            "deployAzureActivityLog": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'), '/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-ActivityLog')]",
-            "deployResourceDiagnostics": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'), '/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Diag-LogAnalytics')]",
+            "deployAzureActivityLog": "[concat(variables('scope'), '/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-ActivityLog')]",
+            "deployResourceDiagnostics": "[concat(variables('scope'), '/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Diag-LogAnalytics')]",
             "windowsArcMonitoring": "/providers/Microsoft.Authorization/policyDefinitions/69af7d4a-7b18-4044-93a9-2651498ef203",
             "linuxArcMonitoring": "/providers/Microsoft.Authorization/policyDefinitions/9d2b61b4-1d14-4a63-be30-d4498e7ad2cf",
             "vmMonitoring": "/providers/Microsoft.Authorization/policySetDefinitions/55f3eceb-5573-4f18-9695-226972c6d74a",
             "vmssMonitoring": "/providers/Microsoft.Authorization/policySetDefinitions/75714362-cae7-409e-9b99-a8e5075b7fad",
-            "deployAzureSecurity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('scope'), '/providers/Microsoft.Authorization/policyDefinitions/Deploy-ASC-Standard')]",
+            "deployAzureSecurity": "[concat(variables('scope'), '/providers/Microsoft.Authorization/policyDefinitions/Deploy-ASC-Standard')]",
             "ascMonitoring": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
         },
         "policyAssignmentNames": {
