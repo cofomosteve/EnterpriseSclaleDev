@@ -170,7 +170,7 @@
         "vWanName": "[concat(parameters('globalvariable').genericresourceprefix.wanmgn, parameters('location'))]",
         "vpngwname": "[concat(parameters('globalvariable').genericresourceprefix.vpngatewaymgn, parameters('location'))]",
         "erGwName": "[concat(parameters('globalvariable').genericresourceprefix.expressroutegatewaymgn, parameters('location'))]",
-        "rgName": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, '-connectivity')]",
+        "rgName": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'connectivity')]",
         "vHubName": "[concat(parameters('globalvariable').genericresourceprefix.virrtualhubmgn, parameters('location'))]",
         "azFwName": "[concat(parameters('globalvariable').genericresourceprefix.azurefirewallmgn, parameters('location'))]",
         "vWanSku": "Standard",
