@@ -46,7 +46,7 @@
         }
 
         //********************************Param for Generic Naming Convention*************************************/
-        ,
+       ,
         "globalvariable": {
             "type": "object",
             "defaultValue": {
@@ -109,6 +109,8 @@
                     "databasetransparencryptmgn": "",
                     "dataasesecalertpolmgn": "",
                     "databasevulassessmgn": "",
+                    "wanmgn": "",
+                    "hubmgn": "",
                     "virrtualhubmgn": "",
                     "virrtualhubconnectionmgn": "",
                     "virtualwanmgn": "",

@@ -204,6 +204,8 @@
                     "databasetransparencryptmgn": "",
                     "dataasesecalertpolmgn": "",
                     "databasevulassessmgn": "",
+                    "wanmgn": "",
+                    "hubmgn": "",
                     "virrtualhubmgn": "",
                     "virrtualhubconnectionmgn": "",
                     "virtualwanmgn": "",
