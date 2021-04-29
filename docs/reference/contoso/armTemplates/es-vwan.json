@@ -631,7 +631,7 @@
 
                 "policydefpmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('pdef-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
 
-                "policyassignmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('passign-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+                "policyassignmgn": "",//"[if(equals(parameters('NamingConvention'), 'OQLF'),concat('pa-',   parameters('enterpriseScaleCompanyPrefix'),'-'),'CAF')]",
 
 
                 "rbacassignmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('RBAC-CUSTOM-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",

@@ -1042,12 +1042,12 @@
                 "Name": "RBACCustomDefinitionCopy",
                 "count": "[length(variables('Role').RoleDefinitions)]"
             },
-            "Name": "[variables('Role').RoleDefinitions[copyIndex()].name]",
+            "Name": "[variables('Role').RoleDefinitions[copyIndex()].Name]",
             "properties": {
                 "roleName": "[variables('Role').RoleDefinitions[copyIndex()].properties.roleName]",
-                "Description": "[variables('Role').RoleDefinitions[copyIndex()].properties.description]",
+                "Description": "[variables('Role').RoleDefinitions[copyIndex()].properties.Description]",
                 "Type": "customRole",
-                "Id": "[variables('Role').RoleDefinitions[copyIndex()].properties.id]",
+                "Id": "[newGuid()]",//"[variables('Role').RoleDefinitions[copyIndex()].properties.Id]",
                 "IsCustom": true,
                 //"permissions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions]",
                 "permissions": {

@@ -327,14 +327,14 @@
             "ascMonitoring": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
         },
         "policyAssignmentNames": {
-            "azureActivityLog": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-AzActivity-Log')]",
-            "vmMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-VM-Monitoring')]", 
-            "windowsArcMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-WS-Arc-Monitoring')]",
-            "linuxArcMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-LX-Arc-Monitoring')]", 
-            "vmssMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-VMSS-Monitoring')]",  
-            "resourceDiagnostics": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-Resource-Diag')]", 
-            "azureSecurity": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-ASC-Security')]", 
-            "ascMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-ASC-Monitoring')]"
+            "azureActivityLog": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-AzActivity-Log')]",
+            "vmMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-VM-Monitoring')]", 
+            "windowsArcMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-WS-Arc-Monitoring')]",
+            "linuxArcMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-LX-Arc-Monitoring')]", 
+            "vmssMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-VMSS-Monitoring')]",  
+            "resourceDiagnostics": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Resource-Diag')]", 
+            "azureSecurity": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-ASC-Security')]", 
+            "ascMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-ASC-Monitoring')]"
         },
         "rbacOwner": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
         "roleAssignmentNames": {
