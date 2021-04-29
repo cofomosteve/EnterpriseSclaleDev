@@ -211,7 +211,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('systemopsrole')]"
+                    "Name": "[variables('systemopsroleid')]"
                 },
                 {
                     "properties": {
@@ -235,7 +235,7 @@
                             "[variables('scopelz')]"
                         ]
                     },
-                    "Name": "[variables('landingzonewonerrole')]"
+                    "Name": "[variables('landingzonewonerroleid')]"
                 },
                 {
                     "properties": {
@@ -263,7 +263,7 @@
                             "[variables('scopelz')]"
                         ]
                     },
-                    "Name": "[variables('landingzonecontributorrole')]"
+                    "Name": "[variables('landingzonecontributorroleid')]"
                 },
                 {
                     "properties": {
@@ -293,7 +293,7 @@
 
                 {
                     "properties": {
-                        "roleName": "[variables('kubernettesrole')]",
+                        //"roleName": "[variables('kubernettesrole')]",
                         "Description": "[variables('kubernettesroledesc')]",
                         "Type": "customRole",
                         "Id": "[variables('kubernettesroleid')]",
@@ -328,7 +328,7 @@
                 },
                 {
                     "properties": {
-                        "roleName": "[variables('vmwarerole')]",
+                       // "roleName": "[variables('vmwarerole')]",
                         "Description": "[variables('vmwareroledesc')]",
                         "Type": "customRole",
                         "Id": "[variables('vmwareroleid')]",
@@ -349,7 +349,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('vmwarerole')]"
+                    "Name": "[variables('vmwareroleid')]"
                 },
                 {
                     "properties": {

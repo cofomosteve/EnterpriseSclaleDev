@@ -172,7 +172,7 @@
                         "value": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]"
                     },
                     "automationAccountName": {
-                        "value": "[concat(parameters('topLevelManagementGroupPrefix'), '-a-', parameters('managementSubscriptionId'))]"
+                        "value": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]"
                     },
                     "workspaceRegion": {
                         "value": "[deployment().location]"
@@ -181,7 +181,7 @@
                         "value": "[deployment().location]"
                     },
                     "rgName": {
-                        "value": "[concat(parameters('topLevelManagementGroupPrefix'), '-mgmt')]"
+                        "value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
                     },
                     "retentionInDays": {
                         "value": "[parameters('retentionInDays')]"

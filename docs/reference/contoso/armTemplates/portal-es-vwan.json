@@ -1150,7 +1150,8 @@
                                     "label": "Simple VNET (not recommanded or for PaaS Only)",
                                     "value": "VNETBASIC"
                                 }
-                            ]
+                            ],
+                            "required": true
                         }
                     },
                     {
