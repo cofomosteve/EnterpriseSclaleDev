@@ -6,7 +6,7 @@
 
 
         "globalvariable": {
-            "type": "object",
+            "Type": "object",
             "defaultValue": {
                 "scope": "",
                 "scopeplatform": "",
@@ -182,889 +182,851 @@
                 {
                     "properties": {
                         "roleName": "[variables('systemopsrole')]",
-                        "description": "[variables('systemopsroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('systemopsroleid')]",
+                        "Description": "[variables('systemopsroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('systemopsroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
+                        "permissions": {
+                            "Actions": [
 
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Management/managementGroups/*",
-                                    "Microsoft.Authorization/*",
-                                    "Microsoft.Capacity/*",
-                                    "Microsoft.RecoveryServices/*",
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.AlertsManagement/*",
-                                    "Microsoft.OperationalInsights/*",
-                                    "Microsoft.WorkloadMonitor/monitors/*",
-                                    "Microsoft.ContainerRegistry/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read", 
-                                    "Microsoft.Support/*"
-                                ],  
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Management/managementGroups/*",
+                                "Microsoft.Authorization/*",
+                                "Microsoft.Capacity/*",
+                                "Microsoft.RecoveryServices/*",
+                                "Microsoft.Insights/*",
+                                "Microsoft.AlertsManagement/*",
+                                "Microsoft.OperationalInsights/*",
+                                "Microsoft.WorkloadMonitor/monitors/*",
+                                "Microsoft.ContainerRegistry/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ],
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('systemopsrole')]"
+                    "Name": "[variables('systemopsrole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('landingzonewonerrole')]",
-                        "description": "[variables('landingzonewonerroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('landingzonewonerroleid')]",
+                        "Description": "[variables('landingzonewonerroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('landingzonewonerroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",                                    
-                                    "Microsoft.Support/*"
-                                ],  
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ],
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scopelz')]"
                         ]
                     },
-                    "name": "[variables('landingzonewonerrole')]"
+                    "Name": "[variables('landingzonewonerrole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('landingzonecontributorrole')]",
-                        "description": "[variables('landingzonecontributorroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('landingzonecontributorroleid')]",
+                        "Description": "[variables('landingzonecontributorroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('landingzonecontributorroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
+                        "permissions": {
+                            "Actions": [
 
-                                    "Microsoft.Authorization/*/Delete",
-                                    "Microsoft.Authorization/*/Write",
-                                    "Microsoft.Authorization/elevateAccess/Action",
-                                    "Microsoft.Blueprint/blueprintAssignments/write",
-                                    "Microsoft.Blueprint/blueprintAssignments/delete",
-                                    "Microsoft.Compute/galleries/share/action",                                    
-                                    "Microsoft.Support/*"
-                                ], 
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                                "Microsoft.Authorization/*/Delete",
+                                "Microsoft.Authorization/*/Write",
+                                "Microsoft.Authorization/elevateAccess/Action",
+                                "Microsoft.Blueprint/blueprintAssignments/write",
+                                "Microsoft.Blueprint/blueprintAssignments/delete",
+                                "Microsoft.Compute/galleries/share/action",
+                                "Microsoft.Support/*"
+                            ],
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scopelz')]"
                         ]
                     },
-                    "name": "[variables('landingzonecontributorrole')]"
+                    "Name": "[variables('landingzonecontributorrole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('automationrole')]",
-                        "description": "[variables('automationroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('automationroleid')]",
+                        "Description": "[variables('automationroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('automationroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Automation/automationAccounts/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], 
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Automation/automationAccounts/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ],
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('automationrole')]"
+                    "Name": "[variables('automationrole')]"
                 },
 
                 {
                     "properties": {
                         "roleName": "[variables('kubernettesrole')]",
-                        "description": "[variables('kubernettesroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('kubernettesroleid')]",
+                        "Description": "[variables('kubernettesroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('kubernettesroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Automation/automationAccounts/*",
-                                    "Microsoft.Authorization/*/read",
-                                    "Microsoft.Insights/alertRules/*",
-                                    "Microsoft.Resources/deployments/write",
-                                    "Microsoft.Resources/subscriptions/operationresults/read",
-                                    "Microsoft.Resources/subscriptions/read",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Support/*",
-                                    "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action",
-                                    "Microsoft.ContainerRegistry/*",
-                                    "Microsoft.ContainerService/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Automation/automationAccounts/*",
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.Resources/deployments/write",
+                                "Microsoft.Resources/subscriptions/operationresults/read",
+                                "Microsoft.Resources/subscriptions/read",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Support/*",
+                                "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action",
+                                "Microsoft.ContainerRegistry/*",
+                                "Microsoft.ContainerService/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('kubernettesrole')]"
+                    "Name": "[variables('kubernettesrole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('vmwarerole')]",
-                        "description": "[variables('vmwareroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('vmwareroleid')]",
+                        "Description": "[variables('vmwareroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('vmwareroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Automation/automationAccounts/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Automation/automationAccounts/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('vmwarerole')]"
+                    "Name": "[variables('vmwarerole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('computesrole')]",
-                        "description": "[variables('computesroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('computesroleid')]",
+                        "Description": "[variables('computesroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('computesroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Automation/automationAccounts/*",
-                                    "Microsoft.DevTestLab/schedules/*",
-                                    "Microsoft.Insights/alertRules/*",
-                                    "Microsoft.Network/applicationGateways/*",
-                                    "Microsoft.Network/networkSecurityGroups/*",
-                                    "Microsoft.RecoveryServices/*",
-                                    "Microsoft.SqlVirtualMachine/*",
-                                    "Microsoft.Network/locations/*",
-                                    "Microsoft.Storage/storageAccounts/listKeys/action",
-                                    "Microsoft.Storage/storageAccounts/read",
-                                    "Microsoft.Network/publicIPAddresses/*",
-                                    "Microsoft.Network/virtualNetworks/*",
-                                    "Microsoft.Network/loadBalancers/read",
-                                    "Microsoft.Network/networkInterfaces/*",
-                                    "Microsoft.Compute/virtualMachines/*",
-                                    "Microsoft.ResourceHealth/availabilityStatuses/read",
-                                    "Microsoft.Resources/deployments/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Automation/automationAccounts/*",
+                                "Microsoft.DevTestLab/schedules/*",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.Network/applicationGateways/*",
+                                "Microsoft.Network/networkSecurityGroups/*",
+                                "Microsoft.RecoveryServices/*",
+                                "Microsoft.SqlVirtualMachine/*",
+                                "Microsoft.Network/locations/*",
+                                "Microsoft.Storage/storageAccounts/listKeys/action",
+                                "Microsoft.Storage/storageAccounts/read",
+                                "Microsoft.Network/publicIPAddresses/*",
+                                "Microsoft.Network/virtualNetworks/*",
+                                "Microsoft.Network/loadBalancers/read",
+                                "Microsoft.Network/networkInterfaces/*",
+                                "Microsoft.Compute/virtualMachines/*",
+                                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('computesrole')]"
+                    "Name": "[variables('computesrole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('backuprole')]",
-                        "description": "[variables('backuproledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('backuproleid')]",
+                        "Description": "[variables('backuproledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('backuproleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Automation/automationAccounts/*",
-                                    "Microsoft.Authorization/*/read",
-                                    "Microsoft.Network/virtualNetworks/read",
-                                    "Microsoft.RecoveryServices/locations/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action",
-                                    "Microsoft.RecoveryServices/Vaults/backupJobs/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupJobsExport/action",
-                                    "Microsoft.RecoveryServices/Vaults/backupOperationResults/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupPolicies/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupProtectableItems/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupProtectedItems/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupProtectionContainers/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupSecurityPIN/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read",
-                                    "Microsoft.RecoveryServices/Vaults/certificates/*",
-                                    "Microsoft.RecoveryServices/Vaults/extendedInformation/*",
-                                    "Microsoft.RecoveryServices/Vaults/monitoringAlerts/read",
-                                    "Microsoft.RecoveryServices/Vaults/monitoringConfigurations/*",
-                                    "Microsoft.RecoveryServices/Vaults/read",
-                                    "Microsoft.RecoveryServices/Vaults/registeredIdentities/*",
-                                    "Microsoft.RecoveryServices/Vaults/usages/*",
-                                    "Microsoft.Resources/deployments/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Storage/storageAccounts/read",
-                                    "Microsoft.RecoveryServices/Vaults/backupstorageconfig/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupconfig/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupValidateOperation/action",
-                                    "Microsoft.RecoveryServices/Vaults/write",
-                                    "Microsoft.RecoveryServices/Vaults/backupOperations/read",
-                                    "Microsoft.RecoveryServices/Vaults/backupEngines/read",
-                                    "Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/*",
-                                    "Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read",
-                                    "Microsoft.RecoveryServices/locations/backupStatus/action",
-                                    "Microsoft.RecoveryServices/locations/backupPreValidateProtection/action",
-                                    "Microsoft.RecoveryServices/locations/backupValidateFeatures/action",
-                                    "Microsoft.RecoveryServices/Vaults/monitoringAlerts/write",
-                                    "Microsoft.RecoveryServices/operations/read",
-                                    "Microsoft.RecoveryServices/locations/operationStatus/read",
-                                    "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",                                
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Automation/automationAccounts/*",
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Network/virtualNetworks/read",
+                                "Microsoft.RecoveryServices/locations/*",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/*",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/*",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action",
+                                "Microsoft.RecoveryServices/Vaults/backupJobs/*",
+                                "Microsoft.RecoveryServices/Vaults/backupJobsExport/action",
+                                "Microsoft.RecoveryServices/Vaults/backupOperationResults/*",
+                                "Microsoft.RecoveryServices/Vaults/backupPolicies/*",
+                                "Microsoft.RecoveryServices/Vaults/backupProtectableItems/*",
+                                "Microsoft.RecoveryServices/Vaults/backupProtectedItems/*",
+                                "Microsoft.RecoveryServices/Vaults/backupProtectionContainers/*",
+                                "Microsoft.RecoveryServices/Vaults/backupSecurityPIN/*",
+                                "Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read",
+                                "Microsoft.RecoveryServices/Vaults/certificates/*",
+                                "Microsoft.RecoveryServices/Vaults/extendedInformation/*",
+                                "Microsoft.RecoveryServices/Vaults/monitoringAlerts/read",
+                                "Microsoft.RecoveryServices/Vaults/monitoringConfigurations/*",
+                                "Microsoft.RecoveryServices/Vaults/read",
+                                "Microsoft.RecoveryServices/Vaults/registeredIdentities/*",
+                                "Microsoft.RecoveryServices/Vaults/usages/*",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Storage/storageAccounts/read",
+                                "Microsoft.RecoveryServices/Vaults/backupstorageconfig/*",
+                                "Microsoft.RecoveryServices/Vaults/backupconfig/*",
+                                "Microsoft.RecoveryServices/Vaults/backupValidateOperation/action",
+                                "Microsoft.RecoveryServices/Vaults/write",
+                                "Microsoft.RecoveryServices/Vaults/backupOperations/read",
+                                "Microsoft.RecoveryServices/Vaults/backupEngines/read",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/*",
+                                "Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read",
+                                "Microsoft.RecoveryServices/locations/backupStatus/action",
+                                "Microsoft.RecoveryServices/locations/backupPreValidateProtection/action",
+                                "Microsoft.RecoveryServices/locations/backupValidateFeatures/action",
+                                "Microsoft.RecoveryServices/Vaults/monitoringAlerts/write",
+                                "Microsoft.RecoveryServices/operations/read",
+                                "Microsoft.RecoveryServices/locations/operationStatus/read",
+                                "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('backuprole')]"
+                    "Name": "[variables('backuprole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('apsopsrole')]",
-                        "description": "[variables('apsopsroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('apsopsroleid')]",
+                        "Description": "[variables('apsopsroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('apsopsroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Authorization/*/read",
-                                    "Microsoft.Insights/alertRules/*",
-                                    "Microsoft.ResourceHealth/availabilityStatuses/read",
-                                    "Microsoft.Resources/deployments/*",
-                                    "Microsoft.Insights/components/*",
-                                    "Microsoft.Web/*",                               
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.Insights/components/*",
+                                "Microsoft.Web/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('apsopsrole')]"
+                    "Name": "[variables('apsopsrole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('migrationRolerole')]",
-                        "description": "[variables('migrationRoleroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('migrationroleid')]",
+                        "Description": "[variables('migrationRoleroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('migrationroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Automation/automationAccounts/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Automation/automationAccounts/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('migrationRolerole')]"
+                    "Name": "[variables('migrationRolerole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('storagerole')]",
-                        "description": "[variables('storageroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('storageroleid')]",
+                        "Description": "[variables('storageroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('storageroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Automation/automationAccounts/*",
-                                    "Microsoft.Insights/diagnosticSettings/*",
-                                    "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action",
-                                    "Microsoft.ResourceHealth/availabilityStatuses/read",
-                                    "Microsoft.Resources/deployments/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Storage/storageAccounts/*",                                
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Automation/automationAccounts/*",
+                                "Microsoft.Insights/diagnosticSettings/*",
+                                "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action",
+                                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Storage/storageAccounts/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('storagerole')]"
+                    "Name": "[variables('storagerole')]"
                 },
 
                 {
                     "properties": {
                         "roleName": "[variables('databaseerole')]",
-                        "description": "[variables('databaseeroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('databaseeroleid')]",
+                        "Description": "[variables('databaseeroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('databaseeroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
+                        "permissions": {
+                            "Actions": [
 
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Automation/automationAccounts/*",
-                                    "Microsoft.Insights/alertRules/*",
-                                    "Microsoft.ResourceHealth/availabilityStatuses/read",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Sql/locations/*/read",
-                                    "Microsoft.Sql/servers/databases/*",
-                                    "Microsoft.Sql/servers/read",
-                                    "Microsoft.Insights/metrics/read",
-                                    "Microsoft.Insights/metricDefinitions/read",
-                                    "Microsoft.Network/networkSecurityGroups/*",
-                                    "Microsoft.Network/routeTables/*",
-                                    "Microsoft.Sql/locations/*/read",
-                                    "Microsoft.Sql/locations/instanceFailoverGroups/*",
-                                    "Microsoft.Sql/managedInstances/*",
-                                    "Microsoft.Support/*",
-                                    "Microsoft.Network/virtualNetworks/subnets/*",
-                                    "Microsoft.Network/virtualNetworks/*",
-                                    "Microsoft.Authorization/*/read",
-                                    "Microsoft.Insights/alertRules/*",
-                                    "Microsoft.Insights/metrics/read",
-                                    "Microsoft.Insights/metricDefinitions/read",
-                                    "Microsoft.Sql/locations/*/read",
-                                    "Microsoft.Sql/servers/*",
-                                    "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action",
-                                    "Microsoft.ResourceHealth/availabilityStatuses/read",
-                                    "Microsoft.Resources/deployments/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Sql/locations/administratorAzureAsyncOperation/read",
-                                    "Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/*",
-                                    "Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/*",
-                                    "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/*",
-                                    "Microsoft.Sql/managedInstances/databases/securityAlertPolicies/*",
-                                    "Microsoft.Sql/managedInstances/databases/sensitivityLabels/*",
-                                    "Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/*",
-                                    "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
-                                    "Microsoft.Sql/managedInstances/databases/transparentDataEncryption/*",
-                                    "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
-                                    "Microsoft.Sql/servers/auditingSettings/*",
-                                    "Microsoft.Sql/servers/extendedAuditingSettings/read",
-                                    "Microsoft.Sql/servers/databases/auditingSettings/*",
-                                    "Microsoft.Sql/servers/databases/auditRecords/read",
-                                    "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
-                                    "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
-                                    "Microsoft.Sql/servers/databases/extendedAuditingSettings/read",
-                                    "Microsoft.Sql/servers/databases/read",
-                                    "Microsoft.Sql/servers/databases/recommendedSensitivityLabels/*",
-                                    "Microsoft.Sql/servers/databases/schemas/read",
-                                    "Microsoft.Sql/servers/databases/schemas/tables/columns/read",
-                                    "Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*",
-                                    "Microsoft.Sql/servers/databases/schemas/tables/read",
-                                    "Microsoft.Sql/servers/databases/securityAlertPolicies/*",
-                                    "Microsoft.Sql/servers/databases/securityMetrics/*",
-                                    "Microsoft.Sql/servers/databases/sensitivityLabels/*",
-                                    "Microsoft.Sql/servers/databases/transparentDataEncryption/*",
-                                    "Microsoft.Sql/servers/databases/vulnerabilityAssessments/*",
-                                    "Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/*",
-                                    "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
-                                    "Microsoft.Sql/servers/devOpsAuditingSettings/*",
-                                    "Microsoft.Sql/servers/firewallRules/*",
-                                    "Microsoft.Sql/servers/read",
-                                    "Microsoft.Sql/servers/securityAlertPolicies/*",
-                                    "Microsoft.Sql/servers/vulnerabilityAssessments/*",
-                                    "Microsoft.Support/*",
-                                    "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
-                                    "Microsoft.Sql/managedInstances/read",
-                                    "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
-                                    "Microsoft.Security/sqlVulnerabilityAssessments/*",
-                                    "Microsoft.Sql/managedInstances/administrators/read",
-                                    "Microsoft.Sql/servers/administrators/read",                                 
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Resources/deployments/*",            
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Automation/automationAccounts/*",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Sql/locations/*/read",
+                                "Microsoft.Sql/servers/databases/*",
+                                "Microsoft.Sql/servers/read",
+                                "Microsoft.Insights/metrics/read",
+                                "Microsoft.Insights/metricDefinitions/read",
+                                "Microsoft.Network/networkSecurityGroups/*",
+                                "Microsoft.Network/routeTables/*",
+                                "Microsoft.Sql/locations/*/read",
+                                "Microsoft.Sql/locations/instanceFailoverGroups/*",
+                                "Microsoft.Sql/managedInstances/*",
+                                "Microsoft.Support/*",
+                                "Microsoft.Network/virtualNetworks/subnets/*",
+                                "Microsoft.Network/virtualNetworks/*",
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.Insights/metrics/read",
+                                "Microsoft.Insights/metricDefinitions/read",
+                                "Microsoft.Sql/locations/*/read",
+                                "Microsoft.Sql/servers/*",
+                                "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action",
+                                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Sql/locations/administratorAzureAsyncOperation/read",
+                                "Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/*",
+                                "Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/*",
+                                "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/*",
+                                "Microsoft.Sql/managedInstances/databases/securityAlertPolicies/*",
+                                "Microsoft.Sql/managedInstances/databases/sensitivityLabels/*",
+                                "Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/*",
+                                "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
+                                "Microsoft.Sql/managedInstances/databases/transparentDataEncryption/*",
+                                "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
+                                "Microsoft.Sql/servers/auditingSettings/*",
+                                "Microsoft.Sql/servers/extendedAuditingSettings/read",
+                                "Microsoft.Sql/servers/databases/auditingSettings/*",
+                                "Microsoft.Sql/servers/databases/auditRecords/read",
+                                "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
+                                "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
+                                "Microsoft.Sql/servers/databases/extendedAuditingSettings/read",
+                                "Microsoft.Sql/servers/databases/read",
+                                "Microsoft.Sql/servers/databases/recommendedSensitivityLabels/*",
+                                "Microsoft.Sql/servers/databases/schemas/read",
+                                "Microsoft.Sql/servers/databases/schemas/tables/columns/read",
+                                "Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*",
+                                "Microsoft.Sql/servers/databases/schemas/tables/read",
+                                "Microsoft.Sql/servers/databases/securityAlertPolicies/*",
+                                "Microsoft.Sql/servers/databases/securityMetrics/*",
+                                "Microsoft.Sql/servers/databases/sensitivityLabels/*",
+                                "Microsoft.Sql/servers/databases/transparentDataEncryption/*",
+                                "Microsoft.Sql/servers/databases/vulnerabilityAssessments/*",
+                                "Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/*",
+                                "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
+                                "Microsoft.Sql/servers/devOpsAuditingSettings/*",
+                                "Microsoft.Sql/servers/firewallRules/*",
+                                "Microsoft.Sql/servers/read",
+                                "Microsoft.Sql/servers/securityAlertPolicies/*",
+                                "Microsoft.Sql/servers/vulnerabilityAssessments/*",
+                                "Microsoft.Support/*",
+                                "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
+                                "Microsoft.Sql/managedInstances/read",
+                                "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
+                                "Microsoft.Security/sqlVulnerabilityAssessments/*",
+                                "Microsoft.Sql/managedInstances/administrators/read",
+                                "Microsoft.Sql/servers/administrators/read",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('databaseerole')]"
+                    "Name": "[variables('databaseerole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('enablementrole')]",
-                        "description": "[variables('enablementroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('enablementroleid')]",
+                        "Description": "[variables('enablementroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('enablementroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Automation/automationAccounts/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Automation/automationAccounts/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('enablementrole')]"
+                    "Name": "[variables('enablementrole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('devopsrole')]",
-                        "description": "[variables('devopsroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('devopsroleid')]",
+                        "Description": "[variables('devopsroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('devopsroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
+                        "permissions": {
+                            "Actions": [
 
-                                    "Microsoft.Insights/*",
-                                    "Microsoft.Authorization/*/read",
-                                    "Microsoft.Compute/availabilitySets/read",
-                                    "Microsoft.Compute/virtualMachines/*/read",
-                                    "Microsoft.Compute/virtualMachines/deallocate/action",
-                                    "Microsoft.Compute/virtualMachines/read",
-                                    "Microsoft.Compute/virtualMachines/restart/action",
-                                    "Microsoft.Compute/virtualMachines/start/action",
-                                    "Microsoft.DevTestLab/*/read",
-                                    "Microsoft.DevTestLab/labs/claimAnyVm/action",
-                                    "Microsoft.DevTestLab/labs/createEnvironment/action",
-                                    "Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action",
-                                    "Microsoft.DevTestLab/labs/formulas/delete",
-                                    "Microsoft.DevTestLab/labs/formulas/read",
-                                    "Microsoft.DevTestLab/labs/formulas/write",
-                                    "Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action",
-                                    "Microsoft.DevTestLab/labs/virtualMachines/claim/action",
-                                    "Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action",
-                                    "Microsoft.DevTestLab/labs/virtualMachines/getRdpFileContents/action",
-                                    "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
-                                    "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
-                                    "Microsoft.Network/networkInterfaces/*/read",
-                                    "Microsoft.Network/networkInterfaces/join/action",
-                                    "Microsoft.Network/networkInterfaces/read",
-                                    "Microsoft.Network/networkInterfaces/write",
-                                    "Microsoft.Network/publicIPAddresses/*/read",
-                                    "Microsoft.Network/publicIPAddresses/join/action",
-                                    "Microsoft.Network/publicIPAddresses/read",
-                                    "Microsoft.Network/virtualNetworks/subnets/join/action",
-                                    "Microsoft.Resources/deployments/operations/read",
-                                    "Microsoft.Resources/deployments/read",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Storage/storageAccounts/listKeys/action",                                    
-                                    "Microsoft.LabServices/labAccounts/*/read",
-                                    "Microsoft.LabServices/labAccounts/createLab/action",
-                                    "Microsoft.LabServices/labAccounts/getPricingAndAvailability/action",
-                                    "Microsoft.LabServices/labAccounts/getRestrictionsAndUsage/action",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                                "Microsoft.Insights/*",
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Compute/availabilitySets/read",
+                                "Microsoft.Compute/virtualMachines/*/read",
+                                "Microsoft.Compute/virtualMachines/deallocate/action",
+                                "Microsoft.Compute/virtualMachines/read",
+                                "Microsoft.Compute/virtualMachines/restart/action",
+                                "Microsoft.Compute/virtualMachines/start/action",
+                                "Microsoft.DevTestLab/*/read",
+                                "Microsoft.DevTestLab/labs/claimAnyVm/action",
+                                "Microsoft.DevTestLab/labs/createEnvironment/action",
+                                "Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action",
+                                "Microsoft.DevTestLab/labs/formulas/delete",
+                                "Microsoft.DevTestLab/labs/formulas/read",
+                                "Microsoft.DevTestLab/labs/formulas/write",
+                                "Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action",
+                                "Microsoft.DevTestLab/labs/virtualMachines/claim/action",
+                                "Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action",
+                                "Microsoft.DevTestLab/labs/virtualMachines/getRdpFileContents/action",
+                                "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+                                "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
+                                "Microsoft.Network/networkInterfaces/*/read",
+                                "Microsoft.Network/networkInterfaces/join/action",
+                                "Microsoft.Network/networkInterfaces/read",
+                                "Microsoft.Network/networkInterfaces/write",
+                                "Microsoft.Network/publicIPAddresses/*/read",
+                                "Microsoft.Network/publicIPAddresses/join/action",
+                                "Microsoft.Network/publicIPAddresses/read",
+                                "Microsoft.Network/virtualNetworks/subnets/join/action",
+                                "Microsoft.Resources/deployments/operations/read",
+                                "Microsoft.Resources/deployments/read",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Storage/storageAccounts/listKeys/action",
+                                "Microsoft.LabServices/labAccounts/*/read",
+                                "Microsoft.LabServices/labAccounts/createLab/action",
+                                "Microsoft.LabServices/labAccounts/getPricingAndAvailability/action",
+                                "Microsoft.LabServices/labAccounts/getRestrictionsAndUsage/action",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('devopsrole')]"
+                    "Name": "[variables('devopsrole')]"
                 },
 
                 {
                     "properties": {
                         "roleName": "[variables('billingrole')]",
-                        "description": "[variables('billingroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('billingroleid')]",
+                        "Description": "[variables('billingroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('billingroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Authorization/*/read",
-                                    "Microsoft.Insights/alertRules/*",
-                                    "Microsoft.Consumption/*",
-                                    "Microsoft.CostManagement/*",
-                                    "Microsoft.Billing/billingPeriods/read",
-                                    "Microsoft.Resources/subscriptions/read",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Support/*",
-                                    "Microsoft.Advisor/configurations/read",
-                                    "Microsoft.Advisor/recommendations/read",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.Consumption/*",
+                                "Microsoft.CostManagement/*",
+                                "Microsoft.Billing/billingPeriods/read",
+                                "Microsoft.Resources/subscriptions/read",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Support/*",
+                                "Microsoft.Advisor/configurations/read",
+                                "Microsoft.Advisor/recommendations/read",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('billingrole')]"
+                    "Name": "[variables('billingrole')]"
                 },
 
                 {
                     "properties": {
                         "roleName": "[variables('managementrole')]",
-                        "description": "[variables('managementroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('managementroleid')]",
+                        "Description": "[variables('managementroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('managementroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Authorization/*/read",
-                                    "Microsoft.Insights/alertRules/*",
-                                    "Microsoft.Management/managementGroups/*",
-                                    "Microsoft.Authorization/*",
-                                    "Microsoft.Capacity/*",
-                                    "Microsoft.Blueprint/blueprints/*",
-                                    "Microsoft.Resources/deployments/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.Management/managementGroups/*",
+                                "Microsoft.Authorization/*",
+                                "Microsoft.Capacity/*",
+                                "Microsoft.Blueprint/blueprints/*",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
 
-                                "notDataActions": [],
-                                "dataActions": [
-                                    "Microsoft.PolicyInsights/checkDataPolicyCompliance/action",
-                                    "Microsoft.PolicyInsights/policyEvents/logDataEvents/action"
-                                ]
-                            }
-                        ],
-                        "assignableScopes": [
+                            "NotDataActions": [],
+                            "DataActions": [
+                                "Microsoft.PolicyInsights/checkDataPolicyCompliance/action",
+                                "Microsoft.PolicyInsights/policyEvents/logDataEvents/action"
+                            ]
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('managementrole')]"
+                    "Name": "[variables('managementrole')]"
                 },
 
                 {
                     "properties": {
                         "roleName": "[variables('identityaccessmgnrole')]",
-                        "description": "[variables('identityaccessmgnroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('identityaccessmgnroleid')]",
+                        "Description": "[variables('identityaccessmgnroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('identityaccessmgnroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Authorization/*/read",
-                                    "Microsoft.Insights/alertRules/*",
-                                    "Microsoft.Resources/deployments/*",
-                                    "Microsoft.ManagedIdentity/userAssignedIdentities/read",
-                                    "Microsoft.ManagedIdentity/userAssignedIdentities/write",
-                                    "Microsoft.ManagedIdentity/userAssignedIdentities/delete",
-                                    "Microsoft.Blueprint/blueprints/*",
-                                    "Microsoft.Resources/deployments/*",
-                                    "Microsoft.Management/managementGroups/*",
-                                    "Microsoft.Authorization/*",
-                                    "Microsoft.Capacity/*",                                    
-                                    "microsoft.azure.devOps/allEntities/allTasks",
-                                    "microsoft.azure.supportTickets/allEntities/allTasks",
-                                    "microsoft.azure.serviceHealth/allEntities/allTasks",
-                                    "microsoft.directory/groupSettings/standard/read",
-                                    "microsoft.directory/groupSettingTemplates/standard/read",
-                                    "microsoft.directory/organization/strongAuthentication/update",
-                                    "microsoft.directory/userCredentialPolicies/create",
-                                    "microsoft.directory/userCredentialPolicies/delete",
-                                    "microsoft.directory/userCredentialPolicies/standard/read",
-                                    "microsoft.directory/userCredentialPolicies/policyAppliedTo/rea",
-                                    "microsoft.directory/userCredentialPolicies/basic/update",
-                                    "microsoft.directory/userCredentialPolicies/tenantDefault/update",
-                                    "microsoft.directory/applications/createAsOwner",
-                                    "microsoft.directory/appRoleAssignments/createAsOwner",
-                                    "microsoft.directory/oAuth2PermissionGrants/createAsOwner",
-                                    "microsoft.directory/servicePrincipals/createAsOwner",
-                                    "microsoft.directory/applications/create",
-                                    "microsoft.directory/applications/delete",
-                                    "microsoft.directory/applications/applicationProxyAuthentication/update",
-                                    "microsoft.directory/applications/basic/update",
-                                    "microsoft.directory/applications/appRoles/update",
-                                    "microsoft.directory/applications/audience/update",
-                                    "microsoft.directory/applications/authentication/update",
-                                    "microsoft.directory/applications/credentials/update",
-                                    "microsoft.directory/applications/owners/update",
-                                    "microsoft.directory/applications/policies/update",
-                                    "microsoft.directory/applicationPolicies/create",
-                                    "microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks",
-                                    "microsoft.directory/applicationPolicies/delete",
-                                    "microsoft.directory/servicePrincipals/create",
-                                    "microsoft.directory/servicePrincipals/enable",
-                                    "microsoft.directory/servicePrincipals/getPasswordSingleSignOnCredentials",
-                                    "microsoft.directory/servicePrincipals/synchronizationCredentials/manage",
-                                    "microsoft.directory/servicePrincipals/synchronizationJobs/manage",
-                                    "microsoft.directory/servicePrincipals/synchronizationSchema/manage",
-                                    "microsoft.directory/servicePrincipals/permissions/update",
-                                    "microsoft.directory/servicePrincipals/policies/update",                                    
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.ManagedIdentity/userAssignedIdentities/read",
+                                "Microsoft.ManagedIdentity/userAssignedIdentities/write",
+                                "Microsoft.ManagedIdentity/userAssignedIdentities/delete",
+                                "Microsoft.Blueprint/blueprints/*",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.Management/managementGroups/*",
+                                "Microsoft.Authorization/*",
+                                "Microsoft.Capacity/*",
+                                "microsoft.azure.devOps/allEntities/allTasks",
+                                "microsoft.azure.supportTickets/allEntities/allTasks",
+                                "microsoft.azure.serviceHealth/allEntities/allTasks",
+                                "microsoft.directory/groupSettings/standard/read",
+                                "microsoft.directory/groupSettingTemplates/standard/read",
+                                "microsoft.directory/organization/strongAuthentication/update",
+                                "microsoft.directory/userCredentialPolicies/create",
+                                "microsoft.directory/userCredentialPolicies/delete",
+                                "microsoft.directory/userCredentialPolicies/standard/read",
+                                "microsoft.directory/userCredentialPolicies/policyAppliedTo/rea",
+                                "microsoft.directory/userCredentialPolicies/basic/update",
+                                "microsoft.directory/userCredentialPolicies/tenantDefault/update",
+                                "microsoft.directory/applications/createAsOwner",
+                                "microsoft.directory/appRoleAssignments/createAsOwner",
+                                "microsoft.directory/oAuth2PermissionGrants/createAsOwner",
+                                "microsoft.directory/servicePrincipals/createAsOwner",
+                                "microsoft.directory/applications/create",
+                                "microsoft.directory/applications/delete",
+                                "microsoft.directory/applications/applicationProxyAuthentication/update",
+                                "microsoft.directory/applications/basic/update",
+                                "microsoft.directory/applications/appRoles/update",
+                                "microsoft.directory/applications/audience/update",
+                                "microsoft.directory/applications/authentication/update",
+                                "microsoft.directory/applications/credentials/update",
+                                "microsoft.directory/applications/owners/update",
+                                "microsoft.directory/applications/policies/update",
+                                "microsoft.directory/applicationPolicies/create",
+                                "microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks",
+                                "microsoft.directory/applicationPolicies/delete",
+                                "microsoft.directory/servicePrincipals/create",
+                                "microsoft.directory/servicePrincipals/enable",
+                                "microsoft.directory/servicePrincipals/getPasswordSingleSignOnCredentials",
+                                "microsoft.directory/servicePrincipals/synchronizationCredentials/manage",
+                                "microsoft.directory/servicePrincipals/synchronizationJobs/manage",
+                                "microsoft.directory/servicePrincipals/synchronizationSchema/manage",
+                                "microsoft.directory/servicePrincipals/permissions/update",
+                                "microsoft.directory/servicePrincipals/policies/update",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
 
-                                "notDataActions": [],
-                                "dataActions": [
-                                    "Microsoft.PolicyInsights/checkDataPolicyCompliance/action",
-                                    "Microsoft.PolicyInsights/policyEvents/logDataEvents/action"
-                                ]
-                            }
-                        ],
-                        "assignableScopes": [
+                            "NotDataActions": [],
+                            "DataActions": [
+                                "Microsoft.PolicyInsights/checkDataPolicyCompliance/action",
+                                "Microsoft.PolicyInsights/policyEvents/logDataEvents/action"
+                            ]
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('identityaccessmgnrole')]"
+                    "Name": "[variables('identityaccessmgnrole')]"
                 },
 
                 {
                     "properties": {
                         "roleName": "[variables('secyrityopsrole')]",
-                        "description": "[variables('secyrityopsroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('secyrityopsroleid')]",
+                        "Description": "[variables('secyrityopsroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('secyrityopsroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Authorization/*/read",
-                                    "Microsoft.Insights/alertRules/*",
-                                    "Microsoft.Compute/*/read",
-                                    "Microsoft.Network/*/read",
-                                    "Microsoft.Storage/*/read",
-                                    "Microsoft.Sql/managedInstances/databases/securityAlertPolicies/*",
-                                    "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
-                                    "Microsoft.Sql/servers/databases/securityAlertPolicies/*",
-                                    "Microsoft.Sql/servers/databases/securityMetrics/*",
-                                    "Microsoft.Network/networkSecurityGroups/*",
-                                    "Microsoft.Sql/locations/administratorAzureAsyncOperation/read",
-                                    "Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/*",
-                                    "Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/*",
-                                    "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/*",
-                                    "Microsoft.Sql/managedInstances/databases/securityAlertPolicies/*",
-                                    "Microsoft.Sql/managedInstances/databases/sensitivityLabels/*",
-                                    "Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/*",
-                                    "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
-                                    "Microsoft.Sql/managedInstances/databases/transparentDataEncryption/*",
-                                    "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
-                                    "Microsoft.Sql/servers/auditingSettings/*",
-                                    "Microsoft.Sql/servers/extendedAuditingSettings/read",
-                                    "Microsoft.Sql/servers/databases/auditingSettings/*",
-                                    "Microsoft.Sql/servers/databases/auditRecords/read",
-                                    "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
-                                    "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
-                                    "Microsoft.Sql/servers/databases/extendedAuditingSettings/read",
-                                    "Microsoft.Sql/servers/databases/read",
-                                    "Microsoft.Sql/servers/databases/recommendedSensitivityLabels/*",
-                                    "Microsoft.Sql/servers/databases/schemas/read",
-                                    "Microsoft.Sql/servers/databases/schemas/tables/columns/read",
-                                    "Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*",
-                                    "Microsoft.Sql/servers/databases/schemas/tables/read",
-                                    "Microsoft.Sql/servers/databases/securityAlertPolicies/*",
-                                    "Microsoft.Sql/servers/databases/securityMetrics/*",
-                                    "Microsoft.Sql/servers/databases/sensitivityLabels/*",
-                                    "Microsoft.Sql/servers/databases/transparentDataEncryption/*",
-                                    "Microsoft.Sql/servers/databases/vulnerabilityAssessments/*",
-                                    "Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/*",
-                                    "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
-                                    "Microsoft.Sql/servers/devOpsAuditingSettings/*",
-                                    "Microsoft.Sql/servers/firewallRules/*",
-                                    "Microsoft.Sql/servers/read",
-                                    "Microsoft.Sql/servers/securityAlertPolicies/*",
-                                    "Microsoft.Sql/servers/vulnerabilityAssessments/*",
-                                    "Microsoft.Support/*",
-                                    "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
-                                    "Microsoft.Sql/managedInstances/read",
-                                    "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
-                                    "Microsoft.Security/sqlVulnerabilityAssessments/*",
-                                    "Microsoft.Sql/managedInstances/administrators/read",
-                                    "Microsoft.ResourceHealth/availabilityStatuses/read",
-                                    "Microsoft.Logic/workflows/triggers/read",
-                                    "Microsoft.Logic/workflows/triggers/listCallbackUrl/action",
-                                    "Microsoft.Logic/workflows/runs/read",                                
-                                    "Microsoft.SecurityInsights/*",
-                                    "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-                                    "Microsoft.OperationalInsights/workspaces/*/read",
-                                    "Microsoft.OperationalInsights/workspaces/savedSearches/*",
-                                    "Microsoft.OperationsManagement/solutions/read",
-                                    "Microsoft.OperationalInsights/workspaces/query/read",
-                                    "Microsoft.OperationalInsights/workspaces/query/*/read",
-                                    "Microsoft.OperationalInsights/workspaces/dataSources/read",
-                                    "Microsoft.Insights/workbooks/*",
-                                    "Microsoft.Insights/myworkbooks/read",
-                                    "Microsoft.SecurityInsights/*/read",
-                                    "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
-                                    "Microsoft.SecurityInsights/automationRules/*",
-                                    "Microsoft.SecurityInsights/cases/*",
-                                    "Microsoft.SecurityInsights/incidents/*",
-                                    "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
-                                    "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
-                                    "Microsoft.SecurityInsights/threatIntelligence/bulkTag/action",
-                                    "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
-                                    "Microsoft.SecurityInsights/threatIntelligence/indicators/replaceTags/action",
-                                    "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
-                                    "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-                                    "Microsoft.OperationalInsights/workspaces/*/read",
-                                    "Microsoft.OperationalInsights/workspaces/dataSources/read",
-                                    "Microsoft.OperationalInsights/workspaces/savedSearches/read",
-                                    "Microsoft.OperationsManagement/solutions/read",
-                                    "Microsoft.OperationalInsights/workspaces/query/read",
-                                    "Microsoft.OperationalInsights/workspaces/query/*/read",
-                                    "Microsoft.OperationalInsights/workspaces/dataSources/read",
-                                    "Microsoft.Authorization/policyAssignments/*",
-                                    "Microsoft.Authorization/policyDefinitions/*",
-                                    "Microsoft.Authorization/policyExemptions/*",
-                                    "Microsoft.Authorization/policySetDefinitions/*",
-                                    "Microsoft.Insights/alertRules/*",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Security/*",
-                                    "Microsoft.KeyVault/checkNameAvailability/read",
-                                    "Microsoft.KeyVault/deletedVaults/read",
-                                    "Microsoft.KeyVault/locations/*/read",
-                                    "Microsoft.KeyVault/vaults/*/read",
-                                    "Microsoft.KeyVault/operations/read",
-                                    "Microsoft.Resources/deployments/*",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Compute/*/read",
-                                    "Microsoft.Network/*/read",                                
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [
-                                    "Microsoft.SecurityInsights/cases/*/Delete",
-                                    "Microsoft.SecurityInsights/incidents/*/Delete"
-                                ],
-                                "dataActions": [
-                                    "Microsoft.KeyVault/vaults/*"
-                                ],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.Compute/*/read",
+                                "Microsoft.Network/*/read",
+                                "Microsoft.Storage/*/read",
+                                "Microsoft.Sql/managedInstances/databases/securityAlertPolicies/*",
+                                "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
+                                "Microsoft.Sql/servers/databases/securityAlertPolicies/*",
+                                "Microsoft.Sql/servers/databases/securityMetrics/*",
+                                "Microsoft.Network/networkSecurityGroups/*",
+                                "Microsoft.Sql/locations/administratorAzureAsyncOperation/read",
+                                "Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/*",
+                                "Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/*",
+                                "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/*",
+                                "Microsoft.Sql/managedInstances/databases/securityAlertPolicies/*",
+                                "Microsoft.Sql/managedInstances/databases/sensitivityLabels/*",
+                                "Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/*",
+                                "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
+                                "Microsoft.Sql/managedInstances/databases/transparentDataEncryption/*",
+                                "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
+                                "Microsoft.Sql/servers/auditingSettings/*",
+                                "Microsoft.Sql/servers/extendedAuditingSettings/read",
+                                "Microsoft.Sql/servers/databases/auditingSettings/*",
+                                "Microsoft.Sql/servers/databases/auditRecords/read",
+                                "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
+                                "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
+                                "Microsoft.Sql/servers/databases/extendedAuditingSettings/read",
+                                "Microsoft.Sql/servers/databases/read",
+                                "Microsoft.Sql/servers/databases/recommendedSensitivityLabels/*",
+                                "Microsoft.Sql/servers/databases/schemas/read",
+                                "Microsoft.Sql/servers/databases/schemas/tables/columns/read",
+                                "Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*",
+                                "Microsoft.Sql/servers/databases/schemas/tables/read",
+                                "Microsoft.Sql/servers/databases/securityAlertPolicies/*",
+                                "Microsoft.Sql/servers/databases/securityMetrics/*",
+                                "Microsoft.Sql/servers/databases/sensitivityLabels/*",
+                                "Microsoft.Sql/servers/databases/transparentDataEncryption/*",
+                                "Microsoft.Sql/servers/databases/vulnerabilityAssessments/*",
+                                "Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/*",
+                                "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
+                                "Microsoft.Sql/servers/devOpsAuditingSettings/*",
+                                "Microsoft.Sql/servers/firewallRules/*",
+                                "Microsoft.Sql/servers/read",
+                                "Microsoft.Sql/servers/securityAlertPolicies/*",
+                                "Microsoft.Sql/servers/vulnerabilityAssessments/*",
+                                "Microsoft.Support/*",
+                                "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
+                                "Microsoft.Sql/managedInstances/read",
+                                "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
+                                "Microsoft.Security/sqlVulnerabilityAssessments/*",
+                                "Microsoft.Sql/managedInstances/administrators/read",
+                                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                                "Microsoft.Logic/workflows/triggers/read",
+                                "Microsoft.Logic/workflows/triggers/listCallbackUrl/action",
+                                "Microsoft.Logic/workflows/runs/read",
+                                "Microsoft.SecurityInsights/*",
+                                "Microsoft.OperationalInsights/workspaces/analytics/query/action",
+                                "Microsoft.OperationalInsights/workspaces/*/read",
+                                "Microsoft.OperationalInsights/workspaces/savedSearches/*",
+                                "Microsoft.OperationsManagement/solutions/read",
+                                "Microsoft.OperationalInsights/workspaces/query/read",
+                                "Microsoft.OperationalInsights/workspaces/query/*/read",
+                                "Microsoft.OperationalInsights/workspaces/dataSources/read",
+                                "Microsoft.Insights/workbooks/*",
+                                "Microsoft.Insights/myworkbooks/read",
+                                "Microsoft.SecurityInsights/*/read",
+                                "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
+                                "Microsoft.SecurityInsights/automationRules/*",
+                                "Microsoft.SecurityInsights/cases/*",
+                                "Microsoft.SecurityInsights/incidents/*",
+                                "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+                                "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
+                                "Microsoft.SecurityInsights/threatIntelligence/bulkTag/action",
+                                "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+                                "Microsoft.SecurityInsights/threatIntelligence/indicators/replaceTags/action",
+                                "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
+                                "Microsoft.OperationalInsights/workspaces/analytics/query/action",
+                                "Microsoft.OperationalInsights/workspaces/*/read",
+                                "Microsoft.OperationalInsights/workspaces/dataSources/read",
+                                "Microsoft.OperationalInsights/workspaces/savedSearches/read",
+                                "Microsoft.OperationsManagement/solutions/read",
+                                "Microsoft.OperationalInsights/workspaces/query/read",
+                                "Microsoft.OperationalInsights/workspaces/query/*/read",
+                                "Microsoft.OperationalInsights/workspaces/dataSources/read",
+                                "Microsoft.Authorization/policyAssignments/*",
+                                "Microsoft.Authorization/policyDefinitions/*",
+                                "Microsoft.Authorization/policyExemptions/*",
+                                "Microsoft.Authorization/policySetDefinitions/*",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Security/*",
+                                "Microsoft.KeyVault/checkNameAvailability/read",
+                                "Microsoft.KeyVault/deletedVaults/read",
+                                "Microsoft.KeyVault/locations/*/read",
+                                "Microsoft.KeyVault/vaults/*/read",
+                                "Microsoft.KeyVault/operations/read",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Compute/*/read",
+                                "Microsoft.Network/*/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [
+                                "Microsoft.SecurityInsights/cases/*/Delete",
+                                "Microsoft.SecurityInsights/incidents/*/Delete"
+                            ],
+                            "DataActions": [
+                                "Microsoft.KeyVault/vaults/*"
+                            ],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('secyrityopsrole')]"
+                    "Name": "[variables('secyrityopsrole')]"
                 },
                 {
                     "properties": {
                         "roleName": "[variables('networksrole')]",
-                        "description": "[variables('networksroledesc')]",
-                        "type": "customRole",
-                        "id": "[variables('networksroleid')]",
+                        "Description": "[variables('networksroledesc')]",
+                        "Type": "customRole",
+                        "Id": "[variables('networksroleid')]",
                         "IsCustom": true,
-                        "permissions": [
-                            {
-                                "actions": [
-                                    "Microsoft.Authorization/*/read",
-                                    "Microsoft.Insights/alertRules/*",
-                                    "Microsoft.Network/*",
-                                    "Microsoft.ResourceHealth/availabilityStatuses/read",
-                                    "Microsoft.Cdn/edgenodes/read",
-                                    "Microsoft.Cdn/operationresults/*",
-                                    "Microsoft.Cdn/profiles/endpoints/*",
-                                    "Microsoft.Resources/deployments/*",
-                                    "Microsoft.Management/managementGroups/read",
-                                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                                    "Microsoft.Support/*"
-                                ], //,
-                                "notActions": [],
-                                "dataActions": [],
-                                "notDataActions": []
-                            }
-                        ],
-                        "assignableScopes": [
+                        "permissions": {
+                            "Actions": [
+                                "Microsoft.Authorization/*/read",
+                                "Microsoft.Insights/alertRules/*",
+                                "Microsoft.Network/*",
+                                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                                "Microsoft.Cdn/edgenodes/read",
+                                "Microsoft.Cdn/operationresults/*",
+                                "Microsoft.Cdn/profiles/endpoints/*",
+                                "Microsoft.Resources/deployments/*",
+                                "Microsoft.Management/managementGroups/read",
+                                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                                "Microsoft.Support/*"
+                            ], //,
+                            "NotActions": [],
+                            "DataActions": [],
+                            "NotDataActions": []
+                        },
+                        "AssignableScopes": [
                             "[variables('scope')]"
                         ]
                     },
-                    "name": "[variables('networksrole')]"
+                    "Name": "[variables('networksrole')]"
                 }
             ]
         }
@@ -1073,33 +1035,30 @@
     "resources": [
         {
             //"condition": "[equals(parameters('enableCustomRBAC'), 'Yes')]",
-            "type": "Microsoft.Authorization/roleDefinitions",
+            "Type": "Microsoft.Authorization/roleDefinitions",
             "apiVersion": "2017-09-01",
 
             "copy": {
-                "name": "RBACCustomDefinitionCopy",
+                "Name": "RBACCustomDefinitionCopy",
                 "count": "[length(variables('Role').RoleDefinitions)]"
             },
-            "name": "[variables('Role').RoleDefinitions[copyIndex()].name]",
+            "Name": "[variables('Role').RoleDefinitions[copyIndex()].name]",
             "properties": {
                 "roleName": "[variables('Role').RoleDefinitions[copyIndex()].properties.roleName]",
-                "description": "[variables('Role').RoleDefinitions[copyIndex()].properties.description]",
-                "type": "customRole",
-                "id": "[variables('Role').RoleDefinitions[copyIndex()].properties.id]",
+                "Description": "[variables('Role').RoleDefinitions[copyIndex()].properties.description]",
+                "Type": "customRole",
+                "Id": "[variables('Role').RoleDefinitions[copyIndex()].properties.id]",
                 "IsCustom": true,
                 //"permissions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions]",
-                "permissions": [
-                    {
-                        "actions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.actions]",
-                        "notActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.notActions]",
-                        "dataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.dataActions]",
-                        "notDataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.notDataActions]"
-                    }
-                ],
-                "assignableScopes": "[variables('Role').RoleDefinitions[copyIndex()].properties.assignableScopes]"
+                "permissions": {
+                    "Actions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.Actions]",
+                    "NotActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.NotActions]",
+                    "DataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.DataActions]",
+                    "NotDataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.NotDataActions]"
+                },
+                "AssignableScopes": "[variables('Role').RoleDefinitions[copyIndex()].properties.AssignableScopes]"
             }
         }
     ],
-
     "outputs": {}
 }
