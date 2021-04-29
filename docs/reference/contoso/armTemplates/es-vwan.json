@@ -1341,7 +1341,7 @@
 
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
-            "scope": "[  variables('globalvariable').scopebase]",
+            //"scope": "[  variables('globalvariable').scopebase]",
             "name": "[variables('deploymentNames').customPoliciesAssigDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').mgmtGroupDeploymentName]",
