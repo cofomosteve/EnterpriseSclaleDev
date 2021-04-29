@@ -2311,6 +2311,7 @@
             "enableErGw": "[steps('esConnectivityGoalState').esErGw]",
             "enableVpnGw": "[steps('esConnectivityGoalState').esVpnGw]",
             "enableVwan": "[steps('esConnectivityGoalState').esVwan]",
+            "enableConnectivity": "[steps('esConnectivityGoalState').esConnectivity]",
             "connectivitySubscriptionId": "[if(not(equals(steps('esConnectivityGoalState').esConnectivitySub, steps('esGoalState').esMgmtSub)), steps('esConnectivityGoalState').esConnectivitySub, '')]",
             "enableAzFw": "[steps('esConnectivityGoalState').esAzFw]",
             "addressPrefix": "[steps('esConnectivityGoalState').esAddress]",

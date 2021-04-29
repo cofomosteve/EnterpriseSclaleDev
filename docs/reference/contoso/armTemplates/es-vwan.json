@@ -434,12 +434,16 @@
             "type": "string",
             "defaultValue": "[deployment().location]"
         },
-        "enableVwan": {
-            "type": "string",
+        "enableConnectivity": {
+            "type": "string",  
             "allowedValues": [
                 "Yes",
                 "No"
-            ],
+            ],         
+            "defaultValue": "No"
+        },
+        "enableVwan": {
+            "type": "string",           
             "defaultValue": "No"
         },
         "enableAzFw": {
@@ -1256,7 +1260,7 @@
             "properties": {}
         },
         {
-            "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableVwan'), 'Yes'))]",
+            "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableConnectivity'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-05-01",
             "scope": "[variables('globalvariable').scopeconnectivitybase]",
@@ -1281,7 +1285,7 @@
                     },
                     "globalvariable": { "value": "[variables('globalvariable')]" },
                     "enableVwan": {
-                        "value": "[parameters('enableVwan')]"
+                        "value": "[parameters('enableConnectivity')]"
                     },
                     "enableAzFw": {
                         "value": "[parameters('enableAzFw')]"
