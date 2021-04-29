@@ -49,6 +49,20 @@
             "Name": "mg-COF3",
             "DisplayName": "mg-COF3",
             "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COF4",
+            "Name": "mg-COF4",
+            "DisplayName": "mg-COF4",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COF6",
+            "Name": "mg-COF6",
+            "DisplayName": "mg-COF6",
+            "Children": null
           }
         ]
       }
