@@ -159,18 +159,18 @@
         }
     },
     "variables": {
-        "scope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'), '-identity')]",
+        "scope": "[parameters('globalvariable').scopeidentity]",
         "policyDefinitions": {
-            "denySubnetWithoutNsg": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'), '/providers/Microsoft.Authorization/policyDefinitions/Deny-Subnet-Without-Nsg')]",
-            "denyPip": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'), '/providers/Microsoft.Authorization/policyDefinitions/Deny-PublicIP')]",
-            "denyRdp": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('topLevelManagementGroupPrefix'), '/providers/Microsoft.Authorization/policyDefinitions/Deny-RDP-From-Internet')]",
+            "denySubnetWithoutNsg": "[concat(parameters('globalvariable').scope, '/providers/Microsoft.Authorization/policyDefinitions/Deny-Subnet-Without-Nsg')]",
+            "denyPip": "[concat(parameters('globalvariable').scope, '/providers/Microsoft.Authorization/policyDefinitions/Deny-PublicIP')]",
+            "denyRdp": "[concat(parameters('globalvariable').scope, '/providers/Microsoft.Authorization/policyDefinitions/Deny-RDP-From-Internet')]",
             "deployVmBackup": "/providers/Microsoft.Authorization/policyDefinitions/98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86"
         },
         "policyAssignmentNames": {
-            "denySubnetWithoutNsg": "Deny-Subnet-Without-Nsg",
-            "denyRdp": "Deny-RDP-from-internet",
-            "denyPip": "Deny-Public-IP",
-            "deployVmBackup": "Deploy-VM-Backup"
+            "denySubnetWithoutNsg": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deny-Subnet-Without-Nsg')]",
+            "denyRdp": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deny-RDP-from-internet')]",
+            "denyPip": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deny-Public-IP')]",
+            "deployVmBackup": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'-Deploy-VM-Backup')]"
         },
         "rbacOwner": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
         "roleAssignmentNames": {
@@ -190,8 +190,8 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "description": "Deploy-VM-Backup",
-                "displayName": "Deploy-VM-Backup",
+                "description": "[variables('policyAssignmentNames').deployVmBackup]",
+                "displayName": "[variables('policyAssignmentNames').deployVmBackup]",
                 "policyDefinitionId": "[variables('policyDefinitions').deployVmBackup]",
                 "scope": "[variables('scope')]",
                 "parameters": {}
@@ -219,8 +219,8 @@
             "apiVersion": "2018-05-01",
             "name": "[variables('policyAssignmentNames').denyPip]",
             "properties": {
-                "description": "Deny-Public-IP",
-                "displayName": "Deny-Public-IP",
+                "description": "[variables('policyAssignmentNames').denyPip]",
+                "displayName": "[variables('policyAssignmentNames').denyPip]",
                 "policyDefinitionId": "[variables('policyDefinitions').denyPip]",
                 "scope": "[variables('scope')]"
             }
@@ -232,8 +232,8 @@
             "apiVersion": "2018-05-01",
             "name": "[variables('policyAssignmentNames').denyRdp]",
             "properties": {
-                "description": "Deny-RDP-from-Internet",
-                "displayName": "Deny-RDP-from-Internet",
+                "description": "[variables('policyAssignmentNames').denyRdp]",
+                "displayName": "[variables('policyAssignmentNames').denyRdp]",
                 "policyDefinitionId": "[variables('policyDefinitions').denyRdp]",
                 "scope": "[variables('scope')]"
             }
@@ -245,8 +245,8 @@
             "apiVersion": "2018-05-01",
             "name": "[variables('policyAssignmentNames').denySubnetWithoutNsg]",
             "properties": {
-                "description": "Deny-Subnet-Without-Nsg",
-                "displayName": "Deny-Subnet-Without-Nsg",
+                "description":"[variables('policyAssignmentNames').denySubnetWithoutNsg]",
+                "displayName": "[variables('policyAssignmentNames').denySubnetWithoutNsg]",
                 "policyDefinitionId": "[variables('policyDefinitions').denySubnetWithoutNsg]",
                 "scope": "[variables('scope')]"
             }
