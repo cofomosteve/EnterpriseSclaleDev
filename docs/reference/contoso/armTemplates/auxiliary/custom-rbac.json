@@ -287,7 +287,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('automationrole')]"
+                    "Name": "[variables('automationroleid')]"
                 },
 
                 {
@@ -323,7 +323,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('kubernettesrole')]"
+                    "Name": "[variables('kubernettesroleid')]"
                 },
                 {
                     "properties": {
@@ -389,7 +389,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('computesrole')]"
+                    "Name": "[variables('computesroleid')]"
                 },
                 {
                     "properties": {
@@ -454,7 +454,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('backuprole')]"
+                    "Name": "[variables('backuproleid')]"
                 },
                 {
                     "properties": {
@@ -484,7 +484,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('apsopsrole')]"
+                    "Name": "[variables('apsopsroleid')]"
                 },
                 {
                     "properties": {
@@ -509,7 +509,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('migrationRolerole')]"
+                    "Name": "[variables('migrationroleid')]"
                 },
                 {
                     "properties": {
@@ -540,7 +540,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('storagerole')]"
+                    "Name": "[variables('storageroleid')]"
                 },
 
                 {
@@ -636,7 +636,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('databaseerole')]"
+                    "Name": "[variables('databaseeroleid')]"
                 },
                 {
                     "properties": {
@@ -661,7 +661,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('enablementrole')]"
+                    "Name": "[variables('enablementroleid')]"
                 },
                 {
                     "properties": {
@@ -722,7 +722,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('devopsrole')]"
+                    "Name": "[variables('devopsroleid')]"
                 },
 
                 {
@@ -756,7 +756,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('billingrole')]"
+                    "Name": "[variables('billingroleid')]"
                 },
 
                 {
@@ -791,7 +791,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('managementrole')]"
+                    "Name": "[variables('managementroleid')]"
                 },
 
                 {
@@ -867,7 +867,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('identityaccessmgnrole')]"
+                    "Name": "[variables('identityaccessmgnroleid')]"
                 },
 
                 {
@@ -994,7 +994,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('secyrityopsrole')]"
+                    "Name": "[variables('secyrityopsroleid')]"
                 },
                 {
                     "properties": {
@@ -1025,7 +1025,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('networksrole')]"
+                    "Name": "[variables('networksroleid')]"
                 }
             ]
         }
@@ -1035,7 +1035,7 @@
         {
             //"condition": "[equals(parameters('enableCustomRBAC'), 'Yes')]",
             "Type": "Microsoft.Authorization/roleDefinitions",
-            "apiVersion": "2017-09-01",
+            "apiVersion": "2018-01-01-preview",
 
             "copy": {
                 "Name": "RBACCustomDefinitionCopy",
