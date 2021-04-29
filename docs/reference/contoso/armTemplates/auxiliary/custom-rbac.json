@@ -157,25 +157,25 @@
         "apsopsroledesc": "Appsops",
         "enablementroledesc": "Enablement",
 
-        "systemopsroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7a1",//"[guid(variables('systemopsrole'))]",
-        "kubernettesroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7b1",//"[guid(variables('kubernettesrole'))]",
-        "landingzonewonerroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7c1",//"[guid(variables('landingzonewonerrole'))]",
-        "landingzonecontributorroleid":"2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",// "[guid(variables('landingzonecontributorrole'))]",
-        "vmwareroleid":"2a2b9908-6ea1-4ae2-8e65-a410df84e7e1",// "[guid(variables('vmwarerole'))]",
-        "billingroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7f1",//"[guid(variables('billingrole'))]",
-        "secyrityopsroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7g1",//"[guid(variables('secyrityopsrole'))]",
-        "automationroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7h1",//"[guid(variables('automationrole'))]",
-        "computesroleid":"2a2b9908-6ea1-4ae2-8e65-a410df84e7i1",// "[guid(variables('computesrole'))]",
-        "storageroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7j1",//"[guid(variables('storagerole'))]",
-        "databaseeroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7k1",//"[guid(variables('databaseerole'))]",
-        "networksroleid":"2a2b9908-6ea1-4ae2-8e65-a410df84e7l1",// "[guid(variables('networksrole'))]",
-        "identityaccessmgnroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7m1",//"[guid(variables('identityaccessmgnrole'))]",
-        "managementroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7o1",//"[guid(variables('managementrole'))]",
-        "backuproleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7p1",//"[guid(variables('backuprole'))]",
-        "migrationroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7q1",//"[guid(variables('backuprole'))]",
-        "devopsroleid":"2a2b9908-6ea1-4ae2-8e65-a410df84e7r1",// "[guid(variables('devopsrole'))]",
-        "apsopsroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7s1",//"[guid(variables('apsopsrole'))]",
-        "enablementroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7t1",//"[guid(variables('enablementrole'))]",
+        "systemopsroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7a1", //"[guid(variables('systemopsrole'))]",
+        "kubernettesroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7b1", //"[guid(variables('kubernettesrole'))]",
+        "landingzonewonerroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7c1", //"[guid(variables('landingzonewonerrole'))]",
+        "landingzonecontributorroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1", // "[guid(variables('landingzonecontributorrole'))]",
+        "vmwareroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7e1", // "[guid(variables('vmwarerole'))]",
+        "billingroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7f1", //"[guid(variables('billingrole'))]",
+        "secyrityopsroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7g1", //"[guid(variables('secyrityopsrole'))]",
+        "automationroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7h1", //"[guid(variables('automationrole'))]",
+        "computesroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7i1", // "[guid(variables('computesrole'))]",
+        "storageroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7j1", //"[guid(variables('storagerole'))]",
+        "databaseeroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7k1", //"[guid(variables('databaseerole'))]",
+        "networksroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7l1", // "[guid(variables('networksrole'))]",
+        "identityaccessmgnroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7m1", //"[guid(variables('identityaccessmgnrole'))]",
+        "managementroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7o1", //"[guid(variables('managementrole'))]",
+        "backuproleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7p1", //"[guid(variables('backuprole'))]",
+        "migrationroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7q1", //"[guid(variables('backuprole'))]",
+        "devopsroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7r1", // "[guid(variables('devopsrole'))]",
+        "apsopsroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7s1", //"[guid(variables('apsopsrole'))]",
+        "enablementroleid": "2a2b9908-6ea1-4ae2-8e65-a410df84e7t1", //"[guid(variables('enablementrole'))]",
 
         "Role": {
             "RoleDefinitions": [
@@ -211,7 +211,7 @@
                             "[variables('scope')]"
                         ]
                     },
-                    "Name": "[variables('systemopsroleid')]"
+                    "Name": "[variables('systemopsrole')]"
                 },
                 {
                     "properties": {
@@ -246,7 +246,6 @@
                         "IsCustom": true,
                         "permissions": {
                             "Actions": [
-
                                 "Microsoft.Authorization/*/Delete",
                                 "Microsoft.Authorization/*/Write",
                                 "Microsoft.Authorization/elevateAccess/Action",
@@ -1050,18 +1049,22 @@
                 //"Id": "[variables('Role').RoleDefinitions[copyIndex()].properties.Id]",
                 "IsCustom": true,
                 //"permissions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions]",
-                "permissions": {
-                    "actions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.Actions]",
-                    "notActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.NotActions]",
-                    "aataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.DataActions]",
-                    "notDataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.NotDataActions]"
-                },
+                "permissions": [
+                    {
+                        "actions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.Actions]",
+                        "notActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.NotActions]",
+                        "aataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.DataActions]",
+                        "notDataActions": "[variables('Role').RoleDefinitions[copyIndex()].properties.permissions.NotDataActions]"
+                    }
+                ],
                 "assignableScopes": "[variables('Role').RoleDefinitions[copyIndex()].properties.AssignableScopes]"
             }
         }
     ],
-    "outputs": {"deployment": {
+    "outputs": {
+        "deployment": {
             "type": "string",
             "value": "[guid(variables('systemopsrole'))]"
-        }}
+        }
+    }
 }
