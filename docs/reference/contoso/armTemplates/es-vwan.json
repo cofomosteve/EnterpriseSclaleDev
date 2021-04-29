@@ -459,8 +459,8 @@
             "type": "object",
             "defaultValue": {}
         }
-        /*
-        "apply-pbmm": {
+         
+        ,"apply-pbmm": {
             "type": "string",
             "allowedValues": [
                 "Yes",
@@ -549,19 +549,19 @@
                 "No"
             ],
             "defaultValue": "No"
-        },*/
+        }
 
         
 
-       /* "cktagbyresource": {
+       /* ,"cktagbyresource": {
             "type": "bool",
             "allowedValues": [
                 true,
                 false
             ],
             "defaultValue": false
-        },
-        "tagauditpolicy": {
+        }*/
+        ,"tagauditpolicy": {
             "type": "string",
             "allowedValues": [
                 "Yes",
@@ -577,7 +577,8 @@
                 "description": "allowedVMSizesku"
             },
             "defaultValue": []
-        },
+        }
+        /*,
 
         "listOfResourceTypesWithDiagnosticLogsEnabled": {
             "type": "Array",
@@ -1335,7 +1336,7 @@
                     "globalvariable": { "value": "[variables('globalvariable')]" }
                 }
             }
-        }/*,
+        },
 
         {
 
@@ -1376,7 +1377,7 @@
 
                 }
             }
-        }*/
+        }
 
     ],
     "outputs": {
