@@ -1123,15 +1123,16 @@
             //"condition": "[not(empty(parameters('allowedvmsize')))]",
             "type": "Microsoft.Authorization/policyAssignments",
             "apiVersion": "2018-05-01",
-            "copy": {
-                "name": "PolicySetAssignmentCopy",
-                "count": "[length(variables('policyAssignmentNames').policySetDefinitions)]"
-            },
+            
             "condition": "[equals(variables('policyAssignmentNames').policySetDefinitions[copyIndex()].apply, 'Yes')]",
             "name": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].name]",
             "location": "[deployment().location]",
             "identity": {
                 "type": "SystemAssigned"
+            },
+            "copy": {
+                "name": "PolicySetAssignmentCopy",
+                "count": "[length(variables('policyAssignmentNames').policySetDefinitions)]"
             },
             "properties": {
                 "description": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].description]",
@@ -1140,29 +1141,31 @@
                 "scope": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].scope]",
                 "parameters": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].parameters]"
             }
-        },
-        {
-            //"condition": "[not(empty(parameters('allowedvmsize')))]",
-            "type": "Microsoft.Authorization/policyAssignments",
-            "apiVersion": "2018-05-01",
-            "copy": {
-                "name": "PolicyAssignmentCopy",
-                "count": "[length(variables('policyAssignmentNames').policyDefinitions)]"
-            },
-            //            "condition": "[or(equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, 'Yes'),equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, Yes))]",
-            "name": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].name]",
-            "location": "[deployment().location]",
-            "identity": {
-                "type": "SystemAssigned"
-            },
-            "properties": {
-                "description": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].description]",
-                "displayName": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,variables('policyAssignmentNames').policyDefinitions[copyIndex()].name)]",
-                "policyDefinitionId": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].policyDefinitionId]",
-                "scope": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].scope]",
-                "parameters": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].parameters]"
-            }
         }
+        // ,
+        // {
+        //     //"condition": "[not(empty(parameters('allowedvmsize')))]",
+        //     "type": "Microsoft.Authorization/policyAssignments",
+        //     "apiVersion": "2018-05-01",
+            
+        //     //            "condition": "[or(equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, 'Yes'),equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, Yes))]",
+        //     "name": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].name]",
+        //     "location": "[deployment().location]",
+        //     "identity": {
+        //         "type": "SystemAssigned"
+        //     },
+        //     "copy": {
+        //         "name": "PolicyAssignmentCopy",
+        //         "count": "[length(variables('policyAssignmentNames').policyDefinitions)]"
+        //     },
+        //     "properties": {
+        //         "description": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].description]",
+        //         "displayName": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,variables('policyAssignmentNames').policyDefinitions[copyIndex()].name)]",
+        //         "policyDefinitionId": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].policyDefinitionId]",
+        //         "scope": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].scope]",
+        //         "parameters": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].parameters]"
+        //     }
+        // }
     ],
     "outputs": {}
 }
