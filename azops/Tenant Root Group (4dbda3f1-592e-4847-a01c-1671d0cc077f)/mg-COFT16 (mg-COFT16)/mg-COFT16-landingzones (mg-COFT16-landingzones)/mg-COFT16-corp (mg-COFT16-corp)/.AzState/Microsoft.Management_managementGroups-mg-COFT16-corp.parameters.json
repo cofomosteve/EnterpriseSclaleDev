@@ -1,0 +1,21 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT16-corp",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-COFT16-corp",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-COFT16-corp",
+        "UpdatedTime": "2021-04-29T12:36:34.7993821Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COFT16-landingzones",
+        "ParentName": "mg-COFT16-landingzones",
+        "ParentDisplayName": "mg-COFT16-landingzones",
+        "Children": null
+      }
+    }
+  }
+}

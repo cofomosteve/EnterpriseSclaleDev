@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT16/providers/Microsoft.Authorization/roleAssignments/6d90530f-016d-539e-a416-cecac9c2e6ff",
+        "Name": "6d90530f-016d-539e-a416-cecac9c2e6ff",
+        "properties": {
+          "DisplayName": "Deploy-LX-Arc-Monitoring",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "0d6a4686-af84-466a-af7b-4e89e2771200",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

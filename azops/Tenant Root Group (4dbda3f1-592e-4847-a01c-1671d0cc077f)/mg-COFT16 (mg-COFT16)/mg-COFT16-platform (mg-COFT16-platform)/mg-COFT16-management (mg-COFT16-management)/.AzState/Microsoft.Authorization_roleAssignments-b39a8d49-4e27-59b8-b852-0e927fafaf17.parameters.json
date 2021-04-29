@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT16-management/providers/Microsoft.Authorization/roleAssignments/b39a8d49-4e27-59b8-b852-0e927fafaf17",
+        "Name": "b39a8d49-4e27-59b8-b852-0e927fafaf17",
+        "properties": {
+          "DisplayName": "Deploy-Log-Analytics",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "eca3d835-4772-4e75-997d-3bc1c611d283",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

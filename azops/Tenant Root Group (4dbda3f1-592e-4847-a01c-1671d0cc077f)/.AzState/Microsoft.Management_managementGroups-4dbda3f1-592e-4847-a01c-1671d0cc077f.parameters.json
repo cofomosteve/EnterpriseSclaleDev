@@ -24,44 +24,23 @@
           },
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/CONTOS",
-            "Name": "CONTOS",
-            "DisplayName": "CONTOS",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT16",
+            "Name": "mg-COFT16",
+            "DisplayName": "mg-COFT16",
             "Children": null
           },
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFD",
-            "Name": "mg-COFD",
-            "DisplayName": "mg-COFD",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT17",
+            "Name": "mg-COFT17",
+            "DisplayName": "mg-COFT17",
             "Children": null
           },
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COF2",
-            "Name": "mg-COF2",
-            "DisplayName": "mg-COF2",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COF3",
-            "Name": "mg-COF3",
-            "DisplayName": "mg-COF3",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COF4",
-            "Name": "mg-COF4",
-            "DisplayName": "mg-COF4",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COF6",
-            "Name": "mg-COF6",
-            "DisplayName": "mg-COF6",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT10",
+            "Name": "mg-COFT10",
+            "DisplayName": "mg-COFT10",
             "Children": null
           }
         ]
