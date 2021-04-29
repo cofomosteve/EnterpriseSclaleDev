@@ -578,7 +578,7 @@
             },
             "defaultValue": []
         }
-        /*,
+        ,
 
         "listOfResourceTypesWithDiagnosticLogsEnabled": {
             "type": "Array",
@@ -596,7 +596,7 @@
             "type": "String",
             "defaultValue": "AdminYes"
 
-        }*/
+        }
     },
     "variables": {
 
@@ -1372,7 +1372,10 @@
                     "apply-tls-ssl-enforcement-encrypt-paas": { "value": "[parameters('apply-tls-ssl-enforcement-encrypt-paas')]" },
                     "apply-audit-resource-without-encryption": { "value": "[parameters('apply-audit-resource-without-encryption')]" },
                     "tagauditpolicy": { "value": "[parameters('tagauditpolicy')]" },
-                    "allowedVMSizesku": {"value": "[parameters('allowedVMSizesku')]" }
+                    "allowedVMSizesku": {"value": "[parameters('allowedVMSizesku')]" },
+                    "listOfResourceTypesWithDiagnosticLogsEnabled": {"value": "[parameters('listOfResourceTypesWithDiagnosticLogsEnabled')]" },
+                    "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": {"value": "[parameters('listOfMembersToExcludeFromWindowsVMAdministratorsGroup')]" },
+                    "listOfMembersToIncludeInWindowsVMAdministratorsGroup": {"value": "[parameters('listOfMembersToIncludeInWindowsVMAdministratorsGroup')]" }
 
                 }
             }
