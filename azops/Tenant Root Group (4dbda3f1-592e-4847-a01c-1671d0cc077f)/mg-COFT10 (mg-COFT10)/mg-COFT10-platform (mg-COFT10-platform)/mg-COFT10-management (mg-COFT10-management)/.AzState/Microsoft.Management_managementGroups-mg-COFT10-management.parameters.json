@@ -14,15 +14,7 @@
         "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COFT10-platform",
         "ParentName": "mg-COFT10-platform",
         "ParentDisplayName": "mg-COFT10-platform",
-        "Children": [
-          {
-            "Type": "/subscriptions",
-            "Id": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
-            "Name": "2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
-            "DisplayName": "Microsoft Azure Sponsorship (6k)",
-            "Children": null
-          }
-        ]
+        "Children": null
       }
     }
   }
