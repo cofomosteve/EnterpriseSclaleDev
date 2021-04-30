@@ -863,9 +863,9 @@
         "noConnectivitySubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-connectivity', '/', 'naconn')]",
         "identityMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-identity', '/', parameters('identitySubscriptionId'))]",
 
-        "OnlineLzMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-online', '/', parameters('onlineLzSubscriptionId'))]",
-        "CorpLzMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-corp', '/', parameters('corpLzSubscriptionId'))]",
-        "DevOpsLzMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-devops', '/', parameters('devopsLzSubscriptionId'))]",
+        // "OnlineLzMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-online', '/', parameters('onlineLzSubscriptionId'))]",
+        // "CorpLzMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-corp', '/', parameters('corpLzSubscriptionId'))]",
+        // "DevOpsLzMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-devops', '/', parameters('devopsLzSubscriptionId'))]",
 
         "noIdentitySubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-identity', '/', 'naid')]",
         "deploymentNames": {
