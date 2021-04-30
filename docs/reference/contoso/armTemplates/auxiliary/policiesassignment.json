@@ -177,6 +177,11 @@
             "type": "string",
             "defaultValue": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
         },
+        "loganalyticnameManagement": {
+            "type": "string",
+            "defaultValue": "[toLower(concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+        },
+
         "workspaceName": {
             "type": "string",
             "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]",
@@ -1236,8 +1241,8 @@
                 "scope": "[parameters('globalvariable').scopemanagement]",
                 "parameters": {
                     "workspaceName": {
-                       // "value": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]"
-                       "value": "[parameters('workspaceName')]"
+                        // "value": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]"
+                        "value": "[parameters('workspaceName')]"
                     },
                     "automationAccountName": {
                         //"value": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]"
@@ -1250,8 +1255,8 @@
                         "value": "[deployment().location]"
                     },
                     "rgName": {
-                       // "value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
-                       "value": "[parameters('ManagementRessourceGroup')]"
+                        // "value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
+                        "value": "[parameters('ManagementRessourceGroup')]"
                     },
                     "retentionInDays": {
                         "value": "30"
@@ -1264,8 +1269,8 @@
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('apply-pbmm'), 'Yes'))]",
             "type": "Microsoft.Authorization/policyAssignments",
             "apiVersion": "2018-05-01",
-             "dependsOn": [                
-                "[resourceId('Microsoft.OperationalInsights/workspaces/', variables('loganalyticnameManagementsub'))]"
+            "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
             ],
             "name": "[variables('policyPBMMDefinitions').name]",
             "location": "[deployment().location]",
@@ -1285,7 +1290,7 @@
             "type": "Microsoft.Authorization/policyAssignments",
             "apiVersion": "2018-05-01",
             "name": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].name]",
-           
+
             "copy": {
                 "name": "PolicySetAssignmentCopy",
                 "count": "[length(variables('policyAssignmentNames').policySetDefinitions)]"

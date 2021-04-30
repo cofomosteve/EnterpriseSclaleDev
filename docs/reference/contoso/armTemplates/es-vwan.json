@@ -828,6 +828,7 @@
         },
 
         "loganalyticnameManagementsub": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', variables('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', variables('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]",
+        "loganalyticnameManagement": "[toLower(concat(variables('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]",
         "workspaceName": "[concat(variables('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]",
         "automationAccountName": "[concat(variables('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]",
         "ManagementRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]",
@@ -1506,7 +1507,9 @@
                     "loganalyticnameManagementsub": {
                         "value": "[variables('loganalyticnameManagementsub')]"
                     },
-
+                    "loganalyticnameManagement": {
+                        "value": "[variables('loganalyticnameManagement')]"
+                    },
                     "managementSubscriptionId": {
                         "value": "[parameters('managementSubscriptionId')]"
                     },
