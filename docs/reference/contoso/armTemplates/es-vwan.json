@@ -674,6 +674,8 @@
                 "virtualnetworkmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('vnet-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env'),'-',deployment().location),'CAF')]",
 
                 "subnetmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('snet-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env'),'-',deployment().location),'CAF')]",
+                "gwsubnetmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('snet-gw-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env'),'-',deployment().location),'CAF')]",
+                "fwsubnetmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('snet-fw-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env'),'-',deployment().location),'CAF')]",
 
                 "virtualnetworkpeeringmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('vnet-peer-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
 

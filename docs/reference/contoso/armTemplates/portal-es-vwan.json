@@ -1518,6 +1518,43 @@
                             "allowedValues": "[map(steps('lzGoalState').lzCorpSubsApi.value, (sub) => parse(concat('{\"label\":\"', sub.displayName, '\",\"description\":\"', sub.subscriptionId, '\",\"value\":\"', toLower(sub.subscriptionId), '\"}')) )]",
                             "required": false
                         }
+                    }
+                    ,
+                    {
+                        "name": "DevOpsText",
+                        "type": "Microsoft.Common.TextBlock",
+                        
+                        "options": {
+                            "text": "Select the subscriptions you want to move to DevOps management group.",
+                            "link": {
+                                "label": "Learn more",
+                                "uri": "https://docs.microsoft.com/azure/azure-monitor/insights/solutions"
+                            }
+                        }
+                    },
+                    {
+                        "name": "lzDevOpsSubsApi",
+                        "type": "Microsoft.Solutions.ArmApiControl",
+                        "request": {
+                            "method": "GET",
+                            "path": "subscriptions?api-version=2020-01-01"
+                        }
+                    },
+                    {
+                        "name": "esDevOpsLzSub",
+                        "type": "Microsoft.Common.DropDown",
+                        "label": "DevOps landing zone subscriptions (optional)",
+                        "toolTip": "",
+                        "multiselect": true,
+                        "selectAll": true,
+                        "filter": true,
+                        "filterPlaceholder": "Filter items ...",
+                        "multiLine": true,
+                        "visible": true,
+                        "constraints": {
+                            "allowedValues": "[map(steps('lzGoalState').lzDevOpsSubsApi.value, (sub) => parse(concat('{\"label\":\"', sub.displayName, '\",\"description\":\"', sub.subscriptionId, '\",\"value\":\"', toLower(sub.subscriptionId), '\"}')) )]",
+                            "required": false
+                        }
                     },
                     {
                         "name": "azMonText",
@@ -2320,6 +2357,7 @@
             "identitySubscriptionId": "[if(or(not(equals(steps('esIdentityGoalState').esIdentitySub, steps('esGoalState').esMgmtSub)), not(equals(steps('esIdentityGoalState').esIdentitySub, steps('esConnectivityGoalState').esConnectivitySub))), steps('esIdentityGoalState').esIdentitySub, '')]",
             "onlineLzSubscriptionId": "[if(or(not(contains(steps('lzGoalState').esOnlineLzSub, steps('esGoalState').esMgmtSub)), not(contains(steps('lzGoalState').esOnlineLzSub, steps('esConnectivityGoalState').esConnectivitySub))), steps('lzGoalState').esOnlineLzSub, '')]",
             "corpLzSubscriptionId": "[if(or(not(contains(steps('lzGoalState').esCorpLzSub, steps('esGoalState').esMgmtSub)), not(contains(steps('lzGoalState').esCorpLzSub, steps('esConnectivityGoalState').esConnectivitySub))), steps('lzGoalState').esCorpLzSub, '')]",
+            "devopsLzSubscriptionId": "[if(or(not(contains(steps('lzGoalState').esDevOpsLzSub, steps('esGoalState').esMgmtSub)), not(contains(steps('lzGoalState').esDevOpsLzSub, steps('esConnectivityGoalState').esConnectivitySub))), steps('lzGoalState').esDevOpsLzSub, '')]",
             "enableLogAnalytics": "[steps('esGoalState').esLogAnalytics]",
             "enableCustomRBAC": "[steps('esGoalState').esCustomRbacDefinition]",
             "denyRdpForIdentity": "[steps('esIdentityGoalState').esIdDenyRdp]",

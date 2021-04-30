@@ -158,6 +158,9 @@
                     "deploymentmgn": "",
                     "virtualnetworkmgn": "",
                     "subnetmgn": "",
+                    "gwsubnetmgn": "",
+                    "fwsubnetmgn": "",
+
                     "virtualnetworkpeeringmgn": "",
                     "virtualnetworkgatewaymgn": "",
                     "localnetworkgatewaylocalmgn": "",
@@ -241,7 +244,7 @@
         // Creating variable that later will be used in conjunction with the union() function to cater for conditional subnet creation while ensuring idempotency
         "gwSubnet": [
             {
-                "name": "GatewaySubnet",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.gwsubnetmgn, parameters('location'))]",//"GatewaySubnet",
                 "properties": {
                     "addressPrefix": "[parameters('subnetMaskForGw')]"
                 }
@@ -249,7 +252,7 @@
         ],
         "fwSubnet": [
             {
-                "name": "AzureFirewallSubnet",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.fwsubnetmgn, parameters('location'))]",//"AzureFirewallSubnet",
                 "properties": {
                     "addressPrefix": "[parameters('subnetMaskForAzFw')]"
                 }

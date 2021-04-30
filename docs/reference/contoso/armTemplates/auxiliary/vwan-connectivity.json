@@ -92,7 +92,7 @@
                 "scopelzonline": "",
                 "scopelzcorp": "",
                 "scopelzdevops": "",
-                
+
                 "genericresourceprefix": {
                     "mgngroupmgn": "",
                     "resourcgroupmgn": "",
@@ -110,7 +110,9 @@
                     "diasgsettingmgn": "",
                     "deploymentmgn": "",
                     "virtualnetworkmgn": "",
-                    "subnetmgn": "",
+                      "subnetmgn": "",
+                    "gwsubnetmgn": "",
+                    "fwsubnetmgn": "",
                     "virtualnetworkpeeringmgn": "",
                     "virtualnetworkgatewaymgn": "",
                     "localnetworkgatewaylocalmgn": "",
