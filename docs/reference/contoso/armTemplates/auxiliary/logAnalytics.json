@@ -43,10 +43,35 @@
             "metadata": {
                 "description": "Select retention days for the logs in Log Analytics. This string will be converted to Int during deployment."
             }
+        },
+        "workspaceName": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]",
+            "metadata": {
+                "description": "Provide resource name for the Log Analytics workspace. When deployed using ES RI, this name it provided deterministically based on ESLZ prefix."
+            }
+        },
+        "automationAccountName": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]",
+            "metadata": {
+                "description": "Provide resource name for the Log Analytics workspace. When deployed using ES RI, this name it provided deterministically based on ESLZ prefix."
+            }
+        },
+        "ManagementRessourceGroup": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]",
+            "metadata": {
+                "description": "Provide resource name for the Log Analytics workspace. When deployed using ES RI, this name it provided deterministically based on ESLZ prefix."
+            }
+        },
+        "loganalyticnameManagementsub": {
+            "type": "string",
+            "defaultValue": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
         }
 
         //********************************Param for Generic Naming Convention*************************************/
-       ,
+        ,
         "globalvariable": {
             "type": "object",
             "defaultValue": {
@@ -141,6 +166,7 @@
         }
     },
     "variables": {
+        "loganalyticnameManagementsub": "[parameters('loganalyticnameManagementsub')]",
         "policyDefinitions": {
             "deployLogAnalytics": "[concat(parameters('globalvariable').scope, '/providers/Microsoft.Authorization/policyDefinitions/Deploy-Log-Analytics')]"
         },
@@ -171,10 +197,12 @@
                 "scope": "[parameters('globalvariable').scopemanagement]",
                 "parameters": {
                     "workspaceName": {
-                        "value": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]"
+                        //"value": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]"
+                        "value": "[parameters('workspaceName')]"
                     },
                     "automationAccountName": {
-                        "value": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]"
+                        //"value": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]"
+                        "value": "[parameters('automationAccountName')]"
                     },
                     "workspaceRegion": {
                         "value": "[deployment().location]"
@@ -183,7 +211,8 @@
                         "value": "[deployment().location]"
                     },
                     "rgName": {
-                        "value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
+                        //"value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
+                        "value": "[parameters('ManagementRessourceGroup')]"
                     },
                     "retentionInDays": {
                         "value": "[parameters('retentionInDays')]"

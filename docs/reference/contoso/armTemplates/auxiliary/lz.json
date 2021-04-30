@@ -141,103 +141,133 @@
             "metadata": {
                 "description": "Select whether subnet with NSG policy should be assigned or not."
             }
+        },
+        "LandingZoneRessourceGroup": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'landingzone')]",
+            "metadata": {
+                "description": "Provide resource name for the Log Analytics workspace. When deployed using ES RI, this name it provided deterministically based on ESLZ prefix."
+            }
+        },
+        "onlineLzSubscriptionId": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "Provide the subscription ids for existing, empty subscriptions you want to move in as your first online landing zones."
+            }
+        },
+        "corpLzSubscriptionId": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "Provide the subscription ids for existing, empty subscriptions you want to move in as your first corp landing zones."
+            }
+        },
+        "devopsLzSubscriptionId": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "Provide the subscription ids for existing, empty subscriptions you want to move in as your first devops landing zones."
+            }
         }
-
         //********************************Param for Generic Naming Convention*************************************/
-    ,
-    "globalvariable": {
-      "type": "object",
-      "defaultValue": {
-        "scope": "",
-        "scopeplatform": "",
-        "scopemanagement": "",
-        "scopeconnectivity": "",
-        "scopeidentity": "",
-        "scopelz": "",
-        "scopelzonline": "",
-        "scopelzcorp": "",
+        ,
+        "globalvariable": {
+            "type": "object",
+            "defaultValue": {
+                "scope": "",
+                "scopeplatform": "",
+                "scopemanagement": "",
+                "scopeconnectivity": "",
+                "scopeidentity": "",
+                "scopelz": "",
+                "scopelzonline": "",
+                "scopelzcorp": "",
+                "scopelzdevops": "",
 
-        "genericresourceprefix": {
-          "mgngroupmgn": "",
-          "resourcgroupmgn": "",
-          "policydefpmgn": "",
-          "policyassignmgn": "",
-          "rbacassignmgn": "",
-          "rbacdefmgn": "",
-          "loganalyticwkmgn": "",
-          "keyvaultmgn": "",
-          "storagemgn": "",
-          "storagediagnosticmgn": "",
-          "conatainerinstancemgn": "",
-          "containerregistrymgn": "",
-          "budgetconsumptionmgn": "",
-          "diasgsettingmgn": "",
-          "deploymentmgn": "",
-          "virtualnetworkmgn": "",
-          "subnetmgn": "",
-          "virtualnetworkpeeringmgn": "",
-          "virtualnetworkgatewaymgn": "",
-          "localnetworkgatewaylocalmgn": "",
-          "networksitetositemgn": "",
-          "vpnconnectionmgn": "",
-          "nsgmgn": "",
-          "asgmgn": "",
-          "pubipmgn": "",
-          "virtualmachinemgn": "",
-          "virtualmachinestorageaccountmgn": "",
-          "nicmgn": "",
-          "dnsprivatemgn": "",
-          "dnspubblicmgn": "",
-          "loadbalancermgn": "",
-          "applicationgatewaymgn": "",
-          "privatelinkmgn": "",
-          "privateendpointmgn": "",
-          "azurefirewallmgn": "",
-          "azurefirewallpoliciesmgn": "",
-          "azurefirewallrulegroupmgn": "",
-          "securityprincingmgn": "",
-          "workspacedatasourcemgn": "",
-          "automationaccountmgn": "",
-          "workspacemgn": "",
-          "linkedservicemgn": "",
-          "ddosplanmgn": "",
-          "networkwatchermgn": "",
-          "networkwatcherflowlogmgn": "",
-          "databaseauditsettingmgn": "",
-          "databasetransparencryptmgn": "",
-          "dataasesecalertpolmgn": "",
-          "databasevulassessmgn": "",
-          "virrtualhubmgn": "",
-          "virrtualhubconnectionmgn": "",
-          "virtualwanmgn": "",
-          "vpngatewaymgn": "",
-          "expressroutegatewaymgn": "",
-          "virtualmachineextensionmgn": "",
-          "opmanagesolutionmgn": "",
-          "azmonitorappinsigmgn": "",
-          "azmonitorvminsigmgn": "",
-          "azmonitornetworkinsigmgn": "",
-          "azmonitorsqlinsigmgn": "",
-          "azmonitorcontainerinsigmgn": "",
-          "azmonitorcosmosdbinsigmgn": "",
-          "azmonitorressourcegpinsigmgn": "",
-          "azmonitorstorageinsigmgn": "",
-          "azmonitorkeyvaultinsigmgn": "",
-          "azmonitorredisinsigmgn": "",
-          "trafficmanagemgn": "",
-          "cdnmgn": "",
-          "migratemgn": "",
-          "azureacrmgn": "",
-          "fontdoormgn": "",
-          "backupmgn": "",
-          "bastionhostmgn": ""
+                "genericresourceprefix": {
+                    "mgngroupmgn": "",
+                    "resourcgroupmgn": "",
+                    "policydefpmgn": "",
+                    "policyassignmgn": "",
+                    "rbacassignmgn": "",
+                    "rbacdefmgn": "",
+                    "loganalyticwkmgn": "",
+                    "keyvaultmgn": "",
+                    "storagemgn": "",
+                    "storagediagnosticmgn": "",
+                    "conatainerinstancemgn": "",
+                    "containerregistrymgn": "",
+                    "budgetconsumptionmgn": "",
+                    "diasgsettingmgn": "",
+                    "deploymentmgn": "",
+                    "virtualnetworkmgn": "",
+                    "subnetmgn": "",
+                    "virtualnetworkpeeringmgn": "",
+                    "virtualnetworkgatewaymgn": "",
+                    "localnetworkgatewaylocalmgn": "",
+                    "networksitetositemgn": "",
+                    "vpnconnectionmgn": "",
+                    "nsgmgn": "",
+                    "asgmgn": "",
+                    "pubipmgn": "",
+                    "virtualmachinemgn": "",
+                    "virtualmachinestorageaccountmgn": "",
+                    "nicmgn": "",
+                    "dnsprivatemgn": "",
+                    "dnspubblicmgn": "",
+                    "loadbalancermgn": "",
+                    "applicationgatewaymgn": "",
+                    "privatelinkmgn": "",
+                    "privateendpointmgn": "",
+                    "azurefirewallmgn": "",
+                    "azurefirewallpoliciesmgn": "",
+                    "azurefirewallrulegroupmgn": "",
+                    "securityprincingmgn": "",
+                    "workspacedatasourcemgn": "",
+                    "automationaccountmgn": "",
+                    "workspacemgn": "",
+                    "linkedservicemgn": "",
+                    "ddosplanmgn": "",
+                    "networkwatchermgn": "",
+                    "networkwatcherflowlogmgn": "",
+                    "databaseauditsettingmgn": "",
+                    "databasetransparencryptmgn": "",
+                    "dataasesecalertpolmgn": "",
+                    "databasevulassessmgn": "",
+                    "virrtualhubmgn": "",
+                    "virrtualhubconnectionmgn": "",
+                    "virtualwanmgn": "",
+                    "vpngatewaymgn": "",
+                    "expressroutegatewaymgn": "",
+                    "virtualmachineextensionmgn": "",
+                    "opmanagesolutionmgn": "",
+                    "azmonitorappinsigmgn": "",
+                    "azmonitorvminsigmgn": "",
+                    "azmonitornetworkinsigmgn": "",
+                    "azmonitorsqlinsigmgn": "",
+                    "azmonitorcontainerinsigmgn": "",
+                    "azmonitorcosmosdbinsigmgn": "",
+                    "azmonitorressourcegpinsigmgn": "",
+                    "azmonitorstorageinsigmgn": "",
+                    "azmonitorkeyvaultinsigmgn": "",
+                    "azmonitorredisinsigmgn": "",
+                    "trafficmanagemgn": "",
+                    "cdnmgn": "",
+                    "migratemgn": "",
+                    "azureacrmgn": "",
+                    "fontdoormgn": "",
+                    "backupmgn": "",
+                    "bastionhostmgn": ""
+                }
+
+            }
         }
-
-      }
-    }
     },
     "variables": {
         "scope": "[parameters('globalvariable').scopelz]",
+        //"rgName": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'connectivity')]",
+        "rgName": "[parameters('LandingZoneRessourceGroup')]",
         "policyDefinitions": {
             "deployVmBackup": "/providers/Microsoft.Authorization/policyDefinitions/98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86",
             "denySubnetWithoutNsg": "[concat(parameters('globalvariable').scope, '/providers/Microsoft.Authorization/policyDefinitions/Deny-Subnet-Without-Nsg')]",
@@ -280,6 +310,83 @@
         //"blankTemplateEscaped": "{\"$schema\":\"https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#\",\"contentVersion\":\"1.0.0.0\",\"parameters\":{},\"variables\":{},\"resources\":[],\"outputs\":{}}"
     },
     "resources": [
+
+        {
+            "condition": "[ not(empty(parameters('onlineLzSubscriptionId')))]",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
+            "name": "[concat('EntScale', '-landingzone-online-resourcegroup')]",
+            "subscriptionId": "[parameters('onlineLzSubscriptionId')]",
+            "location": "[deployment().location]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Resources/resourceGroups",
+                            "apiVersion": "2019-10-01",
+                            "location": "[deployment().location]",
+                            "name": "[concat(variables('rgName'),'-online')]"
+
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "condition": "[ not(empty(parameters('corpLzSubscriptionId')))]",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
+            "name": "[concat('EntScale', '-landingzone-corp-resourcegroup')]",
+            "subscriptionId": "[parameters('corpLzSubscriptionId')]",
+            "location": "[deployment().location]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Resources/resourceGroups",
+                            "apiVersion": "2019-10-01",
+                            "location": "[deployment().location]",
+                            "name": "[concat(variables('rgName'),'-corp')]"
+
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "condition": "[ not(empty(parameters('devopsLzSubscriptionId')))]",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
+            "name": "[concat('EntScale', '-landingzone-devops-resourcegroup')]",
+            "subscriptionId": "[parameters('devopsLzSubscriptionId')]",
+            "location": "[deployment().location]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Resources/resourceGroups",
+                            "apiVersion": "2019-10-01",
+                            "location": "[deployment().location]",
+                            "name": "[concat(variables('rgName'),'-devops')]"
+
+                        }
+                    ]
+                }
+            }
+        },
+
         {
             // Conditionally assign policy to deny inbound RDP
             "condition": "[equals(parameters('denyRdp'), 'Yes')]",

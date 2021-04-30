@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-      
+
         "topLevelManagementGroupPrefix": {
             "type": "string",
             "maxLength": 10,
@@ -10,16 +10,16 @@
                 "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
             }
         },
-         "resourceTags": {
-        "type": "object",
-        "defaultValue": {
-            "CostCenter": "ITxxx",
-            "Env": "Prod",
-            "RAD": "Mission Critique",
-            "CIDC": "111",
-            "Direction": "SHARED"
-        }
-       } ,
+        "resourceTags": {
+            "type": "object",
+            "defaultValue": {
+                "CostCenter": "ITxxx",
+                "Env": "Prod",
+                "RAD": "Mission Critique",
+                "CIDC": "111",
+                "Direction": "SHARED"
+            }
+        },
         "addressPrefix": {
             "type": "string",
             "metadata": {
@@ -118,6 +118,13 @@
         "firewallZones": {
             "type": "array",
             "defaultValue": []
+        },
+        "ConnectityRessourceGroup": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'connectivity')]",
+            "metadata": {
+                "description": "Provide resource name for the Log Analytics workspace. When deployed using ES RI, this name it provided deterministically based on ESLZ prefix."
+            }
         }
         //********************************Param for Generic Naming Convention*************************************/
         ,
@@ -132,7 +139,7 @@
                 "scopelz": "",
                 "scopelzonline": "",
                 "scopelzcorp": "",
-
+                "scopelzdevops": "",
                 "genericresourceprefix": {
                     "mgngroupmgn": "",
                     "resourcgroupmgn": "",
@@ -217,7 +224,8 @@
     "variables": {
         "vpngwname": "[concat(parameters('globalvariable').genericresourceprefix.vpngatewaymgn, parameters('location'))]",
         "erGwName": "[concat(parameters('globalvariable').genericresourceprefix.expressroutegatewaymgn, parameters('location'))]",
-        "rgName": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, '-connectivity')]",
+        //"rgName": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'connectivity')]",
+        "rgName": "[parameters('ConnectityRessourceGroup')]",
         "hubName": "[concat(parameters('globalvariable').genericresourceprefix.hubmgn, parameters('location'))]",
         "azVpnGwIpName": "[concat(variables('vpngwname'), '-pip')]",
         "azVpnGwSubnetId": "[concat('/subscriptions/', parameters('connectivitySubscriptionId'), '/resourceGroups/', variables('rgName'),'/providers/Microsoft.Network/virtualNetworks/', variables('hubname'), '/subnets/GatewaySubnet')]",
@@ -333,7 +341,7 @@
                                             "name": "[variables('azVpnGwIpName')]",
                                             "sku": {
                                                 "name": "[if(not(empty(parameters('vpnOrErZones'))), 'Standard', 'Basic')]"
-                                            },                                  
+                                            },
                                             "properties": {
                                                 "publicIPAllocationMethod": "[if(not(empty(parameters('vpnOrErZones'))), 'Static', 'Dynamic')]"
                                             }
@@ -380,7 +388,7 @@
                                             "name": "[variables('azErGwIpName')]",
                                             "sku": {
                                                 "name": "[if(not(empty(parameters('vpnOrErZones'))), 'Standard', 'Basic')]"
-                                            },                                  
+                                            },
                                             "properties": {
                                                 "publicIPAllocationMethod": "[if(not(empty(parameters('vpnOrErZones'))), 'Static', 'Dynamic')]"
                                             }
@@ -423,7 +431,7 @@
                                             "location": "[parameters('location')]",
                                             "sku": {
                                                 "name": "Standard"
-                                            },                                  
+                                            },
                                             "properties": {
                                                 "publicIPAllocationMethod": "Static"
                                             }

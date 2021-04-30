@@ -197,6 +197,13 @@
                 "description": "Optionally provide an array of subscription id's that will be moved to the corp landing zone management group."
             }
         },
+        "devopsLzSubscriptionId": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "Provide the subscription ids for existing, empty subscriptions you want to move in as your first devops landing zones."
+            }
+        },
         "identitySubscriptionId": {
             "type": "string",
             "defaultValue": "",
@@ -210,6 +217,10 @@
             "metadata": {
                 "description": "Provide subscription id for the dedicated connectivity subscription."
             }
+        },
+        "loganalyticnameManagementsub": {
+            "type": "string",
+            "defaultValue": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
         }
 
         //********************************Param for Generic Naming Convention*************************************/
@@ -309,7 +320,7 @@
     },
     "variables": {
 
-
+        "loganalyticnameManagementsub": "[parameters('loganalyticnameManagementsub')]",
         "scope": "[parameters('globalvariable').scope]",
         // "scopeplatform": "[parameters('globalvariable').scopeplatform]",
         // "scopemanagement": "[parameters('globalvariable').scopemanagement]",
@@ -330,12 +341,12 @@
         },
         "policyAssignmentNames": {
             "azureActivityLog": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-AzActivity-Log')]",
-            "vmMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-VM-Monitoring')]", 
+            "vmMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-VM-Monitoring')]",
             "windowsArcMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-WS-Arc-Monitoring')]",
-            "linuxArcMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-LX-Arc-Monitoring')]", 
-            "vmssMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-VMSS-Monitoring')]",  
-            "resourceDiagnostics": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Resource-Diag')]", 
-            "azureSecurity": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-ASC-Security')]", 
+            "linuxArcMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-LX-Arc-Monitoring')]",
+            "vmssMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-VMSS-Monitoring')]",
+            "resourceDiagnostics": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Resource-Diag')]",
+            "azureSecurity": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-ASC-Security')]",
             "ascMonitoring": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-ASC-Monitoring')]"
         },
         "rbacOwner": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
@@ -361,7 +372,9 @@
         "noOnlineLzActivityDeployment": "naOnlineActivity",
         "noOnlineLzAscDeployment": "naOnlineAsc",
         "noCorpLzActivityDeployment": "naCorpActivity",
+        "noDevopspLzActivityDeployment": "naCorpActivity",
         "noCorpLzAscDeployment": "naCorpAsc",
+        "noDevopsLzAscDeployment": "naCorpAsc",
         "noIdActivityDeployment": "noIdActivity",
         "noIdAscDeployment": "noIdAsc",
         "noConnActivityDeployment": "noConnActivity",
@@ -379,13 +392,14 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "description": "[variables('policyAssignmentNames').azureActivityLog]",//"Deploy-AzActivity-Log",
-                "displayName": "[variables('policyAssignmentNames').azureActivityLog]",//"Deploy-AzActivity-Log",
+                "description": "[variables('policyAssignmentNames').azureActivityLog]", //"Deploy-AzActivity-Log",
+                "displayName": "[variables('policyAssignmentNames').azureActivityLog]", //"Deploy-AzActivity-Log",
                 "policyDefinitionId": "[variables('policyDefinitions').deployAzureActivityLog]",
                 "scope": "[ variables('scope')]",
                 "parameters": {
                     "logAnalytics": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        //"value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        "value": "[variables('loganalyticnameManagementsub')]"
                     },
                     "logsEnabled": {
                         "value": "True"
@@ -419,13 +433,14 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "description":  "[variables('policyAssignmentNames').vmMonitoring]",//"Deploy-VM-Monitoring",
-                "displayName":  "[variables('policyAssignmentNames').vmMonitoring]",//"Deploy-VM-Monitoring",
+                "description": "[variables('policyAssignmentNames').vmMonitoring]", //"Deploy-VM-Monitoring",
+                "displayName": "[variables('policyAssignmentNames').vmMonitoring]", //"Deploy-VM-Monitoring",
                 "policyDefinitionId": "[variables('policyDefinitions').vmMonitoring]",
                 "scope": "[ variables('scope')]",
                 "parameters": {
                     "logAnalytics_1": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        //"value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        "value": "[variables('loganalyticnameManagementsub')]"
                     }
                 }
             }
@@ -456,13 +471,14 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "description": "[variables('policyAssignmentNames').vmssMonitoring]",//"Deploy-VMSS-Monitoring",
+                "description": "[variables('policyAssignmentNames').vmssMonitoring]", //"Deploy-VMSS-Monitoring",
                 "displayName": "[variables('policyAssignmentNames').vmssMonitoring]", //"Deploy-VMSS-Monitoring",
                 "policyDefinitionId": "[variables('policyDefinitions').vmssMonitoring]",
                 "scope": "[ variables('scope')]",
                 "parameters": {
                     "logAnalytics_1": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        //"value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        "value": "[variables('loganalyticnameManagementsub')]"
                     }
                 }
             }
@@ -493,13 +509,14 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "description": "[variables('policyAssignmentNames').windowsArcMonitoring]",//"Deploy-Windows-Arc-Monitoring",
-                "displayName": "[variables('policyAssignmentNames').windowsArcMonitoring]",//"Deploy-Windows-Arc-Monitoring",
+                "description": "[variables('policyAssignmentNames').windowsArcMonitoring]", //"Deploy-Windows-Arc-Monitoring",
+                "displayName": "[variables('policyAssignmentNames').windowsArcMonitoring]", //"Deploy-Windows-Arc-Monitoring",
                 "policyDefinitionId": "[variables('policyDefinitions').windowsArcMonitoring]",
                 "scope": "[ variables('scope')]",
                 "parameters": {
                     "logAnalytics": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        //"value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        "value": "[variables('loganalyticnameManagementsub')]"
                     }
                 }
             }
@@ -530,13 +547,14 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "description": "[variables('policyAssignmentNames').linuxArcMonitoring]",//"Deploy-Linux-Arc-Monitoring",
-                "displayName": "[variables('policyAssignmentNames').linuxArcMonitoring]",//"Deploy-Linux-Arc-Monitoring",
+                "description": "[variables('policyAssignmentNames').linuxArcMonitoring]", //"Deploy-Linux-Arc-Monitoring",
+                "displayName": "[variables('policyAssignmentNames').linuxArcMonitoring]", //"Deploy-Linux-Arc-Monitoring",
                 "policyDefinitionId": "[variables('policyDefinitions').linuxArcMonitoring]",
                 "scope": "[ variables('scope')]",
                 "parameters": {
                     "logAnalytics": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        //"value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        "value": "[variables('loganalyticnameManagementsub')]"
                     }
                 }
             }
@@ -567,13 +585,14 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "description": "[variables('policyAssignmentNames').resourceDiagnostics]",//"Deploy-Resource-Diag",
-                "displayName": "[variables('policyAssignmentNames').resourceDiagnostics]",//"Deploy-Resource-Diag",
+                "description": "[variables('policyAssignmentNames').resourceDiagnostics]", //"Deploy-Resource-Diag",
+                "displayName": "[variables('policyAssignmentNames').resourceDiagnostics]", //"Deploy-Resource-Diag",
                 "policyDefinitionId": "[variables('policyDefinitions').deployResourceDiagnostics]",
                 "scope": "[ variables('scope')]",
                 "parameters": {
                     "logAnalytics": {
-                        "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        //"value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+                        "value": "[variables('loganalyticnameManagementsub')]"
                     }
                 }
             }
@@ -605,8 +624,8 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "description": "[variables('policyAssignmentNames').azureSecurity]",//"Deploy-ASC-Defender",
-                "displayName": "[variables('policyAssignmentNames').azureSecurity]",//"Deploy-ASC-Defender",
+                "description": "[variables('policyAssignmentNames').azureSecurity]", //"Deploy-ASC-Defender",
+                "displayName": "[variables('policyAssignmentNames').azureSecurity]", //"Deploy-ASC-Defender",
                 "policyDefinitionId": "[variables('policyDefinitions').deployAzureSecurity]",
                 "scope": "[ variables('scope')]",
                 "parameters": {
@@ -666,8 +685,8 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "description": "[variables('policyAssignmentNames').ascMonitoring]",//"ASC-Monitoring",
-                "displayName": "[variables('policyAssignmentNames').ascMonitoring]",//"ASC-Monitoring",
+                "description": "[variables('policyAssignmentNames').ascMonitoring]", //"ASC-Monitoring",
+                "displayName": "[variables('policyAssignmentNames').ascMonitoring]", //"ASC-Monitoring",
                 "policyDefinitionId": "[variables('policyDefinitions').ascMonitoring]",
                 "scope": "[ variables('scope')]"
             }
@@ -817,6 +836,27 @@
                 "parameters": "[if(and(not(empty(parameters('corpLzSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes')), reference(concat('/providers/Microsoft.Management/managementGroups/', parameters('globalvariable').genericresourceprefix.mgngroupmgn, '/providers/Microsoft.Authorization/policyAssignments/', variables('policyAssignmentNames').azureActivityLog), '2018-05-01').parameters, json('null'))]"
             }
         },
+        // {
+        //     // Conditional ARM deployments to invoke template from ActivityLog diagnostics on corp subscription(s)
+        //     "condition": "[and(not(empty(parameters('devopsLzSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'Yes'))]",
+        //     "type": "Microsoft.Resources/deployments",
+        //     "apiVersion": "2019-10-01",
+        //     "name": "[if(not(empty(parameters('devopsLzSubscriptionId'))), concat(variables('lzActivityResourceDeploymentName'), copyIndex()), variables('noDevopspLzActivityDeployment'))]",
+        //     "location": "[deployment().location]",
+        //     "dependsOn": [
+        //         "[resourceId('Microsoft.Authorization/roleAssignments/', variables('roleAssignmentNames').deployAzureActivityLog)]"
+        //     ],
+        //     "copy": {
+        //         "name": "lzDevopsActivityCopy",
+        //         "count": "[if(not(empty(parameters('devopsLzSubscriptionId'))), length(parameters('devopsLzSubscriptionId')), 1)]"
+        //     },
+        //     "subscriptionId": "[if(not(empty(parameters('devopsLzSubscriptionId'))), parameters('devopsLzSubscriptionId')[copyIndex()], '')]",
+        //     "properties": {
+        //         "mode": "incremental",
+        //         "template": "[if(and(not(empty(parameters('devopsLzSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes')), reference(variables('policyDefinitions').deployAzureActivityLog, '2018-05-01').policyRule.then.details.deployment.properties.template, variables('blankTemplateEscaped'))]",
+        //         "parameters": "[if(and(not(empty(parameters('devopsLzSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes')), reference(concat('/providers/Microsoft.Management/managementGroups/', parameters('globalvariable').genericresourceprefix.mgngroupmgn, '/providers/Microsoft.Authorization/policyAssignments/', variables('policyAssignmentNames').azureActivityLog), '2018-05-01').parameters, json('null'))]"
+        //     }
+        // },
         {
             // Conditional ARM deployments to invoke template from ASC on online subscription(s)
             "condition": "[and(not(empty(parameters('onlineLzSubscriptionId'))), equals(parameters('enableAsc'), 'Yes'))]",
@@ -859,6 +899,29 @@
                 "parameters": "[if(and(not(empty(parameters('managementSubscriptionId'))), equals(parameters('enableAsc'), 'Yes')), reference(concat('/providers/Microsoft.Management/managementGroups/', parameters('globalvariable').genericresourceprefix.mgngroupmgn, '/providers/Microsoft.Authorization/policyAssignments/', variables('policyAssignmentNames').azureSecurity), '2018-05-01').parameters, json('null'))]"
             }
         }
+
+        // ,
+        // {
+        //     // Conditional ARM deployments to invoke template from ASC on corp subscription(s)
+        //     "condition": "[and(not(empty(parameters('devopsLzSubscriptionId'))), equals(parameters('enableAsc'), 'Yes'))]",
+        //     "type": "Microsoft.Resources/deployments",
+        //     "apiVersion": "2019-10-01",
+        //     "name": "[if(not(empty(parameters('devopsLzSubscriptionId'))), concat(variables('lzAscResourceDeploymentName'), copyIndex()), variables('noDevopsLzAscDeployment'))]",
+        //     "location": "[deployment().location]",
+        //     "dependsOn": [
+        //         "[resourceId('Microsoft.Authorization/roleAssignments/', variables('roleAssignmentNames').deployAzureSecurity)]"
+        //     ],
+        //     "copy": {
+        //         "name": "lzDevopsAscCopy",
+        //         "count": "[if(not(empty(parameters('devopsLzSubscriptionId'))), length(parameters('devopsLzSubscriptionId')), 1)]"
+        //     },
+        //     "subscriptionId": "[if(not(empty(parameters('devopsLzSubscriptionId'))), parameters('devopsLzSubscriptionId')[copyIndex()], '')]",
+        //     "properties": {
+        //         "mode": "incremental",
+        //         "template": "[if(and(not(empty(parameters('managementSubscriptionId'))), equals(parameters('enableAsc'), 'Yes')), reference(variables('policyDefinitions').deployAzureSecurity, '2018-05-01').policyRule.then.details.deployment.properties.template, 'na')]",
+        //         "parameters": "[if(and(not(empty(parameters('managementSubscriptionId'))), equals(parameters('enableAsc'), 'Yes')), reference(concat('/providers/Microsoft.Management/managementGroups/', parameters('globalvariable').genericresourceprefix.mgngroupmgn, '/providers/Microsoft.Authorization/policyAssignments/', variables('policyAssignmentNames').azureSecurity), '2018-05-01').parameters, json('null'))]"
+        //     }
+        // }
     ],
     "outputs": {}
 }

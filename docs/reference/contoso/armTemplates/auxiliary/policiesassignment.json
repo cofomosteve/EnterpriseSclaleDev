@@ -12,10 +12,20 @@
         },
         "managementSubscriptionId": {
             "type": "string",
-            "defaultValue": "",
             "maxLength": 36,
             "metadata": {
-                "description": "Provide the subscription id of an existing, empty subscription you want to dedicate for management. If you don't want to bring a subscription, leave this parameter empty as is."
+                "description": "Provide subscription id for the dedicated management subscription."
+            }
+        },
+        "enableLogAnalytics": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "metadata": {
+                "description": "If 'Yes' is selected when also adding a subscription for management, ARM will assign two policies to enable auditing in your environment, into the Log Analytics workspace for platform monitoring. If 'No', it will be ignored."
             }
         },
         "connectivitySubscriptionId": {
@@ -69,102 +79,125 @@
             ],
             "defaultValue": "No"
         }
-        
+
         //********************************Param for Generic Naming Convention*************************************/
-    ,
-    "globalvariable": {
-      "type": "object",
-      "defaultValue": {
-        "scope": "",
-        "scopeplatform": "",
-        "scopemanagement": "",
-        "scopeconnectivity": "",
-        "scopeidentity": "",
-        "scopelz": "",
-        "scopelzonline": "",
-        "scopelzcorp": "",
+        ,
+        "globalvariable": {
+            "type": "object",
+            "defaultValue": {
+                "scope": "",
+                "scopeplatform": "",
+                "scopemanagement": "",
+                "scopeconnectivity": "",
+                "scopeidentity": "",
+                "scopelz": "",
+                "scopelzonline": "",
+                "scopelzcorp": "",
 
-        "genericresourceprefix": {
-          "mgngroupmgn": "",
-          "resourcgroupmgn": "",
-          "policydefpmgn": "",
-          "policyassignmgn": "",
-          "rbacassignmgn": "",
-          "rbacdefmgn": "",
-          "loganalyticwkmgn": "",
-          "keyvaultmgn": "",
-          "storagemgn": "",
-          "storagediagnosticmgn": "",
-          "conatainerinstancemgn": "",
-          "containerregistrymgn": "",
-          "budgetconsumptionmgn": "",
-          "diasgsettingmgn": "",
-          "deploymentmgn": "",
-          "virtualnetworkmgn": "",
-          "subnetmgn": "",
-          "virtualnetworkpeeringmgn": "",
-          "virtualnetworkgatewaymgn": "",
-          "localnetworkgatewaylocalmgn": "",
-          "networksitetositemgn": "",
-          "vpnconnectionmgn": "",
-          "nsgmgn": "",
-          "asgmgn": "",
-          "pubipmgn": "",
-          "virtualmachinemgn": "",
-          "virtualmachinestorageaccountmgn": "",
-          "nicmgn": "",
-          "dnsprivatemgn": "",
-          "dnspubblicmgn": "",
-          "loadbalancermgn": "",
-          "applicationgatewaymgn": "",
-          "privatelinkmgn": "",
-          "privateendpointmgn": "",
-          "azurefirewallmgn": "",
-          "azurefirewallpoliciesmgn": "",
-          "azurefirewallrulegroupmgn": "",
-          "securityprincingmgn": "",
-          "workspacedatasourcemgn": "",
-          "automationaccountmgn": "",
-          "workspacemgn": "",
-          "linkedservicemgn": "",
-          "ddosplanmgn": "",
-          "networkwatchermgn": "",
-          "networkwatcherflowlogmgn": "",
-          "databaseauditsettingmgn": "",
-          "databasetransparencryptmgn": "",
-          "dataasesecalertpolmgn": "",
-          "databasevulassessmgn": "",
-          "virrtualhubmgn": "",
-          "virrtualhubconnectionmgn": "",
-          "virtualwanmgn": "",
-          "vpngatewaymgn": "",
-          "expressroutegatewaymgn": "",
-          "virtualmachineextensionmgn": "",
-          "opmanagesolutionmgn": "",
-          "azmonitorappinsigmgn": "",
-          "azmonitorvminsigmgn": "",
-          "azmonitornetworkinsigmgn": "",
-          "azmonitorsqlinsigmgn": "",
-          "azmonitorcontainerinsigmgn": "",
-          "azmonitorcosmosdbinsigmgn": "",
-          "azmonitorressourcegpinsigmgn": "",
-          "azmonitorstorageinsigmgn": "",
-          "azmonitorkeyvaultinsigmgn": "",
-          "azmonitorredisinsigmgn": "",
-          "trafficmanagemgn": "",
-          "cdnmgn": "",
-          "migratemgn": "",
-          "azureacrmgn": "",
-          "fontdoormgn": "",
-          "backupmgn": "",
-          "bastionhostmgn": ""
-        }
+                "genericresourceprefix": {
+                    "mgngroupmgn": "",
+                    "resourcgroupmgn": "",
+                    "policydefpmgn": "",
+                    "policyassignmgn": "",
+                    "rbacassignmgn": "",
+                    "rbacdefmgn": "",
+                    "loganalyticwkmgn": "",
+                    "keyvaultmgn": "",
+                    "storagemgn": "",
+                    "storagediagnosticmgn": "",
+                    "conatainerinstancemgn": "",
+                    "containerregistrymgn": "",
+                    "budgetconsumptionmgn": "",
+                    "diasgsettingmgn": "",
+                    "deploymentmgn": "",
+                    "virtualnetworkmgn": "",
+                    "subnetmgn": "",
+                    "virtualnetworkpeeringmgn": "",
+                    "virtualnetworkgatewaymgn": "",
+                    "localnetworkgatewaylocalmgn": "",
+                    "networksitetositemgn": "",
+                    "vpnconnectionmgn": "",
+                    "nsgmgn": "",
+                    "asgmgn": "",
+                    "pubipmgn": "",
+                    "virtualmachinemgn": "",
+                    "virtualmachinestorageaccountmgn": "",
+                    "nicmgn": "",
+                    "dnsprivatemgn": "",
+                    "dnspubblicmgn": "",
+                    "loadbalancermgn": "",
+                    "applicationgatewaymgn": "",
+                    "privatelinkmgn": "",
+                    "privateendpointmgn": "",
+                    "azurefirewallmgn": "",
+                    "azurefirewallpoliciesmgn": "",
+                    "azurefirewallrulegroupmgn": "",
+                    "securityprincingmgn": "",
+                    "workspacedatasourcemgn": "",
+                    "automationaccountmgn": "",
+                    "workspacemgn": "",
+                    "linkedservicemgn": "",
+                    "ddosplanmgn": "",
+                    "networkwatchermgn": "",
+                    "networkwatcherflowlogmgn": "",
+                    "databaseauditsettingmgn": "",
+                    "databasetransparencryptmgn": "",
+                    "dataasesecalertpolmgn": "",
+                    "databasevulassessmgn": "",
+                    "virrtualhubmgn": "",
+                    "virrtualhubconnectionmgn": "",
+                    "virtualwanmgn": "",
+                    "vpngatewaymgn": "",
+                    "expressroutegatewaymgn": "",
+                    "virtualmachineextensionmgn": "",
+                    "opmanagesolutionmgn": "",
+                    "azmonitorappinsigmgn": "",
+                    "azmonitorvminsigmgn": "",
+                    "azmonitornetworkinsigmgn": "",
+                    "azmonitorsqlinsigmgn": "",
+                    "azmonitorcontainerinsigmgn": "",
+                    "azmonitorcosmosdbinsigmgn": "",
+                    "azmonitorressourcegpinsigmgn": "",
+                    "azmonitorstorageinsigmgn": "",
+                    "azmonitorkeyvaultinsigmgn": "",
+                    "azmonitorredisinsigmgn": "",
+                    "trafficmanagemgn": "",
+                    "cdnmgn": "",
+                    "migratemgn": "",
+                    "azureacrmgn": "",
+                    "fontdoormgn": "",
+                    "backupmgn": "",
+                    "bastionhostmgn": ""
+                }
 
-      }
-    },
+            }
+        },
         //********************************Param for Generic Naming Convention*************************************/
-
-
+        "loganalyticnameManagementsub": {
+            "type": "string",
+            "defaultValue": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+        },
+        "workspaceName": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]",
+            "metadata": {
+                "description": "Provide resource name for the Log Analytics workspace. When deployed using ES RI, this name it provided deterministically based on ESLZ prefix."
+            }
+        },
+        "automationAccountName": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]",
+            "metadata": {
+                "description": "Provide resource name for the Log Analytics workspace. When deployed using ES RI, this name it provided deterministically based on ESLZ prefix."
+            }
+        },
+        "ManagementRessourceGroup": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]",
+            "metadata": {
+                "description": "Provide resource name for the Log Analytics workspace. When deployed using ES RI, this name it provided deterministically based on ESLZ prefix."
+            }
+        },
         "apply-pbmm": {
             "type": "string",
             "allowedValues": [
@@ -372,8 +405,8 @@
 
     },
     "variables": {
-       
-        
+
+
         "scope": "[parameters('globalvariable').scope]",
         "scopeplatform": "[parameters('globalvariable').scopeplatform]",
         "scopemanagement": "[parameters('globalvariable').scopemanagement]",
@@ -386,12 +419,62 @@
         // "tagsByResourceArray": "[createArray(variables('tagsByResource'))]",
 
 
+        "loganalyticnameManagementsub": "[parameters('loganalyticnameManagementsub')]",
 
+        "policyPBMMDefinitions": {
+            "policyDefinitions": {
+                "deployPBMM": "/providers/Microsoft.Authorization/policySetDefinitions/4c4a5f27-de81-430b-b4e5-9cbd50595a87"
+            },
+            "policyAssignmentNames": {
+                "deployPBMM": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Log-Analytics')]"
+            },
+            "rbacOwner": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+            "roleAssignmentNames": {
+                "deployPBMM": "[guid(concat(parameters('topLevelManagementGroupPrefix'), variables('policyPBMMDefinitions').policyAssignmentNames.deployPBMM))]"
+            },
+            "resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+            "parameters": {
+                "logAnalyticsWorkspaceIdforVMReporting": {
+                    "value": "[variables('loganalyticnameManagementsub')]"
+                },
+                "listOfResourceTypesWithDiagnosticLogsEnabled": { "value": "[parameters('listOfResourceTypesWithDiagnosticLogsEnabled')]" },
+                "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": { "value": "[parameters('listOfMembersToExcludeFromWindowsVMAdministratorsGroup')]" },
+                "listOfMembersToIncludeInWindowsVMAdministratorsGroup": { "value": "[parameters('listOfMembersToIncludeInWindowsVMAdministratorsGroup')]" }
+            },
+            "scope": "[variables('scope')]",
+            "description": "This initiative includes audit and virtual machine extension deployment policies that address a subset of Canada Federal PBMM controls. ",
+            "name": "Deploy PBMM"
+        },
+        "policyLogAnalyticDefinitions": {
+            "policyDefinitions": {
+                "deployLogAnalytics": "[concat(parameters('globalvariable').scope, '/providers/Microsoft.Authorization/policyDefinitions/Deploy-Log-Analytics')]"
+            },
+            "policyAssignmentNames": {
+                "logAnalytics": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Log-Analytics')]"
+            },
+            "rbacOwner": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+            "roleAssignmentNames": {
+                "deployLogAnalytics": "[guid(concat(parameters('topLevelManagementGroupPrefix'), variables('policyLogAnalyticDefinitions').policyAssignmentNames.logAnalytics))]"
+            },
+            "resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]"
+        },
 
         "policyAssignmentNames": {
 
 
-
+            "policyLogAnalyticDefinitions": {
+                "policyDefinitions": {
+                    "deployLogAnalytics": "[concat(parameters('globalvariable').scope, '/providers/Microsoft.Authorization/policyDefinitions/Deploy-Log-Analytics')]"
+                },
+                "policyAssignmentNames": {
+                    "logAnalytics": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Log-Analytics')]"
+                },
+                "rbacOwner": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+                "roleAssignmentNames": {
+                    "deployLogAnalytics": "[guid(concat(parameters('topLevelManagementGroupPrefix'), variables('policyAssignmentNames').policyLogAnalyticDefinitions.policyAssignmentNames.logAnalytics))]"
+                },
+                "resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]"
+            },
 
             "policyTagDefinitions": [
 
@@ -974,27 +1057,9 @@
                 //Allowed locations   /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
                 //Allowed locations for resource groups   /providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988
             ],
+
             "policySetDefinitions": [
-                {
-                    "name": "pbmm",
-                    "apply": "[parameters('apply-pbmm')]",
-                    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/4c4a5f27-de81-430b-b4e5-9cbd50595a87",
-                    "scope": "[variables('scope')]",
-                    "parameters": {
 
-                        //   "logAnalytics": {
-                        //     "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('topLevelManagementGroupPrefix'), '-la-', parameters('managementSubscriptionId')))]"
-                        // }
-                        "logAnalyticsWorkspaceIdforVMReporting": {
-                            "value": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
-                        },
-                        "listOfResourceTypesWithDiagnosticLogsEnabled": { "value": "[parameters('listOfResourceTypesWithDiagnosticLogsEnabled')]" },
-                        "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": { "value": "[parameters('listOfMembersToExcludeFromWindowsVMAdministratorsGroup')]" },
-                        "listOfMembersToIncludeInWindowsVMAdministratorsGroup": { "value": "[parameters('listOfMembersToIncludeInWindowsVMAdministratorsGroup')]" }
-                    },
-                    "description": "This initiative includes audit and virtual machine extension deployment policies that address a subset of Canada Federal PBMM controls. "
-
-                },
                 {
                     "name": "kubclust-sec-base-linux-wk",
                     "apply": "[parameters('apply-kubclust-sec-base-linux-wk')]",
@@ -1153,16 +1218,80 @@
         }
     },
     "resources": [
+
+        {
+            // Conditionally assign policy to enable Log Analytics and Azure Automation
+            "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'No'),equals(parameters('apply-pbmm'), 'Yes'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
+                "displayName": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
+                "policyDefinitionId": "[variables('policyLogAnalyticDefinitions').policyDefinitions.deployLogAnalytics]",
+                "scope": "[parameters('globalvariable').scopemanagement]",
+                "parameters": {
+                    "workspaceName": {
+                       // "value": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]"
+                       "value": "[parameters('workspaceName')]"
+                    },
+                    "automationAccountName": {
+                        //"value": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]"
+                        "value": "[parameters('automationAccountName')]"
+                    },
+                    "workspaceRegion": {
+                        "value": "[deployment().location]"
+                    },
+                    "automationRegion": {
+                        "value": "[deployment().location]"
+                    },
+                    "rgName": {
+                       // "value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
+                       "value": "[parameters('ManagementRessourceGroup')]"
+                    },
+                    "retentionInDays": {
+                        "value": "30"
+                    }
+                }
+            }
+        },
+        {
+            // Conditionally assign policy to enable Log Analytics and Azure Automation
+            "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('apply-pbmm'), 'Yes'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+             "dependsOn": [                
+                "[resourceId('Microsoft.OperationalInsights/workspaces/', variables('loganalyticnameManagementsub'))]"
+            ],
+            "name": "[variables('policyPBMMDefinitions').name]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[variables('policyPBMMDefinitions').description]",
+                "displayName": "[variables('policyPBMMDefinitions').description]",
+                "policyDefinitionId": "[variables('policyPBMMDefinitions').policyDefinitions.deployPBMM]",
+                "scope": "[variables('policyPBMMDefinitions').scope]",
+                "parameters": "[variables('policyPBMMDefinitions').parameters]"
+            }
+        },
         {
             //"condition": "[not(empty(parameters('allowedvmsize')))]",
             "type": "Microsoft.Authorization/policyAssignments",
             "apiVersion": "2018-05-01",
+            "name": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].name]",
+           
             "copy": {
                 "name": "PolicySetAssignmentCopy",
                 "count": "[length(variables('policyAssignmentNames').policySetDefinitions)]"
             },
             "condition": "[equals(variables('policyAssignmentNames').policySetDefinitions[copyIndex()].apply, 'Yes')]",
-            "name": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].name]",
+
             "location": "[deployment().location]",
             "identity": {
                 "type": "SystemAssigned"
@@ -1183,7 +1312,7 @@
                 "name": "PolicyAssignmentCopy",
                 "count": "[length(variables('policyAssignmentNames').policyDefinitions)]"
             },
-            //            "condition": "[or(equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, 'Yes'),equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, Yes))]",
+            "condition": "[equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, 'Yes')]",
             "name": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].name]",
             "location": "[deployment().location]",
             "identity": {

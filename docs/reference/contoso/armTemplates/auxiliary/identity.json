@@ -63,8 +63,22 @@
             "metadata": {
                 "description": "Select whether policy to enable VM backup should be assigned or not."
             }
+        },
+        "IdentityRessourceGroup": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'identity')]",
+            "metadata": {
+                "description": "Provide resource name for the Log Analytics workspace. When deployed using ES RI, this name it provided deterministically based on ESLZ prefix."
+            }
+        },
+        "identitySubscriptionId": {
+            "type": "string",
+            "defaultValue": "",
+            "maxLength": 36,
+            "metadata": {
+                "description": "Provide the subscription id of an existing, empty subscription you want to dedicate for identity."
+            }
         }
-
         //********************************Param for Generic Naming Convention*************************************/
         ,
         "globalvariable": {
@@ -78,6 +92,7 @@
                 "scopelz": "",
                 "scopelzonline": "",
                 "scopelzcorp": "",
+                "scopelzdevops": "",
 
                 "genericresourceprefix": {
                     "mgngroupmgn": "",
@@ -162,6 +177,7 @@
     },
     "variables": {
         "scope": "[parameters('globalvariable').scopeidentity]",
+        "rgName": "[parameters('IdentityRessourceGroup')]",
         "policyDefinitions": {
             "denySubnetWithoutNsg": "[concat(parameters('globalvariable').scope, '/providers/Microsoft.Authorization/policyDefinitions/Deny-Subnet-Without-Nsg')]",
             "denyPip": "[concat(parameters('globalvariable').scope, '/providers/Microsoft.Authorization/policyDefinitions/Deny-PublicIP')]",
@@ -181,6 +197,32 @@
         //"blankTemplateEscaped": "{\"$schema\":\"https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#\",\"contentVersion\":\"1.0.0.0\",\"parameters\":{},\"variables\":{},\"resources\":[],\"outputs\":{}}"
     },
     "resources": [
+        {
+            "condition": "[ not(empty(parameters('identitySubscriptionId')))]",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
+            "name": "[concat('EntScale', '-landingzone-identity-resourcegroup')]",
+            "subscriptionId": "[parameters('identitySubscriptionId')]",
+            "location": "[deployment().location]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Resources/resourceGroups",
+                            "apiVersion": "2019-10-01",
+                            "location": "[deployment().location]",
+                            "name": "[variables('rgName')]"
+
+                        }
+                    ]
+                }
+            }
+        },
+       
         {
             // Conditionally enable policy to enforce VM Backup
             "condition": "[equals(parameters('enableVmBackupForIdentity'), 'Yes')]",
@@ -247,7 +289,7 @@
             "apiVersion": "2018-05-01",
             "name": "[variables('policyAssignmentNames').denySubnetWithoutNsg]",
             "properties": {
-                "description":"[variables('policyAssignmentNames').denySubnetWithoutNsg]",
+                "description": "[variables('policyAssignmentNames').denySubnetWithoutNsg]",
                 "displayName": "[variables('policyAssignmentNames').denySubnetWithoutNsg]",
                 "policyDefinitionId": "[variables('policyDefinitions').denySubnetWithoutNsg]",
                 "scope": "[variables('scope')]"

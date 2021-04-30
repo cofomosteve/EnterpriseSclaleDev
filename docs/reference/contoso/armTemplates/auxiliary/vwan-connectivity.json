@@ -70,6 +70,13 @@
         },
         "connectivitySubscriptionId": {
             "type": "string"
+        },
+        "ConnectityRessourceGroup": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'connectivity')]",
+            "metadata": {
+                "description": "Provide resource name for the Log Analytics workspace. When deployed using ES RI, this name it provided deterministically based on ESLZ prefix."
+            }
         }
         //********************************Param for Generic Naming Convention*************************************/
         ,
@@ -84,7 +91,8 @@
                 "scopelz": "",
                 "scopelzonline": "",
                 "scopelzcorp": "",
-
+                "scopelzdevops": "",
+                
                 "genericresourceprefix": {
                     "mgngroupmgn": "",
                     "resourcgroupmgn": "",
@@ -170,7 +178,8 @@
         "vWanName": "[concat(parameters('globalvariable').genericresourceprefix.wanmgn, parameters('location'))]",
         "vpngwname": "[concat(parameters('globalvariable').genericresourceprefix.vpngatewaymgn, parameters('location'))]",
         "erGwName": "[concat(parameters('globalvariable').genericresourceprefix.expressroutegatewaymgn, parameters('location'))]",
-        "rgName": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'connectivity')]",
+        //"rgName": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'connectivity')]",
+        "rgName": "[parameters('ConnectityRessourceGroup')]",
         "vHubName": "[concat(parameters('globalvariable').genericresourceprefix.virrtualhubmgn, parameters('location'))]",
         "azFwName": "[concat(parameters('globalvariable').genericresourceprefix.azurefirewallmgn, parameters('location'))]",
         "vWanSku": "Standard",

@@ -107,6 +107,15 @@
                 "description": "Provide the subscription ids for existing, empty subscriptions you want to move in as your first corp landing zones."
             }
         },
+        "devopsLzSubscriptionId": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "Provide the subscription ids for existing, empty subscriptions you want to move in as your first devops landing zones."
+            }
+        },
+
+
         "enableLogAnalytics": {
             "type": "string",
             "defaultValue": "No",
@@ -435,15 +444,15 @@
             "defaultValue": "[deployment().location]"
         },
         "enableConnectivity": {
-            "type": "string",  
+            "type": "string",
             "allowedValues": [
                 "Yes",
                 "No"
-            ],         
+            ],
             "defaultValue": "No"
         },
         "enableVwan": {
-            "type": "string",           
+            "type": "string",
             "defaultValue": "No"
         },
         "enableAzFw": {
@@ -458,9 +467,8 @@
         "tagsByResource": {
             "type": "object",
             "defaultValue": {}
-        }
-         
-        ,"apply-pbmm": {
+        },
+        "apply-pbmm": {
             "type": "string",
             "allowedValues": [
                 "Yes",
@@ -551,9 +559,9 @@
             "defaultValue": "No"
         }
 
-        
 
-       /* ,"cktagbyresource": {
+
+        /* ,"cktagbyresource": {
             "type": "bool",
             "allowedValues": [
                 true,
@@ -561,7 +569,8 @@
             ],
             "defaultValue": false
         }*/
-        ,"tagauditpolicy": {
+        ,
+        "tagauditpolicy": {
             "type": "string",
             "allowedValues": [
                 "Yes",
@@ -577,8 +586,7 @@
                 "description": "allowedVMSizesku"
             },
             "defaultValue": []
-        }
-        ,
+        },
 
         "listOfResourceTypesWithDiagnosticLogsEnabled": {
             "type": "Array",
@@ -619,6 +627,7 @@
             "scopelz": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-landingzones')]",
             "scopelzonline": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-online')]",
             "scopelzcorp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-corp')]",
+            "scopelzdevops": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-devops')]",
 
             "scopebase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]",
             "scopeplatformbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-platform')]",
@@ -628,6 +637,7 @@
             "scopelzbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-landingzones')]",
             "scopelzonlinebase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-online')]",
             "scopelzcorpbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-corp')]",
+            "scopelzdevopsbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-devops')]",
 
             "genericresourceprefix": {
 
@@ -636,7 +646,7 @@
 
                 "policydefpmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('pdef-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
 
-                "policyassignmgn": "",//"[if(equals(parameters('NamingConvention'), 'OQLF'),concat('pa-',   parameters('enterpriseScaleCompanyPrefix'),'-'),'CAF')]",
+                "policyassignmgn": "", //"[if(equals(parameters('NamingConvention'), 'OQLF'),concat('pa-',   parameters('enterpriseScaleCompanyPrefix'),'-'),'CAF')]",
 
 
                 "rbacassignmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('RBAC-CUSTOM-',   parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
@@ -804,7 +814,7 @@
         "delimiters": [ "," ],
         "tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], json('{}')) ]",
         "settingArray": "[if(empty(variables('tagsByResourceout')),createArray(),split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters')))]",
-        
+
         "propNameArray": {
             "copy": [
                 {
@@ -815,8 +825,13 @@
             ]
         },
 
-
-
+        "loganalyticnameManagementsub": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', variables('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', variables('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]",
+        "workspaceName": "[concat(variables('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]",
+        "automationAccountName": "[concat(variables('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]",
+        "ManagementRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]",
+        "IdentityRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, 'identity')]",
+        "ConnectityRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, 'connectivity')]",
+        "LandingZoneRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, 'landingzone')]",
         "azPolicyEnvMapping": {
             "https://management.azure.com/": "auxiliary/policies.json",
             "https://management.chinacloudapi.cn": "auxiliary/mkPolicies.json",
@@ -837,12 +852,19 @@
             "custompoliciesassign": "[uri(deployment().properties.templateLink.uri, 'auxiliary/policiesassignment.json')]"
         },
         "moveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-management', '/', parameters('managementSubscriptionId'))]",
+
         "noSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-management', '/', 'na')]",
         "noOnlineLzSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-online', '/', 'nalz')]",
         "noCorpLzSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-corp', '/', 'nalz')]",
+        "noDevOpsLzSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-devops', '/', 'nalz')]",
         "connectivityMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-connectivity', '/', parameters('connectivitySubscriptionId'))]",
         "noConnectivitySubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-connectivity', '/', 'naconn')]",
         "identityMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-identity', '/', parameters('identitySubscriptionId'))]",
+
+        "OnlineLzMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-online', '/', parameters('onlineLzSubscriptionId'))]",
+        "CorpLzMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-corp', '/', parameters('corpLzSubscriptionId'))]",
+        "DevOpsLzMoveSubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-devops', '/', parameters('devopsLzSubscriptionId'))]",
+
         "noIdentitySubscription": "[concat(variables('topLevelManagementGroupPrefix'), '-identity', '/', 'naid')]",
         "deploymentNames": {
             "mgmtGroupDeploymentName": "[take(concat('EntScale-Mgs', '-', deployment().location, guid(parameters('enterpriseScaleCompanyPrefix'))), 64)]",
@@ -875,8 +897,7 @@
                     }
                 }
             }
-        }
-        ,
+        },
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
@@ -893,7 +914,7 @@
                     "uri": "[variables('deploymentUris').policyDefinitions]"
                 },
                 "parameters": {
-                   // "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
+                    // "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
 
                     "resourceTags": { "value": "[variables('resourceTags')]" },
                     "globalvariable": { "value": "[variables('globalvariable')]" }
@@ -946,6 +967,39 @@
             ],
             "properties": {}
         },
+
+        /*  {
+            "condition": "[not(empty(parameters('onlineLzSubscriptionId')))]",
+            "type": "Microsoft.Management/managementGroups/subscriptions",
+            "apiVersion": "2020-05-01",
+            "name": "[if(not(empty(parameters('onlineLzSubscriptionId'))), variables('OnlineLzMoveSubscription'), variables('noOnlineLzSubscription'))]",
+            "dependsOn": [
+                "[variables('deploymentNames').mgmtGroupDeploymentName]"
+            ],
+            "properties": {}
+        },
+        {
+            "condition": "[not(empty(parameters('corpLzSubscriptionId')))]",
+            "type": "Microsoft.Management/managementGroups/subscriptions",
+            "apiVersion": "2020-05-01",
+            "name": "[if(not(empty(parameters('corpLzSubscriptionId'))), variables('CorpLzMoveSubscription'), variables('noCorpLzSubscription'))]",
+            "dependsOn": [
+                "[variables('deploymentNames').mgmtGroupDeploymentName]"
+            ],
+            "properties": {}
+        },
+        {
+            "condition": "[not(empty(parameters('devopsLzSubscriptionId')))]",
+            "type": "Microsoft.Management/managementGroups/subscriptions",
+            "apiVersion": "2020-05-01",
+            "name": "[if(not(empty(parameters('devopsLzSubscriptionId'))), variables('DevOpsLzMoveSubscription'), variables('noDevOpsLzSubscription'))]",
+            "dependsOn": [
+                "[variables('deploymentNames').mgmtGroupDeploymentName]"
+            ],
+            "properties": {}
+        },*/
+
+
         {
             "condition": "[not(empty(parameters('onlineLzSubscriptionId')))]",
             "type": "Microsoft.Management/managementGroups/subscriptions",
@@ -969,11 +1023,26 @@
                 "[variables('deploymentNames').mgmtGroupDeploymentName]"
             ],
             "copy": {
-                "name": "onlineLzMove",
+                "name": "coprLzMove",
                 "count": "[length(parameters('corpLzSubscriptionId'))]"
             },
             "properties": {}
         },
+        {
+            "condition": "[not(empty(parameters('devopsLzSubscriptionId')))]",
+            "type": "Microsoft.Management/managementGroups/subscriptions",
+            "apiVersion": "2020-05-01",
+            "name": "[if(not(empty(parameters('devopsLzSubscriptionId'))), concat(variables('topLevelManagementGroupPrefix'), '-devops', '/', parameters('devopsLzSubscriptionId')[copyIndex()]), variables('noDevOpsLzSubscription'))]",
+            "dependsOn": [
+                "[variables('deploymentNames').mgmtGroupDeploymentName]"
+            ],
+            "copy": {
+                "name": "devopsLzMove",
+                "count": "[length(parameters('devopsLzSubscriptionId'))]"
+            },
+            "properties": {}
+        },
+
         {
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
@@ -1001,6 +1070,18 @@
                     "globalvariable": { "value": "[variables('globalvariable')]" },
                     "enableLogAnalytics": {
                         "value": "[parameters('enableLogAnalytics')]"
+                    },
+                    "loganalyticnameManagementsub": {
+                        "value": "[variables('loganalyticnameManagementsub')]"
+                    },
+                    "workspaceName": {
+                        "value": "[variables('workspaceName')]"
+                    },
+                    "automationAccountName": {
+                        "value": "[variables('automationAccountName')]"
+                    },
+                    "ManagementRessourceGroup": {
+                        "value": "[variables('ManagementRessourceGroup')]"
                     },
                     "managementSubscriptionId": {
                         "value": "[parameters('managementSubscriptionId')]"
@@ -1041,6 +1122,16 @@
                     "enableSecuritySolution": {
                         "value": "[parameters('enableSecuritySolution')]"
                     },
+                    "workspaceName": {
+                        "value": "[variables('workspaceName')]"
+                    },
+                    "automationAccountName": {
+                        "value": "[variables('automationAccountName')]"
+                    },
+                    "ManagementRessourceGroup": {
+                        "value": "[variables('ManagementRessourceGroup')]"
+                    },
+
                     "enableAgentHealth": {
                         "value": "[parameters('enableAgentHealth')]"
                     },
@@ -1061,6 +1152,9 @@
                     },
                     "enableServiceMap": {
                         "value": "[parameters('enableServiceMap')]"
+                    },
+                    "loganalyticnameManagementsub": {
+                        "value": "[variables('loganalyticnameManagementsub')]"
                     },
                     "enableSqlAssessment": {
                         "value": "[parameters('enableSqlAssessment')]"
@@ -1104,6 +1198,12 @@
                     },
                     "enableVmBackupForIdentity": {
                         "value": "[parameters('enableVmBackupForIdentity')]"
+                    },
+                    "IdentityRessourceGroup": {
+                        "value": "[variables('IdentityRessourceGroup')]"
+                    },
+                    "identitySubscriptionId": {
+                        "value": "[parameters('identitySubscriptionId')]"
                     }
                 }
             }
@@ -1165,6 +1265,18 @@
                     },
                     "denySubnetWithoutNsg": {
                         "value": "[parameters('denySubnetWithoutNsg')]"
+                    },
+                    "LandingZoneRessourceGroup": {
+                        "value": "[variables('LandingZoneRessourceGroup')]"
+                    },
+                    "onlineLzSubscriptionId": {
+                        "value": "[parameters('onlineLzSubscriptionId')]"
+                    },
+                    "corpLzSubscriptionId": {
+                        "value": "[parameters('corpLzSubscriptionId')]"
+                    },
+                    "devopsLzSubscriptionId": {
+                        "value": "[parameters('devopsLzSubscriptionId')]"
                     }
                 }
             }
@@ -1196,6 +1308,9 @@
                     "globalvariable": { "value": "[variables('globalvariable')]" },
                     "enableLogAnalytics": {
                         "value": "[parameters('enableLogAnalytics')]"
+                    },
+                    "loganalyticnameManagementsub": {
+                        "value": "[variables('loganalyticnameManagementsub')]"
                     },
                     "enableAsc": {
                         "value": "[parameters('enableAsc')]"
@@ -1235,6 +1350,9 @@
                     },
                     "corpLzSubscriptionId": {
                         "value": "[parameters('corpLzSubscriptionId')]"
+                    },
+                    "devopsLzSubscriptionId": {
+                        "value": "[parameters('devopsLzSubscriptionId')]"
                     },
                     "identitySubscriptionId": {
                         "value": "[parameters('identitySubscriptionId')]"
@@ -1307,6 +1425,10 @@
                     "location": {
                         "value": "[parameters('location')]"
                     },
+                    "ConnectityRessourceGroup": {
+                        "value": "[variables('ConnectityRessourceGroup')]"
+                    },
+
                     "connectivitySubscriptionId": {
                         "value": "[parameters('connectivitySubscriptionId')]"
                     }
@@ -1372,10 +1494,29 @@
                     "apply-tls-ssl-enforcement-encrypt-paas": { "value": "[parameters('apply-tls-ssl-enforcement-encrypt-paas')]" },
                     "apply-audit-resource-without-encryption": { "value": "[parameters('apply-audit-resource-without-encryption')]" },
                     "tagauditpolicy": { "value": "[parameters('tagauditpolicy')]" },
-                    "allowedVMSizesku": {"value": "[parameters('allowedVMSizesku')]" },
-                    "listOfResourceTypesWithDiagnosticLogsEnabled": {"value": "[parameters('listOfResourceTypesWithDiagnosticLogsEnabled')]" },
-                    "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": {"value": "[parameters('listOfMembersToExcludeFromWindowsVMAdministratorsGroup')]" },
-                    "listOfMembersToIncludeInWindowsVMAdministratorsGroup": {"value": "[parameters('listOfMembersToIncludeInWindowsVMAdministratorsGroup')]" }
+                    "allowedVMSizesku": { "value": "[parameters('allowedVMSizesku')]" },
+                    "listOfResourceTypesWithDiagnosticLogsEnabled": { "value": "[parameters('listOfResourceTypesWithDiagnosticLogsEnabled')]" },
+                    "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": { "value": "[parameters('listOfMembersToExcludeFromWindowsVMAdministratorsGroup')]" },
+                    "listOfMembersToIncludeInWindowsVMAdministratorsGroup": { "value": "[parameters('listOfMembersToIncludeInWindowsVMAdministratorsGroup')]" },
+                    "enableLogAnalytics": {
+                        "value": "[parameters('enableLogAnalytics')]"
+                    },
+                    "loganalyticnameManagementsub": {
+                        "value": "[variables('loganalyticnameManagementsub')]"
+                    },
+
+                    "managementSubscriptionId": {
+                        "value": "[parameters('managementSubscriptionId')]"
+                    },
+                    "workspaceName": {
+                        "value": "[variables('workspaceName')]"
+                    },
+                    "automationAccountName": {
+                        "value": "[variables('automationAccountName')]"
+                    },
+                    "ManagementRessourceGroup": {
+                        "value": "[variables('ManagementRessourceGroup')]"
+                    }
 
                 }
             }
