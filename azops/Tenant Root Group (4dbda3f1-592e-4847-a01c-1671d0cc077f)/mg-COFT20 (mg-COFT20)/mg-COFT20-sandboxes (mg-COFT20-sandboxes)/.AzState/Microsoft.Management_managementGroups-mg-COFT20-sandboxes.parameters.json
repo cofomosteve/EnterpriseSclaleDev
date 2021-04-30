@@ -4,16 +4,16 @@
   "parameters": {
     "input": {
       "value": {
-        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT10-identity",
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT20-sandboxes",
         "Type": "/providers/Microsoft.Management/managementGroups",
-        "Name": "mg-COFT10-identity",
+        "Name": "mg-COFT20-sandboxes",
         "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
-        "DisplayName": "mg-COFT10-identity",
-        "UpdatedTime": "2021-04-29T14:01:05.3905287Z",
+        "DisplayName": "mg-COFT20-sandboxes",
+        "UpdatedTime": "2021-04-29T22:03:38.8346949Z",
         "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
-        "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COFT10-platform",
-        "ParentName": "mg-COFT10-platform",
-        "ParentDisplayName": "mg-COFT10-platform",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COFT20",
+        "ParentName": "mg-COFT20",
+        "ParentDisplayName": "mg-COFT20",
         "Children": null
       }
     }

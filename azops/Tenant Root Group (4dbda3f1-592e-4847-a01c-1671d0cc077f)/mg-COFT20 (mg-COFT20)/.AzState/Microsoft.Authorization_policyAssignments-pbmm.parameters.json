@@ -1,0 +1,93 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "1117da31-06a6-480a-bce4-1cbcedb229c8",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "pbmm",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFT20/providers/Microsoft.Authorization/policyAssignments/pbmm",
+        "Properties": {
+          "Description": "This initiative includes audit and virtual machine extension deployment policies that address a subset of Canada Federal PBMM controls. ",
+          "DisplayName": "pbmm",
+          "NotScopes": null,
+          "Parameters": {
+            "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": {
+              "value": "AdminExluded"
+            },
+            "listOfMembersToIncludeInWindowsVMAdministratorsGroup": {
+              "value": "AdminIncluded"
+            },
+            "listOfResourceTypesWithDiagnosticLogsEnabled": {
+              "value": [
+                "Microsoft.AnalysisServices/servers",
+                "Microsoft.ApiManagement/service",
+                "Microsoft.Automation/automationAccounts",
+                "Microsoft.Batch/batchAccounts",
+                "Microsoft.Cache/redis",
+                "Microsoft.Cdn/profiles/endpoints",
+                "Microsoft.CognitiveServices/accounts",
+                "Microsoft.Compute/virtualMachines",
+                "Microsoft.Compute/virtualMachineScaleSets",
+                "Microsoft.ContainerInstance/containerGroups",
+                "Microsoft.ContainerRegistry/registries",
+                "Microsoft.ContainerService/managedClusters",
+                "Microsoft.DataFactory/factories",
+                "Microsoft.DataLakeAnalytics/accounts",
+                "Microsoft.DataLakeStore/accounts",
+                "Microsoft.DBforMySQL/servers",
+                "Microsoft.DBforPostgreSQL/servers",
+                "Microsoft.Devices/IotHubs",
+                "Microsoft.DocumentDB/databaseAccounts",
+                "Microsoft.EventGrid/eventSubscriptions",
+                "Microsoft.EventGrid/topics",
+                "Microsoft.EventHub/namespaces",
+                "Microsoft.HDInsight/clusters",
+                "Microsoft.KeyVault/vaults",
+                "Microsoft.Logic/integrationAccounts",
+                "Microsoft.Logic/workflows",
+                "Microsoft.Network/applicationGateways",
+                "Microsoft.Network/azureFirewalls",
+                "Microsoft.Network/expressRouteCircuits",
+                "Microsoft.Network/loadBalancers",
+                "Microsoft.Network/networkInterfaces",
+                "Microsoft.Network/networkSecurityGroups",
+                "Microsoft.Network/publicIPAddresses",
+                "Microsoft.Network/trafficManagerProfiles",
+                "Microsoft.Network/virtualNetworkGateways",
+                "Microsoft.Network/virtualNetworks",
+                "Microsoft.PowerBIDedicated/capacities",
+                "Microsoft.RecoveryServices/vaults",
+                "Microsoft.Relay/namespaces",
+                "Microsoft.Search/searchServices",
+                "Microsoft.ServiceBus/namespaces",
+                "Microsoft.SignalRService/SignalR",
+                "Microsoft.Sql/servers/databases",
+                "Microsoft.Sql/servers/elasticPools",
+                "Microsoft.StreamAnalytics/streamingjobs",
+                "Microsoft.TimeSeriesInsights/environments"
+              ]
+            },
+            "logAnalyticsWorkspaceIdforVMReporting": {
+              "value": "/subscriptions//resourcegroups/rg-coft20-it-prod-mgmt/providers/microsoft.operationalinsights/workspaces/la-coft20-it-prod-"
+            }
+          },
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/4c4a5f27-de81-430b-b4e5-9cbd50595a87",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFT20"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFT20/providers/Microsoft.Authorization/policyAssignments/pbmm",
+        "ResourceName": "pbmm",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

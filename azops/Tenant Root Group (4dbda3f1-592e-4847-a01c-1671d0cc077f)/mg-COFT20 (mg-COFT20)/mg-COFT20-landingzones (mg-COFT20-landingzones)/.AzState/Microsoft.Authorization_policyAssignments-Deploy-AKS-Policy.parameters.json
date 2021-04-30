@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "14428b20-5d81-4aa0-9802-48f64a01fb20",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "Deploy-AKS-Policy",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFT20-landingzones/providers/Microsoft.Authorization/policyAssignments/Deploy-AKS-Policy",
+        "Properties": {
+          "Description": "Deploy-AKS-Policy",
+          "DisplayName": "Deploy-AKS-Policy",
+          "NotScopes": null,
+          "Parameters": null,
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a8eff44f-8c92-45c3-a3fb-9880802d67a7",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFT20-landingzones"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFT20-landingzones/providers/Microsoft.Authorization/policyAssignments/Deploy-AKS-Policy",
+        "ResourceName": "Deploy-AKS-Policy",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}
