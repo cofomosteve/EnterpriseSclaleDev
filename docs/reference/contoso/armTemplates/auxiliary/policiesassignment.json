@@ -1270,7 +1270,8 @@
             "type": "Microsoft.Authorization/policyAssignments",
             "apiVersion": "2018-05-01",
             "dependsOn": [
-                "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+                "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]"
+                //"[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
             ],
             "name": "[variables('policyPBMMDefinitions').name]",
             "location": "[deployment().location]",
