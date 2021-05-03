@@ -312,7 +312,8 @@
     "resources": [
 
         {
-            "condition": "[ not(empty(parameters('onlineLzSubscriptionId')))]",
+            //"condition": "[ not(empty(parameters('onlineLzSubscriptionId')))]",
+            "condition": "[greater(length(parameters('onlineLzSubscriptionId')), 0)]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
             "name": "[concat('EntScale', '-landingzone-online-resourcegroup')]",
@@ -337,7 +338,8 @@
             }
         },
         {
-            "condition": "[ not(empty(parameters('corpLzSubscriptionId')))]",
+            //"condition": "[ not(empty(parameters('corpLzSubscriptionId')))]",
+            "condition": "[greater(length(parameters('corpLzSubscriptionId')), 0)]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
             "name": "[concat('EntScale', '-landingzone-corp-resourcegroup')]",
@@ -362,7 +364,8 @@
             }
         },
         {
-            "condition": "[ not(empty(parameters('devopsLzSubscriptionId')))]",
+            //"condition": "[ not(empty(parameters('devopsLzSubscriptionId')))]",
+            "condition": "[greater(length(parameters('devopsLzSubscriptionId')), 0)]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
             "name": "[concat('EntScale', '-landingzone-devops-resourcegroup')]",
