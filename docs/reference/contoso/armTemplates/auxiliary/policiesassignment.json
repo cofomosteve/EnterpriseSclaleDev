@@ -1224,68 +1224,68 @@
     },
     "resources": [
 
-        {
-            // Conditionally assign policy to enable Log Analytics and Azure Automation
-            "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'No'),equals(parameters('apply-pbmm'), 'Yes'))]",
-            "type": "Microsoft.Authorization/policyAssignments",
-            "apiVersion": "2018-05-01",
-            "name": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
-            "location": "[deployment().location]",
-            "identity": {
-                "type": "SystemAssigned"
-            },
-            "properties": {
-                "description": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
-                "displayName": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
-                "policyDefinitionId": "[variables('policyLogAnalyticDefinitions').policyDefinitions.deployLogAnalytics]",
-                "scope": "[parameters('globalvariable').scopemanagement]",
-                "parameters": {
-                    "workspaceName": {
-                        // "value": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]"
-                        "value": "[parameters('workspaceName')]"
-                    },
-                    "automationAccountName": {
-                        //"value": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]"
-                        "value": "[parameters('automationAccountName')]"
-                    },
-                    "workspaceRegion": {
-                        "value": "[deployment().location]"
-                    },
-                    "automationRegion": {
-                        "value": "[deployment().location]"
-                    },
-                    "rgName": {
-                        // "value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
-                        "value": "[parameters('ManagementRessourceGroup')]"
-                    },
-                    "retentionInDays": {
-                        "value": "30"
-                    }
-                }
-            }
-        },
-        {
-            // Conditionally assign policy to enable Log Analytics and Azure Automation
-            "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('apply-pbmm'), 'Yes'))]",
-            "type": "Microsoft.Authorization/policyAssignments",
-            "apiVersion": "2018-05-01",
-            "dependsOn": [
-                "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]"
-                //"[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
-            ],
-            "name": "[variables('policyPBMMDefinitions').name]",
-            "location": "[deployment().location]",
-            "identity": {
-                "type": "SystemAssigned"
-            },
-            "properties": {
-                "description": "[variables('policyPBMMDefinitions').description]",
-                "displayName": "[variables('policyPBMMDefinitions').description]",
-                "policyDefinitionId": "[variables('policyPBMMDefinitions').policyDefinitions.deployPBMM]",
-                "scope": "[variables('policyPBMMDefinitions').scope]",
-                "parameters": "[variables('policyPBMMDefinitions').parameters]"
-            }
-        },
+        // {
+        //     // Conditionally assign policy to enable Log Analytics and Azure Automation
+        //     "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'No'),equals(parameters('apply-pbmm'), 'Yes'))]",
+        //     "type": "Microsoft.Authorization/policyAssignments",
+        //     "apiVersion": "2018-05-01",
+        //     "name": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
+        //     "location": "[deployment().location]",
+        //     "identity": {
+        //         "type": "SystemAssigned"
+        //     },
+        //     "properties": {
+        //         "description": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
+        //         "displayName": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
+        //         "policyDefinitionId": "[variables('policyLogAnalyticDefinitions').policyDefinitions.deployLogAnalytics]",
+        //         "scope": "[parameters('globalvariable').scopemanagement]",
+        //         "parameters": {
+        //             "workspaceName": {
+        //                 // "value": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]"
+        //                 "value": "[parameters('workspaceName')]"
+        //             },
+        //             "automationAccountName": {
+        //                 //"value": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]"
+        //                 "value": "[parameters('automationAccountName')]"
+        //             },
+        //             "workspaceRegion": {
+        //                 "value": "[deployment().location]"
+        //             },
+        //             "automationRegion": {
+        //                 "value": "[deployment().location]"
+        //             },
+        //             "rgName": {
+        //                 // "value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
+        //                 "value": "[parameters('ManagementRessourceGroup')]"
+        //             },
+        //             "retentionInDays": {
+        //                 "value": "30"
+        //             }
+        //         }
+        //     }
+        // },
+        // {
+        //     // Conditionally assign policy to enable Log Analytics and Azure Automation
+        //     "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('apply-pbmm'), 'Yes'))]",
+        //     "type": "Microsoft.Authorization/policyAssignments",
+        //     "apiVersion": "2018-05-01",
+        //     "dependsOn": [
+        //         "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]"
+        //         //"[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+        //     ],
+        //     "name": "[variables('policyPBMMDefinitions').name]",
+        //     "location": "[deployment().location]",
+        //     "identity": {
+        //         "type": "SystemAssigned"
+        //     },
+        //     "properties": {
+        //         "description": "[variables('policyPBMMDefinitions').description]",
+        //         "displayName": "[variables('policyPBMMDefinitions').description]",
+        //         "policyDefinitionId": "[variables('policyPBMMDefinitions').policyDefinitions.deployPBMM]",
+        //         "scope": "[variables('policyPBMMDefinitions').scope]",
+        //         "parameters": "[variables('policyPBMMDefinitions').parameters]"
+        //     }
+        // },
         {
             //"condition": "[not(empty(parameters('allowedvmsize')))]",
             "type": "Microsoft.Authorization/policyAssignments",
@@ -1309,29 +1309,30 @@
                 "scope": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].scope]",
                 "parameters": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].parameters]"
             }
-        },
-        {
-            //"condition": "[not(empty(parameters('allowedvmsize')))]",
-            "type": "Microsoft.Authorization/policyAssignments",
-            "apiVersion": "2018-05-01",
-            "copy": {
-                "name": "PolicyAssignmentCopy",
-                "count": "[length(variables('policyAssignmentNames').policyDefinitions)]"
-            },
-            "condition": "[equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, 'Yes')]",
-            "name": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].name]",
-            "location": "[deployment().location]",
-            "identity": {
-                "type": "SystemAssigned"
-            },
-            "properties": {
-                "description": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].description]",
-                "displayName": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,variables('policyAssignmentNames').policyDefinitions[copyIndex()].name)]",
-                "policyDefinitionId": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].policyDefinitionId]",
-                "scope": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].scope]",
-                "parameters": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].parameters]"
-            }
         }
+        // ,
+        // {
+        //     //"condition": "[not(empty(parameters('allowedvmsize')))]",
+        //     "type": "Microsoft.Authorization/policyAssignments",
+        //     "apiVersion": "2018-05-01",
+        //     "copy": {
+        //         "name": "PolicyAssignmentCopy",
+        //         "count": "[length(variables('policyAssignmentNames').policyDefinitions)]"
+        //     },
+        //     "condition": "[equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, 'Yes')]",
+        //     "name": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].name]",
+        //     "location": "[deployment().location]",
+        //     "identity": {
+        //         "type": "SystemAssigned"
+        //     },
+        //     "properties": {
+        //         "description": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].description]",
+        //         "displayName": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,variables('policyAssignmentNames').policyDefinitions[copyIndex()].name)]",
+        //         "policyDefinitionId": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].policyDefinitionId]",
+        //         "scope": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].scope]",
+        //         "parameters": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].parameters]"
+        //     }
+        // }
     ],
     "outputs": {}
 }
