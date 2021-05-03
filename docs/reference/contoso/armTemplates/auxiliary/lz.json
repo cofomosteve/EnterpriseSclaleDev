@@ -312,18 +312,20 @@
     "resources": [
 
         {
-            "condition": "[ not(empty(parameters('onlineLzSubscriptionId')))]",
+            //"condition": "[ not(empty(parameters('onlineLzSubscriptionId')))]",
+            "condition": "[ greater(length(parameters('onlineLzSubscriptionId')),0)]",
             //"condition": "[greater(length(parameters('onlineLzSubscriptionId')), 0)]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
-            "name": "[concat('EntScale', '-landingzone-online-resourcegroup', copyIndex())]",
-
+            //"name": "[concat('EntScale', '-landingzone-online-resourcegroup', copyIndex())]",
+            "name": "[if(greater(length(parameters('onlineLzSubscriptionId')),0),concat('EntScale', '-landingzone-online-resourcegroup-', copyIndex()),concat('EntScale', '-landingzone-online-resourcegroup', 1)) ]", //"[parameters('onlineLzSubscriptionId')]",
             "copy": {
                 "name": "OnlineLzMove",
                 "count": "[length(parameters('onlineLzSubscriptionId'))]"
             },
 
-            "subscriptionId": "[if(not(empty(parameters('onlineLzSubscriptionId'))),parameters('onlineLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('onlineLzSubscriptionId')]",
+            //"subscriptionId": "[if(not(empty(parameters('onlineLzSubscriptionId'))),parameters('onlineLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('onlineLzSubscriptionId')]",
+            "subscriptionId": "[if(greater(length(parameters('onlineLzSubscriptionId')),0),parameters('onlineLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('onlineLzSubscriptionId')]",
             "location": "[deployment().location]",
             "properties": {
                 "mode": "Incremental",
@@ -352,11 +354,11 @@
             "apiVersion": "2019-10-01",
             "name": "[if(greater(length(parameters('corpLzSubscriptionId')),0),concat('EntScale', '-landingzone-corp-resourcegroup-', copyIndex()),concat('EntScale', '-landingzone-corp-resourcegroup', 1)) ]", //"[parameters('corpLzSubscriptionId')]",
 
-             "copy": {
+            "copy": {
                 "name": "coprLzMove",
                 "count": "[length(parameters('corpLzSubscriptionId'))]"
             },
-            
+
             //"name": "[concat('EntScale', '-landingzone-corp-resourcegroup', copyIndex())]",            
             "subscriptionId": "[if(greater(length(parameters('corpLzSubscriptionId')),0),parameters('corpLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('corpLzSubscriptionId')]",
             //"subscriptionId": "[parameters('corpLzSubscriptionId')[copyIndex()]]", //"[parameters('corpLzSubscriptionId')]",
@@ -381,17 +383,19 @@
             }
         },
         {
-            "condition": "[and(not(empty(parameters('devopsLzSubscriptionId'))), greater(length(parameters('devopsLzSubscriptionId')), 0))]",
+            //"condition": "[and(not(empty(parameters('devopsLzSubscriptionId'))), greater(length(parameters('devopsLzSubscriptionId')), 0))]",
+            "condition": "[ greater(length(parameters('devopsLzSubscriptionId')),0)]",
             //"condition": "[greater(length(parameters('devopsLzSubscriptionId')), 0)]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
-            
-             "copy": {
+            "name": "[if(greater(length(parameters('devopsLzSubscriptionId')),0),concat('EntScale', '-landingzone-devops-resourcegroup-', copyIndex()),concat('EntScale', '-landingzone-devops-resourcegroup', 1)) ]", //"[parameters('devopsLzSubscriptionId')]",
+            "copy": {
                 "name": "DevopsLzMove",
                 "count": "[length(parameters('devopsLzSubscriptionId'))]"
             },
-            "name": "[concat('EntScale', '-landingzone-devops-resourcegroup', copyIndex())]",
-            "subscriptionId": "[parameters('devopsLzSubscriptionId')[copyIndex()]]", //"[parameters('devopsLzSubscriptionId')]",
+            //"name": "[concat('EntScale', '-landingzone-devops-resourcegroup', copyIndex())]",
+            //"subscriptionId": "[parameters('devopsLzSubscriptionId')[copyIndex()]]", //"[parameters('devopsLzSubscriptionId')]",
+            "subscriptionId": "[if(greater(length(parameters('devopsLzSubscriptionId')),0),parameters('devopsLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('devopsLzSubscriptionId')]",
             "location": "[deployment().location]",
             "properties": {
                 "mode": "Incremental",
