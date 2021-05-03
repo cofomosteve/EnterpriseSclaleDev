@@ -319,11 +319,11 @@
             "name": "[concat('EntScale', '-landingzone-online-resourcegroup', copyIndex())]",
 
             "copy": {
-                "name": "coprLzMove",
+                "name": "OnlineLzMove",
                 "count": "[length(parameters('onlineLzSubscriptionId'))]"
             },
 
-            "subscriptionId": "[parameters('onlineLzSubscriptionId')[copyIndex()]]", //"[parameters('onlineLzSubscriptionId')]",
+            "subscriptionId": "[if(not(empty(parameters('onlineLzSubscriptionId'))),parameters('onlineLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('onlineLzSubscriptionId')]",
             "location": "[deployment().location]",
             "properties": {
                 "mode": "Incremental",
@@ -344,7 +344,8 @@
             }
         },
         {
-            "condition": "[greater(length(parameters('corpLzSubscriptionId')), 0)]",
+            //"condition": "[greater(length(parameters('corpLzSubscriptionId')), 0)]",
+            "condition": "[ not(empty(parameters('corpLzSubscriptionId')))]",
             //"condition": "[and(not(empty(parameters('corpLzSubscriptionId'))), greater(length(parameters('corpLzSubscriptionId')), 0))]",
             //"condition": "[greater(length(parameters('corpLzSubscriptionId')), 0)]",
             "type": "Microsoft.Resources/deployments",
@@ -355,8 +356,10 @@
                 "name": "coprLzMove",
                 "count": "[length(parameters('corpLzSubscriptionId'))]"
             },
-            "name": "[concat('EntScale', '-landingzone-corp-resourcegroup', copyIndex())]",            
-            "subscriptionId": "[parameters('corpLzSubscriptionId')[copyIndex()]]", //"[parameters('corpLzSubscriptionId')]",
+            "name": "[if(not(empty(parameters('corpLzSubscriptionId'))),concat('EntScale', '-landingzone-corp-resourcegroup', copyIndex()),concat('EntScale', '-landingzone-corp-resourcegroup', '')) ]", //"[parameters('corpLzSubscriptionId')]",
+            //"name": "[concat('EntScale', '-landingzone-corp-resourcegroup', copyIndex())]",            
+            "subscriptionId": "[if(not(empty(parameters('corpLzSubscriptionId'))),parameters('corpLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('corpLzSubscriptionId')]",
+            //"subscriptionId": "[parameters('corpLzSubscriptionId')[copyIndex()]]", //"[parameters('corpLzSubscriptionId')]",
 
             "location": "[deployment().location]",
             "properties": {
@@ -384,7 +387,7 @@
             "apiVersion": "2019-10-01",
             
              "copy": {
-                "name": "coprLzMove",
+                "name": "DevopsLzMove",
                 "count": "[length(parameters('devopsLzSubscriptionId'))]"
             },
             "name": "[concat('EntScale', '-landingzone-devops-resourcegroup', copyIndex())]",
