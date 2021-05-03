@@ -344,7 +344,7 @@
             }
         },
         {
-            "condition": "[ not(empty(parameters('corpLzSubscriptionId')))]",
+            "condition": "[and(not(empty(parameters('corpLzSubscriptionId'))), greater(length(parameters('corpLzSubscriptionId')), 0))]",
             //"condition": "[greater(length(parameters('corpLzSubscriptionId')), 0)]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
@@ -377,7 +377,7 @@
             }
         },
         {
-            "condition": "[ not(empty(parameters('devopsLzSubscriptionId')))]",
+            "condition": "[and(not(empty(parameters('devopsLzSubscriptionId'))), greater(length(parameters('devopsLzSubscriptionId')), 0))]",
             //"condition": "[greater(length(parameters('devopsLzSubscriptionId')), 0)]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",

@@ -57,7 +57,6 @@
                             "path": "locations?api-version=2019-11-01"
                         }
                     },
-                    
                     {
                         "name": "esNamingConvention",
                         "type": "Microsoft.Common.OptionsGroup",
@@ -76,9 +75,7 @@
                                 }
                             ]
                         }
-                    }
-
-                    ,
+                    },
                     {
                         "name": "esDeployNetwork",
                         "type": "Microsoft.Common.OptionsGroup",
@@ -118,7 +115,6 @@
                             ]
                         }
                     }
-                    
                 ]
             },
             {
@@ -1144,7 +1140,6 @@
                     {
                         "name": "infoBox1",
                         "type": "Microsoft.Common.InfoBox",
-                        
                         "visible": "[equals(steps('lzSettings').esDeployNetwork, 'Yes')]",
                         "options": {
                             "icon": "Info",
@@ -1560,12 +1555,10 @@
                             "allowedValues": "[map(steps('lzGoalState').lzCorpSubsApi.value, (sub) => parse(concat('{\"label\":\"', sub.displayName, '\",\"description\":\"', sub.subscriptionId, '\",\"value\":\"', toLower(sub.subscriptionId), '\"}')) )]",
                             "required": false
                         }
-                    }
-                    ,
+                    },
                     {
                         "name": "DevOpsText",
                         "type": "Microsoft.Common.TextBlock",
-                        
                         "options": {
                             "text": "Select the subscriptions you want to move to DevOps management group.",
                             "link": {
