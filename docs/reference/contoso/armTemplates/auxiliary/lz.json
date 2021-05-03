@@ -356,9 +356,9 @@
                 "name": "coprLzMove",
                 "count": "[length(parameters('corpLzSubscriptionId'))]"
             },
-            "name": "[if(not(empty(parameters('corpLzSubscriptionId'))),concat('EntScale', '-landingzone-corp-resourcegroup', copyIndex()),concat('EntScale', '-landingzone-corp-resourcegroup', '')) ]", //"[parameters('corpLzSubscriptionId')]",
+            "name": "[if(not(greater(length(parameters('corpLzSubscriptionId')),0)),concat('EntScale', '-landingzone-corp-resourcegroup', copyIndex()),concat('EntScale', '-landingzone-corp-resourcegroup', '')) ]", //"[parameters('corpLzSubscriptionId')]",
             //"name": "[concat('EntScale', '-landingzone-corp-resourcegroup', copyIndex())]",            
-            "subscriptionId": "[if(not(empty(parameters('corpLzSubscriptionId'))),parameters('corpLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('corpLzSubscriptionId')]",
+            "subscriptionId": "[if(not(greater(length(parameters('corpLzSubscriptionId')),0)),parameters('corpLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('corpLzSubscriptionId')]",
             //"subscriptionId": "[parameters('corpLzSubscriptionId')[copyIndex()]]", //"[parameters('corpLzSubscriptionId')]",
 
             "location": "[deployment().location]",
