@@ -321,7 +321,8 @@
             "name": "[if(greater(length(parameters('onlineLzSubscriptionId')),0),concat('EntScale', '-landingzone-online-resourcegroup-', copyIndex()),concat('EntScale', '-landingzone-online-resourcegroup', 1)) ]", //"[parameters('onlineLzSubscriptionId')]",
             "copy": {
                 "name": "OnlineLzMove",
-                "count": "[length(parameters('onlineLzSubscriptionId'))]"
+                //"count": "[length(parameters('onlineLzSubscriptionId'))]"
+                "count": "[if(greater(length(parameters('onlineLzSubscriptionId')),0),length(parameters('onlineLzSubscriptionId')),0) ]"
             },
 
             //"subscriptionId": "[if(not(empty(parameters('onlineLzSubscriptionId'))),parameters('onlineLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('onlineLzSubscriptionId')]",
@@ -356,7 +357,8 @@
 
             "copy": {
                 "name": "coprLzMove",
-                "count": "[length(parameters('corpLzSubscriptionId'))]"
+                "count": "[if(greater(length(parameters('corpLzSubscriptionId')),0),length(parameters('corpLzSubscriptionId')),0) ]"
+                //[if(greater(length(parameters('corpLzSubscriptionId')),0),length(parameters('corpLzSubscriptionId'),) ]" //[length(parameters('corpLzSubscriptionId'))]"
             },
 
             //"name": "[concat('EntScale', '-landingzone-corp-resourcegroup', copyIndex())]",            
@@ -391,7 +393,8 @@
             "name": "[if(greater(length(parameters('devopsLzSubscriptionId')),0),concat('EntScale', '-landingzone-devops-resourcegroup-', copyIndex()),concat('EntScale', '-landingzone-devops-resourcegroup', 1)) ]", //"[parameters('devopsLzSubscriptionId')]",
             "copy": {
                 "name": "DevopsLzMove",
-                "count": "[length(parameters('devopsLzSubscriptionId'))]"
+                //"count": "[length(parameters('devopsLzSubscriptionId'))]"
+                "count": "[if(greater(length(parameters('devopsLzSubscriptionId')),0),length(parameters('devopsLzSubscriptionId')),0) ]"
             },
             //"name": "[concat('EntScale', '-landingzone-devops-resourcegroup', copyIndex())]",
             //"subscriptionId": "[parameters('devopsLzSubscriptionId')[copyIndex()]]", //"[parameters('devopsLzSubscriptionId')]",
