@@ -1,0 +1,34 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT4/providers/Microsoft.Authorization/roleDefinitions/471bca14-806e-5a43-b02e-d5cb3532e4c0",
+        "Name": "471bca14-806e-5a43-b02e-d5cb3532e4c0",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-COFT4"
+          ],
+          "description": "Migration IaaS and PaaS",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Insights/*",
+                "Microsoft.Automation/automationAccounts/*",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-COFT4-IT-prod-Custom Migration IaaS and PaaS"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}

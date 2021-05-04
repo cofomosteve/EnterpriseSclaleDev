@@ -1,0 +1,37 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "71eb6160-8f44-49e8-8688-ac0c3274c92a",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "Deploy-LX-Arc-Monitoring",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFT24/providers/Microsoft.Authorization/policyAssignments/Deploy-LX-Arc-Monitoring",
+        "Properties": {
+          "Description": "Deploy-LX-Arc-Monitoring",
+          "DisplayName": "Deploy-LX-Arc-Monitoring",
+          "NotScopes": null,
+          "Parameters": {
+            "logAnalytics": {
+              "value": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc/resourcegroups/rg-coft24-it-prod-mgmt/providers/microsoft.operationalinsights/workspaces/la-coft24-it-prod-2830c1bb-dbc2-41d3-bf92-616ef65f80bc"
+            }
+          },
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/9d2b61b4-1d14-4a63-be30-d4498e7ad2cf",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFT24"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFT24/providers/Microsoft.Authorization/policyAssignments/Deploy-LX-Arc-Monitoring",
+        "ResourceName": "Deploy-LX-Arc-Monitoring",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT6/providers/Microsoft.Authorization/roleDefinitions/6bfcfce0-49e0-5f55-85af-c3938f91cbd6",
+        "Name": "6bfcfce0-49e0-5f55-85af-c3938f91cbd6",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-COFT6"
+          ],
+          "description": "Identity and Access Management",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Authorization/*/read",
+                "Microsoft.Insights/alertRules/*",
+                "Microsoft.Resources/deployments/*",
+                "Microsoft.ManagedIdentity/userAssignedIdentities/read",
+                "Microsoft.ManagedIdentity/userAssignedIdentities/write",
+                "Microsoft.ManagedIdentity/userAssignedIdentities/delete",
+                "Microsoft.Blueprint/blueprints/*",
+                "Microsoft.Resources/deployments/*",
+                "Microsoft.Management/managementGroups/*",
+                "Microsoft.Authorization/*",
+                "Microsoft.Capacity/*",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-COFT6-IT-prod-Custom Identity and Access Management"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}

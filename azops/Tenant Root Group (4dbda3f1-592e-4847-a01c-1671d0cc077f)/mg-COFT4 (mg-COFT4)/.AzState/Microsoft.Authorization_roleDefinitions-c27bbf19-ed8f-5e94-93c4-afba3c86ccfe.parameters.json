@@ -1,0 +1,40 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT4/providers/Microsoft.Authorization/roleDefinitions/c27bbf19-ed8f-5e94-93c4-afba3c86ccfe",
+        "Name": "c27bbf19-ed8f-5e94-93c4-afba3c86ccfe",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-COFT4"
+          ],
+          "description": "Network  Ops",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Authorization/*/read",
+                "Microsoft.Insights/alertRules/*",
+                "Microsoft.Network/*",
+                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                "Microsoft.Cdn/edgenodes/read",
+                "Microsoft.Cdn/operationresults/*",
+                "Microsoft.Cdn/profiles/endpoints/*",
+                "Microsoft.Resources/deployments/*",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-COFT4-IT-prod-Custom Network  Ops"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}

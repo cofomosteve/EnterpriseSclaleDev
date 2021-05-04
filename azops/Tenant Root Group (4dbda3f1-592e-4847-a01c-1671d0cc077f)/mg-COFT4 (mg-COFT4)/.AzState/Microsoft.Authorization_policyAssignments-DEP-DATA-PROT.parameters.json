@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "ec278e9a-91e5-477a-9eda-0246756ad4e5",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-DATA-PROT",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFT4/providers/Microsoft.Authorization/policyAssignments/DEP-DATA-PROT",
+        "Properties": {
+          "Description": "Enable data protection for SQL servers. This initiative is assigned automatically by Azure Security Center Standard Tier.",
+          "DisplayName": "DEP-DATA-PROT",
+          "NotScopes": null,
+          "Parameters": {},
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/9cb3cc7a-b39b-4b82-bc89-e5a5d9ff7b97",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFT4"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFT4/providers/Microsoft.Authorization/policyAssignments/DEP-DATA-PROT",
+        "ResourceName": "DEP-DATA-PROT",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

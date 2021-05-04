@@ -1,0 +1,40 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT6/providers/Microsoft.Authorization/roleDefinitions/13ca08df-d241-589e-a103-bd0e2ed10a7c",
+        "Name": "13ca08df-d241-589e-a103-bd0e2ed10a7c",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-COFT6"
+          ],
+          "description": "Storage  Ops",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Insights/*",
+                "Microsoft.Automation/automationAccounts/*",
+                "Microsoft.Insights/diagnosticSettings/*",
+                "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action",
+                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                "Microsoft.Resources/deployments/*",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Storage/storageAccounts/*",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-COFT6-IT-prod-Custom Storage  Ops"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}

@@ -24,34 +24,6 @@
           },
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT16",
-            "Name": "mg-COFT16",
-            "DisplayName": "mg-COFT16",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT17",
-            "Name": "mg-COFT17",
-            "DisplayName": "mg-COFT17",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT10",
-            "Name": "mg-COFT10",
-            "DisplayName": "mg-COFT10",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT20",
-            "Name": "mg-COFT20",
-            "DisplayName": "mg-COFT20",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
             "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT22",
             "Name": "mg-COFT22",
             "DisplayName": "mg-COFT22",
@@ -62,6 +34,34 @@
             "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT23",
             "Name": "mg-COFT23",
             "DisplayName": "mg-COFT23",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT25",
+            "Name": "mg-COFT25",
+            "DisplayName": "mg-COFT25",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT24",
+            "Name": "mg-COFT24",
+            "DisplayName": "mg-COFT24",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT4",
+            "Name": "mg-COFT4",
+            "DisplayName": "mg-COFT4",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT6",
+            "Name": "mg-COFT6",
+            "DisplayName": "mg-COFT6",
             "Children": null
           }
         ]

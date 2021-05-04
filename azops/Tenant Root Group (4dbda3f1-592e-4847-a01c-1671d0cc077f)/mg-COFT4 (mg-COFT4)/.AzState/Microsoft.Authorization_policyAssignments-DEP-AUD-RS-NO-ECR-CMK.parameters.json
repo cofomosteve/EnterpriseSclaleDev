@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "854e8e1a-0a9c-47a6-9985-dc563a9a7aa7",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-AUD-RS-NO-ECR-CMK",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFT4/providers/Microsoft.Authorization/policyAssignments/DEP-AUD-RS-NO-ECR-CMK",
+        "Properties": {
+          "Description": "Deny or Audit resources without Encryption with a customer-managed key (CMK).",
+          "DisplayName": "DEP-AUD-RS-NO-ECR-CMK",
+          "NotScopes": null,
+          "Parameters": {},
+          "PolicyDefinitionId": "/providers/Microsoft.Management/managementGroups/mg-COFT4/providers/Microsoft.Authorization/policySetDefinitions/Enforce-Encryption-CMK",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFT4"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFT4/providers/Microsoft.Authorization/policyAssignments/DEP-AUD-RS-NO-ECR-CMK",
+        "ResourceName": "DEP-AUD-RS-NO-ECR-CMK",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}
