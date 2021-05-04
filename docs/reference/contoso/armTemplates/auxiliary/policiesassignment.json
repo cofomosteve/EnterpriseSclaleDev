@@ -481,6 +481,32 @@
                 "resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]"
             },
 
+            "policyTAgAddReplaceDefinitions": {
+                "policyDefinitions": {
+                    "deployAddReplaceTag": "/providers/Microsoft.Authorization/policyDefinitions/5ffd78d9-436d-4b41-a421-5baa819e3008"
+                },
+                "policyAssignmentNames": {
+                    "deployAddReplaceTag": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Log-Analytics')]"
+                },
+                "resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "Adds or replaces the specified tag and value when any resource is created or updated. Existing resources can be remediated by triggering a remediation task. Does not modify tags on resource groups. ",
+                "name": "DEP-ADD-TAG"
+            },
+
+            "policyTAgEnforceExistDefinitions": {
+                "policyDefinitions": {
+                    "deployTAgEnforceExist": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99"
+                },
+                "policyAssignmentNames": {
+                    "deployTAgEnforceExist": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-TAG-EXIST')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "Enforces existence of a tag. Does not apply to resource groups. ",
+                "name": "DEP-TAG-EXIST"
+            },
+
             "policyTagDefinitions": [
 
 
@@ -1265,13 +1291,13 @@
             }
         },
         {
-           // Conditionally assign policy to enable Log Analytics and Azure Automation
+            // Conditionally assign policy to enable Log Analytics and Azure Automation
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('apply-pbmm'), 'Yes'))]",
             "type": "Microsoft.Authorization/policyAssignments",
             "apiVersion": "2018-05-01",
             "dependsOn": [
                 "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]"
-              // "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+                // "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
             ],
             "name": "[variables('policyPBMMDefinitions').name]",
             "location": "[deployment().location]",
