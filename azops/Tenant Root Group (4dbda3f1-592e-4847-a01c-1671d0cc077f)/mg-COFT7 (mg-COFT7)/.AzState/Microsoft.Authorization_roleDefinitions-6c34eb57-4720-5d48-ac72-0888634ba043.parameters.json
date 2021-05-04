@@ -1,0 +1,36 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT7/providers/Microsoft.Authorization/roleDefinitions/6c34eb57-4720-5d48-ac72-0888634ba043",
+        "Name": "6c34eb57-4720-5d48-ac72-0888634ba043",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-COFT7"
+          ],
+          "description": "Landing Zone Contributor",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Authorization/*/Delete",
+                "Microsoft.Authorization/*/Write",
+                "Microsoft.Authorization/elevateAccess/Action",
+                "Microsoft.Blueprint/blueprintAssignments/write",
+                "Microsoft.Blueprint/blueprintAssignments/delete",
+                "Microsoft.Compute/galleries/share/action",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-COFT7-IT-prod-Custom Landing Zone Contributor"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}

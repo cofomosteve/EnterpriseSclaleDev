@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT7/providers/Microsoft.Authorization/roleDefinitions/21316dd8-7a50-5cd4-bc67-1a3e403de377",
+        "Name": "21316dd8-7a50-5cd4-bc67-1a3e403de377",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-COFT7"
+          ],
+          "description": "Landing Zone Owner",
+          "permissions": [
+            {
+              "actions": [
+                "*",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-COFT7-IT-prod-Custom Landing Zone Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}
