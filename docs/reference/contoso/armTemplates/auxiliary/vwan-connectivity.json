@@ -208,7 +208,7 @@
                         {
                             "type": "Microsoft.Resources/resourceGroups",
                             "apiVersion": "2019-10-01",
-                            "location": "[deployment().location]",
+                            "location": "[deployment().location]",                            
                             "name": "[variables('rgName')]",
                             "properties": {}
                         },
@@ -231,6 +231,7 @@
                                             "type": "Microsoft.Network/virtualWans",
                                             "apiVersion": "2020-05-01",
                                             "name": "[variables('vWanName')]",
+                                            "tags": "[parameters('resourceTags')]",
                                             "location": "[parameters('location')]",
                                             "properties": {
                                                 "virtualHubs": [],
@@ -243,6 +244,7 @@
                                             "type": "Microsoft.Network/virtualHubs",
                                             "apiVersion": "2020-05-01",
                                             "location": "[parameters('location')]",
+                                            "tags": "[parameters('resourceTags')]",
                                             "name": "[variables('vhubname')]",
                                             "dependsOn": [
                                                 "[concat('Microsoft.Network/virtualWans/', variables('vWanName'))]"
@@ -260,6 +262,7 @@
                                             "type": "Microsoft.Network/vpnGateways",
                                             "apiVersion": "2020-05-01",
                                             "location": "[parameters('location')]",
+                                            "tags": "[parameters('resourceTags')]",
                                             "name": "[variables('vpngwname')]",
                                             "dependsOn": [
                                                 "[concat('Microsoft.Network/virtualHubs/',variables('vhubname'))]"
@@ -279,6 +282,7 @@
                                             "type": "Microsoft.Network/expressRouteGateways",
                                             "apiVersion": "2020-05-01",
                                             "location": "[parameters('location')]",
+                                            "tags": "[parameters('resourceTags')]",
                                             "name": "[variables('ergwname')]",
                                             "dependsOn": [
                                                 "[concat('Microsoft.Network/virtualHubs/', variables('vhubname'))]"
@@ -301,6 +305,7 @@
                                             "type": "Microsoft.Network/azureFirewalls",
                                             "name": "[variables('azfwname')]",
                                             "location": "[parameters('location')]",
+                                            "tags": "[parameters('resourceTags')]",
                                             "dependsOn": [
                                                 "[concat('Microsoft.Network/virtualHubs/',variables('vhubname'))]"
                                             ],

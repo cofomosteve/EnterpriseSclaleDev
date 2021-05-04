@@ -561,14 +561,14 @@
 
 
 
-        /* ,"cktagbyresource": {
+        ,"cktagbyresource": {
             "type": "bool",
             "allowedValues": [
                 true,
                 false
             ],
             "defaultValue": false
-        }*/
+        }
         ,
         "tagauditpolicy": {
             "type": "string",
@@ -1498,6 +1498,7 @@
                     "apply-tls-ssl-enforcement-encrypt-paas": { "value": "[parameters('apply-tls-ssl-enforcement-encrypt-paas')]" },
                     "apply-audit-resource-without-encryption": { "value": "[parameters('apply-audit-resource-without-encryption')]" },
                     "tagauditpolicy": { "value": "[parameters('tagauditpolicy')]" },
+                    "cktagbyresource": { "value": "[parameters('cktagbyresource')]" },
                     "allowedVMSizesku": { "value": "[parameters('allowedVMSizesku')]" },
                     "listOfResourceTypesWithDiagnosticLogsEnabled": { "value": "[parameters('listOfResourceTypesWithDiagnosticLogsEnabled')]" },
                     "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": { "value": "[parameters('listOfMembersToExcludeFromWindowsVMAdministratorsGroup')]" },

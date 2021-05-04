@@ -85,8 +85,15 @@
                 "No"
             ],
             "defaultValue": "No"
+        },
+        "cktagbyresource": {
+            "type": "bool",
+            "allowedValues": [
+                true,
+                false
+            ],
+            "defaultValue": false
         }
-
         //********************************Param for Generic Naming Convention*************************************/
         ,
         "globalvariable": {
@@ -1345,7 +1352,7 @@
         },
         {
             //
-            "condition": "[if(and(equals(parameters('tagauditpolicy'), 'Yes'),greater(length(parameters('resourceTagsKey')),0),not(empty(parameters('resourceTagsKey')))), bool('true'), bool('false'))]",
+            "condition": "[if(and(equals(parameters('tagauditpolicy'), 'Yes'),equals(parameters('cktagbyresource'),bool('true')),greater(length(parameters('resourceTagsKey')),0),not(empty(parameters('resourceTagsKey')))), bool('true'), bool('false'))]",
             "type": "Microsoft.Authorization/policyAssignments",
             "apiVersion": "2018-05-01",
             "name": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.name,'-',copyIndex())]",
