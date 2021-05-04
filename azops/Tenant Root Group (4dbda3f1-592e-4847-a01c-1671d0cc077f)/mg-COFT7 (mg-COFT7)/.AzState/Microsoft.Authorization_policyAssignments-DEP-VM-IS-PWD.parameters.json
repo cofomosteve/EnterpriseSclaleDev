@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "34545321-8734-4533-8244-601742e5aadb",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-VM-IS-PWD",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFT7/providers/Microsoft.Authorization/policyAssignments/DEP-VM-IS-PWD",
+        "Properties": {
+          "Description": "This initiative deploys the policy requirements and audits machines with insecure password security settings. For more information on Guest Configuration policies, please visit https://aka.ms/gcpol",
+          "DisplayName": "DEP-VM-IS-PWD",
+          "NotScopes": null,
+          "Parameters": {},
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/095e4ed9-c835-4ab6-9439-b5644362a06c",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFT7"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFT7/providers/Microsoft.Authorization/policyAssignments/DEP-VM-IS-PWD",
+        "ResourceName": "DEP-VM-IS-PWD",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}
