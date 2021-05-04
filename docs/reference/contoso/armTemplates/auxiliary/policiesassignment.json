@@ -1228,7 +1228,7 @@
         //     // Conditionally assign policy to enable Log Analytics and Azure Automation
         //     "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'No'),equals(parameters('apply-pbmm'), 'Yes'))]",
         //     "type": "Microsoft.Authorization/policyAssignments",
-        //     "apiVersion": "2018-05-01",
+        //     "apiVersion": "2019-07-01",
         //     "name": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
         //     "location": "[deployment().location]",
         //     "identity": {
@@ -1268,7 +1268,7 @@
         //     // Conditionally assign policy to enable Log Analytics and Azure Automation
         //     "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('apply-pbmm'), 'Yes'))]",
         //     "type": "Microsoft.Authorization/policyAssignments",
-        //     "apiVersion": "2018-05-01",
+        //     "apiVersion": "2019-07-01",
         //     "dependsOn": [
         //         "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]"
         //         //"[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
@@ -1289,7 +1289,7 @@
         {
             //"condition": "[not(empty(parameters('allowedvmsize')))]",
             "type": "Microsoft.Authorization/policyAssignments",
-            "apiVersion": "2018-05-01",
+            "apiVersion": "2019-07-01",
             "name": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].name]",
 
             "copy": {
@@ -1314,7 +1314,7 @@
         // {
         //     //"condition": "[not(empty(parameters('allowedvmsize')))]",
         //     "type": "Microsoft.Authorization/policyAssignments",
-        //     "apiVersion": "2018-05-01",
+        //     "apiVersion": "2019-07-01",
         //     "copy": {
         //         "name": "PolicyAssignmentCopy",
         //         "count": "[length(variables('policyAssignmentNames').policyDefinitions)]"

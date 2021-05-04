@@ -908,7 +908,8 @@
             "location": "[deployment().location]",
             "scope": "[variables('globalvariable').scopebase]",
             "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]"
+                "[variables('deploymentNames').mgmtGroupDeploymentName]",
+                "DeploymentDelay"
             ],
             "properties": {
                 "mode": "Incremental",

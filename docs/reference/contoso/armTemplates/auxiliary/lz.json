@@ -348,21 +348,21 @@
         },
         {
             //"condition": "[greater(length(parameters('corpLzSubscriptionId')), 0)]",
-            "condition": "[ greater(length(parameters('corpLzSubscriptionId')),0)]",
+            "condition": "[and(greater(length(parameters('corpLzSubscriptionId')),0),not(empty(parameters('corpLzSubscriptionId'))))]",
             //"condition": "[and(not(empty(parameters('corpLzSubscriptionId'))), greater(length(parameters('corpLzSubscriptionId')), 0))]",
             //"condition": "[greater(length(parameters('corpLzSubscriptionId')), 0)]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
-            "name": "[if(greater(length(parameters('corpLzSubscriptionId')),0),concat('EntScale', '-landingzone-corp-resourcegroup-', copyIndex()),concat('EntScale', '-landingzone-corp-resourcegroup', 1)) ]", //"[parameters('corpLzSubscriptionId')]",
+            "name": "[if(and(greater(length(parameters('corpLzSubscriptionId')),0),not(empty(parameters('corpLzSubscriptionId')))),concat('EntScale', '-landingzone-corp-resourcegroup-', copyIndex()),concat('EntScale', '-landingzone-corp-resourcegroup', 1)) ]", //"[parameters('corpLzSubscriptionId')]",
 
             "copy": {
                 "name": "coprLzMove",
-                "count": "[if(greater(length(parameters('corpLzSubscriptionId')),0),length(parameters('corpLzSubscriptionId')),1) ]"
+                "count": "[if(and(greater(length(parameters('corpLzSubscriptionId')),0),not(empty(parameters('corpLzSubscriptionId')))),length(parameters('corpLzSubscriptionId')),1) ]"
                 //[if(greater(length(parameters('corpLzSubscriptionId')),0),length(parameters('corpLzSubscriptionId'),) ]" //[length(parameters('corpLzSubscriptionId'))]"
             },
 
             //"name": "[concat('EntScale', '-landingzone-corp-resourcegroup', copyIndex())]",            
-            "subscriptionId": "[if(greater(length(parameters('corpLzSubscriptionId')),0),parameters('corpLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('corpLzSubscriptionId')]",
+            "subscriptionId": "[if(and(greater(length(parameters('corpLzSubscriptionId')),0),not(empty(parameters('corpLzSubscriptionId')))),parameters('corpLzSubscriptionId')[copyIndex()],'') ]", //"[parameters('corpLzSubscriptionId')]",
             //"subscriptionId": "[parameters('corpLzSubscriptionId')[copyIndex()]]", //"[parameters('corpLzSubscriptionId')]",
 
             "location": "[deployment().location]",
