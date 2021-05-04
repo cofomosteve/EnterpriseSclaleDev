@@ -348,7 +348,7 @@
         },
         {
             //"condition": "[greater(length(parameters('corpLzSubscriptionId')), 0)]",
-            "condition": "[and(greater(length(parameters('corpLzSubscriptionId')),0),not(empty(parameters('corpLzSubscriptionId'))))]",
+            "condition": "[if(and(greater(length(parameters('corpLzSubscriptionId')),0),not(empty(parameters('corpLzSubscriptionId')))), bool('true'), bool('false'))]",
             //"condition": "[and(not(empty(parameters('corpLzSubscriptionId'))), greater(length(parameters('corpLzSubscriptionId')), 0))]",
             //"condition": "[greater(length(parameters('corpLzSubscriptionId')), 0)]",
             "type": "Microsoft.Resources/deployments",
