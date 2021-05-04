@@ -73,7 +73,7 @@
         "resourceTagsKey": {
             "type": "Array",
             "defaultValue": [
-                
+
             ]
         },
 
@@ -1345,14 +1345,14 @@
         },
         {
             //
-            "condition": "[if(and(equals(parameters('tagauditpolicy'), 'Yes'),greater(length(parameters('resourceTagsKey')),0),not(empty(parameters('resourceTagsKey')))), bool('true'), bool('false'))]",            
+            "condition": "[if(and(equals(parameters('tagauditpolicy'), 'Yes'),greater(length(parameters('resourceTagsKey')),0),not(empty(parameters('resourceTagsKey')))), bool('true'), bool('false'))]",
             "type": "Microsoft.Authorization/policyAssignments",
             "apiVersion": "2018-05-01",
-            "name": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions[copyIndex()].name]",
+            "name": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.name,'-',copyIndex())]",
 
             "copy": {
                 "name": "PolicyTagExistEnforceAssignmentCopy",
-                "count": "[length(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions)]"
+                "count": "[length(parameters('resourceTagsKey'))]"
             },
 
 
@@ -1361,11 +1361,14 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "description": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions[copyIndex()].description]",
-                "displayName": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,variables('policyAssignmentNames').policyTAgEnforceExistDefinitions[copyIndex()].name)]",
-                "policyDefinitionId": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions[copyIndex()].policyDefinitionId]",
-                "scope": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions[copyIndex()].scope]",
-                "parameters": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions[copyIndex()].parameters]"
+                "description": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.description,parameters('resourceTagsKey')[copyIndex()])]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.policyAssignmentNames.deployTAgEnforceExist,parameters('resourceTagsKey')[copyIndex()])]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.policyDefinitions.deployTAgEnforceExist]",
+                "scope": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.scope]",
+                "parameters": {
+                    "tagName": { "value": "[parameters('resourceTagsKey')[copyIndex()]]" }
+                    //,"tagValue": { "value": "[parameters('resourceTags')[copyIndex()]]" }
+                }
             }
         }
         // ,
