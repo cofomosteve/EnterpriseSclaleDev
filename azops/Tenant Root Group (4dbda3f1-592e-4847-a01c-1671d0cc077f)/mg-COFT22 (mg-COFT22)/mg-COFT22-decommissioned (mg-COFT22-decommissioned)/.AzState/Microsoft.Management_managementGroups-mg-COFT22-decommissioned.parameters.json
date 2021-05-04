@@ -1,0 +1,21 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT22-decommissioned",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-COFT22-decommissioned",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-COFT22-decommissioned",
+        "UpdatedTime": "2021-05-03T22:48:15.4675173Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COFT22",
+        "ParentName": "mg-COFT22",
+        "ParentDisplayName": "mg-COFT22",
+        "Children": null
+      }
+    }
+  }
+}

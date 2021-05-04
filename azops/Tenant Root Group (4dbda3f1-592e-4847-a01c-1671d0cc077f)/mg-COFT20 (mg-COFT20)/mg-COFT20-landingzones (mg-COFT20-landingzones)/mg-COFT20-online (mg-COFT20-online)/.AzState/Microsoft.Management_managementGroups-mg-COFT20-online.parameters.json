@@ -14,15 +14,7 @@
         "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COFT20-landingzones",
         "ParentName": "mg-COFT20-landingzones",
         "ParentDisplayName": "mg-COFT20-landingzones",
-        "Children": [
-          {
-            "Type": "/subscriptions",
-            "Id": "/subscriptions/eb17efc5-4806-4144-bd95-a3c700769053",
-            "Name": "eb17efc5-4806-4144-bd95-a3c700769053",
-            "DisplayName": "Zone d'accueil - Paiement à l’utilisation",
-            "Children": null
-          }
-        ]
+        "Children": null
       }
     }
   }
