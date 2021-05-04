@@ -1484,6 +1484,7 @@
                     "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
 
                     "resourceTags": { "value": "[variables('resourceTags')]" },
+                    "resourceTagsKey": { "value": "[variables('propNameArray').copyPropertyNames]" },
                     "globalvariable": { "value": "[variables('globalvariable')]" },
                     "apply-pbmm": { "value": "[parameters('apply-pbmm')]" },
                     "apply-kubclust-sec-base-linux-wk": { "value": "[parameters('apply-kubclust-sec-base-linux-wk')]" },
@@ -1532,7 +1533,8 @@
         "deployment": {
             "type": "string",
             "value": "[concat(deployment().name, ' has successfully deployed. Welcome to Enterprise-Scale!')]"
-        },
+        }
+       /* ,
         "tagsByResourceArray": {
             "type": "array",
             "value": "[variables('propNameArray').copyPropertyNames]"
@@ -1540,6 +1542,6 @@
         "resourceTags": {
             "type": "object",
             "value": "[variables('resourceTags')]"
-        }
+        }*/
     }
 }
