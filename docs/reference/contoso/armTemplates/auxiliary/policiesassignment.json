@@ -431,7 +431,7 @@
                 "deployPBMM": "/providers/Microsoft.Authorization/policySetDefinitions/4c4a5f27-de81-430b-b4e5-9cbd50595a87"
             },
             "policyAssignmentNames": {
-                "deployPBMM": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Log-Analytics')]"
+                "deployPBMM": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-Log-ANAL')]"
             },
             "rbacOwner": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
             "roleAssignmentNames": {
@@ -448,7 +448,7 @@
             },
             "scope": "[variables('scope')]",
             "description": "This initiative includes audit and virtual machine extension deployment policies that address a subset of Canada Federal PBMM controls. ",
-            "name": "Deploy PBMM"
+            "name": "DEP-PBMM"
         },
         "policyLogAnalyticDefinitions": {
             "policyDefinitions": {
@@ -1224,68 +1224,68 @@
     },
     "resources": [
 
-        // {
-        //     // Conditionally assign policy to enable Log Analytics and Azure Automation
-        //     "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'No'),equals(parameters('apply-pbmm'), 'Yes'))]",
-        //     "type": "Microsoft.Authorization/policyAssignments",
-        //     "apiVersion": "2018-05-01",
-        //     "name": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
-        //     "location": "[deployment().location]",
-        //     "identity": {
-        //         "type": "SystemAssigned"
-        //     },
-        //     "properties": {
-        //         "description": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
-        //         "displayName": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
-        //         "policyDefinitionId": "[variables('policyLogAnalyticDefinitions').policyDefinitions.deployLogAnalytics]",
-        //         "scope": "[parameters('globalvariable').scopemanagement]",
-        //         "parameters": {
-        //             "workspaceName": {
-        //                 // "value": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]"
-        //                 "value": "[parameters('workspaceName')]"
-        //             },
-        //             "automationAccountName": {
-        //                 //"value": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]"
-        //                 "value": "[parameters('automationAccountName')]"
-        //             },
-        //             "workspaceRegion": {
-        //                 "value": "[deployment().location]"
-        //             },
-        //             "automationRegion": {
-        //                 "value": "[deployment().location]"
-        //             },
-        //             "rgName": {
-        //                 // "value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
-        //                 "value": "[parameters('ManagementRessourceGroup')]"
-        //             },
-        //             "retentionInDays": {
-        //                 "value": "30"
-        //             }
-        //         }
-        //     }
-        // },
-        // {
-        //     // Conditionally assign policy to enable Log Analytics and Azure Automation
-        //     "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('apply-pbmm'), 'Yes'))]",
-        //     "type": "Microsoft.Authorization/policyAssignments",
-        //     "apiVersion": "2018-05-01",
-        //     "dependsOn": [
-        //         "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]"
-        //         //"[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
-        //     ],
-        //     "name": "[variables('policyPBMMDefinitions').name]",
-        //     "location": "[deployment().location]",
-        //     "identity": {
-        //         "type": "SystemAssigned"
-        //     },
-        //     "properties": {
-        //         "description": "[variables('policyPBMMDefinitions').description]",
-        //         "displayName": "[variables('policyPBMMDefinitions').description]",
-        //         "policyDefinitionId": "[variables('policyPBMMDefinitions').policyDefinitions.deployPBMM]",
-        //         "scope": "[variables('policyPBMMDefinitions').scope]",
-        //         "parameters": "[variables('policyPBMMDefinitions').parameters]"
-        //     }
-        // },
+        {
+            // Conditionally assign policy to enable Log Analytics and Azure Automation
+            "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'No'),equals(parameters('apply-pbmm'), 'Yes'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
+                "displayName": "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]",
+                "policyDefinitionId": "[variables('policyLogAnalyticDefinitions').policyDefinitions.deployLogAnalytics]",
+                "scope": "[parameters('globalvariable').scopemanagement]",
+                "parameters": {
+                    "workspaceName": {
+                        // "value": "[concat(parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]"
+                        "value": "[parameters('workspaceName')]"
+                    },
+                    "automationAccountName": {
+                        //"value": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]"
+                        "value": "[parameters('automationAccountName')]"
+                    },
+                    "workspaceRegion": {
+                        "value": "[deployment().location]"
+                    },
+                    "automationRegion": {
+                        "value": "[deployment().location]"
+                    },
+                    "rgName": {
+                        // "value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
+                        "value": "[parameters('ManagementRessourceGroup')]"
+                    },
+                    "retentionInDays": {
+                        "value": "30"
+                    }
+                }
+            }
+        },
+        {
+           // Conditionally assign policy to enable Log Analytics and Azure Automation
+            "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('apply-pbmm'), 'Yes'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "dependsOn": [
+                "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]"
+              // "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            ],
+            "name": "[variables('policyPBMMDefinitions').name]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[variables('policyPBMMDefinitions').description]",
+                "displayName": "[variables('policyPBMMDefinitions').description]",
+                "policyDefinitionId": "[variables('policyPBMMDefinitions').policyDefinitions.deployPBMM]",
+                "scope": "[variables('policyPBMMDefinitions').scope]",
+                "parameters": "[variables('policyPBMMDefinitions').parameters]"
+            }
+        },
         {
             //"condition": "[not(empty(parameters('allowedvmsize')))]",
             "type": "Microsoft.Authorization/policyAssignments",
