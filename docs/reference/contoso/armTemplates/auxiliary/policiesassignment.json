@@ -1370,30 +1370,29 @@
                     //,"tagValue": { "value": "[parameters('resourceTags')[copyIndex()]]" }
                 }
             }
+        },
+        {
+            //"condition": "[not(empty(parameters('allowedvmsize')))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "copy": {
+                "name": "PolicyAssignmentCopy",
+                "count": "[length(variables('policyAssignmentNames').policyDefinitions)]"
+            },
+            "condition": "[equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, 'Yes')]",
+            "name": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].name]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].description]",
+                "displayName": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,variables('policyAssignmentNames').policyDefinitions[copyIndex()].name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].policyDefinitionId]",
+                "scope": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].scope]",
+                "parameters": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].parameters]"
+            }
         }
-        // ,
-        // {
-        //     //"condition": "[not(empty(parameters('allowedvmsize')))]",
-        //     "type": "Microsoft.Authorization/policyAssignments",
-        //     "apiVersion": "2018-05-01",
-        //     "copy": {
-        //         "name": "PolicyAssignmentCopy",
-        //         "count": "[length(variables('policyAssignmentNames').policyDefinitions)]"
-        //     },
-        //     "condition": "[equals(variables('policyAssignmentNames').policyDefinitions[copyIndex()].apply, 'Yes')]",
-        //     "name": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].name]",
-        //     "location": "[deployment().location]",
-        //     "identity": {
-        //         "type": "SystemAssigned"
-        //     },
-        //     "properties": {
-        //         "description": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].description]",
-        //         "displayName": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,variables('policyAssignmentNames').policyDefinitions[copyIndex()].name)]",
-        //         "policyDefinitionId": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].policyDefinitionId]",
-        //         "scope": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].scope]",
-        //         "parameters": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].parameters]"
-        //     }
-        // }
     ],
     "outputs": {}
 }
