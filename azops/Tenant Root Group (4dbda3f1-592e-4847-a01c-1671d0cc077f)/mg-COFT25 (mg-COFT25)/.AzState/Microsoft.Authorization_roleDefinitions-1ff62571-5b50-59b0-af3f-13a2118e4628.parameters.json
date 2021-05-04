@@ -1,0 +1,42 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT25/providers/Microsoft.Authorization/roleDefinitions/1ff62571-5b50-59b0-af3f-13a2118e4628",
+        "Name": "1ff62571-5b50-59b0-af3f-13a2118e4628",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-COFT25"
+          ],
+          "description": "Systems Ops",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Insights/*",
+                "Microsoft.Management/managementGroups/*",
+                "Microsoft.Authorization/*",
+                "Microsoft.Capacity/*",
+                "Microsoft.RecoveryServices/*",
+                "Microsoft.Insights/*",
+                "Microsoft.AlertsManagement/*",
+                "Microsoft.OperationalInsights/*",
+                "Microsoft.WorkloadMonitor/monitors/*",
+                "Microsoft.ContainerRegistry/*",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-COFT25-IT-prod-Custom Systems Ops"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}

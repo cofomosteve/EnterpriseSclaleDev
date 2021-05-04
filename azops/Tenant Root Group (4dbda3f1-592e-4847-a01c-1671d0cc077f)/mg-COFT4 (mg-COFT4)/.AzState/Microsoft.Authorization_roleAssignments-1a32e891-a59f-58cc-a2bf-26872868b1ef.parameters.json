@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT4/providers/Microsoft.Authorization/roleAssignments/1a32e891-a59f-58cc-a2bf-26872868b1ef",
+        "Name": "1a32e891-a59f-58cc-a2bf-26872868b1ef",
+        "properties": {
+          "DisplayName": "Deploy-VMSS-Monitoring",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "3cd4da01-67b7-4256-81bc-a070693ab121",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

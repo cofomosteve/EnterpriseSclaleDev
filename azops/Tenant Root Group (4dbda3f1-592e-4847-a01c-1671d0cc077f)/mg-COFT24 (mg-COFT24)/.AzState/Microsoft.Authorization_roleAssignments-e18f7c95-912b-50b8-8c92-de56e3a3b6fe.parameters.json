@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT24/providers/Microsoft.Authorization/roleAssignments/e18f7c95-912b-50b8-8c92-de56e3a3b6fe",
+        "Name": "e18f7c95-912b-50b8-8c92-de56e3a3b6fe",
+        "properties": {
+          "DisplayName": "Deploy-AzActivity-Log",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "ca8f5d71-e3e9-400c-a242-26c6cfb3957a",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

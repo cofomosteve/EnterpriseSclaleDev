@@ -1,0 +1,41 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT25/providers/Microsoft.Authorization/roleDefinitions/4a1b472c-3edf-58fe-8ce1-bc2d0fca7fcc",
+        "Name": "4a1b472c-3edf-58fe-8ce1-bc2d0fca7fcc",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-COFT25"
+          ],
+          "description": "Billing Administrator",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Authorization/*/read",
+                "Microsoft.Insights/alertRules/*",
+                "Microsoft.Consumption/*",
+                "Microsoft.CostManagement/*",
+                "Microsoft.Resources/subscriptions/read",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Support/*",
+                "Microsoft.Advisor/configurations/read",
+                "Microsoft.Advisor/recommendations/read",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-COFT25-IT-prod-Custom  Billing Administrator"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}
