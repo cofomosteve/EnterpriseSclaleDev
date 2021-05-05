@@ -1099,7 +1099,7 @@
                         "defaultValue": true
                     },
                     {
-                        "name": "tagcostbyresource",
+                        "name": "tagbyresource",
                         "type": "Microsoft.Common.TagsByResource",
                         "visible": "[equals(steps('esGovernance').cktagbyresource, true)]",
                         "resources": [
@@ -2449,7 +2449,7 @@
             "apply-audit-resource-without-encryption": "[steps('esGovernance').esapply-audit-resource-without-encryption]",
             "cktagbyresource": "[steps('esGovernance').cktagbyresource]",
             "tagauditpolicy": "[steps('esGovernance').estagauditpolicy]",
-            "tagsByResource": "[steps('esGovernance').tagcostbyresource]",
+            "tagsByResource": "[steps('esGovernance').tagbyresource]",
             "listOfResourceTypesWithDiagnosticLogsEnabled": "[steps('esGovernance').eslistOfResourceTypesWithDiagnosticLogsEnabled]",
             "listOfMembersToExcludeFromWindowsVMAdministratorsGroup": "[steps('esGovernance').eslistOfMembersToExcludeFromWindowsVMAdministratorsGroup]",
             "listOfMembersToIncludeInWindowsVMAdministratorsGroup": "[steps('esGovernance').eslistOfMembersToIncludeInWindowsVMAdministratorsGroup]"

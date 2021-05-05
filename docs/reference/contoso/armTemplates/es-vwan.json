@@ -814,8 +814,10 @@
 
         },
         "delimiters": [ "," ],
-        "tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], json('{}')) ]",
+        //"tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], json('{}')) ]",
+        "tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], variables('resourceTags')) ]",
         "settingArray": "[if(empty(variables('tagsByResourceout')),createArray(),split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters')))]",
+        
 
         "propNameArray": {
             "copy": [
@@ -919,7 +921,7 @@
                 "parameters": {
                     // "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
 
-                    "resourceTags": { "value": "[variables('resourceTags')]" },
+                    "resourceTags": { "value": "[variables('tagsByResourceout')]" },
                     "globalvariable": { "value": "[variables('globalvariable')]" }
                 }
             }
@@ -1068,7 +1070,7 @@
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
                     },
                     "resourceTags": {
-                        "value": "[variables('resourceTags')]"
+                        "value": "[variables('tagsByResourceout')]"
                     },
                     "globalvariable": { "value": "[variables('globalvariable')]" },
                     "enableLogAnalytics": {
@@ -1116,7 +1118,7 @@
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
                     },
                     "resourceTags": {
-                        "value": "[variables('resourceTags')]"
+                        "value": "[variables('tagsByResourceout')]"
                     },
                     "globalvariable": { "value": "[variables('globalvariable')]" },
                     "managementSubscriptionId": {
@@ -1187,7 +1189,7 @@
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
                     },
                     "resourceTags": {
-                        "value": "[variables('resourceTags')]"
+                        "value": "[variables('tagsByResourceout')]"
                     },
                     "globalvariable": { "value": "[variables('globalvariable')]" },
                     "denyRdpForIdentity": {
@@ -1233,7 +1235,7 @@
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
                     },
                     "resourceTags": {
-                        "value": "[variables('resourceTags')]"
+                        "value": "[variables('tagsByResourceout')]"
                     },
                     "globalvariable": { "value": "[variables('globalvariable')]" },
                     "denyHttpIngressForAks": {
@@ -1306,7 +1308,7 @@
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
                     },
                     "resourceTags": {
-                        "value": "[variables('resourceTags')]"
+                        "value": "[variables('tagsByResourceout')]"
                     },
                     "globalvariable": { "value": "[variables('globalvariable')]" },
                     "enableLogAnalytics": {
@@ -1407,7 +1409,7 @@
                         "value": "[parameters('enterpriseScaleCompanyPrefix')]"
                     },
                     "resourceTags": {
-                        "value": "[variables('resourceTags')]"
+                        "value": "[variables('tagsByResourceout')]"
                     },
                     "globalvariable": { "value": "[variables('globalvariable')]" },
                     "enableVwan": {
@@ -1483,7 +1485,7 @@
 
                     "topLevelManagementGroupPrefix": { "value": "[parameters('enterpriseScaleCompanyPrefix')]" },
 
-                    "resourceTags": { "value": "[variables('resourceTags')]" },
+                    "resourceTags": { "value": "[variables('tagsByResourceout')]" },
                     "resourceTagsKey": { "value": "[variables('propNameArray').copyPropertyNames]" },
                     "globalvariable": { "value": "[variables('globalvariable')]" },
                     "apply-pbmm": { "value": "[parameters('apply-pbmm')]" },
@@ -1535,7 +1537,7 @@
             "type": "string",
             "value": "[concat(deployment().name, ' has successfully deployed. Welcome to Enterprise-Scale!')]"
         }
-       /* ,
+        ,
         "tagsByResourceArray": {
             "type": "array",
             "value": "[variables('propNameArray').copyPropertyNames]"
@@ -1543,6 +1545,12 @@
         "resourceTags": {
             "type": "object",
             "value": "[variables('resourceTags')]"
-        }*/
+        }
+,
+        "tagsByResourceout": {
+            "type": "object",
+            "value": "[variables('tagsByResourceout')]"
+        }
+        
     }
 }
