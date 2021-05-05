@@ -84,6 +84,20 @@
             "Name": "mg-COFOT2",
             "DisplayName": "mg-COFOT2",
             "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT11",
+            "Name": "mg-COFOT11",
+            "DisplayName": "mg-COFOT11",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT12",
+            "Name": "mg-COFOT12",
+            "DisplayName": "mg-COFOT12",
+            "Children": null
           }
         ]
       }

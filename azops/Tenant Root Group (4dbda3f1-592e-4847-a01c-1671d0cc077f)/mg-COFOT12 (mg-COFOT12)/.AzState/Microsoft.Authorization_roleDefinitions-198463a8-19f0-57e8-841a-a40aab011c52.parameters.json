@@ -1,0 +1,34 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT12/providers/Microsoft.Authorization/roleDefinitions/198463a8-19f0-57e8-841a-a40aab011c52",
+        "Name": "198463a8-19f0-57e8-841a-a40aab011c52",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-COFOT12"
+          ],
+          "description": "Vmware Solution Administrator",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Insights/*",
+                "Microsoft.Automation/automationAccounts/*",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-COFOT12-IT-prod-Custom Vmware Solution Administrator"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}

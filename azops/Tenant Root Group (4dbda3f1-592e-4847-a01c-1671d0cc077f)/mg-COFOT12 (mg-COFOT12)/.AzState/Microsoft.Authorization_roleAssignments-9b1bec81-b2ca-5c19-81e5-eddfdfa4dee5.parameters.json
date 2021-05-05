@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT12/providers/Microsoft.Authorization/roleAssignments/9b1bec81-b2ca-5c19-81e5-eddfdfa4dee5",
+        "Name": "9b1bec81-b2ca-5c19-81e5-eddfdfa4dee5",
+        "properties": {
+          "DisplayName": "Deploy-WS-Arc-Monitoring",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "21bbe6fa-47a7-413c-baef-04d1ccee53f3",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}
