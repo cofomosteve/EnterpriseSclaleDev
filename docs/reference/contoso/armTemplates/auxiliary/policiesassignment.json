@@ -1377,7 +1377,8 @@
                     //,"tagValue": { "value": "[parameters('resourceTags')[copyIndex()]]" }
                 }
             }
-        },
+        }
+        /*,
         {
             //"condition": "[not(empty(parameters('allowedvmsize')))]",
             "type": "Microsoft.Authorization/policyAssignments",
@@ -1399,7 +1400,7 @@
                 "scope": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].scope]",
                 "parameters": "[variables('policyAssignmentNames').policyDefinitions[copyIndex()].parameters]"
             }
-        }
+        }*/
     ],
     "outputs": {}
 }
