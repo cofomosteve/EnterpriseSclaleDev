@@ -639,7 +639,7 @@
 
                 /***************************VM*/
                 {
-                    "name": "vm-account-sku-allowed",
+                    "name": "VM-AC-SKU-ALLOW",
                     "apply": "[not(empty(parameters('allowedVMSizesku')))]",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cccc23c7-8427-4f53-ad12-b6a63eb452b3",
                     "scope": "[variables('scopelz')]",
@@ -653,7 +653,7 @@
                 },
                 //*****************STORAGE ACCOUNT*/
                 {
-                    "name": "storage-account-publicip-disable",
+                    "name": "STR-AC-PUBIP-DIS",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4fa4b6c0-31ca-4c0d-b10d-24b96f62a751",
                     "scope": "[variables('scopeplatform')]",
@@ -665,7 +665,7 @@
 
                 },
                 {
-                    "name": "storage-account-sku-allowed",
+                    "name": "STR-AC-SKU-ALLOW",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1",
                     "scope": "[variables('scopeplatform')]",
@@ -677,7 +677,7 @@
 
                 },
                 {
-                    "name": "storage-account-vnet-service-endpoint",
+                    "name": "STR-AC-VNET-SEP",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/60d21c4f-21a3-4d94-85f4-b924e6aeeda4",
                     "scope": "[variables('scopeplatform')]",
@@ -697,7 +697,7 @@
                 /***************************APP SERVICE*/
                 ,
                 {
-                    "name": "apiapp-cors-notallorigin",
+                    "name": "API-cors-NAorigin",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/358c20a6-3f9e-4f0e-97ff-c6ce485e2aac",
                     "scope": "[variables('scopelzonline')]",
@@ -709,7 +709,7 @@
 
                 },
                 {
-                    "name": "webapp-cors-notallorigin",
+                    "name": "WEB-cors-NAorigin",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5744710e-cc2f-4ee8-8809-3b11e89f4bc9",
                     "scope": "[variables('scopelzonline')]",
@@ -721,7 +721,7 @@
 
                 },
                 {
-                    "name": "functionapp-cors-notallorigin",
+                    "name": "FA-cors-NAorigin",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0820b7b9-23aa-4725-a1ce-ae4558f718e5",
                     "scope": "[variables('scopelzonline')]",
@@ -733,7 +733,7 @@
 
                 },
                 {
-                    "name": "apiapp-https-only",
+                    "name": "API-https-only",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b7ddfbdc-1260-477d-91fd-98bd9be789a6",
                     "scope": "[variables('scopelzonline')]",
@@ -745,7 +745,7 @@
 
                 },
                 {
-                    "name": "webapp-https-only",
+                    "name": "WEB-https-only",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a4af4a39-4135-47fb-b175-47fbdf85311d",
                     "scope": "[variables('scopelzonline')]",
@@ -757,7 +757,7 @@
 
                 },
                 {
-                    "name": "functionapp-https-only",
+                    "name": "FA-https-only",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6d555dd1-86f2-4f1c-8ed7-5abae7c6cbab",
                     "scope": "[variables('scopelzonline')]",
@@ -769,7 +769,7 @@
 
                 },
                 {
-                    "name": "apiapp-tls-latest",
+                    "name": "API-tls-latest",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8cb6aa8b-9e41-4f4e-aa25-089a7ac2581e",
                     "scope": "[variables('scopelzonline')]",
@@ -780,7 +780,7 @@
                     "description": "Upgrade to the latest TLS version"
                 },
                 {
-                    "name": "webapp-tls-latest",
+                    "name": "WEB-tls-latest",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f0e6e85b-9b9f-4a4b-b67b-f730d42f1b0b",
                     "scope": "[variables('scopelzonline')]",
@@ -791,7 +791,7 @@
                     "description": "Upgrade to the latest TLS version"
                 },
                 {
-                    "name": "functionapp-tls-latest",
+                    "name": "FA-tls-latest",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f9d614c5-c173-4d56-95a7-b4437057d193",
                     "scope": "[variables('scopelzonline')]",
@@ -802,7 +802,7 @@
                     "description": "Upgrade to the latest TLS version"
                 },
                 {
-                    "name": "webapp-managed-identity",
+                    "name": "WEB-MG-ID",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2b9ad585-36bc-4615-b300-fd4435808332",
                     "scope": "[variables('scopelzonline')]",
@@ -813,7 +813,7 @@
                     "description": "Use a managed identity for enhanced authentication security"
                 },
                 {
-                    "name": "apiapp-managed-identity",
+                    "name": "API-MG-ID",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c4d441f8-f9d9-4a9e-9cef-e82117cb3eef",
                     "scope": "[variables('scopelzonline')]",
@@ -824,7 +824,7 @@
                     "description": "Use a managed identity for enhanced authentication security"
                 },
                 {
-                    "name": "functionapp-managed-identity",
+                    "name": "FA-MG-ID",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0da106f2-4ca3-48e8-bc85-c638fe6aea8f",
                     "scope": "[variables('scopelzonline')]",
@@ -835,7 +835,7 @@
                     "description": "Use a managed identity for enhanced authentication security"
                 },
                 {
-                    "name": "apiapp-authent-enable",
+                    "name": "API-AUTH-ENAB",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c4ebc54a-46e1-481a-bee2-d4411e95d828",
                     "scope": "[variables('scopelzonline')]",
@@ -846,7 +846,7 @@
                     "description": "Azure App Service Authentication is a feature that can prevent anonymous HTTP requests from reaching the API app, or authenticate those that have tokens before they reach the API app."
                 },
                 {
-                    "name": "webapp-authent-enable",
+                    "name": "WEB-AUTH-ENAB",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/95bccee9-a7f8-4bec-9ee9-62c3473701fc",
                     "scope": "[variables('scopelzonline')]",
@@ -857,7 +857,7 @@
                     "description": "Azure App Service Authentication is a feature that can prevent anonymous HTTP requests from reaching the Function app, or authenticate those that have tokens before they reach the Function app"
                 },
                 {
-                    "name": "functionapp-authent-enable",
+                    "name": "FA-AUTH-ENAB",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c75248c1-ea1d-4a9c-8fc9-29a6aabd5da8",
                     "scope": "[variables('scopelzonline')]",
@@ -868,7 +868,7 @@
                     "description": "Azure App Service Authentication is a feature that can prevent anonymous HTTP requests from reaching the Function app, or authenticate those that have tokens before they reach the Function app"
                 },
                 {
-                    "name": "apiapp-vnet-enable",
+                    "name": "API-VNET-ENAB",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ef619a2c-cc4d-4d03-b2ba-8c94a834d85b",
                     "scope": "[variables('scopelzonline')]",
@@ -879,7 +879,7 @@
                     "description": "Azure Virtual Network deployment provides enhanced security, isolation and allows you to place your API Management service in a non-internet routable network that you control access to. These networks can then be connected to your on-premises networks using various VPN technologies, which enables access to your backend services within the network and/or on-premises. The developer portal and API gateway, can be configured to be accessible either from the Internet or only within the virtual network."
                 },
                 {
-                    "name": "apiapp-sku-vnet-enable",
+                    "name": "API-sku-VNET-ENAB",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/73ef9241-5d81-4cd4-b483-8443d1730fe5",
                     "scope": "[variables('scopelzonline')]",
@@ -890,7 +890,7 @@
                     "description": "With supported SKUs of API Management, deploying service into a virtual network unlocks advanced API Management networking and security features which provides you greater control over your network security configuration. Learn more at: https://aka.ms/apimvnet."
                 },
                 {
-                    "name": "apiapp-debug-off",
+                    "name": "API-debug-off",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e9c8d085-d9cc-4b17-9cdc-059f1f01f19e",
                     "scope": "[variables('scopelzonline')]",
@@ -902,7 +902,7 @@
 
                 },
                 {
-                    "name": "webapp-debug-off",
+                    "name": "WEB-debug-off",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cb510bfd-1cba-4d9f-a230-cb0976f4bb71",
                     "scope": "[variables('scopelzonline')]",
@@ -913,7 +913,7 @@
                     "description": "Remote debugging requires inbound ports to be opened on a web application. Remote debugging should be turned off."
                 },
                 {
-                    "name": "functionapp-debug-off",
+                    "name": "FA-debug-off",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0e60b895-3786-45da-8377-9c6b4b6ac5f9",
                     "scope": "[variables('scopelzonline')]",

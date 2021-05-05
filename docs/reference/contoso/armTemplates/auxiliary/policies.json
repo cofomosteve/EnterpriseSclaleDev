@@ -46,9 +46,9 @@
           "diasgsettingmgn": "",
           "deploymentmgn": "",
           "virtualnetworkmgn": "",
-             "subnetmgn": "",
-                    "gwsubnetmgn": "",
-                    "fwsubnetmgn": "",
+          "subnetmgn": "",
+          "gwsubnetmgn": "",
+          "fwsubnetmgn": "",
           "virtualnetworkpeeringmgn": "",
           "virtualnetworkgatewaymgn": "",
           "localnetworkgatewaylocalmgn": "",
@@ -1203,6 +1203,7 @@
                                     "type": "Microsoft.Network/virtualNetworks",
                                     "apiVersion": "2020-06-01",
                                     "name": "[[parameters('vNetName')]",
+                                    "tags": "[parameters('resourceTags')]",
                                     "location": "[[parameters('vNetLocation')]",
                                     "dependsOn": [],
                                     "properties": {
@@ -9168,6 +9169,7 @@
                             "apiVersion": "2017-05-01-preview",
                             "name": "[[concat(parameters('resourceName'), '/', 'Microsoft.Insights/', parameters('profileName'))]",
                             "location": "[[parameters('location')]",
+                            "tags": "[parameters('resourceTags')]",
                             "dependsOn": [],
                             "properties": {
                               "workspaceId": "[[parameters('logAnalytics')]",
@@ -9390,6 +9392,7 @@
                                     "type": "Microsoft.Network/ddosProtectionPlans",
                                     "apiVersion": "2019-12-01",
                                     "name": "[[parameters('ddosName')]",
+                                    "tags": "[parameters('resourceTags')]",
                                     "location": "[[parameters('ddosRegion')]",
                                     "properties": {}
                                   }
@@ -9999,6 +10002,7 @@
                                     "type": "Microsoft.Storage/storageAccounts",
                                     "apiVersion": "2019-06-01",
                                     "name": "[[variables('storageAccountName')]",
+                                    "tags": "[parameters('resourceTags')]",
                                     "location": "[[parameters('location')]",
                                     "properties": {},
                                     "kind": "StorageV2",
@@ -10027,12 +10031,14 @@
                                     "apiVersion": "2020-05-01",
                                     "name": "[[concat('NetworkWatcher_', toLower(parameters('location')))]",
                                     "location": "[[parameters('location')]",
+                                    "tags": "[parameters('resourceTags')]",
                                     "properties": {},
                                     "resources": [
                                       {
                                         "type": "flowLogs",
                                         "apiVersion": "2019-11-01",
                                         "name": "[[concat(variables('securityGroupName'), '-Network-flowlog')]",
+                                        "tags": "[parameters('resourceTags')]",
                                         "location": "[[parameters('location')]",
                                         "properties": {
                                           "enabled": true,
@@ -13946,6 +13952,7 @@
                                     "name": "[[parameters('hubName')]",
                                     "type": "Microsoft.Network/virtualNetworks",
                                     "apiVersion": "2020-04-01",
+                                    "tags": "[parameters('resourceTags')]",
                                     "location": "[[parameters('HUB').location]",
                                     "properties": {
                                       "addressSpace": {
@@ -14000,21 +14007,23 @@
                                     "apiVersion": "2020-05-01",
                                     "type": "Microsoft.Network/publicIpAddresses",
                                     "location": "[[parameters('HUB').location]",
+
                                     "name": "[[concat(parameters('vpngw').name,'-pip')]",
                                     "properties": {
                                       "publicIPAllocationMethod": "Dynamic"
                                     },
-                                    "tags": {}
+                                    "tags": "[parameters('resourceTags')]"
                                   },
                                   {
                                     "apiVersion": "2020-05-01",
                                     "name": "[[parameters('vpngw').name]",
                                     "type": "Microsoft.Network/virtualNetworkGateways",
+
                                     "location": "[[parameters('HUB').location]",
                                     "dependsOn": [
                                       "[[concat('Microsoft.Network/publicIPAddresses/', parameters('vpngw').name,'-pip')]"
                                     ],
-                                    "tags": {},
+                                    "tags": "[parameters('resourceTags')]",
                                     "properties": {
                                       "gatewayType": "Vpn",
                                       "vpnType": "[[parameters('vpngw').vpnType]",
@@ -14062,12 +14071,13 @@
                                   {
                                     "apiVersion": "2020-05-01",
                                     "type": "Microsoft.Network/publicIpAddresses",
+
                                     "location": "[[parameters('HUB').location]",
                                     "name": "[[concat(parameters('ergw').name,'-pip')]",
                                     "properties": {
                                       "publicIPAllocationMethod": "Dynamic"
                                     },
-                                    "tags": {}
+                                    "tags": "[parameters('resourceTags')]"
                                   },
                                   {
                                     "apiVersion": "2020-05-01",
@@ -14077,7 +14087,7 @@
                                     "dependsOn": [
                                       "[[concat('Microsoft.Network/publicIPAddresses/', parameters('ergw').name,'-pip')]"
                                     ],
-                                    "tags": {},
+                                    "tags": "[parameters('resourceTags')]",
                                     "properties": {
                                       "gatewayType": "ExpressRoute",
                                       "ipConfigurations": [
@@ -14133,13 +14143,14 @@
                                     "properties": {
                                       "publicIPAllocationMethod": "Static"
                                     },
-                                    "tags": {}
+                                    "tags": "[parameters('resourceTags')]"
                                   },
                                   {
                                     "apiVersion": "2020-05-01",
                                     "type": "Microsoft.Network/azureFirewalls",
                                     "name": "[[parameters('azfw').name]",
-                                    "location": "[[parameters('azfw').location]",
+                                    "tags": "[parameters('resourceTags')]",
+                                    
                                     "zones": "[[if(contains(parameters('azfw'),'fwZones'),parameters('azfw').fwZones,json('null'))]",
                                     "dependsOn": [
                                       "[[concat(parameters('azfw').name,'-pip')]"
@@ -14163,7 +14174,7 @@
                                       ],
                                       "firewallPolicy": "[[if(contains(parameters('azfw'),'firewallPolicy'),parameters('azfw').firewallPolicy,json('null'))]"
                                     },
-                                    "tags": {}
+                                    "location": "[[parameters('azfw').location]"
                                   }
                                 ]
                               }
@@ -14354,6 +14365,7 @@
                                     "apiVersion": "2020-05-01",
                                     "type": "Microsoft.Network/networkSecurityGroups",
                                     "name": "[[concat(subscription().displayName, '-nsg')]",
+                                    "tags": "[parameters('resourceTags')]",
                                     "location": "[[parameters('ipam')[copyIndex()].location]",
                                     "properties": "[[if(contains(parameters('ipam')[copyIndex()],'networkSecurityGroups'),parameters('ipam')[copyIndex()].networkSecurityGroups.properties,json('null'))]"
                                   },
@@ -14362,6 +14374,7 @@
                                     "apiVersion": "2020-05-01",
                                     "type": "Microsoft.Network/routeTables",
                                     "name": "[[concat(subscription().displayName, '-udr')]",
+                                    "tags": "[parameters('resourceTags')]",
                                     "location": "[[parameters('ipam')[copyIndex()].location]",
                                     "properties": "[[if(contains(parameters('ipam')[copyIndex()],'routeTables'),parameters('ipam')[copyIndex()].routeTables.properties,json('null'))]"
                                   },
@@ -14370,6 +14383,7 @@
                                     "type": "Microsoft.Network/virtualNetworks",
                                     "apiVersion": "2020-05-01",
                                     "name": "[[concat(subscription().displayName, '-vnet')]",
+                                    "tags": "[parameters('resourceTags')]",
                                     "location": "[[parameters('ipam')[copyIndex()].location]",
                                     "dependsOn": [
                                       "[[concat(subscription().displayName, '-nsg')]",
@@ -14671,6 +14685,7 @@
                                   {
                                     "type": "Microsoft.Network/virtualWans",
                                     "apiVersion": "2020-05-01",
+                                    "tags": "[parameters('resourceTags')]",
                                     "location": "[[parameters('vwanRegion')]",
                                     "name": "[[parameters('vwanname')]",
                                     "properties": {
@@ -14902,6 +14917,7 @@
                                   {
                                     "type": "Microsoft.Network/virtualHubs",
                                     "apiVersion": "2020-05-01",
+                                    "tags": "[parameters('resourceTags')]",
                                     "location": "[[parameters('vHUB').location]",
                                     "name": "[[parameters('vHUBname')]",
                                     "properties": {
@@ -14936,6 +14952,7 @@
                                   {
                                     "type": "Microsoft.Network/vpnGateways",
                                     "apiVersion": "2020-05-01",
+                                    "tags": "[parameters('resourceTags')]",
                                     "location": "[[parameters('vHUB').location]",
                                     "name": "[[parameters('vpngw').name]",
                                     "properties": {
@@ -14970,6 +14987,7 @@
                                   {
                                     "type": "Microsoft.Network/expressRouteGateways",
                                     "apiVersion": "2020-05-01",
+                                    "tags": "[parameters('resourceTags')]",
                                     "location": "[[parameters('vHUB').location]",
                                     "name": "[[parameters('ergw').name]",
                                     "properties": {
@@ -16043,6 +16061,7 @@
                             "apiVersion": "2015-06-15",
                             "type": "Microsoft.Compute/virtualMachines/extensions",
                             "name": "[[concat(variables('vmName'),'/joindomain')]",
+                            "tags": "[parameters('resourceTags')]",
                             "location": "[[resourceGroup().location]",
                             "properties": {
                               "publisher": "Microsoft.Compute",
@@ -17058,6 +17077,7 @@
                             "type": "Microsoft.DBforMySQL/servers",
                             "apiVersion": "2017-12-01",
                             "name": "[[concat(parameters('resourceName'))]",
+                            "tags": "[parameters('resourceTags')]",
                             "location": "[[parameters('location')]",
                             "properties": {
                               "sslEnforcement": "[[if(equals(parameters('minimalTlsVersion'), 'TLSEnforcementDisabled'),'Disabled', 'Enabled')]",
@@ -17236,6 +17256,7 @@
                             "type": "Microsoft.Network/networkWatchers/flowLogs",
                             "apiVersion": "2020-05-01",
                             "name": "[[take(concat('NetworkWatcher_', toLower(parameters('location')),  '/', parameters('networkSecurityGroupName'), '-', parameters('resourceGroupName'), '-flowlog' ), 80)]",
+                            "tags": "[parameters('resourceTags')]",
                             "location": "[[parameters('location')]",
                             "properties": {
                               "targetResourceId": "[[resourceId(parameters('resourceGroupName'), 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
@@ -17442,6 +17463,7 @@
                             "type": "Microsoft.DBforPostgreSQL/servers",
                             "apiVersion": "2017-12-01",
                             "name": "[[concat(parameters('resourceName'))]",
+                            "tags": "[parameters('resourceTags')]",
                             "location": "[[parameters('location')]",
                             "properties": {
                               "sslEnforcement": "[[if(equals(parameters('minimalTlsVersion'), 'TLSEnforcementDisabled'),'Disabled', 'Enabled')]",
@@ -17808,6 +17830,7 @@
                             "type": "Microsoft.Sql/managedInstances",
                             "apiVersion": "2020-02-02-preview",
                             "name": "[[concat(parameters('resourceName'))]",
+                            "tags": "[parameters('resourceTags')]",
                             "location": "[[parameters('location')]",
                             "properties": {
                               "minimalTlsVersion": "[[parameters('minimalTlsVersion')]"
@@ -17988,6 +18011,7 @@
                             "type": "Microsoft.Sql/servers",
                             "apiVersion": "2019-06-01-preview",
                             "name": "[[concat(parameters('resourceName'))]",
+                            "tags": "[parameters('resourceTags')]",
                             "location": "[[parameters('location')]",
                             "properties": {
                               "minimalTlsVersion": "[[parameters('minimalTlsVersion')]"
@@ -18200,6 +18224,7 @@
                             "type": "Microsoft.Storage/storageAccounts",
                             "apiVersion": "2019-06-01",
                             "name": "[[concat(parameters('resourceName'))]",
+                            "tags": "[parameters('resourceTags')]",
                             "location": "[[parameters('location')]",
                             "properties": {
                               "supportsHttpsTrafficOnly": true,

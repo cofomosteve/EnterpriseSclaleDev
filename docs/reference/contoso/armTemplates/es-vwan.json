@@ -788,6 +788,19 @@
 
                 "azmonitorredisinsigmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('redis-ins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
 
+                "azsolsecmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('sol-sec-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+                "azsolagenthealthmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('sol-ag-health-ass-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+                "azsolchangetrackingmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('sol-itrack-chns-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+                "azsolupdatemanagemgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('sol-update-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+                "azsolactivitymgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('sol-activity-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+                "azsolsqlassessmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('sol-sql-assess-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+                "azsolantimalwaremgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('sol-antimalware-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+                "azsolsrvmapmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('sol-svc-map-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+                "azsolsecinsightmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('sol-secins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+                "azsolvminsightmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('sol-vmins-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
+
+
+
                 "trafficmanagemgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('tf-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
 
                 "cdnmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('cdn-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),'CAF')]",
