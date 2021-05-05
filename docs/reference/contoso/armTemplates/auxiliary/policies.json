@@ -1218,6 +1218,7 @@
                                     "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
                                     "apiVersion": "2020-05-01",
                                     "name": "[[concat(parameters('vNetName'), '/peerToHub')]",
+                                    "tags": "[parameters('resourceTags')]",
                                     "dependsOn": [
                                       "[[parameters('vNetName')]"
                                     ],
@@ -1263,6 +1264,7 @@
                                           {
                                             "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
                                             "name": "[[[concat(parameters('hubName'),'/',last(split(parameters('remoteVirtualNetwork'),'/')))]",
+                                            "tags": "[parameters('resourceTags')]",
                                             "apiVersion": "2020-05-01",
                                             "properties": {
                                               "allowVirtualNetworkAccess": true,
@@ -4613,6 +4615,7 @@
                           {
                             "name": "[[concat(parameters('privateEndpointName'), '/deployedByPolicy')]",
                             "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+                            
                             "apiVersion": "2020-03-01",
                             "location": "[[parameters('location')]",
                             "properties": {
@@ -8023,6 +8026,7 @@
                             "apiVersion": "2015-11-01-preview",
                             "type": "Microsoft.OperationsManagement/solutions",
                             "name": "[[concat(variables('batch1').solutions[copyIndex()].Name)]",
+                            "tags": "[parameters('resourceTags')]",
                             "location": "[[parameters('workspaceRegion')]",
                             "copy": {
                               "name": "solutionCopy",
@@ -8219,6 +8223,7 @@
                                     "location": "[[parameters('AutomationRegion')]",
                                     "name": "[[parameters('AutomationAccountName')]",
                                     "type": "Microsoft.Automation/automationAccounts",
+                                    "tags": "[parameters('resourceTags')]",
                                     "comments": "Automation account for ",
                                     "properties": {
                                       "sku": {
@@ -8230,6 +8235,7 @@
                                     "apiVersion": "2017-03-15-preview",
                                     "location": "[[parameters('workspaceRegion')]",
                                     "name": "[[parameters('workspaceName')]",
+                                    "tags": "[parameters('resourceTags')]",
                                     "type": "Microsoft.OperationalInsights/workspaces",
                                     "properties": {
                                       "sku": {
@@ -8242,6 +8248,7 @@
                                       {
                                         "name": "Automation",
                                         "type": "linkedServices",
+                                        
                                         "apiVersion": "2015-11-01-preview",
                                         "dependsOn": [
                                           "[[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
@@ -14018,7 +14025,6 @@
                                     "apiVersion": "2020-05-01",
                                     "name": "[[parameters('vpngw').name]",
                                     "type": "Microsoft.Network/virtualNetworkGateways",
-
                                     "location": "[[parameters('HUB').location]",
                                     "dependsOn": [
                                       "[[concat('Microsoft.Network/publicIPAddresses/', parameters('vpngw').name,'-pip')]"
@@ -14394,7 +14400,9 @@
                                   {
                                     "condition": "[[contains(parameters('ipam')[copyIndex()],'virtualNetworkPeerings')]",
                                     "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+
                                     "apiVersion": "2020-05-01",
+                                    "tags": "[parameters('resourceTags')]",
                                     "name": "[[concat(variables('vNetName'), '/peerToHub')]",
                                     "dependsOn": [
                                       "[[concat(subscription().displayName, '-vnet')]"
@@ -14445,6 +14453,7 @@
                                           {
                                             "type": "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections",
                                             "apiVersion": "2020-05-01",
+                                            "tags": "[parameters('resourceTags')]",
                                             "name": "[[[concat(parameters('vWanVhubName'),'/',last(split(parameters('remoteVirtualNetwork'),'/')))]",
                                             "properties": {
                                               "remoteVirtualNetwork": {
@@ -14511,6 +14520,7 @@
                                             "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
                                             "name": "[[[concat(parameters('hubName'),'/',last(split(parameters('remoteVirtualNetwork'),'/')))]",
                                             "apiVersion": "2020-05-01",
+                                            "tags": "[parameters('resourceTags')]",
                                             "properties": {
                                               "allowVirtualNetworkAccess": true,
                                               "allowForwardedTraffic": true,
