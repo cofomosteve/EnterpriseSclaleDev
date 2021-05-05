@@ -695,7 +695,7 @@
                 /*************************SQL ET DATABASE*/
 
                 /***************************APP SERVICE*/
-                ,
+                /*,
                 {
                     "name": "API-cors-NAorigin",
                     "apply": "Yes",
@@ -923,9 +923,9 @@
                     // },
                     "description": "Remote debugging requires inbound ports to be opened on a web application. Remote debugging should be turned off."
 
-                }
+                }*/
                 /**************TAG*************************************************************************************/
-                ,
+                
                 /*{// verifie un tag specific et sa valeur spécific a la creation et rejete
                     "name": "require-tag-resource",
                     "apply": "Yes",
@@ -1085,7 +1085,7 @@
 
                 /**************GENERAL*/
 
-                {
+               /* {
                     "name": "allowed-location",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
@@ -1095,7 +1095,7 @@
                         //"listOfAllowedLocations": { "value": "[parameters('genericparam')]" }
                     },
                     "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region."
-                }
+                }*/
                 //Not allowed resource types
                 //Allowed resource types
                 //Preview]: Azure Data Factory linked service resource type should be in allow list
