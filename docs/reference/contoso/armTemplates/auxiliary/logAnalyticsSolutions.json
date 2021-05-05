@@ -323,7 +323,7 @@
                             "apiVersion": "2015-11-01-preview",
                             "type": "Microsoft.OperationsManagement/solutions",
                             "name": "[variables('solutions').agentHealth.name]",
-                            //"tags": "[parameters('resourceTags')]",
+                            "tags": "[parameters('resourceTags')]",
                             "location": "[parameters('workspaceRegion')]",
                             "properties": {
                                 "workspaceResourceId": "[variables('laResourceId')]"
@@ -340,7 +340,7 @@
                             "condition": "[equals(parameters('enableAntiMalware'), 'Yes')]",
                             "apiVersion": "2015-11-01-preview",
                             "type": "Microsoft.OperationsManagement/solutions",
-                            //"tags": "[parameters('resourceTags')]",
+                            "tags": "[parameters('resourceTags')]",
                             "name": "[variables('solutions').antiMalware.name]",
                             "location": "[parameters('workspaceRegion')]",
                             "properties": {
@@ -358,7 +358,7 @@
                             "condition": "[equals(parameters('enableActivityLog'), 'Yes')]",
                             "apiVersion": "2015-11-01-preview",
                             "type": "Microsoft.OperationsManagement/solutions",
-                            //"tags": "[parameters('resourceTags')]",
+                            "tags": "[parameters('resourceTags')]",
                             "name": "[variables('solutions').azureActivity.name]",
                             "location": "[parameters('workspaceRegion')]",
                             "properties": {
@@ -376,7 +376,7 @@
                             "condition": "[equals(parameters('enableChangeTracking'), 'Yes')]",
                             "apiVersion": "2015-11-01-preview",
                             "type": "Microsoft.OperationsManagement/solutions",
-                            //"tags": "[parameters('resourceTags')]",
+                            "tags": "[parameters('resourceTags')]",
                             "name": "[variables('solutions').changeTracking.name]",
                             "location": "[parameters('workspaceRegion')]",
                             "properties": {
