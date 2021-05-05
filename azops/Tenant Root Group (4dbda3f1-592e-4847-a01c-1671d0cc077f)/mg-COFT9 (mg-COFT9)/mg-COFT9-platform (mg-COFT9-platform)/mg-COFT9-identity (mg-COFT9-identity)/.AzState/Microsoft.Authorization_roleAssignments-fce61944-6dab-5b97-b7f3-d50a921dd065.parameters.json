@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT9-identity/providers/Microsoft.Authorization/roleAssignments/fce61944-6dab-5b97-b7f3-d50a921dd065",
+        "Name": "fce61944-6dab-5b97-b7f3-d50a921dd065",
+        "properties": {
+          "DisplayName": "-Deploy-VM-Backup",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "b2ca1d1e-74e6-4cba-b10b-24c8a6fe758b",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}
