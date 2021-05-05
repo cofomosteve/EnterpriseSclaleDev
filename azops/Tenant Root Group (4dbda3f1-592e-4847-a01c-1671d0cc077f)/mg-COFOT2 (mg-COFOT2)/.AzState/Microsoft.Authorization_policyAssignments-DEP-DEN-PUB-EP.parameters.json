@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "c3e23728-9748-416e-952d-5f4d04ff2ea7",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-DEN-PUB-EP",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFOT2/providers/Microsoft.Authorization/policyAssignments/DEP-DEN-PUB-EP",
+        "Properties": {
+          "Description": "This policy denies creation of Azure PAAS services with exposed public endpoints. This policy set includes the policy for the following services KeyVault, Storage accounts, AKS, Cosmos, SQL Servers, MariaDB, MySQL and Postgress.",
+          "DisplayName": "DEP-DEN-PUB-EP",
+          "NotScopes": null,
+          "Parameters": {},
+          "PolicyDefinitionId": "/providers/Microsoft.Management/managementGroups/mg-COFOT2/providers/Microsoft.Authorization/policySetDefinitions/Deny-PublicEndpoints",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFOT2"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFOT2/providers/Microsoft.Authorization/policyAssignments/DEP-DEN-PUB-EP",
+        "ResourceName": "DEP-DEN-PUB-EP",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}
