@@ -17,13 +17,6 @@
         "Children": [
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT23-jumpboxes",
-            "Name": "mg-COFT23-jumpboxes",
-            "DisplayName": "mg-COFT23-jumpboxes",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
             "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT23-sandboxes",
             "Name": "mg-COFT23-sandboxes",
             "DisplayName": "mg-COFT23-sandboxes",
@@ -34,13 +27,6 @@
             "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT23-landingzones",
             "Name": "mg-COFT23-landingzones",
             "DisplayName": "mg-COFT23-landingzones",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT23-decommissioned",
-            "Name": "mg-COFT23-decommissioned",
-            "DisplayName": "mg-COFT23-decommissioned",
             "Children": null
           },
           {

@@ -14,29 +14,7 @@
         "ParentId": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f",
         "ParentName": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
         "ParentDisplayName": "Tenant Root Group",
-        "Children": [
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT22-sandboxes",
-            "Name": "mg-COFT22-sandboxes",
-            "DisplayName": "mg-COFT22-sandboxes",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT22-platform",
-            "Name": "mg-COFT22-platform",
-            "DisplayName": "mg-COFT22-platform",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT22-landingzones",
-            "Name": "mg-COFT22-landingzones",
-            "DisplayName": "mg-COFT22-landingzones",
-            "Children": null
-          }
-        ]
+        "Children": null
       }
     }
   }

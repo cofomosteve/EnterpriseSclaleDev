@@ -1,0 +1,43 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT7-landingzones",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-COFT7-landingzones",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-COFT7-landingzones",
+        "UpdatedTime": "2021-05-04T13:25:39.0707853Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COFT7",
+        "ParentName": "mg-COFT7",
+        "ParentDisplayName": "mg-COFT7",
+        "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT7-devops",
+            "Name": "mg-COFT7-devops",
+            "DisplayName": "mg-COFT7-devops",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT7-corp",
+            "Name": "mg-COFT7-corp",
+            "DisplayName": "mg-COFT7-corp",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT7-online",
+            "Name": "mg-COFT7-online",
+            "DisplayName": "mg-COFT7-online",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}

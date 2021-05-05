@@ -14,29 +14,7 @@
         "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COFT23",
         "ParentName": "mg-COFT23",
         "ParentDisplayName": "mg-COFT23",
-        "Children": [
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT23-devops",
-            "Name": "mg-COFT23-devops",
-            "DisplayName": "mg-COFT23-devops",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT23-corp",
-            "Name": "mg-COFT23-corp",
-            "DisplayName": "mg-COFT23-corp",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT23-online",
-            "Name": "mg-COFT23-online",
-            "DisplayName": "mg-COFT23-online",
-            "Children": null
-          }
-        ]
+        "Children": null
       }
     }
   }
