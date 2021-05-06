@@ -1349,7 +1349,8 @@
                 "scope": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].scope]",
                 "parameters": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].parameters]"
             }
-        },
+        }
+      /*  ,
         {
             //
             "condition": "[if(and(equals(parameters('tagauditpolicy'), 'Yes'),equals(parameters('cktagbyresource'),bool('true')),greater(length(parameters('resourceTagsKey')),0),not(empty(parameters('resourceTagsKey')))), bool('true'), bool('false'))]",
@@ -1377,7 +1378,7 @@
                     //,"tagValue": { "value": "[parameters('resourceTags')[copyIndex()]]" }
                 }
             }
-        }
+        }*/
         /*,
         {
             //"condition": "[not(empty(parameters('allowedvmsize')))]",
