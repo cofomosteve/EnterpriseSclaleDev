@@ -1,0 +1,39 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT14/providers/Microsoft.Authorization/roleDefinitions/23e1bc31-570d-593e-a1c1-c3812fe376d4",
+        "Name": "23e1bc31-570d-593e-a1c1-c3812fe376d4",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-COFT14"
+          ],
+          "description": "Management",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Authorization/*/read",
+                "Microsoft.Insights/alertRules/*",
+                "Microsoft.Management/managementGroups/*",
+                "Microsoft.Authorization/*",
+                "Microsoft.Capacity/*",
+                "Microsoft.Blueprint/blueprints/*",
+                "Microsoft.Resources/deployments/*",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-COFT14-IT-prod-Custom Management Administrator"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}
