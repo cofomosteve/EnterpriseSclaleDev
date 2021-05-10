@@ -1369,8 +1369,8 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "description": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.description,parameters('resourceTagsKey')[copyIndex()])]",
-                "displayName": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.policyAssignmentNames.deployTAgEnforceExist,parameters('resourceTagsKey')[copyIndex()])]",
+                "description": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.description,'-',parameters('resourceTagsKey')[copyIndex()])]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.policyAssignmentNames.deployTAgEnforceExist,'-',parameters('resourceTagsKey')[copyIndex()])]",
                 "policyDefinitionId": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.policyDefinitions.deployTAgEnforceExist]",
                 "scope": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.scope]",
                 "parameters": {

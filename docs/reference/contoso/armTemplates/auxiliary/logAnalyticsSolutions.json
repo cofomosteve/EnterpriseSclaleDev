@@ -143,7 +143,7 @@
             "type": "string",
             "defaultValue": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
         },
-       
+
         "automationAccountName": {
             "type": "string",
             "defaultValue": "[concat(parameters('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]",
@@ -158,7 +158,7 @@
                 "description": "Provide resource name for the Log Analytics workspace. When deployed using ES RI, this name it provided deterministically based on ESLZ prefix."
             }
         }
-        
+
 
         //********************************Param for Generic Naming Convention*************************************/
         ,
@@ -257,48 +257,48 @@
     },
     "variables": {
 
-        
+
         //"laResourceId": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]",
         "laResourceId": "[parameters('loganalyticnameManagementsub')]",
         "solutions": {
             "security": {
-                "name": "[concat('Security', '(', parameters('workspaceName'), ')')]",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolsecmgn , '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "Security"
             },
             "agentHealth": {
-                "name": "[concat('AgentHealthAssessment', '(', parameters('workspaceName'), ')')]",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolagenthealthmgn, '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "AgentHealthAssessment"
             },
             "changeTracking": {
-                "name": "[concat('ChangeTracking', '(', parameters('workspaceName'), ')')]",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolchangetrackingmgn, '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "ChangeTracking"
             },
             "updateMgmt": {
-                "name": "[concat('Updates', '(', parameters('workspaceName'), ')')]",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolupdatemanagemgn, '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "Updates"
             },
             "azureActivity": {
-                "name": "[concat('AzureActivity', '(', parameters('workspaceName'), ')')]",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolactivitymgn, '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "AzureActivity"
             },
             "sqlAssessment": {
-                "name": "[concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolsqlassessmgn, '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "SQLAssessment"
             },
             "antiMalware": {
-                "name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolantimalwaremgn, '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "AntiMalware"
             },
             "vmInsights": {
-                "name": "[concat('VMInsights', '(', parameters('workspaceName'), ')')]",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolvminsightmgn, '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "VMInsights"
             },
             "serviceMap": {
-                "name": "[concat('ServiceMap', '(', parameters('workspaceName'), ')')]",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolsrvmapmgn, '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "ServiceMap"
             },
             "securityInsights": {
-                "name": "[concat('SecurityInsights', '(', parameters('workspaceName'), ')')]",
+                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolsecinsightmgn, '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "SecurityInsights"
             }
         }
