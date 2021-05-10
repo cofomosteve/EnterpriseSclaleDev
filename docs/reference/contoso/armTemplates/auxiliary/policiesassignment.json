@@ -508,18 +508,18 @@
                 "name": "DEP-ADD-TAG"
             },
 
-            "policyTAgEnforceExistDefinitions": {
-                "policyDefinitions": {
-                    "deployTAgEnforceExist": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99"
-                },
-                "policyAssignmentNames": {
-                    "deployTAgEnforceExist": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-TAG-EXIST')]"
-                },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
-                "scope": "[variables('scope')]",
-                "description": "Enforces existence of a tag. Does not apply to resource groups. ",
-                "name": "DEP-TAG-EXIST"
-            },
+            // "policyTAgEnforceExistDefinitions": {
+            //     "policyDefinitions": {
+            //         "deployTAgEnforceExist": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99"
+            //     },
+            //     "policyAssignmentNames": {
+            //         "deployTAgEnforceExist": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-TAG-EXIST')]"
+            //     },
+            //     //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+            //     "scope": "[variables('scope')]",
+            //     "description": "Enforces existence of a tag. Does not apply to resource groups. ",
+            //     "name": "DEP-TAG-EXIST"
+            // },
 
             "policyTagDefinitions": [
 
