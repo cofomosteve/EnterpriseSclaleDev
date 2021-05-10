@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "789e52ba-5ed0-44f0-a922-76972bee7f2d",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-FL-NSG",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFT14/providers/Microsoft.Authorization/policyAssignments/DEP-FL-NSG",
+        "Properties": {
+          "Description": "Audit for network security groups to verify if flow logs are configured and if flow log status is enabled. Enabling flow logs allows to log information about IP traffic flowing through network security group. It can be used for optimizing network flows, monitoring throughput, verifying compliance, detecting intrusions and more.",
+          "DisplayName": "DEP-FL-NSG",
+          "NotScopes": null,
+          "Parameters": {},
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/62329546-775b-4a3d-a4cb-eb4bb990d2c0",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFT14"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFT14/providers/Microsoft.Authorization/policyAssignments/DEP-FL-NSG",
+        "ResourceName": "DEP-FL-NSG",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}
