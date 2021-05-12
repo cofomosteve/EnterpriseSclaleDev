@@ -520,7 +520,239 @@
                 "description": "Enforces existence of a tag. Does not apply to resource groups. ",
                 "name": "DEP-TAG-EXIST"
             },
+            "policylocationallowedDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c"
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-LOCATION-ALLOWED')]"
+                },
+                "parameters": {
+                    "listOfAllowedLocations": {
+                        "value": "[parameters('listOfAllowedLocations')]"
+                    }
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region.",
+                "name": "DEP-LOCATION-ALLOWED"
+            },
+            "policylocationallowedRGDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988"
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-LOCATION-RG-ALLOWED')]"
+                },
+                "parameters": {
+                    "listOfAllowedLocations": {
+                        "value": "[parameters('listOfAllowedLocations')]"
+                    }
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "This policy enables you to restrict the locations your organization can create resource groups in. Use to enforce your geo-compliance requirements.",
+                "name": "DEP-LOCATION-RG-ALLOWED"
+            },
+            "policyNetWatcherVNETDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/a9b99dd8-06c5-4317-8629-9d86a3c6e7d9"
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-NETWORK-WATCHER-VNET')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "This policy creates a network watcher resource in regions with virtual networks. You need to ensure existence of a resource group named networkWatcherRG, which will be used to deploy network watcher instances.",
+                "name": "DEP-NETWORK-WATCHER-VNET"
+            },
+            "policyTDEDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f"
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-TDE-SQLDB')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "Enables transparent data encryption on SQL databases",
+                "name": "DEP-TDE-SQLDB"
+            },
+            "policyTDSQLServerDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/36d49e87-48c4-4f2e-beed-ba4ed02b71f5"
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-THREAT-DETECT-SQLDB')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "This policy ensures that Threat Detection is enabled on SQL Servers.",
+                "name": "DEP-THREAT-DETECT-SQLDB"
+            },
+            "policyIaaSAntimalwareWinSrvDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/2835b622-407b-4114-9198-6f7064cbe0dc"
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-ANTIMALWARE-WIN-SRV')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "This policy deploys a Microsoft IaaSAntimalware extension with a default configuration when a VM is not configured with the antimalware extension.",
+                "name": "DEP-ANTIMALWARE-WIN-SRV"
+            },
 
+            "policyOSImgPatchVMSetDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/465f0161-0087-490a-9ad9-ad6217f4f43a"
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-OS-IMG-PATCH-VM-SCALESET')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "This policy enforces enabling automatic OS image patching on Virtual Machine Scale Sets to always keep Virtual Machines secure by safely applying latest security patches every month.",
+                "name": "DEP-OS-IMG-PATCH-VM-SCALESET"
+            },
+
+            "policyADVSECURITYSQLServerDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/6134c3db-786f-471e-87bc-8f479dc890f6"
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-ADV-SECURITY-SQLDB')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "This policy enables Advanced Data Security on SQL Servers. This includes turning on Threat Detection and Vulnerability Assessment. It will automatically create a storage account in the same region and resource group as the SQL server to store scan results, with a 'sqlva' prefix.",
+                "name": "DEP-ADV-SECURITY-SQLDB"
+            },
+
+            "policyADVSECURITYStoaregACCDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/361c2074-3595-4e5d-8cab-4f21dffc835c"
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-ADV-SECURITY-STR-ACC')]"
+                },
+                "parameters": {
+                    "listOfAllowedLocations": {
+                        "value": "[parameters('listOfAllowedLocations')]"
+                    }
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "This policy enables Advanced Threat Protection on Storage Accounts.",
+                "name": "DEP-ADV-SECURITY-STR-ACC"
+            },
+
+            "policyConfigLogAnalWindowsVMDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/0868462e-646c-4fe3-9ced-a733534b6a2c"
+                },
+                "parameters": {
+                    "logAnalytics": {
+                        "value": "[variables('loganalyticnameManagementsub')]"
+                    }
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-LOG-ANAL-WINDOWS-VM')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "Deploy Log Analytics agent for Windows virtual machines if the virtual machine image is in the list defined and the agent is not installed.",
+                "name": "DEP-LOG-ANAL-WINDOWS-VM"
+            },
+
+
+            "policyConfigLogAnalLinuxVMDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/053d3325-282c-4e5c-b944-24faffd30d77"
+                },
+                "parameters": {
+                    "logAnalytics": {
+                        "value": "[variables('loganalyticnameManagementsub')]"
+                    }
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-LOG-ANAL-LINUX-VM')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "Deploy Log Analytics agent for Linux VMs if the VM Image (OS) is in the list defined and the agent is not installed.",
+                "name": "DEP-LOG-ANAL-LINUX-VM"
+            },
+
+            "policyDiagSetNSGefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/c9c29499-c1d1-4195-99bd-2ec9e3a9dc89"
+                },
+                "parameters": {
+                    "storagePrefix": {
+                        "value": "[variables('loganalyticnameManagementsub')]" //from generic+- no location
+                    },
+                    "rgName": {
+                        "value": "[variables('loganalyticnameManagementsub')]" // Mgn
+                    }
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-DIAG-SET-NSG')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "This policy automatically deploys diagnostic settings to network security groups. A storage account with name '{storagePrefixParameter}{NSGLocation}' will be automatically created.",
+                "name": "DEP-DIAG-SET-NSG"
+            },
+
+            "policyEncryptDataLakeSTRACCDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/a7ff3161-0087-490a-9ad9-ad6217f4f43a"
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-ENCRY-DL-STACC')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "This policy ensures encryption is enabled on all Data Lake Store accounts",
+                "name": "DEP-ENCRY-DL-STACC"
+            },
+
+            "policyConfigSQLServerAuditDefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/f4c68484-132f-41f9-9b6d-3e4b1cb55036"
+                },
+                "parameters": {
+                    "retentionDays": {
+                        "value": "[variables('loganalyticnameManagementsub')]" //from generic+- no location
+                    },
+                    "storageAccountsResourceGroup": {
+                        "value": "[variables('loganalyticnameManagementsub')]" 
+                        // Auditing writes database events to an audit log in your Azure Storage account (a storage account will be created in each region where a SQL Server is created that will be shared by all servers in that region). Important - for proper operation of Auditing do not delete or rename the resource group or the storage accounts.
+                    }
+                },
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-SQL-SRV-')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "To ensure the operations performed against your SQL assets are captured, SQL servers should have auditing enabled. This is sometimes required for compliance with regulatory standards.",
+                "name": "DEP-SQL-SRV-"
+            },
+
+            "policySQLServerAuditEnableefinitions": {
+                "policyDefinitions": {
+                    "name": "/providers/Microsoft.Authorization/policyDefinitions/a6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9"
+                },
+                
+                "policyAssignmentNames": {
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-SQLSRV-AUDIT-ENAB')]"
+                },
+                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "scope": "[variables('scope')]",
+                "description": "Auditing on your SQL Server should be enabled to track database activities across all databases on the server and save them in an audit log.",
+                "name": "DEP-SQLSRV-AUDIT-ENAB"
+            },
             "policyTagDefinitions": [
 
 
@@ -925,7 +1157,7 @@
 
                 }*/
                 /**************TAG*************************************************************************************/
-                
+
                 /*{// verifie un tag specific et sa valeur spécific a la creation et rejete
                     "name": "require-tag-resource",
                     "apply": "Yes",
@@ -1085,7 +1317,7 @@
 
                 /**************GENERAL*/
 
-               /* {
+                /* {
                     "name": "allowed-location",
                     "apply": "Yes",
                     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
@@ -1349,8 +1581,7 @@
                 "scope": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].scope]",
                 "parameters": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].parameters]"
             }
-        }
-         ,
+        },
         {
             //
             "condition": "[if(and(equals(parameters('tagauditpolicy'), 'Yes'),equals(parameters('cktagbyresource'),bool('true')),greater(length(parameters('resourceTagsKey')),0),not(empty(parameters('resourceTagsKey')))), bool('true'), bool('false'))]",

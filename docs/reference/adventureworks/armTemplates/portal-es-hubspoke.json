@@ -48,6 +48,30 @@
                             "regex": "^[a-z0-9A-Z-]{1,10}$",
                             "validationMessage": "The prefix must be 1-10 characters."
                         }
+                    },
+                    {
+                        "name": "esAllowedLocationsApi",
+                        "type": "Microsoft.Solutions.ArmApiControl",
+                        "request": {
+                            "method": "GET",
+                            "path": "locations?api-version=2019-11-01"
+                        }
+                    },
+                    {
+                        "name": "esAllowedNwLocation",
+                        "type": "Microsoft.Common.DropDown",
+                        "label": "Region",                        
+                        "multiselect": true,
+                        "selectAll": true,
+                        "filter": true,
+                        "filterPlaceholder": "Filter items ...",
+                        "multiLine": true,
+                        "defaultValue": ["canadacentral","canadaeast"],
+                        "toolTip": "Select the allowed region for you resource deployment. Make sure that Connectivity location setting match with those selected",
+                        "constraints": {
+                            "allowedValues": "[map(steps('esConnectivityGoalState').esAllowedLocationsApi.value, (item) => parse(concat('{\"label\":\"', item.displayName, '\",\"value\":\"', item.name, '\"}')))]",
+                            "required": true
+                        }
                     }
                 ]
             },
@@ -120,7 +144,7 @@
                         "label": "Management subscription",
                         "toolTip": "",
                         "multiselect": false,
-                        "selectAll": true,
+                        "selectAll": false,
                         "filter": true,
                         "filterPlaceholder": "Filter items ...",
                         "multiLine": true,
@@ -589,7 +613,7 @@
                         "label": "Connectivity subscription",
                         "toolTip": "",
                         "multiselect": false,
-                        "selectAll": true,
+                        "selectAll": false,
                         "filter": true,
                         "filterPlaceholder": "Filter items ...",
                         "multiLine": true,
@@ -844,7 +868,7 @@
                         "label": "Identity subscription",
                         "toolTip": "",
                         "multiselect": false,
-                        "selectAll": true,
+                        "selectAll": false,
                         "filter": true,
                         "filterPlaceholder": "Filter items ...",
                         "multiLine": true,
@@ -1558,6 +1582,7 @@
             }
         ],
         "outputs": {
+            "allowedlocation": "[steps('lzSettings').esAllowedNwLocation]",
             "vpnGwType": "[steps('esConnectivityGoalState').esVpnGwType]",
             "subnetMaskForGw": "[steps('esConnectivityGoalState').esAddressVpnOrEr]",
             "subnetMaskForAzFw": "[steps('esConnectivityGoalState').esAddressFw]",

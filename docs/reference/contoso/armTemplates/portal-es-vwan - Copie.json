@@ -78,8 +78,46 @@
                                 }
                             ]
                         }
+                    },
+                    {
+                        "name": "esDeployNetwork",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Deploy Network",
+                        "defaultValue": "No",
+                        "toolTip": "If 'Yes' is selected You will have to select topology between HUB-WAN and Hub-Spoke",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esNetworkTopology",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Select NetWork Topology according to your Infrastructure workload need",
+                        "defaultValue": "No",
+                        "visible": "[equals(steps('lzSettings').esDeployNetwork, 'Yes')]",
+                        "toolTip": "If 'Yes' is selected when also adding a subscription for connectivity, ARM will deploy VPN gateway",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Yes",
+                                    "value": "Yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "No"
+                                }
+                            ]
+                        }
                     }
-                    
                 ]
             },
             {
@@ -1105,7 +1143,7 @@
                     {
                         "name": "infoBox1",
                         "type": "Microsoft.Common.InfoBox",
-                        
+                        "visible": "[equals(steps('lzSettings').esDeployNetwork, 'Yes')]",
                         "options": {
                             "icon": "Info",
                             "text": "To enable connectivity, you must allocate a connectivity Subscription. Please note, this Subscription will be moved to the connectivity Management Group, and ARM will deploy either a Virtual WAN with the first Virtual Hub or a Hub & Spoke VNet and requisite settings. We recommend using a new Subscription with no existing resources.",
