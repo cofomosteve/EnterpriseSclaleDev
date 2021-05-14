@@ -460,13 +460,13 @@
                                 "promotionCode": "",
                                 "publisher": "Microsoft"
                             }
-                        }/*,
+                        },
                         {
                             // Conditionally deploy solution for sql assessment
                             "condition": "[equals(parameters('enableSqlAssessment'), 'Yes')]",
                             "apiVersion": "2015-11-01-preview",
                             "type": "Microsoft.OperationsManagement/solutions",
-                            //"tags": "[parameters('resourceTags')]",
+                            "tags": "[parameters('resourceTags')]",
                             "name": "[variables('solutions').sqlAssessment.name]",
                             "location": "[parameters('workspaceRegion')]",
                             "properties": {
@@ -484,7 +484,7 @@
                             "condition": "[equals(parameters('enableUpdateMgmt'), 'Yes')]",
                             "apiVersion": "2015-11-01-preview",
                             "type": "Microsoft.OperationsManagement/solutions",
-                            //"tags": "[parameters('resourceTags')]",
+                            "tags": "[parameters('resourceTags')]",
                             "name": "[variables('solutions').updateMgmt.name]",
                             "location": "[parameters('workspaceRegion')]",
                             "properties": {
@@ -496,7 +496,7 @@
                                 "promotionCode": "",
                                 "publisher": "Microsoft"
                             }
-                        }*/
+                        }
                     ]
                 }
             }
