@@ -1064,7 +1064,7 @@
             "properties": {}
         }
         
-        /*,
+        ,
 
         {
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'Yes'))]",
@@ -1549,7 +1549,7 @@
 
                 }
             }
-        }*/
+        }
 
     ],
     "outputs": {

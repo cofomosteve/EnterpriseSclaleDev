@@ -1584,34 +1584,34 @@
                 "parameters": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].parameters]"
             }
         },
-        {
-            //
-            "condition": "[if(and(equals(parameters('tagauditpolicy'), 'Yes'),equals(parameters('cktagbyresource'),bool('true')),greater(length(parameters('resourceTagsKey')),0),not(empty(parameters('resourceTagsKey')))), bool('true'), bool('false'))]",
-            "type": "Microsoft.Authorization/policyAssignments",
-            "apiVersion": "2018-05-01",
-            "name": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.name,'-',copyIndex())]",
+        // {
+        //     //
+        //     "condition": "[if(and(equals(parameters('tagauditpolicy'), 'Yes'),equals(parameters('cktagbyresource'),bool('true')),greater(length(parameters('resourceTagsKey')),0),not(empty(parameters('resourceTagsKey')))), bool('true'), bool('false'))]",
+        //     "type": "Microsoft.Authorization/policyAssignments",
+        //     "apiVersion": "2018-05-01",
+        //     "name": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.name,'-',copyIndex())]",
 
-            "copy": {
-                "name": "PolicyTagExistEnforceAssignmentCopy",
-                "count": "[length(parameters('resourceTagsKey'))]"
-            },
+        //     "copy": {
+        //         "name": "PolicyTagExistEnforceAssignmentCopy",
+        //         "count": "[length(parameters('resourceTagsKey'))]"
+        //     },
 
 
-            "location": "[deployment().location]",
-            "identity": {
-                "type": "SystemAssigned"
-            },
-            "properties": {
-                "description": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.description,'-',parameters('resourceTagsKey')[copyIndex()])]",
-                "displayName": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.policyAssignmentNames.deployTAgEnforceExist,'-',parameters('resourceTagsKey')[copyIndex()])]",
-                "policyDefinitionId": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.policyDefinitions.deployTAgEnforceExist]",
-                "scope": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.scope]",
-                "parameters": {
-                    "tagName": { "value": "[parameters('resourceTagsKey')[copyIndex()]]" }
-                    //,"tagValue": { "value": "[parameters('resourceTags')[copyIndex()]]" }
-                }
-            }
-        },
+        //     "location": "[deployment().location]",
+        //     "identity": {
+        //         "type": "SystemAssigned"
+        //     },
+        //     "properties": {
+        //         "description": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.description,'-',parameters('resourceTagsKey')[copyIndex()])]",
+        //         "displayName": "[concat(variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.policyAssignmentNames.deployTAgEnforceExist,'-',parameters('resourceTagsKey')[copyIndex()])]",
+        //         "policyDefinitionId": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.policyDefinitions.deployTAgEnforceExist]",
+        //         "scope": "[variables('policyAssignmentNames').policyTAgEnforceExistDefinitions.scope]",
+        //         "parameters": {
+        //             "tagName": { "value": "[parameters('resourceTagsKey')[copyIndex()]]" }
+        //             //,"tagValue": { "value": "[parameters('resourceTags')[copyIndex()]]" }
+        //         }
+        //     }
+        // },
         {
             //
             "condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
