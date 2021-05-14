@@ -557,19 +557,15 @@
                 "No"
             ],
             "defaultValue": "No"
-        }
-
-
-
-        ,"cktagbyresource": {
+        },
+        "cktagbyresource": {
             "type": "bool",
             "allowedValues": [
                 true,
                 false
             ],
             "defaultValue": false
-        }
-        ,
+        },
         "tagauditpolicy": {
             "type": "string",
             "allowedValues": [
@@ -587,7 +583,14 @@
             },
             "defaultValue": []
         },
-
+        "allowedlocation": {
+            "type": "array",
+            "metadata": {
+                "displayName": "Which Region Allowed?",
+                "description": "allowedlocation"
+            },
+            "defaultValue": []
+        },
         "listOfResourceTypesWithDiagnosticLogsEnabled": {
             "type": "Array",
 
@@ -830,7 +833,7 @@
         //"tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], json('{}')) ]",
         "tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], variables('resourceTags')) ]",
         "settingArray": "[if(empty(variables('tagsByResourceout')),createArray(),split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters')))]",
-        
+
 
         "propNameArray": {
             "copy": [
@@ -1512,6 +1515,7 @@
                     "apply-deny-public-endpoint-paas": { "value": "[parameters('apply-deny-public-endpoint-paas')]" },
                     "apply-tls-ssl-enforcement-encrypt-paas": { "value": "[parameters('apply-tls-ssl-enforcement-encrypt-paas')]" },
                     "apply-audit-resource-without-encryption": { "value": "[parameters('apply-audit-resource-without-encryption')]" },
+                    "listOfAllowedLocations": { "value": "[parameters('allowedlocation')]" },
                     "tagauditpolicy": { "value": "[parameters('tagauditpolicy')]" },
                     "cktagbyresource": { "value": "[parameters('cktagbyresource')]" },
                     "allowedVMSizesku": { "value": "[parameters('allowedVMSizesku')]" },
@@ -1549,8 +1553,7 @@
         "deployment": {
             "type": "string",
             "value": "[concat(deployment().name, ' has successfully deployed. Welcome to Enterprise-Scale!')]"
-        }
-        ,
+        },
         "tagsByResourceArray": {
             "type": "array",
             "value": "[variables('propNameArray').copyPropertyNames]"
@@ -1558,12 +1561,11 @@
         "resourceTags": {
             "type": "object",
             "value": "[variables('resourceTags')]"
-        }
-,
+        },
         "tagsByResourceout": {
             "type": "object",
             "value": "[variables('tagsByResourceout')]"
         }
-        
+
     }
 }

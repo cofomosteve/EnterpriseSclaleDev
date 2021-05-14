@@ -506,7 +506,8 @@
                 "scope": "[variables('scope')]",
                 "description": "Adds or replaces the specified tag and value when any resource is created or updated. Existing resources can be remediated by triggering a remediation task. Does not modify tags on resource groups. ",
                 "name": "DEP-ADD-TAG"
-            },
+            }
+            /*,
 
             "policyTAgEnforceExistDefinitions": {
                 "policyDefinitions": {
@@ -752,7 +753,7 @@
                 "scope": "[variables('scope')]",
                 "description": "Auditing on your SQL Server should be enabled to track database activities across all databases on the server and save them in an audit log.",
                 "name": "DEP-SQLSRV-AUDIT-ENAB"
-            },
+            }*/,
             "policyTagDefinitions": [
 
 
@@ -1581,7 +1582,7 @@
                 "scope": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].scope]",
                 "parameters": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].parameters]"
             }
-        },
+        }/*,
         {
             //
             "condition": "[if(and(equals(parameters('tagauditpolicy'), 'Yes'),equals(parameters('cktagbyresource'),bool('true')),greater(length(parameters('resourceTagsKey')),0),not(empty(parameters('resourceTagsKey')))), bool('true'), bool('false'))]",
@@ -1609,7 +1610,7 @@
                     //,"tagValue": { "value": "[parameters('resourceTags')[copyIndex()]]" }
                 }
             }
-        }
+        }*/
         /*,
         {
             //"condition": "[not(empty(parameters('allowedvmsize')))]",
