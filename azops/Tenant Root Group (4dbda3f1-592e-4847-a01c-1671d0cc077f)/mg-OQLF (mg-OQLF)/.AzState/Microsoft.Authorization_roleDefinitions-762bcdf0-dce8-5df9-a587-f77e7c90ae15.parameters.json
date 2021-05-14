@@ -1,0 +1,34 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-OQLF/providers/Microsoft.Authorization/roleDefinitions/762bcdf0-dce8-5df9-a587-f77e7c90ae15",
+        "Name": "762bcdf0-dce8-5df9-a587-f77e7c90ae15",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-OQLF"
+          ],
+          "description": "Vmware Solution Administrator",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Insights/*",
+                "Microsoft.Automation/automationAccounts/*",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-OQLF-IT-prod-Custom Vmware Solution Administrator"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}

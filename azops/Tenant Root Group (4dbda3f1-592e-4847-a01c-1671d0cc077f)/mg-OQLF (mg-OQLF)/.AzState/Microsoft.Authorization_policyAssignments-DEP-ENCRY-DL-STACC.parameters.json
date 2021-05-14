@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "efb850fb-2e66-4db6-b0f8-a0f7f11caa3d",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-ENCRY-DL-STACC",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-OQLF/providers/Microsoft.Authorization/policyAssignments/DEP-ENCRY-DL-STACC",
+        "Properties": {
+          "Description": "This policy ensures encryption is enabled on all Data Lake Store accounts",
+          "DisplayName": "DEP-ENCRY-DL-STACC",
+          "NotScopes": null,
+          "Parameters": null,
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a7ff3161-0087-490a-9ad9-ad6217f4f43a",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-OQLF"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-OQLF/providers/Microsoft.Authorization/policyAssignments/DEP-ENCRY-DL-STACC",
+        "ResourceName": "DEP-ENCRY-DL-STACC",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

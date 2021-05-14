@@ -1,0 +1,41 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-OQLF/providers/Microsoft.Authorization/roleDefinitions/f76dc809-3af0-51f9-bf1b-f6f7e42013b8",
+        "Name": "f76dc809-3af0-51f9-bf1b-f6f7e42013b8",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-OQLF"
+          ],
+          "description": "Billing Administrator",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Authorization/*/read",
+                "Microsoft.Insights/alertRules/*",
+                "Microsoft.Consumption/*",
+                "Microsoft.CostManagement/*",
+                "Microsoft.Resources/subscriptions/read",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Support/*",
+                "Microsoft.Advisor/configurations/read",
+                "Microsoft.Advisor/recommendations/read",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-OQLF-IT-prod-Custom  Billing Administrator"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}

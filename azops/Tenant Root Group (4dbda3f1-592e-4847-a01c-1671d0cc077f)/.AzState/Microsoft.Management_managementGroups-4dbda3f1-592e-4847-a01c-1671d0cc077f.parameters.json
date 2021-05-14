@@ -24,93 +24,9 @@
           },
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT22",
-            "Name": "mg-COFT22",
-            "DisplayName": "mg-COFT22",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT23",
-            "Name": "mg-COFT23",
-            "DisplayName": "mg-COFT23",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT25",
-            "Name": "mg-COFT25",
-            "DisplayName": "mg-COFT25",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT24",
-            "Name": "mg-COFT24",
-            "DisplayName": "mg-COFT24",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT4",
-            "Name": "mg-COFT4",
-            "DisplayName": "mg-COFT4",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT6",
-            "Name": "mg-COFT6",
-            "DisplayName": "mg-COFT6",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT7",
-            "Name": "mg-COFT7",
-            "DisplayName": "mg-COFT7",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT9",
-            "Name": "mg-COFT9",
-            "DisplayName": "mg-COFT9",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT2",
-            "Name": "mg-COFOT2",
-            "DisplayName": "mg-COFOT2",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT11",
-            "Name": "mg-COFOT11",
-            "DisplayName": "mg-COFOT11",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT12",
-            "Name": "mg-COFOT12",
-            "DisplayName": "mg-COFOT12",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT14",
-            "Name": "mg-COFT14",
-            "DisplayName": "mg-COFT14",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFT15",
-            "Name": "mg-COFT15",
-            "DisplayName": "mg-COFT15",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-OQLF",
+            "Name": "mg-OQLF",
+            "DisplayName": "mg-OQLF",
             "Children": null
           }
         ]

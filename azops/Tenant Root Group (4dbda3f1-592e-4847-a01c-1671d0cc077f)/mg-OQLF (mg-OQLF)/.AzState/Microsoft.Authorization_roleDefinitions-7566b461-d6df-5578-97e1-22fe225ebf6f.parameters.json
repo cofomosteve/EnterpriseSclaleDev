@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-OQLF/providers/Microsoft.Authorization/roleDefinitions/7566b461-d6df-5578-97e1-22fe225ebf6f",
+        "Name": "7566b461-d6df-5578-97e1-22fe225ebf6f",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-OQLF"
+          ],
+          "description": "Landing Zone Owner",
+          "permissions": [
+            {
+              "actions": [
+                "*",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-OQLF-IT-prod-Custom Landing Zone Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}
