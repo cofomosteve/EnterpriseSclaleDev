@@ -1,0 +1,41 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "f14a3ff5-537e-4132-beb3-d6b239a261df",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-LOCATION-RG-ALLOWED",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-OQLF/providers/Microsoft.Authorization/policyAssignments/DEP-LOCATION-RG-ALLOWED",
+        "Properties": {
+          "Description": "This policy enables you to restrict the locations your organization can create resource groups in. Use to enforce your geo-compliance requirements.",
+          "DisplayName": "DEP-LOCATION-RG-ALLOWED",
+          "NotScopes": null,
+          "Parameters": {
+            "listOfAllowedLocations": {
+              "value": [
+                "canada",
+                "canadacentral",
+                "canadaeast"
+              ]
+            }
+          },
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-OQLF"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-OQLF/providers/Microsoft.Authorization/policyAssignments/DEP-LOCATION-RG-ALLOWED",
+        "ResourceName": "DEP-LOCATION-RG-ALLOWED",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

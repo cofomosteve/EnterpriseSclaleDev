@@ -1,0 +1,43 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-OQLF-platform",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-OQLF-platform",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-OQLF-platform",
+        "UpdatedTime": "2021-05-14T08:24:25.455696Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/mg-OQLF",
+        "ParentName": "mg-OQLF",
+        "ParentDisplayName": "mg-OQLF",
+        "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-OQLF-management",
+            "Name": "mg-OQLF-management",
+            "DisplayName": "mg-OQLF-management",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-OQLF-identity",
+            "Name": "mg-OQLF-identity",
+            "DisplayName": "mg-OQLF-identity",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-OQLF-connectivity",
+            "Name": "mg-OQLF-connectivity",
+            "DisplayName": "mg-OQLF-connectivity",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}
