@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "9d566564-0b5d-4b27-9252-ad89bef424db",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-OS-IMG-PATCH-VM-SET",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFOT/providers/Microsoft.Authorization/policyAssignments/DEP-OS-IMG-PATCH-VM-SET",
+        "Properties": {
+          "Description": "This policy enforces enabling automatic OS image patching on Virtual Machine Scale Sets to always keep Virtual Machines secure by safely applying latest security patches every month.",
+          "DisplayName": "DEP-OS-IMG-PATCH-VM-SET",
+          "NotScopes": null,
+          "Parameters": null,
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/465f0161-0087-490a-9ad9-ad6217f4f43a",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFOT"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFOT/providers/Microsoft.Authorization/policyAssignments/DEP-OS-IMG-PATCH-VM-SET",
+        "ResourceName": "DEP-OS-IMG-PATCH-VM-SET",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

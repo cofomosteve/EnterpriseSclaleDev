@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf-management/providers/Microsoft.Authorization/roleAssignments/4c68e1cd-e494-52c9-ad74-315cd9f19fb9",
+        "Name": "4c68e1cd-e494-52c9-ad74-315cd9f19fb9",
+        "properties": {
+          "DisplayName": "Deploy-Log-Analytics",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "fd5394f3-1168-442b-9640-2bc8720e562a",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

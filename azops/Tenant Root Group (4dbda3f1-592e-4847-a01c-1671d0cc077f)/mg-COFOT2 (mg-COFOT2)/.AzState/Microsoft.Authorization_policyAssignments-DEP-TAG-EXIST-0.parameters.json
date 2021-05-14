@@ -1,0 +1,37 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "b32c3a05-35df-4f20-8a79-13cf9a34ead1",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-TAG-EXIST-0",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFOT2/providers/Microsoft.Authorization/policyAssignments/DEP-TAG-EXIST-0",
+        "Properties": {
+          "Description": "Enforces existence of a tag. Does not apply to resource groups. -CentreCout",
+          "DisplayName": "DEP-TAG-EXIST-CentreCout",
+          "NotScopes": null,
+          "Parameters": {
+            "tagName": {
+              "value": "CentreCout"
+            }
+          },
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFOT2"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFOT2/providers/Microsoft.Authorization/policyAssignments/DEP-TAG-EXIST-0",
+        "ResourceName": "DEP-TAG-EXIST-0",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

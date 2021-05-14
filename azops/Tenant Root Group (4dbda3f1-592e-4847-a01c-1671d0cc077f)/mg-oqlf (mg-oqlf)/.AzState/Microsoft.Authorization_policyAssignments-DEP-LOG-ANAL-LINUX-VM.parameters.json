@@ -1,0 +1,37 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "4d3478fb-6ceb-498c-899c-bda0dc39fca0",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-LOG-ANAL-LINUX-VM",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-oqlf/providers/Microsoft.Authorization/policyAssignments/DEP-LOG-ANAL-LINUX-VM",
+        "Properties": {
+          "Description": "Deploy Log Analytics agent for Linux VMs if the VM Image (OS) is in the list defined and the agent is not installed.",
+          "DisplayName": "DEP-LOG-ANAL-LINUX-VM",
+          "NotScopes": null,
+          "Parameters": {
+            "logAnalytics": {
+              "value": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc/resourcegroups/rg-oqlf-it-prod-mgmt/providers/microsoft.operationalinsights/workspaces/la-oqlf-it-prod-2830c1bb-dbc2-41d3-bf92-616ef65f80bc"
+            }
+          },
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/053d3325-282c-4e5c-b944-24faffd30d77",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-oqlf"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-oqlf/providers/Microsoft.Authorization/policyAssignments/DEP-LOG-ANAL-LINUX-VM",
+        "ResourceName": "DEP-LOG-ANAL-LINUX-VM",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

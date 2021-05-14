@@ -1,0 +1,50 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT/providers/Microsoft.Authorization/roleDefinitions/416fe593-fe39-54b5-b563-73002ee1861c",
+        "Name": "416fe593-fe39-54b5-b563-73002ee1861c",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-COFOT"
+          ],
+          "description": "Compute  Ops",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Insights/*",
+                "Microsoft.Automation/automationAccounts/*",
+                "Microsoft.DevTestLab/schedules/*",
+                "Microsoft.Insights/alertRules/*",
+                "Microsoft.Network/applicationGateways/*",
+                "Microsoft.Network/networkSecurityGroups/*",
+                "Microsoft.RecoveryServices/*",
+                "Microsoft.SqlVirtualMachine/*",
+                "Microsoft.Network/locations/*",
+                "Microsoft.Storage/storageAccounts/listKeys/action",
+                "Microsoft.Storage/storageAccounts/read",
+                "Microsoft.Network/publicIPAddresses/*",
+                "Microsoft.Network/virtualNetworks/*",
+                "Microsoft.Network/loadBalancers/read",
+                "Microsoft.Network/networkInterfaces/*",
+                "Microsoft.Compute/virtualMachines/*",
+                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                "Microsoft.Resources/deployments/*",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-COFOT-IT-prod-Custom Compute  Ops"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}

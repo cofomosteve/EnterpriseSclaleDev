@@ -1,0 +1,57 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-oqlf",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-oqlf",
+        "UpdatedTime": "2021-05-14T14:36:27.8134535Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentName": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentDisplayName": "Tenant Root Group",
+        "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf-sandboxes",
+            "Name": "mg-oqlf-sandboxes",
+            "DisplayName": "mg-oqlf-sandboxes",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf-platform",
+            "Name": "mg-oqlf-platform",
+            "DisplayName": "mg-oqlf-platform",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf-landingzones",
+            "Name": "mg-oqlf-landingzones",
+            "DisplayName": "mg-oqlf-landingzones",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf-jumpboxes",
+            "Name": "mg-oqlf-jumpboxes",
+            "DisplayName": "mg-oqlf-jumpboxes",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf-decommissioned",
+            "Name": "mg-oqlf-decommissioned",
+            "DisplayName": "mg-oqlf-decommissioned",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}

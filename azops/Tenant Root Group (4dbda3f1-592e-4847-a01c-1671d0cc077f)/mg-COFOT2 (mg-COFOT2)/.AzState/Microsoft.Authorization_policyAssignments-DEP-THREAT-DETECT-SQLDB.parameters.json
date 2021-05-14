@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "2673f98b-8e3b-412f-9998-cf04975a6925",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-THREAT-DETECT-SQLDB",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFOT2/providers/Microsoft.Authorization/policyAssignments/DEP-THREAT-DETECT-SQLDB",
+        "Properties": {
+          "Description": "This policy ensures that Threat Detection is enabled on SQL Servers.",
+          "DisplayName": "DEP-THREAT-DETECT-SQLDB",
+          "NotScopes": null,
+          "Parameters": null,
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/36d49e87-48c4-4f2e-beed-ba4ed02b71f5",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFOT2"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFOT2/providers/Microsoft.Authorization/policyAssignments/DEP-THREAT-DETECT-SQLDB",
+        "ResourceName": "DEP-THREAT-DETECT-SQLDB",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

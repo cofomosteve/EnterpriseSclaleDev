@@ -1,0 +1,40 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "40d71968-403e-41a1-aaa1-675ae761f030",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "Deploy-AzActivity-Log",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-oqlf/providers/Microsoft.Authorization/policyAssignments/Deploy-AzActivity-Log",
+        "Properties": {
+          "Description": "Deploy-AzActivity-Log",
+          "DisplayName": "Deploy-AzActivity-Log",
+          "NotScopes": null,
+          "Parameters": {
+            "logAnalytics": {
+              "value": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc/resourcegroups/rg-oqlf-it-prod-mgmt/providers/microsoft.operationalinsights/workspaces/la-oqlf-it-prod-2830c1bb-dbc2-41d3-bf92-616ef65f80bc"
+            },
+            "logsEnabled": {
+              "value": "True"
+            }
+          },
+          "PolicyDefinitionId": "/providers/Microsoft.Management/managementGroups/mg-oqlf/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-ActivityLog",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-oqlf"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-oqlf/providers/Microsoft.Authorization/policyAssignments/Deploy-AzActivity-Log",
+        "ResourceName": "Deploy-AzActivity-Log",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}
