@@ -506,8 +506,7 @@
                 "scope": "[variables('scope')]",
                 "description": "Adds or replaces the specified tag and value when any resource is created or updated. Existing resources can be remediated by triggering a remediation task. Does not modify tags on resource groups. ",
                 "name": "DEP-ADD-TAG"
-            }
-            /*,
+            },
 
             "policyTAgEnforceExistDefinitions": {
                 "policyDefinitions": {
@@ -691,10 +690,10 @@
                 },
                 "parameters": {
                     "storagePrefix": {
-                        "value": "[variables('loganalyticnameManagementsub')]" //from generic+- no location
+                        "value": "[parameters('globalvariable').genericresourceprefix.storagediagnosticmgn]" //from generic+- no location
                     },
                     "rgName": {
-                        "value": "[variables('loganalyticnameManagementsub')]" // Mgn
+                        "value": "[parameters('ManagementRessourceGroup')]"
                     }
                 },
                 "policyAssignmentNames": {
@@ -728,7 +727,7 @@
                         "value": "[variables('loganalyticnameManagementsub')]" //from generic+- no location
                     },
                     "storageAccountsResourceGroup": {
-                        "value": "[variables('loganalyticnameManagementsub')]" 
+                        "value": "[variables('loganalyticnameManagementsub')]"
                         // Auditing writes database events to an audit log in your Azure Storage account (a storage account will be created in each region where a SQL Server is created that will be shared by all servers in that region). Important - for proper operation of Auditing do not delete or rename the resource group or the storage accounts.
                     }
                 },
@@ -745,7 +744,7 @@
                 "policyDefinitions": {
                     "name": "/providers/Microsoft.Authorization/policyDefinitions/a6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9"
                 },
-                
+
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-SQLSRV-AUDIT-ENAB')]"
                 },
@@ -753,7 +752,9 @@
                 "scope": "[variables('scope')]",
                 "description": "Auditing on your SQL Server should be enabled to track database activities across all databases on the server and save them in an audit log.",
                 "name": "DEP-SQLSRV-AUDIT-ENAB"
-            }*/,
+            },
+
+            
             "policyTagDefinitions": [
 
 
@@ -1582,7 +1583,7 @@
                 "scope": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].scope]",
                 "parameters": "[variables('policyAssignmentNames').policySetDefinitions[copyIndex()].parameters]"
             }
-        }/*,
+        },
         {
             //
             "condition": "[if(and(equals(parameters('tagauditpolicy'), 'Yes'),equals(parameters('cktagbyresource'),bool('true')),greater(length(parameters('resourceTagsKey')),0),not(empty(parameters('resourceTagsKey')))), bool('true'), bool('false'))]",
@@ -1610,7 +1611,256 @@
                     //,"tagValue": { "value": "[parameters('resourceTags')[copyIndex()]]" }
                 }
             }
-        }*/
+        },
+        {
+            //
+            "condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policylocationallowedDefinitions.name)]",
+
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policylocationallowedDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policylocationallowedDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policylocationallowedDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policylocationallowedDefinitions.scope]",
+                "parameters": "[variables('policyAssignmentNames').policylocationallowedDefinitions.parameters]"
+            }
+        },
+        {
+            //
+            "condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policylocationallowedRGDefinitions.name)]",
+
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policylocationallowedRGDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policylocationallowedRGDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policylocationallowedRGDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policylocationallowedRGDefinitions.scope]",
+                "parameters": "[variables('policyAssignmentNames').policylocationallowedRGDefinitions.parameters]"
+            }
+        },
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policyTDEDefinitions.name)]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policyTDEDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyTDEDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyTDEDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policyTDEDefinitions.scope]"
+            }
+        },
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policyTDSQLServerDefinitions.name)]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policyTDSQLServerDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyTDSQLServerDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyTDSQLServerDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policyTDSQLServerDefinitions.scope]"
+            }
+        },
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policyIaaSAntimalwareWinSrvDefinitions.name)]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policyIaaSAntimalwareWinSrvDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyIaaSAntimalwareWinSrvDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyIaaSAntimalwareWinSrvDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policyIaaSAntimalwareWinSrvDefinitions.scope]"
+            }
+        },
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policyOSImgPatchVMSetDefinitions.name)]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policyOSImgPatchVMSetDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyOSImgPatchVMSetDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyOSImgPatchVMSetDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policyOSImgPatchVMSetDefinitions.scope]"
+            }
+        },
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policyADVSECURITYSQLServerDefinitions.name)]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policyADVSECURITYSQLServerDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyADVSECURITYSQLServerDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyADVSECURITYSQLServerDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policyADVSECURITYSQLServerDefinitions.scope]"
+            }
+        },
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policyConfigLogAnalWindowsVMDefinitions.name)]",
+            "location": "[deployment().location]",
+            "dependsOn": [
+                "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]"
+                // "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            ],
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policyConfigLogAnalWindowsVMDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyConfigLogAnalWindowsVMDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyConfigLogAnalWindowsVMDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policyConfigLogAnalWindowsVMDefinitions.scope]",
+                "parameters": "[variables('policyAssignmentNames').policyConfigLogAnalWindowsVMDefinitions.parameters]"
+            }
+        },
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policyConfigLogAnalLinuxVMDefinitions.name)]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policyConfigLogAnalLinuxVMDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyConfigLogAnalLinuxVMDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyConfigLogAnalLinuxVMDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policyConfigLogAnalLinuxVMDefinitions.scope]"
+            }
+        },
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policyADVSECURITYStoaregACCDefinitions.name)]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policyADVSECURITYStoaregACCDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyADVSECURITYStoaregACCDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyADVSECURITYStoaregACCDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policyADVSECURITYStoaregACCDefinitions.scope]"
+            }
+        },
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policyEncryptDataLakeSTRACCDefinitions.name)]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policyEncryptDataLakeSTRACCDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyEncryptDataLakeSTRACCDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyEncryptDataLakeSTRACCDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policyEncryptDataLakeSTRACCDefinitions.scope]"
+            }
+        },
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policyConfigSQLServerAuditDefinitions.name)]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policyConfigSQLServerAuditDefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyConfigSQLServerAuditDefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyConfigSQLServerAuditDefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policyConfigSQLServerAuditDefinitions.scope]"
+            }
+        }
+ ,
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policySQLServerAuditEnableefinitions.name)]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policySQLServerAuditEnableefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policySQLServerAuditEnableefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policySQLServerAuditEnableefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policySQLServerAuditEnableefinitions.scope]"
+            }
+        }
+        ,
+        {
+            //
+            //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat(variables('policyAssignmentNames').policyDiagSetNSGefinitions.name)]",
+            "location": "[deployment().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "description": "[concat(variables('policyAssignmentNames').policyDiagSetNSGefinitions.description)]",
+                "displayName": "[concat(variables('policyAssignmentNames').policyDiagSetNSGefinitions.policyAssignmentNames.name)]",
+                "policyDefinitionId": "[variables('policyAssignmentNames').policyDiagSetNSGefinitions.policyDefinitions.name]",
+                "scope": "[variables('policyAssignmentNames').policyDiagSetNSGefinitions.scope]"
+            }
+        }
         /*,
         {
             //"condition": "[not(empty(parameters('allowedvmsize')))]",
