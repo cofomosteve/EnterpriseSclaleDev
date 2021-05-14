@@ -1,0 +1,57 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT2",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-COFOT2",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-COFOT2",
+        "UpdatedTime": "2021-05-14T13:13:04.1015617Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentName": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentDisplayName": "Tenant Root Group",
+        "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT2-decommissioned",
+            "Name": "mg-COFOT2-decommissioned",
+            "DisplayName": "mg-COFOT2-decommissioned",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT2-platform",
+            "Name": "mg-COFOT2-platform",
+            "DisplayName": "mg-COFOT2-platform",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT2-sandboxes",
+            "Name": "mg-COFOT2-sandboxes",
+            "DisplayName": "mg-COFOT2-sandboxes",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT2-landingzones",
+            "Name": "mg-COFOT2-landingzones",
+            "DisplayName": "mg-COFOT2-landingzones",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT2-jumpboxes",
+            "Name": "mg-COFOT2-jumpboxes",
+            "DisplayName": "mg-COFOT2-jumpboxes",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}

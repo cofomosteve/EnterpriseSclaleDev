@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "fe4d6acd-f275-4771-ba7e-0d9abf40c75d",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-TDE-SQLDB",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFOT/providers/Microsoft.Authorization/policyAssignments/DEP-TDE-SQLDB",
+        "Properties": {
+          "Description": "Enables transparent data encryption on SQL databases",
+          "DisplayName": "DEP-TDE-SQLDB",
+          "NotScopes": null,
+          "Parameters": null,
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFOT"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFOT/providers/Microsoft.Authorization/policyAssignments/DEP-TDE-SQLDB",
+        "ResourceName": "DEP-TDE-SQLDB",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}
