@@ -608,12 +608,12 @@
                     "name": "/providers/Microsoft.Authorization/policyDefinitions/465f0161-0087-490a-9ad9-ad6217f4f43a"
                 },
                 "policyAssignmentNames": {
-                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-OS-IMG-PATCH-VM-SCALESET')]"
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-OS-IMG-PATCH-VM-SET')]"
                 },
                 //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "This policy enforces enabling automatic OS image patching on Virtual Machine Scale Sets to always keep Virtual Machines secure by safely applying latest security patches every month.",
-                "name": "DEP-OS-IMG-PATCH-VM-SCALESET"
+                "name": "DEP-OS-IMG-PATCH-VM-SET"
             },
 
             "policyADVSECURITYSQLServerDefinitions": {
@@ -732,12 +732,12 @@
                     }
                 },
                 "policyAssignmentNames": {
-                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-SQL-SRV-')]"
+                    "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-SQL-SRV-AUD')]"
                 },
                 //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "To ensure the operations performed against your SQL assets are captured, SQL servers should have auditing enabled. This is sometimes required for compliance with regulatory standards.",
-                "name": "DEP-SQL-SRV-"
+                "name": "DEP-SQL-SRV-AUD"
             },
 
             "policySQLServerAuditEnableefinitions": {
@@ -754,7 +754,7 @@
                 "name": "DEP-SQLSRV-AUDIT-ENAB"
             },
 
-            
+
             "policyTagDefinitions": [
 
 
@@ -1764,6 +1764,10 @@
             "apiVersion": "2018-05-01",
             "name": "[concat(variables('policyAssignmentNames').policyConfigLogAnalLinuxVMDefinitions.name)]",
             "location": "[deployment().location]",
+            "dependsOn": [
+                "[variables('policyLogAnalyticDefinitions').policyAssignmentNames.loganalytics]"
+                // "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            ],
             "identity": {
                 "type": "SystemAssigned"
             },
@@ -1771,7 +1775,9 @@
                 "description": "[concat(variables('policyAssignmentNames').policyConfigLogAnalLinuxVMDefinitions.description)]",
                 "displayName": "[concat(variables('policyAssignmentNames').policyConfigLogAnalLinuxVMDefinitions.policyAssignmentNames.name)]",
                 "policyDefinitionId": "[variables('policyAssignmentNames').policyConfigLogAnalLinuxVMDefinitions.policyDefinitions.name]",
-                "scope": "[variables('policyAssignmentNames').policyConfigLogAnalLinuxVMDefinitions.scope]"
+                "scope": "[variables('policyAssignmentNames').policyConfigLogAnalLinuxVMDefinitions.scope]",
+                "parameters": "[variables('policyAssignmentNames').policyConfigLogAnalWindowsVMDefinitions.parameters]"
+
             }
         },
         {
@@ -1808,7 +1814,7 @@
                 "scope": "[variables('policyAssignmentNames').policyEncryptDataLakeSTRACCDefinitions.scope]"
             }
         },
-        {
+       /* {
             //
             //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
             "type": "Microsoft.Authorization/policyAssignments",
@@ -1824,8 +1830,7 @@
                 "policyDefinitionId": "[variables('policyAssignmentNames').policyConfigSQLServerAuditDefinitions.policyDefinitions.name]",
                 "scope": "[variables('policyAssignmentNames').policyConfigSQLServerAuditDefinitions.scope]"
             }
-        }
- ,
+        },*/
         {
             //
             //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
@@ -1842,8 +1847,7 @@
                 "policyDefinitionId": "[variables('policyAssignmentNames').policySQLServerAuditEnableefinitions.policyDefinitions.name]",
                 "scope": "[variables('policyAssignmentNames').policySQLServerAuditEnableefinitions.scope]"
             }
-        }
-        ,
+        },
         {
             //
             //"condition": "[if(and(greater(length(parameters('listOfAllowedLocations')),0),not(empty(parameters('listOfAllowedLocations')))), bool('true'), bool('false'))]",
@@ -1858,7 +1862,8 @@
                 "description": "[concat(variables('policyAssignmentNames').policyDiagSetNSGefinitions.description)]",
                 "displayName": "[concat(variables('policyAssignmentNames').policyDiagSetNSGefinitions.policyAssignmentNames.name)]",
                 "policyDefinitionId": "[variables('policyAssignmentNames').policyDiagSetNSGefinitions.policyDefinitions.name]",
-                "scope": "[variables('policyAssignmentNames').policyDiagSetNSGefinitions.scope]"
+                "scope": "[variables('policyAssignmentNames').policyDiagSetNSGefinitions.scope]",
+                "parameters": "[variables('policyAssignmentNames').policyDiagSetNSGefinitions.parameters]"
             }
         }
         /*,
