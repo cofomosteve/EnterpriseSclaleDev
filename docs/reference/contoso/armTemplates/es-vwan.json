@@ -831,7 +831,7 @@
         },
         "delimiters": [ "," ],
         //"tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], json('{}')) ]",
-        "tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], variables('resourceTags')) ]",
+        "tagsByResourceout": "[ if(contains(variables('resourceTags'), 'Microsoft.*'), variables('resourceTags')['Microsoft.*'], json('{}')) ]",
         "settingArray": "[if(empty(variables('tagsByResourceout')),createArray(),split(replace(replace(replace(string(variables('tagsByResourceout')), '{', ''), '}', ''), '\"', ''), variables('delimiters')))]",
 
 
@@ -1113,76 +1113,76 @@
                 }
             }
         },
-        {
-            "condition": "[and(not(empty(parameters('managementSubscriptionId'))), or(or(or(or(or(equals(parameters('enableSecuritySolution'), 'Yes'), equals(parameters('enableAgentHealth'), 'Yes')), equals(parameters('enableChangeTracking'), 'Yes')), equals(parameters('enableUpdateMgmt'), 'Yes'), equals(parameters('enableActivityLog'), 'Yes')), equals(parameters('enableAntiMalware'), 'Yes'), equals(parameters('enableVmInsights'), 'Yes')), equals(parameters('enableServiceMap'), 'Yes'), equals(parameters('enableSqlAssessment'), 'Yes')))]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
-            "subscriptionId": "[parameters('managementSubscriptionId')]",
-            "name": "[variables('deploymentNames').monitoringSolutionsDeploymentName]",
-            "dependsOn": [
-                "[variables('deploymentNames').monitoringDeploymentName]"
-            ],
-            "location": "[deployment().location]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[variables('deploymentUris').monitoringSolutions]"
-                },
-                "parameters": {
-                    "topLevelManagementGroupPrefix": {
-                        "value": "[parameters('enterpriseScaleCompanyPrefix')]"
-                    },
-                    "resourceTags": {
-                        "value": "[variables('tagsByResourceout')]"
-                    },
-                    "globalvariable": { "value": "[variables('globalvariable')]" },
-                    "managementSubscriptionId": {
-                        "value": "[parameters('managementSubscriptionId')]"
-                    },
-                    "enableSecuritySolution": {
-                        "value": "[parameters('enableSecuritySolution')]"
-                    },
-                    "workspaceName": {
-                        "value": "[variables('workspaceName')]"
-                    },
-                    "automationAccountName": {
-                        "value": "[variables('automationAccountName')]"
-                    },
-                    "ManagementRessourceGroup": {
-                        "value": "[variables('ManagementRessourceGroup')]"
-                    },
+        // {
+        //     "condition": "[and(not(empty(parameters('managementSubscriptionId'))), or(or(or(or(or(equals(parameters('enableSecuritySolution'), 'Yes'), equals(parameters('enableAgentHealth'), 'Yes')), equals(parameters('enableChangeTracking'), 'Yes')), equals(parameters('enableUpdateMgmt'), 'Yes'), equals(parameters('enableActivityLog'), 'Yes')), equals(parameters('enableAntiMalware'), 'Yes'), equals(parameters('enableVmInsights'), 'Yes')), equals(parameters('enableServiceMap'), 'Yes'), equals(parameters('enableSqlAssessment'), 'Yes')))]",
+        //     "type": "Microsoft.Resources/deployments",
+        //     "apiVersion": "2019-05-01",
+        //     "subscriptionId": "[parameters('managementSubscriptionId')]",
+        //     "name": "[variables('deploymentNames').monitoringSolutionsDeploymentName]",
+        //     "dependsOn": [
+        //         "[variables('deploymentNames').monitoringDeploymentName]"
+        //     ],
+        //     "location": "[deployment().location]",
+        //     "properties": {
+        //         "mode": "Incremental",
+        //         "templateLink": {
+        //             "contentVersion": "1.0.0.0",
+        //             "uri": "[variables('deploymentUris').monitoringSolutions]"
+        //         },
+        //         "parameters": {
+        //             "topLevelManagementGroupPrefix": {
+        //                 "value": "[parameters('enterpriseScaleCompanyPrefix')]"
+        //             },
+        //             "resourceTags": {
+        //                 "value": "[variables('tagsByResourceout')]"
+        //             },
+        //             "globalvariable": { "value": "[variables('globalvariable')]" },
+        //             "managementSubscriptionId": {
+        //                 "value": "[parameters('managementSubscriptionId')]"
+        //             },
+        //             "enableSecuritySolution": {
+        //                 "value": "[parameters('enableSecuritySolution')]"
+        //             },
+        //             "workspaceName": {
+        //                 "value": "[variables('workspaceName')]"
+        //             },
+        //             "automationAccountName": {
+        //                 "value": "[variables('automationAccountName')]"
+        //             },
+        //             "ManagementRessourceGroup": {
+        //                 "value": "[variables('ManagementRessourceGroup')]"
+        //             },
 
-                    "enableAgentHealth": {
-                        "value": "[parameters('enableAgentHealth')]"
-                    },
-                    "enableChangeTracking": {
-                        "value": "[parameters('enableChangeTracking')]"
-                    },
-                    "enableUpdateMgmt": {
-                        "value": "[parameters('enableUpdateMgmt')]"
-                    },
-                    "enableActivityLog": {
-                        "value": "[parameters('enableActivityLog')]"
-                    },
-                    "enableAntiMalware": {
-                        "value": "[parameters('enableAntiMalware')]"
-                    },
-                    "enableVmInsights": {
-                        "value": "[parameters('enableVmInsights')]"
-                    },
-                    "enableServiceMap": {
-                        "value": "[parameters('enableServiceMap')]"
-                    },
-                    "loganalyticnameManagementsub": {
-                        "value": "[variables('loganalyticnameManagementsub')]"
-                    },
-                    "enableSqlAssessment": {
-                        "value": "[parameters('enableSqlAssessment')]"
-                    }
-                }
-            }
-        },
+        //             "enableAgentHealth": {
+        //                 "value": "[parameters('enableAgentHealth')]"
+        //             },
+        //             "enableChangeTracking": {
+        //                 "value": "[parameters('enableChangeTracking')]"
+        //             },
+        //             "enableUpdateMgmt": {
+        //                 "value": "[parameters('enableUpdateMgmt')]"
+        //             },
+        //             "enableActivityLog": {
+        //                 "value": "[parameters('enableActivityLog')]"
+        //             },
+        //             "enableAntiMalware": {
+        //                 "value": "[parameters('enableAntiMalware')]"
+        //             },
+        //             "enableVmInsights": {
+        //                 "value": "[parameters('enableVmInsights')]"
+        //             },
+        //             "enableServiceMap": {
+        //                 "value": "[parameters('enableServiceMap')]"
+        //             },
+        //             "loganalyticnameManagementsub": {
+        //                 "value": "[variables('loganalyticnameManagementsub')]"
+        //             },
+        //             "enableSqlAssessment": {
+        //                 "value": "[parameters('enableSqlAssessment')]"
+        //             }
+        //         }
+        //     }
+        // },
         {
             "condition": "[not(empty(parameters('identitySubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
@@ -1488,6 +1488,7 @@
             "name": "[variables('deploymentNames').customPoliciesAssigDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').mgmtGroupDeploymentName]",
+                //"[variables('deploymentNames').connectivityDeploymentName]",
                 "DeploymentDelay"
             ],
             "location": "[deployment().location]",
