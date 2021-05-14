@@ -69,7 +69,7 @@
                         "defaultValue": ["canadacentral","canadaeast"],
                         "toolTip": "Select the allowed region for you resource deployment. Make sure that Connectivity location setting match with those selected",
                         "constraints": {
-                            "allowedValues": "[map(steps('esConnectivityGoalState').esAllowedLocationsApi.value, (item) => parse(concat('{\"label\":\"', item.displayName, '\",\"value\":\"', item.name, '\"}')))]",
+                            "allowedValues": "[map(steps('lzSettings').esAllowedLocationsApi.value, (item) => parse(concat('{\"label\":\"', item.displayName, '\",\"value\":\"', item.name, '\"}')))]",
                             "required": true
                         }
                     }
