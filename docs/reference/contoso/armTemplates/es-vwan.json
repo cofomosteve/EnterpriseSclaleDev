@@ -1491,7 +1491,7 @@
             "dependsOn": [
                 "[variables('deploymentNames').mgmtGroupDeploymentName]",                
                 "[variables('deploymentNames').monitoringSolutionsDeploymentName]",
-                //"[variables('deploymentNames').connectivityDeploymentName]",
+                "[variables('deploymentNames').connectivityDeploymentName]",
                 "DeploymentDelay"
             ],
             "location": "[deployment().location]",
