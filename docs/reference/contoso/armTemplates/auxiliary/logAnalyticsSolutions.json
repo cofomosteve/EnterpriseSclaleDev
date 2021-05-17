@@ -262,43 +262,43 @@
         "laResourceId": "[parameters('loganalyticnameManagementsub')]",
         "solutions": {
             "security": {
-                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolsecmgn , '(', parameters('workspaceName'), ')')]",
+                "name": "[concat('Security', '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "Security"
             },
             "agentHealth": {
-                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolagenthealthmgn, '(', parameters('workspaceName'), ')')]",
+                "name": "[concat('AgentHealthAssessment', '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "AgentHealthAssessment"
             },
             "changeTracking": {
-                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolchangetrackingmgn, '(', parameters('workspaceName'), ')')]",
+                "name": "[concat('ChangeTracking', '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "ChangeTracking"
             },
             "updateMgmt": {
-                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolupdatemanagemgn, '(', parameters('workspaceName'), ')')]",
+                "name": "[concat('Updates', '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "Updates"
             },
             "azureActivity": {
-                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolactivitymgn, '(', parameters('workspaceName'), ')')]",
+                "name": "[concat('AzureActivity', '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "AzureActivity"
             },
             "sqlAssessment": {
-                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolsqlassessmgn, '(', parameters('workspaceName'), ')')]",
+                "name": "[concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "SQLAssessment"
             },
             "antiMalware": {
-                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolantimalwaremgn, '(', parameters('workspaceName'), ')')]",
+                "name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "AntiMalware"
             },
             "vmInsights": {
-                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolvminsightmgn, '(', parameters('workspaceName'), ')')]",
+                "name": "[concat('VMInsights', '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "VMInsights"
             },
             "serviceMap": {
-                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolsrvmapmgn, '(', parameters('workspaceName'), ')')]",
+                "name": "[concat('ServiceMap', '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "ServiceMap"
             },
             "securityInsights": {
-                "name": "[concat(parameters('globalvariable').genericresourceprefix.azsolsecinsightmgn, '(', parameters('workspaceName'), ')')]",
+                "name": "[concat('SecurityInsights', '(', parameters('workspaceName'), ')')]",
                 "marketplaceName": "SecurityInsights"
             }
         }
