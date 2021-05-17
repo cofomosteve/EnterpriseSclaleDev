@@ -1,0 +1,29 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf6-management",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-oqlf6-management",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-oqlf6-management",
+        "UpdatedTime": "2021-05-17T17:33:09.8044902Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/mg-oqlf6-platform",
+        "ParentName": "mg-oqlf6-platform",
+        "ParentDisplayName": "mg-oqlf6-platform",
+        "Children": [
+          {
+            "Type": "/subscriptions",
+            "Id": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
+            "Name": "2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
+            "DisplayName": "Microsoft Azure Sponsorship (6k)",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}
