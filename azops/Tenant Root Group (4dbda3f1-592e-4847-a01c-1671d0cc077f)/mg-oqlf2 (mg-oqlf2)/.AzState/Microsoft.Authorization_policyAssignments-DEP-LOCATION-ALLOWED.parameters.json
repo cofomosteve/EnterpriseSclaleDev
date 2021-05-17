@@ -1,0 +1,40 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "e1d6c223-86de-4b8c-aae9-09016d8e1dd0",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-LOCATION-ALLOWED",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-oqlf2/providers/Microsoft.Authorization/policyAssignments/DEP-LOCATION-ALLOWED",
+        "Properties": {
+          "Description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region.",
+          "DisplayName": "DEP-LOCATION-ALLOWED",
+          "NotScopes": null,
+          "Parameters": {
+            "listOfAllowedLocations": {
+              "value": [
+                "canadacentral",
+                "canadaeast"
+              ]
+            }
+          },
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-oqlf2"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-oqlf2/providers/Microsoft.Authorization/policyAssignments/DEP-LOCATION-ALLOWED",
+        "ResourceName": "DEP-LOCATION-ALLOWED",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf4-landingzones/providers/Microsoft.Authorization/roleAssignments/06d69c5e-e9fd-577d-bfe4-3535994412be",
+        "Name": "06d69c5e-e9fd-577d-bfe4-3535994412be",
+        "properties": {
+          "DisplayName": "Deploy-SQL-DB-Auditing",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "ea53c7a7-d31a-4804-94a6-1342e7790fa5",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

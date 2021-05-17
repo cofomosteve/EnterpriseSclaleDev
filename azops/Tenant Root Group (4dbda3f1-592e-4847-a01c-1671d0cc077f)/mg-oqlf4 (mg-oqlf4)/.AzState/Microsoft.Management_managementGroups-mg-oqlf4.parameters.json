@@ -1,0 +1,57 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf4",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-oqlf4",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-oqlf4",
+        "UpdatedTime": "2021-05-17T12:01:38.8303289Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentName": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentDisplayName": "Tenant Root Group",
+        "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf4-platform",
+            "Name": "mg-oqlf4-platform",
+            "DisplayName": "mg-oqlf4-platform",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf4-decommissioned",
+            "Name": "mg-oqlf4-decommissioned",
+            "DisplayName": "mg-oqlf4-decommissioned",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf4-sandboxes",
+            "Name": "mg-oqlf4-sandboxes",
+            "DisplayName": "mg-oqlf4-sandboxes",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf4-landingzones",
+            "Name": "mg-oqlf4-landingzones",
+            "DisplayName": "mg-oqlf4-landingzones",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf4-jumpboxes",
+            "Name": "mg-oqlf4-jumpboxes",
+            "DisplayName": "mg-oqlf4-jumpboxes",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}
