@@ -14,15 +14,7 @@
         "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COFOT2-platform",
         "ParentName": "mg-COFOT2-platform",
         "ParentDisplayName": "mg-COFOT2-platform",
-        "Children": [
-          {
-            "Type": "/subscriptions",
-            "Id": "/subscriptions/cbec69fd-0f1b-426a-babe-e72f3572915d",
-            "Name": "cbec69fd-0f1b-426a-babe-e72f3572915d",
-            "DisplayName": "Connectivité - Paiement à l’utilisation",
-            "Children": null
-          }
-        ]
+        "Children": null
       }
     }
   }

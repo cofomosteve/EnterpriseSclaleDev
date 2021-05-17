@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf3-landingzones/providers/Microsoft.Authorization/roleAssignments/bc6a9a29-7251-5a6f-abd1-c722429dbb65",
+        "Name": "bc6a9a29-7251-5a6f-abd1-c722429dbb65",
+        "properties": {
+          "DisplayName": "Deploy-AKS-Policy",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "10fcefb9-f0ae-4a93-b013-82b9d6e517a6",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

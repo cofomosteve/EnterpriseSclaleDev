@@ -1,0 +1,40 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf3/providers/Microsoft.Authorization/roleDefinitions/728f31e0-0dfa-5b0f-b1ab-7c9f26b6335e",
+        "Name": "728f31e0-0dfa-5b0f-b1ab-7c9f26b6335e",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-oqlf3"
+          ],
+          "description": "Network  Ops",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Authorization/*/read",
+                "Microsoft.Insights/alertRules/*",
+                "Microsoft.Network/*",
+                "Microsoft.ResourceHealth/availabilityStatuses/read",
+                "Microsoft.Cdn/edgenodes/read",
+                "Microsoft.Cdn/operationresults/*",
+                "Microsoft.Cdn/profiles/endpoints/*",
+                "Microsoft.Resources/deployments/*",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-oqlf3-IT-prod-Custom Network  Ops"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}
