@@ -1229,7 +1229,14 @@
                     },
                     {
                         "name": "esNwLocation",
-                        "type": "Microsoft.Common.DropDown",
+                        "type": "Microsoft.Common.DropDown",                     
+                        "multiselect": false,
+                        "selectAll": false,
+                        "filter": true,
+                        "filterPlaceholder": "Filter region ...",
+                        "multiLine": true,
+                        "defaultValue": "canadacentral",
+
                         "label": "Region for the first virtual hub",
                         "toolTip": "Select the target region for you connectivity deployment (requires you to provide a subscriptionId for connectivity)",
                         "constraints": {
