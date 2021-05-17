@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "18198efe-29a5-4d0f-9008-23c6dacdcdf8",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-ADV-SECURITY-STR-ACC",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-oqlf2/providers/Microsoft.Authorization/policyAssignments/DEP-ADV-SECURITY-STR-ACC",
+        "Properties": {
+          "Description": "This policy enables Advanced Threat Protection on Storage Accounts.",
+          "DisplayName": "DEP-ADV-SECURITY-STR-ACC",
+          "NotScopes": null,
+          "Parameters": null,
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/361c2074-3595-4e5d-8cab-4f21dffc835c",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-oqlf2"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-oqlf2/providers/Microsoft.Authorization/policyAssignments/DEP-ADV-SECURITY-STR-ACC",
+        "ResourceName": "DEP-ADV-SECURITY-STR-ACC",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

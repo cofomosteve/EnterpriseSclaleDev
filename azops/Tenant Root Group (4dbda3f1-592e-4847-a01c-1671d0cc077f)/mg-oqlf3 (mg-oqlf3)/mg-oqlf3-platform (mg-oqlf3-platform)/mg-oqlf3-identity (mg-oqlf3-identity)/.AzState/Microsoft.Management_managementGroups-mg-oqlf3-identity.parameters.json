@@ -1,0 +1,21 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf3-identity",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-oqlf3-identity",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-oqlf3-identity",
+        "UpdatedTime": "2021-05-17T11:38:01.165751Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/mg-oqlf3-platform",
+        "ParentName": "mg-oqlf3-platform",
+        "ParentDisplayName": "mg-oqlf3-platform",
+        "Children": null
+      }
+    }
+  }
+}
