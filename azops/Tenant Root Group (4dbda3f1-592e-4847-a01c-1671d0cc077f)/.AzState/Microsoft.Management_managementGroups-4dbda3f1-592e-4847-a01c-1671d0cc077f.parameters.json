@@ -77,6 +77,20 @@
             "Name": "mg-oqlf4",
             "DisplayName": "mg-oqlf4",
             "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf5",
+            "Name": "mg-oqlf5",
+            "DisplayName": "mg-oqlf5",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf6",
+            "Name": "mg-oqlf6",
+            "DisplayName": "mg-oqlf6",
+            "Children": null
           }
         ]
       }
