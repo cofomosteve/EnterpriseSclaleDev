@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT-landingzones/providers/Microsoft.Authorization/roleAssignments/650e7c5f-cb24-5b1e-9ea9-0e562e67a0b1",
+        "Name": "650e7c5f-cb24-5b1e-9ea9-0e562e67a0b1",
+        "properties": {
+          "DisplayName": "Deploy-SQL-DB-Auditing",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "fbfc506a-1168-43fa-8f19-95913f6bc833",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

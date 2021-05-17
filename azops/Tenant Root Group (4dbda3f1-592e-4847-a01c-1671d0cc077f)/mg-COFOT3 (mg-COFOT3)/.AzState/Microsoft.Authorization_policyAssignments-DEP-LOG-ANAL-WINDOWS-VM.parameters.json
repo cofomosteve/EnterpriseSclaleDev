@@ -1,0 +1,37 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "4dba45a4-13c9-4d5f-817f-c92cdda1fe71",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-LOG-ANAL-WINDOWS-VM",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-COFOT3/providers/Microsoft.Authorization/policyAssignments/DEP-LOG-ANAL-WINDOWS-VM",
+        "Properties": {
+          "Description": "Deploy Log Analytics agent for Windows virtual machines if the virtual machine image is in the list defined and the agent is not installed.",
+          "DisplayName": "DEP-LOG-ANAL-WINDOWS-VM",
+          "NotScopes": null,
+          "Parameters": {
+            "logAnalytics": {
+              "value": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc/resourcegroups/rg-cofot3-it-prod-mgmt/providers/microsoft.operationalinsights/workspaces/la-cofot3-it-prod-2830c1bb-dbc2-41d3-bf92-616ef65f80bc"
+            }
+          },
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0868462e-646c-4fe3-9ced-a733534b6a2c",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-COFOT3"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-COFOT3/providers/Microsoft.Authorization/policyAssignments/DEP-LOG-ANAL-WINDOWS-VM",
+        "ResourceName": "DEP-LOG-ANAL-WINDOWS-VM",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

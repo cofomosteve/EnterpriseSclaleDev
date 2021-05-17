@@ -1,0 +1,43 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT4-platform",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-COFOT4-platform",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-COFOT4-platform",
+        "UpdatedTime": "2021-05-14T13:54:17.6966439Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/mg-COFOT4",
+        "ParentName": "mg-COFOT4",
+        "ParentDisplayName": "mg-COFOT4",
+        "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT4-management",
+            "Name": "mg-COFOT4-management",
+            "DisplayName": "mg-COFOT4-management",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT4-connectivity",
+            "Name": "mg-COFOT4-connectivity",
+            "DisplayName": "mg-COFOT4-connectivity",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT4-identity",
+            "Name": "mg-COFOT4-identity",
+            "DisplayName": "mg-COFOT4-identity",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT3",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "mg-COFOT3",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "mg-COFOT3",
+        "UpdatedTime": "2021-05-14T13:40:33.30212Z",
+        "UpdatedBy": "39662490-964c-4117-847b-30174cfd49ba",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentName": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentDisplayName": "Tenant Root Group",
+        "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT3-landingzones",
+            "Name": "mg-COFOT3-landingzones",
+            "DisplayName": "mg-COFOT3-landingzones",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT3-jumpboxes",
+            "Name": "mg-COFOT3-jumpboxes",
+            "DisplayName": "mg-COFOT3-jumpboxes",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT3-decommissioned",
+            "Name": "mg-COFOT3-decommissioned",
+            "DisplayName": "mg-COFOT3-decommissioned",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT3-sandboxes",
+            "Name": "mg-COFOT3-sandboxes",
+            "DisplayName": "mg-COFOT3-sandboxes",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT3-platform",
+            "Name": "mg-COFOT3-platform",
+            "DisplayName": "mg-COFOT3-platform",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}

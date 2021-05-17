@@ -1,0 +1,33 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Identity": {
+          "principalId": "9e898f06-f988-4840-830f-a6ce6ad8bbaf",
+          "tenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "type": "SystemAssigned"
+        },
+        "Location": "canadacentral",
+        "Name": "DEP-SQLSRV-AUDIT-ENAB",
+        "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/mg-oqlf/providers/Microsoft.Authorization/policyAssignments/DEP-SQLSRV-AUDIT-ENAB",
+        "Properties": {
+          "Description": "Auditing on your SQL Server should be enabled to track database activities across all databases on the server and save them in an audit log.",
+          "DisplayName": "DEP-SQLSRV-AUDIT-ENAB",
+          "NotScopes": null,
+          "Parameters": null,
+          "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9",
+          "Scope": "/providers/Microsoft.Management/managementGroups/mg-oqlf"
+        },
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-oqlf/providers/Microsoft.Authorization/policyAssignments/DEP-SQLSRV-AUDIT-ENAB",
+        "ResourceName": "DEP-SQLSRV-AUDIT-ENAB",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "Sku": {
+          "name": "A0",
+          "tier": "Free"
+        }
+      }
+    }
+  }
+}

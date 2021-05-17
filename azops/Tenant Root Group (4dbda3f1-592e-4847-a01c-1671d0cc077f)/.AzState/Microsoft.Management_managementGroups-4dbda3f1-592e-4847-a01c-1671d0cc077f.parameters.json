@@ -24,9 +24,37 @@
           },
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-OQLF",
-            "Name": "mg-OQLF",
-            "DisplayName": "mg-OQLF",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT",
+            "Name": "mg-COFOT",
+            "DisplayName": "mg-COFOT",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT2",
+            "Name": "mg-COFOT2",
+            "DisplayName": "mg-COFOT2",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT3",
+            "Name": "mg-COFOT3",
+            "DisplayName": "mg-COFOT3",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT4",
+            "Name": "mg-COFOT4",
+            "DisplayName": "mg-COFOT4",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf",
+            "Name": "mg-oqlf",
+            "DisplayName": "mg-oqlf",
             "Children": null
           }
         ]

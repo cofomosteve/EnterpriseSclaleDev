@@ -1,0 +1,69 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf/providers/Microsoft.Authorization/roleDefinitions/5fbe3224-7118-5205-8708-37774c3606ee",
+        "Name": "5fbe3224-7118-5205-8708-37774c3606ee",
+        "properties": {
+          "assignableScopes": [
+            "/providers/Microsoft.Management/managementGroups/mg-oqlf"
+          ],
+          "description": "Devops",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Insights/*",
+                "Microsoft.Authorization/*/read",
+                "Microsoft.Compute/availabilitySets/read",
+                "Microsoft.Compute/virtualMachines/*/read",
+                "Microsoft.Compute/virtualMachines/deallocate/action",
+                "Microsoft.Compute/virtualMachines/read",
+                "Microsoft.Compute/virtualMachines/restart/action",
+                "Microsoft.Compute/virtualMachines/start/action",
+                "Microsoft.DevTestLab/*/read",
+                "Microsoft.DevTestLab/labs/claimAnyVm/action",
+                "Microsoft.DevTestLab/labs/createEnvironment/action",
+                "Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action",
+                "Microsoft.DevTestLab/labs/formulas/delete",
+                "Microsoft.DevTestLab/labs/formulas/read",
+                "Microsoft.DevTestLab/labs/formulas/write",
+                "Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action",
+                "Microsoft.DevTestLab/labs/virtualMachines/claim/action",
+                "Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action",
+                "Microsoft.DevTestLab/labs/virtualMachines/getRdpFileContents/action",
+                "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+                "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
+                "Microsoft.Network/networkInterfaces/*/read",
+                "Microsoft.Network/networkInterfaces/join/action",
+                "Microsoft.Network/networkInterfaces/read",
+                "Microsoft.Network/networkInterfaces/write",
+                "Microsoft.Network/publicIPAddresses/*/read",
+                "Microsoft.Network/publicIPAddresses/join/action",
+                "Microsoft.Network/publicIPAddresses/read",
+                "Microsoft.Network/virtualNetworks/subnets/join/action",
+                "Microsoft.Resources/deployments/operations/read",
+                "Microsoft.Resources/deployments/read",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Storage/storageAccounts/listKeys/action",
+                "Microsoft.LabServices/labAccounts/*/read",
+                "Microsoft.LabServices/labAccounts/createLab/action",
+                "Microsoft.LabServices/labAccounts/getPricingAndAvailability/action",
+                "Microsoft.LabServices/labAccounts/getRestrictionsAndUsage/action",
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Management/managementGroups/read",
+                "Microsoft.Support/*"
+              ],
+              "dataActions": [],
+              "notActions": [],
+              "notdataActions": []
+            }
+          ],
+          "roleName": "rbac-ass-oqlf-IT-prod-Custom Devops"
+        },
+        "ResourceType": "Microsoft.Authorization/roleDefinitions"
+      }
+    }
+  }
+}
