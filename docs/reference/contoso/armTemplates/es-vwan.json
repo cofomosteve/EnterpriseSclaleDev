@@ -1489,7 +1489,8 @@
             "scope": "[  variables('globalvariable').scopebase]",
             "name": "[variables('deploymentNames').customPoliciesAssigDeploymentName]",
             "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]",
+                "[variables('deploymentNames').mgmtGroupDeploymentName]",                
+                "[variables('deploymentNames').monitoringSolutionsDeploymentName]",
                 //"[variables('deploymentNames').connectivityDeploymentName]",
                 "DeploymentDelay"
             ],
