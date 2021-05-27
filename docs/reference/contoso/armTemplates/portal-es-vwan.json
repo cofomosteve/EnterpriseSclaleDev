@@ -57,7 +57,8 @@
                             "method": "GET",
                             "path": "locations?api-version=2019-11-01"
                         }
-                    },
+                    }
+                    ,
                     {
                         "name": "esNamingConvention",
                         "type": "Microsoft.Common.OptionsGroup",
@@ -79,6 +80,25 @@
                                     "label": "ITQ",
                                     "value": "ITQ"
                                 }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "esLanguage",
+                        "type": "Microsoft.Common.OptionsGroup",
+                        "label": "Deployed Text Language",
+                        "defaultValue": "EN",
+                        "toolTip": "Define the texts of element deployed by E.S like Management Group, ResourceGroup et des prefix des TAGS ",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "ANGLAIS",
+                                    "value": "EN"
+                                },
+                                {
+                                    "label": "FRANCAIS",
+                                    "value": "FR"
+                                }                                
                             ]
                         }
                     },
@@ -2419,6 +2439,7 @@
             "enableServiceMap": "[steps('esGoalState').esServiceMap]",
             "enableSqlAssessment": "[steps('esGoalState').esSqlAssessment]",
             "NamingConvention": "[steps('lzSettings').esNamingConvention]",
+            "Language": "[steps('lzSettings').esLanguage]",
             "enterpriseScaleCompanyPrefix": "[steps('lzSettings').esMgmtGroup]",
             "enableSqlAudit": "[steps('lzGoalState').esSqlAudit]",
             "enableSqlEncryption": "[steps('lzGoalState').esSqlEncryption]",

@@ -67,7 +67,7 @@
         },
         "loganalyticnameManagementsub": {
             "type": "string",
-            "defaultValue": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+            "defaultValue": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, parameters('ManagementRessourceGroup'), '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
         }
 
         //********************************Param for Generic Naming Convention*************************************/
@@ -177,7 +177,7 @@
         "roleAssignmentNames": {
             "deployLogAnalytics": "[guid(concat(parameters('topLevelManagementGroupPrefix'), variables('policyAssignmentNames').logAnalytics))]"
         },
-        "resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]"
+        "resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]"
     },
     "resources": [
         {
@@ -211,7 +211,7 @@
                         "value": "[deployment().location]"
                     },
                     "rgName": {
-                        //"value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
+                        //"value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, parameters('ManagementRessourceGroup'))]"
                         "value": "[parameters('ManagementRessourceGroup')]"
                     },
                     "retentionInDays": {

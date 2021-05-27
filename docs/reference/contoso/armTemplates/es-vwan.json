@@ -16,6 +16,13 @@
                 "description": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale."
             }
         },
+        "Language": {
+            "type": "string",
+
+            "metadata": {
+                "description": ""
+            }
+        },
 
         "resourceTagsOQLF": {
             "type": "object",
@@ -616,31 +623,44 @@
         "resourceTagCAF": "[parameters('resourceTagCAF')]",
         "resourceTags": "[if(equals(parameters('NamingConvention'), 'OQLF'),variables('tagsByResource'),variables('tagsByResource'))]",
 
-        "prefixmgn": "mg-",
-        "businessunit": "IT-",
+
+
+        "libscopeplatform": "[if(equals(parameters('Language'), 'EN'),'platform','infrastructure')]",
+        "libscopemanagement": "[if(equals(parameters('Language'), 'EN'),'management','management')]",
+        "libscopeconnectivity": "[if(equals(parameters('Language'), 'EN'),'connectivity','connectivite') ]",
+        "libscopeidentity": "[if(equals(parameters('Language'), 'EN'),'identity','identite') ]",
+        "libscopelz": "[if(equals(parameters('Language'), 'EN'),'landingzones','zoneaccueil') ]",
+        "libscopelzonline": "[if(equals(parameters('Language'), 'EN'),'online','enligne') ]",
+        "libscopelzcorp": "[if(equals(parameters('Language'), 'EN'),'corp','ligneaffaire') ]",
+        "libscopelzdevops": "[if(equals(parameters('Language'), 'EN'),'devops','developpement') ]",
+
+        "librgmanagement": "[if(equals(parameters('Language'), 'EN'),'mgmt','mgmt') ]",
+
+        "prefixmgn": "[if(equals(parameters('Language'), 'EN'),'mg-','mg-') ]", 
+        "businessunit": "[if(equals(parameters('Language'), 'EN'),'IT-','IT-') ]",  
         "env": "prod-",
         "appname": "ES-",
         "topLevelManagementGroupPrefix": "[concat(variables('prefixmgn'),parameters('enterpriseScaleCompanyPrefix'))]",
         "globalvariable": {
             "scope": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]",
-            "scopeplatform": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-platform')]",
-            "scopemanagement": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-management')]",
-            "scopeconnectivity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-connectivity')]",
-            "scopeidentity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-identity')]",
-            "scopelz": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-landingzones')]",
-            "scopelzonline": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-online')]",
-            "scopelzcorp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-corp')]",
-            "scopelzdevops": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-devops')]",
+            "scopeplatform": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-',variables('libscopeplatform'))]",
+            "scopemanagement": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopemanagement'))]",
+            "scopeconnectivity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopeconnectivity'))]",
+            "scopeidentity": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopeidentity'))]",
+            "scopelz": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-',variables('libscopelz'))]",
+            "scopelzonline": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopelzonline'))]",
+            "scopelzcorp": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopelzcorp'))]",
+            "scopelzdevops": "[concat('/providers/Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopelzdevops'))]",
 
             "scopebase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'))]",
-            "scopeplatformbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-platform')]",
-            "scopemanagementbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-management')]",
-            "scopeconnectivitybase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-connectivity')]",
-            "scopeidentitybase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-identity')]",
-            "scopelzbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-landingzones')]",
-            "scopelzonlinebase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-online')]",
-            "scopelzcorpbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-corp')]",
-            "scopelzdevopsbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'), '-devops')]",
+            "scopeplatformbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopeplatform'))]",
+            "scopemanagementbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-',variables('libscopemanagement'))]",
+            "scopeconnectivitybase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopeconnectivity'))]",
+            "scopeidentitybase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopeidentity'))]",
+            "scopelzbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopelz'))]",
+            "scopelzonlinebase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopelzonline'))]",
+            "scopelzcorpbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopelzcorp'))]",
+            "scopelzdevopsbase": "[concat('Microsoft.Management/managementGroups/', variables('topLevelManagementGroupPrefix'),'-', variables('libscopelzdevops'))]",
 
             "genericresourceprefix": {
 
@@ -861,10 +881,10 @@
         "loganalyticnameManagement": "[toLower(concat(variables('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]",
         "workspaceName": "[concat(variables('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId'))]",
         "automationAccountName": "[concat(variables('globalvariable').genericresourceprefix.automationaccountmgn, parameters('managementSubscriptionId'))]",
-        "ManagementRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]",
-        "IdentityRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, 'identity')]",
-        "ConnectityRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, 'connectivity')]",
-        "LandingZoneRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, 'landingzone')]",
+        "ManagementRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn,  variables('librgmanagement'))]",
+        "IdentityRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, variables('libscopeidentity'))]",
+        "ConnectityRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, variables('libscopeconnectivity'))]",
+        "LandingZoneRessourceGroup": "[concat(variables('globalvariable').genericresourceprefix.resourcgroupmgn, variables('libscopelz'))]",
         "azPolicyEnvMapping": {
             "https://management.azure.com/": "auxiliary/policies.json",
             "https://management.chinacloudapi.cn": "auxiliary/mkPolicies.json",
@@ -1074,9 +1094,7 @@
                 "count": "[length(parameters('devopsLzSubscriptionId'))]"
             },
             "properties": {}
-        }
-        
-        ,
+        },
 
         {
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))),equals(parameters('enableLogAnalytics'), 'Yes'))]",
@@ -1501,7 +1519,7 @@
             "scope": "[  variables('globalvariable').scopebase]",
             "name": "[variables('deploymentNames').customPoliciesAssigDeploymentName]",
             "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]",                
+                "[variables('deploymentNames').mgmtGroupDeploymentName]",
                 "[variables('deploymentNames').monitoringSolutionsDeploymentName]",
                 "[variables('deploymentNames').connectivityDeploymentName]",
                 "DeploymentDelay"
@@ -1577,13 +1595,11 @@
         "resourceTags": {
             "type": "object",
             "value": "[variables('resourceTags')]"
-        }
-        ,
+        },
         "tagsByResourceout": {
             "type": "object",
             "value": "[variables('tagsByResourceout')]"
-        }
-,
+        },
         "tagsByResource": {
             "type": "object",
             "value": "[variables('tagsByResource')]"
