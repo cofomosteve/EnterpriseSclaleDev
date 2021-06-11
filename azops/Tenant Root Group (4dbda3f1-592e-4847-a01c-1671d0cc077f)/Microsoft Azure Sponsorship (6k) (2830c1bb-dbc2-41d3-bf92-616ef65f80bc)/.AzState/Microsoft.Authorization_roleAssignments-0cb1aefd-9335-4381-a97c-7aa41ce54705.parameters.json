@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc/providers/Microsoft.Authorization/roleAssignments/0cb1aefd-9335-4381-a97c-7aa41ce54705",
+        "Name": "0cb1aefd-9335-4381-a97c-7aa41ce54705",
+        "properties": {
+          "DisplayName": "Pim Test",
+          "ObjectType": "User",
+          "PrincipalId": "efb44bda-be1f-43fe-88c3-dc00a1b9a26a",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+          "RoleDefinitionName": "Reader"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

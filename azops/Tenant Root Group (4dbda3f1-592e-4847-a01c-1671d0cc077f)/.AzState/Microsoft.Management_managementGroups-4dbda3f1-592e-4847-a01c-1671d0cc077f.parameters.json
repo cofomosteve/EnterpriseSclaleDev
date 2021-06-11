@@ -24,72 +24,44 @@
           },
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT",
-            "Name": "mg-COFOT",
-            "DisplayName": "mg-COFOT",
+            "Id": "/providers/Microsoft.Management/managementGroups/RetraiteQcEnvExperimentation",
+            "Name": "RetraiteQcEnvExperimentation",
+            "DisplayName": "RetraiteQcExpérimentation",
             "Children": null
           },
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT2",
-            "Name": "mg-COFOT2",
-            "DisplayName": "mg-COFOT2",
+            "Id": "/providers/Microsoft.Management/managementGroups/EnvironnementOrganisationnel",
+            "Name": "EnvironnementOrganisationnel",
+            "DisplayName": "RetraiteQc",
             "Children": null
           },
           {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT3",
-            "Name": "mg-COFOT3",
-            "DisplayName": "mg-COFOT3",
+            "Type": "/subscriptions",
+            "Id": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
+            "Name": "2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
+            "DisplayName": "Microsoft Azure Sponsorship (6k)",
             "Children": null
           },
           {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-COFOT4",
-            "Name": "mg-COFOT4",
-            "DisplayName": "mg-COFOT4",
+            "Type": "/subscriptions",
+            "Id": "/subscriptions/cbec69fd-0f1b-426a-babe-e72f3572915d",
+            "Name": "cbec69fd-0f1b-426a-babe-e72f3572915d",
+            "DisplayName": "Connectivité - Paiement à l’utilisation",
             "Children": null
           },
           {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf",
-            "Name": "mg-oqlf",
-            "DisplayName": "mg-oqlf",
+            "Type": "/subscriptions",
+            "Id": "/subscriptions/eb17efc5-4806-4144-bd95-a3c700769053",
+            "Name": "eb17efc5-4806-4144-bd95-a3c700769053",
+            "DisplayName": "Zone d'accueil - Paiement à l’utilisation",
             "Children": null
           },
           {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf2",
-            "Name": "mg-oqlf2",
-            "DisplayName": "mg-oqlf2",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf3",
-            "Name": "mg-oqlf3",
-            "DisplayName": "mg-oqlf3",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf4",
-            "Name": "mg-oqlf4",
-            "DisplayName": "mg-oqlf4",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf5",
-            "Name": "mg-oqlf5",
-            "DisplayName": "mg-oqlf5",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/mg-oqlf6",
-            "Name": "mg-oqlf6",
-            "DisplayName": "mg-oqlf6",
+            "Type": "/subscriptions",
+            "Id": "/subscriptions/ddec50e5-955a-4b45-91f4-01f3a634fb3d",
+            "Name": "ddec50e5-955a-4b45-91f4-01f3a634fb3d",
+            "DisplayName": "Identité - Paiement à l’utilisation",
             "Children": null
           }
         ]
