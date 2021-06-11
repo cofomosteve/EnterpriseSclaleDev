@@ -189,7 +189,7 @@
         //********************************Param for Generic Naming Convention*************************************/
         "loganalyticnameManagementsub": {
             "type": "string",
-            "defaultValue": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt', '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
+            "defaultValue": "[toLower(concat('/subscriptions/', parameters('managementSubscriptionId'), '/resourceGroups/', parameters('globalvariable').genericresourceprefix.resourcgroupmgn, parameters('ManagementRessourceGroup'), '/providers/Microsoft.OperationalInsights/workspaces/', parameters('globalvariable').genericresourceprefix.loganalyticwkmgn, parameters('managementSubscriptionId')))]"
         },
         "loganalyticnameManagement": {
             "type": "string",
@@ -451,7 +451,7 @@
             "roleAssignmentNames": {
                 "deployPBMM": "[guid(concat(parameters('topLevelManagementGroupPrefix'), parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Log-Analytics'))]"
             },
-            "resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+            "resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
             "parameters": {
                 "logAnalyticsWorkspaceIdforVMReporting": {
                     "value": "[variables('loganalyticnameManagementsub')]"
@@ -475,7 +475,7 @@
             "roleAssignmentNames": {
                 "deployLogAnalytics": "[guid(concat(parameters('topLevelManagementGroupPrefix'), parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Log-Analytics'))]"
             },
-            "resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]"
+            "resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]"
         },
 
         "policyAssignmentNames": {
@@ -492,7 +492,7 @@
                 "roleAssignmentNames": {
                     "deployLogAnalytics": "[guid(concat(parameters('topLevelManagementGroupPrefix'), parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Log-Analytics'))]"
                 },
-                "resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]"
+                "resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]"
             },
 
             "policyTAgAddReplaceDefinitions": {
@@ -502,7 +502,7 @@
                 "policyAssignmentNames": {
                     "deployAddReplaceTag": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'Deploy-Log-Analytics')]"
                 },
-                "resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                "resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "Adds or replaces the specified tag and value when any resource is created or updated. Existing resources can be remediated by triggering a remediation task. Does not modify tags on resource groups. ",
                 "name": "DEP-ADD-TAG"
@@ -515,7 +515,7 @@
                 "policyAssignmentNames": {
                     "deployTAgEnforceExist": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-TAG-EXIST')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "Enforces existence of a tag. Does not apply to resource groups. ",
                 "name": "DEP-TAG-EXIST"
@@ -532,7 +532,7 @@
                         "value": "[parameters('listOfAllowedLocations')]"
                     }
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region.",
                 "name": "DEP-LOCATION-ALLOWED"
@@ -549,7 +549,7 @@
                         "value": "[parameters('listOfAllowedLocations')]"
                     }
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "This policy enables you to restrict the locations your organization can create resource groups in. Use to enforce your geo-compliance requirements.",
                 "name": "DEP-LOCATION-RG-ALLOWED"
@@ -561,7 +561,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-NETWORK-WATCHER-VNET')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "This policy creates a network watcher resource in regions with virtual networks. You need to ensure existence of a resource group named networkWatcherRG, which will be used to deploy network watcher instances.",
                 "name": "DEP-NETWORK-WATCHER-VNET"
@@ -573,7 +573,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-TDE-SQLDB')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "Enables transparent data encryption on SQL databases",
                 "name": "DEP-TDE-SQLDB"
@@ -585,7 +585,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-THREAT-DETECT-SQLDB')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "This policy ensures that Threat Detection is enabled on SQL Servers.",
                 "name": "DEP-THREAT-DETECT-SQLDB"
@@ -597,7 +597,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-ANTIMALWARE-WIN-SRV')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "This policy deploys a Microsoft IaaSAntimalware extension with a default configuration when a VM is not configured with the antimalware extension.",
                 "name": "DEP-ANTIMALWARE-WIN-SRV"
@@ -610,7 +610,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-OS-IMG-PATCH-VM-SET')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "This policy enforces enabling automatic OS image patching on Virtual Machine Scale Sets to always keep Virtual Machines secure by safely applying latest security patches every month.",
                 "name": "DEP-OS-IMG-PATCH-VM-SET"
@@ -623,7 +623,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-ADV-SECURITY-SQLDB')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "This policy enables Advanced Data Security on SQL Servers. This includes turning on Threat Detection and Vulnerability Assessment. It will automatically create a storage account in the same region and resource group as the SQL server to store scan results, with a 'sqlva' prefix.",
                 "name": "DEP-ADV-SECURITY-SQLDB"
@@ -641,7 +641,7 @@
                         "value": "[parameters('listOfAllowedLocations')]"
                     }
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "This policy enables Advanced Threat Protection on Storage Accounts.",
                 "name": "DEP-ADV-SECURITY-STR-ACC"
@@ -659,7 +659,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-LOG-ANAL-WINDOWS-VM')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "Deploy Log Analytics agent for Windows virtual machines if the virtual machine image is in the list defined and the agent is not installed.",
                 "name": "DEP-LOG-ANAL-WINDOWS-VM"
@@ -678,7 +678,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-LOG-ANAL-LINUX-VM')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "Deploy Log Analytics agent for Linux VMs if the VM Image (OS) is in the list defined and the agent is not installed.",
                 "name": "DEP-LOG-ANAL-LINUX-VM"
@@ -699,7 +699,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-DIAG-SET-NSG')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "This policy automatically deploys diagnostic settings to network security groups. A storage account with name '{storagePrefixParameter}{NSGLocation}' will be automatically created.",
                 "name": "DEP-DIAG-SET-NSG"
@@ -712,7 +712,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-ENCRY-DL-STACC')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "This policy ensures encryption is enabled on all Data Lake Store accounts",
                 "name": "DEP-ENCRY-DL-STACC"
@@ -734,7 +734,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-SQL-SRV-AUD')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "To ensure the operations performed against your SQL assets are captured, SQL servers should have auditing enabled. This is sometimes required for compliance with regulatory standards.",
                 "name": "DEP-SQL-SRV-AUD"
@@ -748,7 +748,7 @@
                 "policyAssignmentNames": {
                     "name": "[concat(parameters('globalvariable').genericresourceprefix.policyassignmgn,'DEP-SQLSRV-AUDIT-ENAB')]"
                 },
-                //"resourceDeploymentName": "[take(concat('mgmt', deployment().location, deployment().name), 64)]",
+                //"resourceDeploymentName": "[take(concat(parameters('ManagementRessourceGroup'), deployment().location, deployment().name), 64)]",
                 "scope": "[variables('scope')]",
                 "description": "Auditing on your SQL Server should be enabled to track database activities across all databases on the server and save them in an audit log.",
                 "name": "DEP-SQLSRV-AUDIT-ENAB"
@@ -1529,7 +1529,7 @@
                         "value": "[deployment().location]"
                     },
                     "rgName": {
-                        // "value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, 'mgmt')]"
+                        // "value": "[concat(parameters('globalvariable').genericresourceprefix.resourcgroupmgn, parameters('ManagementRessourceGroup'))]"
                         "value": "[parameters('ManagementRessourceGroup')]"
                     },
                     "retentionInDays": {

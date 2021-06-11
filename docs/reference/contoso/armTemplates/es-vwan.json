@@ -680,7 +680,7 @@
 
                 "keyvaultmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('kv-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),concat('kv-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')))]",
 
-                "storagemgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('st-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env'),'-',deployment().location),concat('st-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env'),'-',deployment().location))]",
+                "storagemgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('st',  parameters('enterpriseScaleCompanyPrefix'),deployment().location),concat('st',  parameters('enterpriseScaleCompanyPrefix'),deployment().location))]",
 
                 "storagediagnosticmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('st-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),concat('st-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')))]",
 
@@ -719,7 +719,7 @@
 
                 "virtualmachinemgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('vm-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),concat('vm-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')))]",
 
-                "virtualmachinestorageaccountmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('stvm-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),concat('stvm-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')))]",
+                "virtualmachinestorageaccountmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('stvm',  parameters('enterpriseScaleCompanyPrefix'),variables('businessunit'),variables('env')),concat('stvm',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')))]",
 
                 "nicmgn": "[if(equals(parameters('NamingConvention'), 'OQLF'),concat('nic-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')),concat('nic-',  parameters('enterpriseScaleCompanyPrefix'),'-',variables('businessunit'),variables('env')))]",
 
@@ -1104,6 +1104,7 @@
             "name": "[variables('deploymentNames').monitoringDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').policyDeploymentName]",
+                "[variables('deploymentNames').customPoliciesAssigDeploymentName]",
                 "DeploymentDelay"
             ],
             "location": "[deployment().location]",
@@ -1443,6 +1444,7 @@
             "name": "[variables('deploymentNames').connectivityDeploymentName]",
             "dependsOn": [
                 "[variables('deploymentNames').diagAndSecDeploymentName]",
+                //"[variables('deploymentNames').customPoliciesAssigDeploymentName]",
                 "DeploymentDelay"
             ],
             "location": "[deployment().location]",
@@ -1519,10 +1521,10 @@
             "scope": "[  variables('globalvariable').scopebase]",
             "name": "[variables('deploymentNames').customPoliciesAssigDeploymentName]",
             "dependsOn": [
-                "[variables('deploymentNames').mgmtGroupDeploymentName]",
-                "[variables('deploymentNames').monitoringSolutionsDeploymentName]",
-                "[variables('deploymentNames').connectivityDeploymentName]",
-                "DeploymentDelay"
+                "[variables('deploymentNames').mgmtGroupDeploymentName]"
+                //,
+                //"[variables('deploymentNames').monitoringSolutionsDeploymentName]",
+                //"[variables('deploymentNames').connectivityDeploymentName]"
             ],
             "location": "[deployment().location]",
             "properties": {
