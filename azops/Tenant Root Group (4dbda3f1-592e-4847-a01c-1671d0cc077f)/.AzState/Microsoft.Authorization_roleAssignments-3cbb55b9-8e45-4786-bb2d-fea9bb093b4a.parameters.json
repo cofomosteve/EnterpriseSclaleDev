@@ -4,12 +4,12 @@
   "parameters": {
     "input": {
       "value": {
-        "Id": "/providers/Microsoft.Management/managementGroups/EnvironnementOrganisationnel/providers/Microsoft.Authorization/roleAssignments/9ba22782-82b2-4a01-816f-30c0930f7209",
-        "Name": "9ba22782-82b2-4a01-816f-30c0930f7209",
+        "Id": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f/providers/Microsoft.Authorization/roleAssignments/3cbb55b9-8e45-4786-bb2d-fea9bb093b4a",
+        "Name": "3cbb55b9-8e45-4786-bb2d-fea9bb093b4a",
         "properties": {
-          "DisplayName": "André Girard",
+          "DisplayName": "Andre Girard (c)",
           "ObjectType": "User",
-          "PrincipalId": "b6d18eee-9e06-4686-a475-16e83a15d6e2",
+          "PrincipalId": "0ce3d8f9-2f23-4f3c-973d-0edae137d86d",
           "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
           "RoleDefinitionName": "Owner"
         },
