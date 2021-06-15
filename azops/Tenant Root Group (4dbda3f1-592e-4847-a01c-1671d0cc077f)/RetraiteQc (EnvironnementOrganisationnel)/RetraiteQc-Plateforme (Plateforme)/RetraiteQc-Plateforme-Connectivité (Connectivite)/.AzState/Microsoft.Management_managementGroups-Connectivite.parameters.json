@@ -9,20 +9,12 @@
         "Name": "Connectivite",
         "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
         "DisplayName": "RetraiteQc-Plateforme-Connectivité",
-        "UpdatedTime": "2021-06-14T15:40:20.1767109Z",
-        "UpdatedBy": "b6d18eee-9e06-4686-a475-16e83a15d6e2",
+        "UpdatedTime": "2021-06-14T19:43:48.1624966Z",
+        "UpdatedBy": "cf9d31f5-d46e-4bbc-8478-bff50daef4f0",
         "ParentId": "/providers/Microsoft.Management/managementGroups/Plateforme",
         "ParentName": "Plateforme",
         "ParentDisplayName": "RetraiteQc-Plateforme",
-        "Children": [
-          {
-            "Type": "/subscriptions",
-            "Id": "/subscriptions/cbec69fd-0f1b-426a-babe-e72f3572915d",
-            "Name": "cbec69fd-0f1b-426a-babe-e72f3572915d",
-            "DisplayName": "Connectivité - Paiement à l’utilisation",
-            "Children": null
-          }
-        ]
+        "Children": null
       }
     }
   }

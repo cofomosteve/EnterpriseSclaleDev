@@ -9,20 +9,12 @@
         "Name": "Gestion",
         "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
         "DisplayName": "RetraiteQc-Plateforme-Gestion",
-        "UpdatedTime": "2021-06-14T15:40:16.9753854Z",
-        "UpdatedBy": "b6d18eee-9e06-4686-a475-16e83a15d6e2",
+        "UpdatedTime": "2021-06-14T19:43:49.2724259Z",
+        "UpdatedBy": "cf9d31f5-d46e-4bbc-8478-bff50daef4f0",
         "ParentId": "/providers/Microsoft.Management/managementGroups/Plateforme",
         "ParentName": "Plateforme",
         "ParentDisplayName": "RetraiteQc-Plateforme",
-        "Children": [
-          {
-            "Type": "/subscriptions",
-            "Id": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
-            "Name": "2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
-            "DisplayName": "Microsoft Azure Sponsorship (6k)",
-            "Children": null
-          }
-        ]
+        "Children": null
       }
     }
   }

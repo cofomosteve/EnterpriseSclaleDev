@@ -4,12 +4,12 @@
   "parameters": {
     "input": {
       "value": {
-        "Id": "/providers/Microsoft.Management/managementGroups/ServiceEnLigneAcceptation/providers/Microsoft.Authorization/roleAssignments/2afbde15-bd8d-4cf8-bd56-573b93cb2673",
-        "Name": "2afbde15-bd8d-4cf8-bd56-573b93cb2673",
+        "Id": "/providers/Microsoft.Management/managementGroups/BureautiqueProduction/providers/Microsoft.Authorization/roleAssignments/4c030e39-8659-48ec-a5b3-7862fee81160",
+        "Name": "4c030e39-8659-48ec-a5b3-7862fee81160",
         "properties": {
-          "DisplayName": "André Girard",
-          "ObjectType": "User",
-          "PrincipalId": "b6d18eee-9e06-4686-a475-16e83a15d6e2",
+          "DisplayName": "sp-poc-bicep-01-itq",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "cf9d31f5-d46e-4bbc-8478-bff50daef4f0",
           "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
           "RoleDefinitionName": "Owner"
         },

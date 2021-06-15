@@ -9,19 +9,12 @@
         "Name": "EnvironnementOrganisationnel",
         "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
         "DisplayName": "RetraiteQc",
-        "UpdatedTime": "2021-06-14T15:39:07.5898632Z",
-        "UpdatedBy": "b6d18eee-9e06-4686-a475-16e83a15d6e2",
+        "UpdatedTime": "2021-06-14T19:42:38.2587646Z",
+        "UpdatedBy": "cf9d31f5-d46e-4bbc-8478-bff50daef4f0",
         "ParentId": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f",
         "ParentName": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
         "ParentDisplayName": "Tenant Root Group",
         "Children": [
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/Plateforme",
-            "Name": "Plateforme",
-            "DisplayName": "RetraiteQc-Plateforme",
-            "Children": null
-          },
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
             "Id": "/providers/Microsoft.Management/managementGroups/ZoneDeCharges",
@@ -34,6 +27,13 @@
             "Id": "/providers/Microsoft.Management/managementGroups/Decommissiones",
             "Name": "Decommissiones",
             "DisplayName": "RetraiteQc-Decommissionés",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/Plateforme",
+            "Name": "Plateforme",
+            "DisplayName": "RetraiteQc-Plateforme",
             "Children": null
           }
         ]
