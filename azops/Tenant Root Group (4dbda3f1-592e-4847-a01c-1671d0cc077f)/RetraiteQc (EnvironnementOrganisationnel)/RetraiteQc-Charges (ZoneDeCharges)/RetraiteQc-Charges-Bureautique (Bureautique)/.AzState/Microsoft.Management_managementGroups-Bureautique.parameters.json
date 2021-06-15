@@ -9,8 +9,8 @@
         "Name": "Bureautique",
         "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
         "DisplayName": "RetraiteQc-Charges-Bureautique",
-        "UpdatedTime": "2021-06-14T15:40:16.4222965Z",
-        "UpdatedBy": "b6d18eee-9e06-4686-a475-16e83a15d6e2",
+        "UpdatedTime": "2021-06-14T19:43:42.1192301Z",
+        "UpdatedBy": "cf9d31f5-d46e-4bbc-8478-bff50daef4f0",
         "ParentId": "/providers/Microsoft.Management/managementGroups/ZoneDeCharges",
         "ParentName": "ZoneDeCharges",
         "ParentDisplayName": "RetraiteQc-Charges",
@@ -20,20 +20,6 @@
             "Id": "/providers/Microsoft.Management/managementGroups/BureautiqueProduction",
             "Name": "BureautiqueProduction",
             "DisplayName": "RetraiteQc-Charges-Bureautique-Production",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/BureautiqueAcceptation",
-            "Name": "BureautiqueAcceptation",
-            "DisplayName": "RetraiteQc-Charges-Bureautique-Acceptation",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/BureautiqueDeveloppement",
-            "Name": "BureautiqueDeveloppement",
-            "DisplayName": "RetraiteQc-Charges-Bureautique-Developpement",
             "Children": null
           }
         ]

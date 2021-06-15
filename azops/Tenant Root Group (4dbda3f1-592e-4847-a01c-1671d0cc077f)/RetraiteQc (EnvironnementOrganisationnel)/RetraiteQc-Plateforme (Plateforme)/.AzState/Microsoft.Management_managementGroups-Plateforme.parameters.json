@@ -9,12 +9,19 @@
         "Name": "Plateforme",
         "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
         "DisplayName": "RetraiteQc-Plateforme",
-        "UpdatedTime": "2021-06-14T15:39:40.1515665Z",
-        "UpdatedBy": "b6d18eee-9e06-4686-a475-16e83a15d6e2",
+        "UpdatedTime": "2021-06-14T19:43:17.4516796Z",
+        "UpdatedBy": "cf9d31f5-d46e-4bbc-8478-bff50daef4f0",
         "ParentId": "/providers/Microsoft.Management/managementGroups/EnvironnementOrganisationnel",
         "ParentName": "EnvironnementOrganisationnel",
         "ParentDisplayName": "RetraiteQc",
         "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/Connectivite",
+            "Name": "Connectivite",
+            "DisplayName": "RetraiteQc-Plateforme-Connectivité",
+            "Children": null
+          },
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
             "Id": "/providers/Microsoft.Management/managementGroups/Perimetre",
@@ -34,13 +41,6 @@
             "Id": "/providers/Microsoft.Management/managementGroups/Gestion",
             "Name": "Gestion",
             "DisplayName": "RetraiteQc-Plateforme-Gestion",
-            "Children": null
-          },
-          {
-            "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/Connectivite",
-            "Name": "Connectivite",
-            "DisplayName": "RetraiteQc-Plateforme-Connectivité",
             "Children": null
           }
         ]
