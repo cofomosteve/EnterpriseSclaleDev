@@ -4,12 +4,12 @@
   "parameters": {
     "input": {
       "value": {
-        "Id": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f/providers/Microsoft.Authorization/roleAssignments/3cbb55b9-8e45-4786-bb2d-fea9bb093b4a",
-        "Name": "3cbb55b9-8e45-4786-bb2d-fea9bb093b4a",
+        "Id": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f/providers/Microsoft.Authorization/roleAssignments/0a1210a8-4648-4c4b-9029-28e49f72b8d5",
+        "Name": "0a1210a8-4648-4c4b-9029-28e49f72b8d5",
         "properties": {
-          "DisplayName": "André Girard",
-          "ObjectType": "User",
-          "PrincipalId": "0ce3d8f9-2f23-4f3c-973d-0edae137d86d",
+          "DisplayName": "cofomocloud-CESI.Retraite-4dbda3f1-592e-4847-a01c-1671d0cc077f",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "62816404-431e-463b-8a4c-9c6a5455e48b",
           "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
           "RoleDefinitionName": "Owner"
         },
