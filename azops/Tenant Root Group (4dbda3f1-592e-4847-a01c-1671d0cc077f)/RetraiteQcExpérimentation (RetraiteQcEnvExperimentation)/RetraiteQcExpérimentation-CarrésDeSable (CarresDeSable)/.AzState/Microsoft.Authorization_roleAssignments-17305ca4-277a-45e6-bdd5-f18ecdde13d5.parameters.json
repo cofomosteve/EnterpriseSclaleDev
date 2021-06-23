@@ -4,8 +4,8 @@
   "parameters": {
     "input": {
       "value": {
-        "Id": "/providers/Microsoft.Management/managementGroups/Gestion/providers/Microsoft.Authorization/roleAssignments/3f3a51a1-3100-4b11-be49-6e79e083709e",
-        "Name": "3f3a51a1-3100-4b11-be49-6e79e083709e",
+        "Id": "/providers/Microsoft.Management/managementGroups/CarresDeSable/providers/Microsoft.Authorization/roleAssignments/17305ca4-277a-45e6-bdd5-f18ecdde13d5",
+        "Name": "17305ca4-277a-45e6-bdd5-f18ecdde13d5",
         "properties": {
           "DisplayName": "sp-poc-bicep-01-itq",
           "ObjectType": "ServicePrincipal",

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/ZoneDeCharges/providers/Microsoft.Authorization/roleAssignments/035b3509-9435-436d-ad09-f17576680a41",
+        "Name": "035b3509-9435-436d-ad09-f17576680a41",
+        "properties": {
+          "DisplayName": "sp-poc-bicep-01-itq",
+          "ObjectType": "ServicePrincipal",
+          "PrincipalId": "cf9d31f5-d46e-4bbc-8478-bff50daef4f0",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}

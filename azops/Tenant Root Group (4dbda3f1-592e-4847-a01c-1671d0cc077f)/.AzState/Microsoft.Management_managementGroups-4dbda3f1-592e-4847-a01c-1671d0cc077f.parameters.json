@@ -30,6 +30,13 @@
             "Children": null
           },
           {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/RetraiteQcEnvExperimentation",
+            "Name": "RetraiteQcEnvExperimentation",
+            "DisplayName": "RetraiteQcExpérimentation",
+            "Children": null
+          },
+          {
             "Type": "/subscriptions",
             "Id": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
             "Name": "2830c1bb-dbc2-41d3-bf92-616ef65f80bc",

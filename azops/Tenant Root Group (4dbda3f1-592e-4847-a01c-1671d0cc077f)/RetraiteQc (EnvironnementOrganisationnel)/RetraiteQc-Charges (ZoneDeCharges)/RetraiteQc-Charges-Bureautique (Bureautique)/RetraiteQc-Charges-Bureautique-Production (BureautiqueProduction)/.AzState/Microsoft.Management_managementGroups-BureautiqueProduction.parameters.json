@@ -9,7 +9,7 @@
         "Name": "BureautiqueProduction",
         "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
         "DisplayName": "RetraiteQc-Charges-Bureautique-Production",
-        "UpdatedTime": "2021-06-14T19:44:14.2871505Z",
+        "UpdatedTime": "2021-06-23T13:37:43.815545Z",
         "UpdatedBy": "cf9d31f5-d46e-4bbc-8478-bff50daef4f0",
         "ParentId": "/providers/Microsoft.Management/managementGroups/Bureautique",
         "ParentName": "Bureautique",
