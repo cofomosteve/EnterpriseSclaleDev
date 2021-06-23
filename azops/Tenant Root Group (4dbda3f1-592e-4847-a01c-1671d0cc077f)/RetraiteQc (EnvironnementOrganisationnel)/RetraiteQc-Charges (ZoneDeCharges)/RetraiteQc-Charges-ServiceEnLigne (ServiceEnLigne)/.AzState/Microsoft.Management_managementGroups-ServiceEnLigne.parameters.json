@@ -9,7 +9,7 @@
         "Name": "ServiceEnLigne",
         "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
         "DisplayName": "RetraiteQc-Charges-ServiceEnLigne",
-        "UpdatedTime": "2021-06-14T19:43:41.4668879Z",
+        "UpdatedTime": "2021-06-23T13:37:08.6156982Z",
         "UpdatedBy": "cf9d31f5-d46e-4bbc-8478-bff50daef4f0",
         "ParentId": "/providers/Microsoft.Management/managementGroups/ZoneDeCharges",
         "ParentName": "ZoneDeCharges",
@@ -17,9 +17,9 @@
         "Children": [
           {
             "Type": "/providers/Microsoft.Management/managementGroups",
-            "Id": "/providers/Microsoft.Management/managementGroups/ServiceEnLigneProduction",
-            "Name": "ServiceEnLigneProduction",
-            "DisplayName": "RetraiteQc-Charges-ServiceEnLigne-Production",
+            "Id": "/providers/Microsoft.Management/managementGroups/ServiceEnLigneDeveloppement",
+            "Name": "ServiceEnLigneDeveloppement",
+            "DisplayName": "RetraiteQc-Charges-ServiceEnLigne-Developpement",
             "Children": null
           }
         ]

@@ -4,12 +4,12 @@
   "parameters": {
     "input": {
       "value": {
-        "Id": "/providers/Microsoft.Management/managementGroups/IntranetProduction",
+        "Id": "/providers/Microsoft.Management/managementGroups/IntranetDeveloppement",
         "Type": "/providers/Microsoft.Management/managementGroups",
-        "Name": "IntranetProduction",
+        "Name": "IntranetDeveloppement",
         "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
-        "DisplayName": "RetraiteQc-Charges-Intranet-Production",
-        "UpdatedTime": "2021-06-14T19:44:15.8496635Z",
+        "DisplayName": "RetraiteQc-Charges-Intranet-Developpement",
+        "UpdatedTime": "2021-06-23T13:37:33.3099008Z",
         "UpdatedBy": "cf9d31f5-d46e-4bbc-8478-bff50daef4f0",
         "ParentId": "/providers/Microsoft.Management/managementGroups/Intranet",
         "ParentName": "Intranet",
