@@ -1,0 +1,43 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/EnvironnementOrganisationnel",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "EnvironnementOrganisationnel",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "OQLF",
+        "UpdatedTime": "2021-07-05T14:48:00.2662488Z",
+        "UpdatedBy": "b6d18eee-9e06-4686-a475-16e83a15d6e2",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentName": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "ParentDisplayName": "Tenant Root Group",
+        "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/ZoneDeCharges",
+            "Name": "ZoneDeCharges",
+            "DisplayName": "OQLF-Charges",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/Plateforme",
+            "Name": "Plateforme",
+            "DisplayName": "OQLF-Infrastructure",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/Decommissiones",
+            "Name": "Decommissiones",
+            "DisplayName": "OQLF-Decommissionés",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}

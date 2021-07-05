@@ -1,0 +1,29 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/Gestion",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "Gestion",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "OQLF-Infrastructure-Gestion",
+        "UpdatedTime": "2021-07-05T14:48:12.2242037Z",
+        "UpdatedBy": "b6d18eee-9e06-4686-a475-16e83a15d6e2",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/Plateforme",
+        "ParentName": "Plateforme",
+        "ParentDisplayName": "OQLF-Infrastructure",
+        "Children": [
+          {
+            "Type": "/subscriptions",
+            "Id": "/subscriptions/2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
+            "Name": "2830c1bb-dbc2-41d3-bf92-616ef65f80bc",
+            "DisplayName": "Microsoft Azure Sponsorship (6k)",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}
