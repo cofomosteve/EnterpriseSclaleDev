@@ -1,0 +1,36 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/ServiceEnLigne",
+        "Type": "/providers/Microsoft.Management/managementGroups",
+        "Name": "ServiceEnLigne",
+        "TenantId": "4dbda3f1-592e-4847-a01c-1671d0cc077f",
+        "DisplayName": "OQLF-Charges-ServiceEnLigne",
+        "UpdatedTime": "2021-07-05T14:48:12.081865Z",
+        "UpdatedBy": "b6d18eee-9e06-4686-a475-16e83a15d6e2",
+        "ParentId": "/providers/Microsoft.Management/managementGroups/ZoneDeCharges",
+        "ParentName": "ZoneDeCharges",
+        "ParentDisplayName": "OQLF-Charges",
+        "Children": [
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/ServiceEnLigneDeveloppement",
+            "Name": "ServiceEnLigneDeveloppement",
+            "DisplayName": "OQLF-Charges-ServiceEnLigne-Developpement",
+            "Children": null
+          },
+          {
+            "Type": "/providers/Microsoft.Management/managementGroups",
+            "Id": "/providers/Microsoft.Management/managementGroups/ServiceEnLigneProduction",
+            "Name": "ServiceEnLigneProduction",
+            "DisplayName": "OQLF-Charges-ServiceEnLigne-Production",
+            "Children": null
+          }
+        ]
+      }
+    }
+  }
+}
