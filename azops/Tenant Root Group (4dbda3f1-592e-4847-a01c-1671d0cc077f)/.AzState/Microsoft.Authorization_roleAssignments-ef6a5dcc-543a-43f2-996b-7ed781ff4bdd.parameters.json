@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/providers/Microsoft.Management/managementGroups/4dbda3f1-592e-4847-a01c-1671d0cc077f/providers/Microsoft.Authorization/roleAssignments/ef6a5dcc-543a-43f2-996b-7ed781ff4bdd",
+        "Name": "ef6a5dcc-543a-43f2-996b-7ed781ff4bdd",
+        "properties": {
+          "DisplayName": "Marc-André Laferrière",
+          "ObjectType": "User",
+          "PrincipalId": "18bd5f1b-7dba-410e-80c1-47d4dfe66849",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+          "RoleDefinitionName": "Owner"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}
