@@ -35,6 +35,13 @@
             "Name": "RetraiteQcEnvExperimentation",
             "DisplayName": "RetraiteQcExpérimentation",
             "Children": null
+          },
+          {
+            "Type": "/subscriptions",
+            "Id": "/subscriptions/fefd6011-af8c-4269-8372-c5a7183d91d3",
+            "Name": "fefd6011-af8c-4269-8372-c5a7183d91d3",
+            "DisplayName": "Microsoft Azure Sponsorship (12k)",
+            "Children": null
           }
         ]
       }

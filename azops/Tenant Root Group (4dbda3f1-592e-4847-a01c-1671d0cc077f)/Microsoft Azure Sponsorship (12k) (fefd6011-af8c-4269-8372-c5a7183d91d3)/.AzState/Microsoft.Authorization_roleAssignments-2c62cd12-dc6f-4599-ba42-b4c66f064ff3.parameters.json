@@ -1,0 +1,20 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "input": {
+      "value": {
+        "Id": "/subscriptions/fefd6011-af8c-4269-8372-c5a7183d91d3/providers/Microsoft.Authorization/roleAssignments/2c62cd12-dc6f-4599-ba42-b4c66f064ff3",
+        "Name": "2c62cd12-dc6f-4599-ba42-b4c66f064ff3",
+        "properties": {
+          "DisplayName": "Adam Mc Kennen",
+          "ObjectType": "User",
+          "PrincipalId": "8db837b5-31a8-4c1f-b6d8-889768768edf",
+          "RoleDefinitionId": "/providers/Microsoft.Authorization/RoleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+          "RoleDefinitionName": "User Access Administrator"
+        },
+        "ResourceType": "Microsoft.Authorization/roleAssignments"
+      }
+    }
+  }
+}
